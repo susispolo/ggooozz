@@ -3,22 +3,20 @@
 Music Discovery Telegram Bot (Deezer-only)
 ───────────────────────────────────────────
 Completely free. No API keys needed for the main flow.
-Optionally add LASTFM_API_KEY for richer similar tracks.
-
-Deployable on free cloud hosts (Render, Railway, Koyeb, Fly.io).
+Designed for Replit + UptimeRobot (free, no credit card).
 """
 
 import logging
 import os
 import asyncio
-from typing import Optional
+import threading
+from http.server import HTTPServer, BaseHTTPRequestHandler
 
 from dotenv import load_dotenv
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.constants import ParseMode
 from telegram.ext import Application, CallbackQueryHandler, CommandHandler, filters, MessageHandler
 
-# Load .env only if it exists (for local dev — cloud uses env vars directly)
 if os.path.exists(".env"):
     load_dotenv()
 
@@ -27,21 +25,35 @@ from deezer_helper import DeezerClient, TrackInfo
 # ═══════════════════════════════════════════════════
 # Config
 # ═══════════════════════════════════════════════════
-logging.basicConfig(
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-    level=logging.INFO,
-)
+logging.basicConfig(format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+                    level=logging.INFO)
 log = logging.getLogger(__name__)
 
-TOKEN = os.environ["TELEGRAM_BOT_TOKEN"]
+TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
 PORT = int(os.environ.get("PORT", 8080))
-HOST = os.environ.get("HOST", "0.0.0.0")
 AUDD_TOKEN = os.environ.get("AUDD_API_TOKEN", "")
 LASTFM_KEY = os.environ.get("LASTFM_API_KEY", "")
-RENDER_EXTERNAL_URL = os.environ.get("RENDER_EXTERNAL_URL", "")
 
 dz = DeezerClient()
 _user_state: dict[int, dict] = {}
+
+
+# ═══════════════════════════════════════════════════
+# Web server (just for UptimeRobot pings)
+# ═══════════════════════════════════════════════════
+
+class HealthHandler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.end_headers()
+        self.wfile.write(b"OK")
+    def log_message(self, format, *args):
+        pass  # suppress logs
+
+def run_http_server():
+    server = HTTPServer(("0.0.0.0", PORT), HealthHandler)
+    log.info(f"Health server on port {PORT}")
+    server.serve_forever()
 
 
 # ═══════════════════════════════════════════════════
@@ -78,7 +90,6 @@ async def start(update: Update, context):
 
 
 async def handle_text(update: Update, context):
-    """Text message → Deezer search → 'Did you mean?'."""
     query = update.message.text.strip()
     if not query:
         return
@@ -99,26 +110,21 @@ async def handle_text(update: Update, context):
     _user_state[update.effective_chat.id] = {"results": results, "query": query}
 
     await update.message.reply_text(
-        f"🔍 *Results for:* _{query}_\n\n"
-        f"Which one did you mean?",
+        f"🔍 *Results for:* _{query}_\n\nWhich one did you mean?",
         reply_markup=_did_you_mean_keyboard(results),
         parse_mode=ParseMode.MARKDOWN,
     )
 
 
 async def handle_audio(update: Update, context):
-    """Audio upload → AudD recognition (optional, needs token)."""
     if not AUDD_TOKEN:
         await update.message.reply_text(
-            "🎤 I got your audio file, but recognition isn't configured.\n"
-            "Type the song name instead please."
+            "🎤 I got your audio, but recognition isn't configured.\nType the song name instead please."
         )
         return
 
     await update.message.chat.send_action("typing")
-
-    import io
-    import aiohttp
+    import io, aiohttp
 
     try:
         file = await update.message.effective_attachment.get_file()
@@ -166,7 +172,6 @@ async def handle_audio(update: Update, context):
 
 
 async def handle_callback(update: Update, context):
-    """Inline button responses."""
     query = update.callback_query
     await query.answer()
     chat_id = update.effective_chat.id
@@ -190,10 +195,8 @@ async def handle_callback(update: Update, context):
             await query.edit_message_text("😕 No results found.")
             return
         _user_state[chat_id] = {"results": results}
-        await query.edit_message_text(
-            "Which one did you mean?",
-            reply_markup=_did_you_mean_keyboard(results),
-        )
+        await query.edit_message_text("Which one did you mean?",
+                                       reply_markup=_did_you_mean_keyboard(results))
         return
 
     if data.startswith("pick_"):
@@ -205,20 +208,15 @@ async def handle_callback(update: Update, context):
             return
 
         selected_raw = results[idx]
-        await query.edit_message_text(
-            f"⏳ Analysing *{selected_raw.title}*…",
-            parse_mode=ParseMode.MARKDOWN,
-        )
+        await query.edit_message_text(f"⏳ Analysing *{selected_raw.title}*…",
+                                       parse_mode=ParseMode.MARKDOWN)
 
-        # Get full track details (inc. BPM, genres)
         selected = dz.get_track(selected_raw.id)
         if not selected:
             selected = selected_raw
 
-        # Get similar tracks via Deezer radio
         similar = dz.get_similar(selected.id, limit=10)
 
-        # If Last.fm is configured, also grab similar from there
         lastfm_similar: list[dict] = []
         if LASTFM_KEY:
             try:
@@ -240,7 +238,6 @@ async def handle_callback(update: Update, context):
             except Exception as e:
                 log.warning("Last.fm failed: %s", e)
 
-        # Build the response
         lines = [
             f"*━━━ Selected Track ━━━*",
             "",
@@ -264,9 +261,7 @@ async def handle_callback(update: Update, context):
             lines.append(f"*━━━ 📻 {len(similar)} Similar on Deezer ━━━*")
             lines.append("")
             for s in similar:
-                lines.append(
-                    f"🎧 *{s.title}* — {s.artist}  ·  {s.bpm_str()}"
-                )
+                lines.append(f"🎧 *{s.title}* — {s.artist}  ·  {s.bpm_str()}")
                 lines.append(f"   [▶️ Deezer]({s.deezer_url})")
                 lines.append("")
 
@@ -288,49 +283,24 @@ async def handle_callback(update: Update, context):
                 lines.append("")
 
         msg = "\n".join(lines)
-
         if len(msg) > 4000:
             msg = msg[:3997] + "…"
 
-        await query.message.reply_text(
-            msg,
-            parse_mode=ParseMode.MARKDOWN,
-            disable_web_page_preview=False,
-        )
-
+        await query.message.reply_text(msg, parse_mode=ParseMode.MARKDOWN,
+                                        disable_web_page_preview=False)
         _user_state.pop(chat_id, None)
-
-
-# ═══════════════════════════════════════════════════
-# Web health endpoint (keeps free hosts alive)
-# ═══════════════════════════════════════════════════
-
-async def health_check(request):
-    return "OK — Music Bot running"
-
-
-async def run_web_server():
-    """Minimal HTTP server so free cloud hosts don't kill the bot."""
-    from aiohttp import web
-    app = web.Application()
-    app.router.add_get("/", health_check)
-    app.router.add_get("/health", health_check)
-    runner = web.AppRunner(app)
-    await runner.setup()
-    site = web.TCPSite(runner, HOST, PORT)
-    await site.start()
-    log.info(f"Web server running on {HOST}:{PORT}")
 
 
 # ═══════════════════════════════════════════════════
 # Main
 # ═══════════════════════════════════════════════════
 
-async def main():
-    # Start web server
-    await run_web_server()
+def main():
+    # Start health server in background (for UptimeRobot)
+    t = threading.Thread(target=run_http_server, daemon=True)
+    t.start()
 
-    # Start Telegram bot
+    # Start Telegram bot (polling)
     app = Application.builder().token(TOKEN).build()
     app.add_handler(CommandHandler("start", start))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_text))
@@ -342,24 +312,14 @@ async def main():
     log.info(f"   AudD: {'OK' if AUDD_TOKEN else 'not configured'}")
     log.info(f"   Last.fm: {'OK' if LASTFM_KEY else 'not configured'}")
 
-    # Use webhook if deployed, polling otherwise
-    if RENDER_EXTERNAL_URL:
-        webhook_url = f"{RENDER_EXTERNAL_URL}/webhook"
-        log.info(f"Setting webhook: {webhook_url}")
-        await app.bot.set_webhook(url=webhook_url)
-        # Run with webhook — using aiohttp
-        from telegram.ext import Updater
-        # python-telegram-bot v20+ uses Application.run_webhook
-        await app.run_webhook(
-            listen=HOST,
-            port=PORT,
-            url_path="webhook",
-            webhook_url=webhook_url,
-        )
-    else:
-        log.info("Running in polling mode (no RENDER_EXTERNAL_URL set)")
-        await app.run_polling()
+    print("\n" + "="*50)
+    print("  ✅ BOT IS RUNNING!")
+    print("  📱 Go talk to your bot on Telegram")
+    print("  🔗 https://uptimerobot.com → ping this URL")
+    print("="*50 + "\n")
+
+    app.run_polling()
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    main()
