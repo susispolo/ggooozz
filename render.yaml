@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: music-suggest-bot
+    runtime: python
+    repo: https://github.com/YOUR_USERNAME/music-suggest-bot
+    plan: free
+    region: frankfurt  # closest to you in Iran
+    buildCommand: pip install -r requirements.txt
+    startCommand: python bot.py
+    envVars:
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false  # you fill this in Render dashboard
+      - key: RENDER_EXTERNAL_URL
+        fromService:
+          type: web
+          name: music-suggest-bot
+          property: url
+      - key: AUDD_API_TOKEN
+        sync: false
+      - key: LASTFM_API_KEY
+        sync: false
