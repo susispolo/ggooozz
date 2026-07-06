@@ -34,6 +34,12 @@ PORT = int(os.environ.get("PORT", 8080))
 AUDD_TOKEN = os.environ.get("AUDD_API_TOKEN", "")
 LASTFM_KEY = os.environ.get("LASTFM_API_KEY", "")
 
+# Proxy for Telegram (Iran / filtered regions)
+# Set TELEGRAM_PROXY env var like:
+#   socks5://127.0.0.1:1080
+#   http://127.0.0.1:8080
+PROXY_URL = os.environ.get("TELEGRAM_PROXY", "")
+
 dz = DeezerClient()
 _user_state: dict[int, dict] = {}
 
@@ -300,8 +306,12 @@ def main():
     t = threading.Thread(target=run_http_server, daemon=True)
     t.start()
 
-    # Start Telegram bot (polling)
-    app = Application.builder().token(TOKEN).build()
+    # Start Telegram bot (polling) — with optional proxy for filtered regions
+    if PROXY_URL:
+        log.info(f"   Proxy: {PROXY_URL}")
+        app = Application.builder().token(TOKEN).proxy(PROXY_URL).build()
+    else:
+        app = Application.builder().token(TOKEN).build()
     app.add_handler(CommandHandler("start", start))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_text))
     app.add_handler(MessageHandler(filters.AUDIO | filters.VOICE, handle_audio))
