@@ -7,7 +7,24 @@ Provides: search, track details (BPM, genre, preview),
 from dataclasses import dataclass, field
 from typing import Optional
 
+import time
 import requests
+from urllib3.util import Retry
+from requests.adapters import HTTPAdapter
+
+
+def _make_session() -> requests.Session:
+    """Session with automatic retry for flaky connections."""
+    s = requests.Session()
+    retries = Retry(
+        total=3,
+        backoff_factor=1.5,
+        status_forcelist=[502, 503, 504, 429],
+        allowed_methods=["GET"],
+    )
+    s.mount("https://", HTTPAdapter(max_retries=retries))
+    s.mount("http://", HTTPAdapter(max_retries=retries))
+    return s
 
 
 @dataclass
@@ -39,12 +56,15 @@ class DeezerClient:
 
     BASE = "https://api.deezer.com"
 
+    def __init__(self):
+        self._session = _make_session()
+
     def search(self, query: str, limit: int = 5) -> list[TrackInfo]:
         """Search tracks. Results are relevance-ranked — serves as 'did you mean?'."""
-        r = requests.get(
+        r = self._session.get(
             f"{self.BASE}/search/track",
             params={"q": query, "limit": limit, "order": "RANKING"},
-            timeout=15,
+            timeout=20,
         )
         r.raise_for_status()
         data = r.json()
@@ -52,7 +72,7 @@ class DeezerClient:
 
     def get_track(self, track_id: int) -> Optional[TrackInfo]:
         """Get full track details including BPM, genres."""
-        r = requests.get(f"{self.BASE}/track/{track_id}", timeout=15)
+        r = self._session.get(f"{self.BASE}/track/{track_id}", timeout=20)
         if r.status_code != 200:
             return None
         t = r.json()
@@ -60,7 +80,7 @@ class DeezerClient:
 
         # Get artist genres
         try:
-            ar = requests.get(f"{self.BASE}/artist/{track.artist_id}", timeout=15)
+            ar = self._session.get(f"{self.BASE}/artist/{track.artist_id}", timeout=15)
             if ar.status_code == 200:
                 artist_data = ar.json()
                 for g in artist_data.get("genres", {}).get("data", []):
@@ -75,15 +95,35 @@ class DeezerClient:
         Deezer's 'radio' endpoint — gives tracks similar to a seed track.
         This is Deezer's own similarity engine (free).
         """
-        r = requests.get(
-            f"{self.BASE}/track/{track_id}/radio",
-            params={"limit": limit},
-            timeout=15,
-        )
-        if r.status_code != 200:
-            return []
-        data = r.json()
-        return [self._parse_track(t) for t in data.get("data", [])]
+        try:
+            r = self._session.get(
+                f"{self.BASE}/track/{track_id}/radio",
+                params={"limit": limit},
+                timeout=20,
+            )
+            if r.status_code == 200:
+                data = r.json()
+                results = [self._parse_track(t) for t in data.get("data", [])]
+                if results:
+                    return results
+        except Exception:
+            pass
+        return []
+
+    def get_artist_top(self, artist_id: int, limit: int = 10) -> list[TrackInfo]:
+        """Get top tracks by an artist — used as fallback 'similar' suggestions."""
+        try:
+            r = self._session.get(
+                f"{self.BASE}/artist/{artist_id}/top",
+                params={"limit": limit},
+                timeout=20,
+            )
+            if r.status_code == 200:
+                data = r.json()
+                return [self._parse_track(t) for t in data.get("data", [])]
+        except Exception:
+            pass
+        return []
 
     # ------------------------------------------------------------------
     # Internal helpers

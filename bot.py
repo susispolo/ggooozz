@@ -12,6 +12,7 @@ import asyncio
 import threading
 from http.server import HTTPServer, BaseHTTPRequestHandler
 
+import aiohttp
 from dotenv import load_dotenv
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.constants import ParseMode
@@ -39,6 +40,15 @@ LASTFM_KEY = os.environ.get("LASTFM_API_KEY", "")
 #   socks5://127.0.0.1:1080
 #   http://127.0.0.1:8080
 PROXY_URL = os.environ.get("TELEGRAM_PROXY", "")
+
+# Custom request with higher timeouts
+from telegram.request import HTTPXRequest
+_http_request = HTTPXRequest(
+    connect_timeout=30.0,
+    read_timeout=15.0,
+    write_timeout=15.0,
+    pool_timeout=5.0,
+)
 
 dz = DeezerClient()
 _user_state: dict[int, dict] = {}
@@ -106,7 +116,7 @@ async def handle_text(update: Update, context):
         results = dz.search(query, limit=5)
     except Exception as e:
         log.warning("Deezer search failed: %s", e)
-        await update.message.reply_text("Search failed. Try again later.")
+        await update.message.reply_text("⚠️ Search failed — Deezer API timed out. Your VPN connection might be unstable, or Deezer is slow right now. Try again in a moment.")
         return
 
     if not results:
@@ -123,57 +133,111 @@ async def handle_text(update: Update, context):
 
 
 async def handle_audio(update: Update, context):
-    if not AUDD_TOKEN:
-        await update.message.reply_text(
-            "🎤 I got your audio, but recognition isn't configured.\nType the song name instead please."
-        )
-        return
-
+    """Handle audio/voice messages — extract filename or metadata and search."""
     await update.message.chat.send_action("typing")
-    import io, aiohttp
 
-    try:
-        file = await update.message.effective_attachment.get_file()
-        file_bytes = await file.download_as_bytearray()
-    except Exception as e:
-        log.warning("File download failed: %s", e)
-        await update.message.reply_text("Couldn't download your audio. Try typing the name.")
-        return
+    # Extract metadata from Telegram Audio object
+    audio = update.message.effective_attachment
+    query = ""
+    source = ""
 
-    try:
-        async with aiohttp.ClientSession() as session:
-            data = aiohttp.FormData()
-            data.add_field("api_token", AUDD_TOKEN)
-            data.add_field("return", "deezer")
-            data.add_field("file", io.BytesIO(file_bytes), filename="audio.mp3",
-                           content_type="audio/mpeg")
-            async with session.post(
-                "https://api.audd.io/", data=data,
-                timeout=aiohttp.ClientTimeout(total=20),
-            ) as resp:
-                result = await resp.json()
-    except Exception as e:
-        log.warning("AudD failed: %s", e)
-        await update.message.reply_text("Couldn't recognise it. Try typing the name.")
-        return
+    if hasattr(audio, "file_name") and audio.file_name:
+        # Try parsing filename like "Artist - Song.mp3" or "Song - Artist.mp3"
+        raw = audio.file_name.rsplit(".", 1)[0]  # strip extension
+        # Common patterns: "Artist - Song", "Song - Artist", "Artist_Song"
+        if " - " in raw:
+            parts = raw.split(" - ", 1)
+            query = f"{parts[0]} {parts[1]}"
+            source = "filename"
+        elif "_" in raw:
+            query = raw.replace("_", " ")
+            source = "filename"
+        else:
+            query = raw
+            source = "filename"
 
-    status = result.get("status")
-    if status != "success" or not result.get("result"):
-        await update.message.reply_text("Couldn't recognise the song. Please type the name.")
-        return
+    # Use Telegram's own audio metadata if available (more reliable)
+    if hasattr(audio, "performer") and audio.performer:
+        title_part = getattr(audio, "title", "") or ""
+        if title_part:
+            query = f"{title_part} {audio.performer}"
+            source = "metadata"
+        else:
+            query = audio.performer if not query else query
+            source = "metadata" if source != "filename" else source
 
-    track_data = result["result"]
-    title = track_data.get("title", "")
-    artist = track_data.get("artist", "")
-    _user_state[update.effective_chat.id] = {"recognised_name": f"{title} {artist}"}
+    # If we got a decent query from metadata, search immediately
+    if query and len(query) >= 3:
+        await update.message.reply_text(
+            f"🔍 Searching: *{query}*…", parse_mode=ParseMode.MARKDOWN
+        )
+        try:
+            results = dz.search(query, limit=5)
+        except Exception as e:
+            log.warning("Deezer search from audio failed: %s", e)
+            results = []
 
+        if results:
+            _user_state[update.effective_chat.id] = {"results": results, "query": query}
+            await update.message.reply_text(
+                f"🔍 *Results from {source}:*",
+                reply_markup=_did_you_mean_keyboard(results),
+                parse_mode=ParseMode.MARKDOWN,
+            )
+            return
+
+    # Fallback: try AudD if token is valid
+    if AUDD_TOKEN:
+        await update.message.reply_text("🎤 Trying to recognise audio…")
+        import io
+        try:
+            file = await audio.get_file()
+            file_bytes = await file.download_as_bytearray()
+        except Exception as e:
+            log.warning("File download failed: %s", e)
+            await update.message.reply_text("Couldn't download. Type the song name instead.")
+            return
+        try:
+            async with aiohttp.ClientSession() as session:
+                data = aiohttp.FormData()
+                data.add_field("api_token", AUDD_TOKEN)
+                data.add_field("return", "deezer")
+                data.add_field("file", io.BytesIO(file_bytes), filename="audio.mp3",
+                               content_type="audio/mpeg")
+                async with session.post(
+                    "https://api.audd.io/", data=data,
+                    timeout=aiohttp.ClientTimeout(total=20),
+                ) as resp:
+                    result = await resp.json()
+        except Exception as e:
+            log.warning("AudD failed: %s", e)
+            await update.message.reply_text("Type the song name instead.")
+            return
+        error_code = result.get("error", {}).get("error_code")
+        if error_code == 900:
+            await update.message.reply_text(
+                "🎤 AudD token is invalid. Type the song name instead."
+            )
+            return
+        if result.get("status") == "success" and result.get("result"):
+            track_data = result["result"]
+            title = track_data.get("title", "")
+            artist = track_data.get("artist", "")
+            _user_state[update.effective_chat.id] = {"recognised_name": f"{title} {artist}"}
+            await update.message.reply_text(
+                f"🎤 I heard: *{title}* — *{artist}*\nIs that right?",
+                reply_markup=InlineKeyboardMarkup([
+                    [InlineKeyboardButton("✅ Yes, find similar", callback_data="confirm_recog")],
+                    [InlineKeyboardButton("❌ No, type instead", callback_data="cancel")],
+                ]),
+                parse_mode=ParseMode.MARKDOWN,
+            )
+            return
+
+    # Nothing worked
     await update.message.reply_text(
-        f"🎤 I heard: *{title}* — *{artist}*\nIs that right?",
-        reply_markup=InlineKeyboardMarkup([
-            [InlineKeyboardButton("✅ Yes, find similar", callback_data="confirm_recog")],
-            [InlineKeyboardButton("❌ No, type instead", callback_data="cancel")],
-        ]),
-        parse_mode=ParseMode.MARKDOWN,
+        "🎤 Couldn't identify the song from the file name or audio.\n"
+        "Type the song name instead please."
     )
 
 
@@ -196,7 +260,12 @@ async def handle_callback(update: Update, context):
             return
         await query.edit_message_text(f"🔍 Searching for *{name}*…",
                                        parse_mode=ParseMode.MARKDOWN)
-        results = dz.search(name, limit=5)
+        try:
+            results = dz.search(name, limit=5)
+        except Exception as e:
+            log.warning("search in confirm_recog failed: %s", e)
+            await query.edit_message_text("⚠️ Search failed. Deezer API timed out. Try again.")
+            return
         if not results:
             await query.edit_message_text("😕 No results found.")
             return
@@ -217,30 +286,56 @@ async def handle_callback(update: Update, context):
         await query.edit_message_text(f"⏳ Analysing *{selected_raw.title}*…",
                                        parse_mode=ParseMode.MARKDOWN)
 
-        selected = dz.get_track(selected_raw.id)
+        try:
+            selected = dz.get_track(selected_raw.id)
+        except Exception as e:
+            log.warning("get_track failed: %s", e)
+            selected = None
         if not selected:
             selected = selected_raw
 
-        similar = dz.get_similar(selected.id, limit=10)
+        similar = []
+        similar_label = ""
+        lastfm_similar = []
+        try:
+            similar = dz.get_similar(selected.id, limit=10)
+            if not similar:
+                # Fallback: artist top tracks
+                similar = dz.get_artist_top(selected.artist_id, limit=10)
+                if similar:
+                    similar_label = "from same artist"  # flagged below
+        except Exception as e:
+            log.warning("similar fetch failed: %s", e)
 
-        lastfm_similar: list[dict] = []
+        if not similar:
+            # Last resort: search by artist name
+            try:
+                similar = dz.search(selected.artist, limit=5)
+                similar = [s for s in similar if s.id != selected.id][:10]
+                if similar:
+                    similar_label = "other tracks from this artist"
+            except Exception as e:
+                log.warning("fallback search failed: %s", e)
+
         if LASTFM_KEY:
             try:
-                import requests
-                lr = requests.get(
-                    "https://ws.audioscrobbler.com/2.0/",
-                    params={
-                        "method": "track.getsimilar",
-                        "track": selected.title,
-                        "artist": selected.artist,
-                        "api_key": LASTFM_KEY,
-                        "format": "json",
-                        "limit": 5,
-                    },
-                    timeout=10,
-                )
-                if lr.status_code == 200:
-                    lastfm_similar = lr.json().get("similartracks", {}).get("track", [])
+                async with aiohttp.ClientSession() as session:
+                    async with session.get(
+                        "https://ws.audioscrobbler.com/2.0/",
+                        params={
+                            "method": "track.getsimilar",
+                            "track": selected.title,
+                            "artist": selected.artist,
+                            "api_key": LASTFM_KEY,
+                            "format": "json",
+                            "limit": 10,
+                            "autocorrect": 1,
+                        },
+                        timeout=aiohttp.ClientTimeout(total=15),
+                    ) as resp:
+                        if resp.status == 200:
+                            lr = await resp.json()
+                            lastfm_similar = lr.get("similartracks", {}).get("track", [])
             except Exception as e:
                 log.warning("Last.fm failed: %s", e)
 
@@ -264,7 +359,8 @@ async def handle_callback(update: Update, context):
         lines.append("")
 
         if similar:
-            lines.append(f"*━━━ 📻 {len(similar)} Similar on Deezer ━━━*")
+            header = f"*━━━ 📻 Similar ({similar_label}) ━━━*" if similar_label else f"*━━━ 📻 {len(similar)} Similar ━━━*"
+            lines.append(header)
             lines.append("")
             for s in similar:
                 lines.append(f"🎧 *{s.title}* — {s.artist}  ·  {s.bpm_str()}")
@@ -301,22 +397,30 @@ async def handle_callback(update: Update, context):
 # Main
 # ═══════════════════════════════════════════════════
 
-def main():
-    # Start health server in background (for UptimeRobot)
-    t = threading.Thread(target=run_http_server, daemon=True)
-    t.start()
-
-    # Start Telegram bot (polling) — with optional proxy for filtered regions
+def build_app() -> Application:
+    """Build the Application (shared by polling and webhook modes)."""
+    builder = Application.builder().token(TOKEN).request(_http_request)
     if PROXY_URL:
-        log.info(f"   Proxy: {PROXY_URL}")
-        app = Application.builder().token(TOKEN).proxy(PROXY_URL).build()
-    else:
-        app = Application.builder().token(TOKEN).build()
+        builder = builder.proxy(PROXY_URL)
+    app = builder.build()
+
     app.add_handler(CommandHandler("start", start))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_text))
     app.add_handler(MessageHandler(filters.AUDIO | filters.VOICE, handle_audio))
     app.add_handler(CallbackQueryHandler(handle_callback))
 
+    async def error_handler(update: object, context):
+        log.warning("Unhandled error (logged): %s", context.error)
+    app.add_error_handler(error_handler)
+    return app
+
+
+def main():
+    # Start health server in background (for UptimeRobot)
+    t = threading.Thread(target=run_http_server, daemon=True)
+    t.start()
+
+    app = build_app()
     log.info("🎵 Music Suggest Bot starting...")
     log.info(f"   Deezer: OK (no key needed)")
     log.info(f"   AudD: {'OK' if AUDD_TOKEN else 'not configured'}")
