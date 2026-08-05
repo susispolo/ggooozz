@@ -1311,19 +1311,18 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         lines.append(f"<blockquote>{' · '.join(features_text)}</blockquote>")
 
     if selected_track.deezer_url:
-        lines.append(f'\n🔊 <a href="{selected_track.deezer_url}">Listen on Deezer</a>')
+        lines.append(f'🔊 <a href="{selected_track.deezer_url}">Listen on Deezer</a>')
 
-    lines.append(f'\n📝 Copy to search in @DeezerMusicBot:')
-    lines.append(f'<code>{h(selected_track.title)} {h(selected_track.artist)}</code>')
+    lines.append(f'📝 <b>Tap to copy — paste in @DeezerMusicBot:</b>')
+    lines.append(f'<code>{h(selected_track.title)} - {h(selected_track.artist)}</code>')
 
     lines.extend(["", "━━━━━━━━━━━━━━━━━━━━━━━━━━━━", "🎯 <b>Similar Tracks</b>", "━━━━━━━━━━━━━━━━━━━━━━━━━━━━", ""])
 
     for i, result in enumerate(results[:6], 1):
         score_text = format_similarity_score(result.similarity_score) if result.similarity_score > 0 else ""
-        lines.append(f"{i}. <b>{h(result.title)}</b> - {h(result.artist)}")
+        lines.append(f"{i}. <code>{h(result.title)} - {h(result.artist)}</code>")
         if score_text:
             lines.append(f"   {score_text}")
-        lines.append(f"   <code>{h(result.title)} {h(result.artist)}</code>")
         lines.append("")
 
     msg = "\n".join(lines)
@@ -1358,7 +1357,7 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
                     performer=track.artist,
                     duration=30,
                 )
-                vote_msg = f"🎧 <b>{h(track.title)}</b> - {h(track.artist)}\n\n📝 Copy to search in @DeezerMusicBot:\n<code>{h(track.title)} {h(track.artist)}</code>\n\n⭐ Rate this track:"
+                vote_msg = f"🎧 <b>{h(track.title)}</b> - {h(track.artist)}\n\n📝 <b>Tap to copy — paste in @DeezerMusicBot:</b>\n<code>{h(track.title)} - {h(track.artist)}</code>\n\n⭐ Rate this track:"
                 await context.bot.send_message(
                     chat_id=chat_id,
                     text=vote_msg,
@@ -1564,7 +1563,7 @@ async def cmd_chart(update: Update, context: ContextTypes.DEFAULT_TYPE):
         msg += f"👤 {h(track.artist)}\n\n"
 
         for i, s in enumerate(similar[:10], 1):
-            msg += f"{i}. <b>{h(s.title)}</b> - {h(s.artist)}\n"
+            msg += f"{i}. <code>{h(s.title)} - {h(s.artist)}</code>\n"
 
         await update.message.reply_text(msg, parse_mode=PM)
 
@@ -1607,7 +1606,7 @@ async def cmd_mood(update: Update, context: ContextTypes.DEFAULT_TYPE):
         if results:
             msg = f"🎵 <b>{mood.capitalize()} Playlist</b>\n\n"
             for i, track in enumerate(results[:8], 1):
-                msg += f"{i}. <b>{h(track.title)}</b> - {h(track.artist)}\n"
+                msg += f"{i}. <code>{h(track.title)} - {h(track.artist)}</code>\n"
 
             await update.message.reply_text(msg, parse_mode=PM)
         else:
@@ -1646,7 +1645,7 @@ async def cmd_activity(update: Update, context: ContextTypes.DEFAULT_TYPE):
         if results:
             msg = f"🏃 <b>{activity.capitalize()} Playlist</b>\n\n"
             for i, track in enumerate(results[:8], 1):
-                msg += f"{i}. <b>{h(track.title)}</b> - {h(track.artist)}\n"
+                msg += f"{i}. <code>{h(track.title)} - {h(track.artist)}</code>\n"
 
             await update.message.reply_text(msg, parse_mode=PM)
         else:
@@ -1821,7 +1820,7 @@ async def cmd_recommend(update: Update, context: ContextTypes.DEFAULT_TYPE):
                     msg += f"Because you liked <b>{h(title)}</b>:\n\n"
 
                     for i, s in enumerate(similar[:8], 1):
-                        msg += f"{i}. <b>{h(s.title)}</b> - {h(s.artist)}\n"
+                        msg += f"{i}. <code>{h(s.title)} - {h(s.artist)}</code>\n"
 
                     await update.message.reply_text(msg, parse_mode=PM)
                 else:
@@ -2116,7 +2115,7 @@ async def cmd_share(update: Update, context: ContextTypes.DEFAULT_TYPE):
             )
         else:
             # Fallback to text
-            msg = f"🎵 <b>{h(track.title)}</b>\n👤 {h(track.artist)}\n\n"
+            msg = f"🎵 <code>{h(track.title)} - {h(track.artist)}</code>\n\n"
             msg += f"BPM: {bpm:.0f} | Energy: {energy:.2f} | Valence: {valence:.2f}"
             await update.message.reply_text(msg, parse_mode=PM)
 
@@ -2898,22 +2897,21 @@ async def cmd_meforyou(update: Update, context: ContextTypes.DEFAULT_TYPE):
             return
 
         # Header with taste info
-        msg = msg("for_me_header", lang,
+        text = msg("for_me_header", lang,
                 count=profile["track_count"],
                 bpm=f"{profile['avg_bpm']:.0f}",
                 energy=f"{profile['avg_energy']:.2f}")
-        msg += "\n\n"
+        text += "\n\n"
 
         for i, track in enumerate(recommended, 1):
-            msg += f"{i}. <b>{h(track.title)}</b> - {h(track.artist)}\n"
-            msg += f"   <code>{h(track.title)} {h(track.artist)}</code>\n"
+            text += f"{i}. <code>{h(track.title)} - {h(track.artist)}</code>\n"
             if track.deezer_url:
-                msg += f"   <a href=\"{track.deezer_url}\">▶️ Deezer</a>\n"
-            msg += "\n"
+                text += f"   <a href=\"{track.deezer_url}\">▶️ Deezer</a>\n"
+            text += "\n"
 
-        msg += msg("for_me_footer", lang)
+        text += msg("for_me_footer", lang)
 
-        await update.message.reply_text(msg, parse_mode=PM, disable_web_page_preview=True,
+        await update.message.reply_text(text, parse_mode=PM, disable_web_page_preview=True,
                                         reply_markup=_meforyou_keyboard(lang))
 
         # Send each preview as an audio message (30-sec Deezer preview)
