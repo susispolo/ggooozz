@@ -60,24 +60,37 @@ async def get_cached_features(track_id: int) -> Optional[dict]:
             log.info("[CACHE] ✓ Cache HIT for track ID: %d", track_id)
             if audio_data:
                 af = json.loads(audio_data)
-                log.info("[CACHE]   Audio: BPM=%.1f, Energy=%.4f", af.get("bpm", 0), af.get("rms_energy", 0))
+                if isinstance(af, dict):
+                    log.info("[CACHE]   Audio: BPM=%.1f, Energy=%.4f", af.get("bpm", 0), af.get("rms_energy", 0))
             if acoustic_data:
                 ac = json.loads(acoustic_data)
-                log.info("[CACHE]   Acoustic: dance=%.2f, energy=%.2f, valence=%.2f",
-                         ac.get("danceability", 0), ac.get("energy", 0), ac.get("valence", 0))
+                if isinstance(ac, dict):
+                    log.info("[CACHE]   Acoustic: dance=%.2f, energy=%.2f, valence=%.2f",
+                             ac.get("danceability", 0), ac.get("energy", 0), ac.get("valence", 0))
             if mbid:
                 log.info("[CACHE]   MusicBrainz: %s", mbid)
             if tags_data:
                 tags = json.loads(tags_data)
                 log.info("[CACHE]   Last.fm tags: %s", ", ".join(tags[:3]) if tags else "none")
 
+            audio_feat = None
+            if audio_data:
+                parsed = json.loads(audio_data)
+                if isinstance(parsed, dict):
+                    audio_feat = AudioFeatures.from_dict(parsed)
+
+            acoustic_feat = None
+            if acoustic_data:
+                parsed = json.loads(acoustic_data)
+                if isinstance(parsed, dict):
+                    acoustic_feat = AcousticBrainzFeatures.from_dict(parsed)
+
             return {
-                "audio_features": AudioFeatures.from_dict(json.loads(audio_data)) if audio_data else None,
-                "acoustic_features": AcousticBrainzFeatures.from_dict(json.loads(acoustic_data)) if acoustic_data else None,
+                "audio_features": audio_feat,
+                "acoustic_features": acoustic_feat,
                 "musicbrainz_id": mbid,
                 "lastfm_tags": json.loads(tags_data) if tags_data else [],
             }
-
 
 async def cache_features(
     track_id: int,

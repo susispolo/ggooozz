@@ -2575,3 +2575,722 @@ UnboundLocalError: cannot access local variable 'msg' where it is not associated
 2026-08-05 14:11:25,236 | INFO     | user_prefs                   | [PLAYLIST_DB] taste_profile user=240082844 -> total=0 recognized=0 tracks=0 bpm=0.0 energy=0.00 valence=0.00 genres=[] langs=[]
 2026-08-05 14:11:25,237 | INFO     | bot                          | [STEP 1] User 240082844: Received text: ➕ Add to Playlist...
 2026-08-05 14:11:25,237 | INFO     | bot                          | [STEP 2] User 240082844: Entering playlist mode
+2026-08-05 14:13:24,527 | INFO     | __main__                     | Loaded Persian genre database: 203 artists
+2026-08-05 14:13:24,817 | INFO     | __main__                     | Music Suggest Bot v3 starting...
+2026-08-05 14:13:25,218 | INFO     | user_prefs                   | [USER_DB] init_db: tables created; PATH=user_prefs.db
+2026-08-05 14:13:25,223 | INFO     | feature_cache                | Feature cache initialized
+2026-08-05 14:13:25,417 | INFO     | __main__                     | Bot initialized: Last.fm=OK
+2026-08-05 14:13:25,597 | INFO     | telegram.ext.Application     | Application started
+2026-08-05 14:13:39,724 | INFO     | __main__                     | [STEP 1] User 240082844: Received text: 🌐 زبان...
+2026-08-05 14:13:41,336 | INFO     | __main__                     | Callback received: chat_id=240082844, data=lang_en
+2026-08-05 14:13:41,597 | INFO     | user_prefs                   | [USER_DB] set_user_language user=240082844 lang=en
+2026-08-05 14:13:41,851 | WARNING  | __main__                     | keyboard refresh failed: cannot access local variable 'msg' where it is not associated with a value
+2026-08-05 14:13:56,259 | INFO     | __main__                     | [STEP 1] User 240082844: Received text: 🎯 For Me...
+2026-08-05 14:13:56,260 | INFO     | user_prefs                   | [PLAYLIST_DB] get_user_taste_profile user=240082844
+2026-08-05 14:13:56,274 | INFO     | user_prefs                   | [PLAYLIST_DB] taste_profile user=240082844 -> total=25 recognized=21 tracks=21 bpm=118.9 energy=0.16 valence=0.00 genres=['classic rock', 'Persian Traditional', 'pop'] langs=[('en', 16), ('fa', 3), ('ar', 2)]
+2026-08-05 14:13:57,023 | INFO     | user_prefs                   | [PLAYLIST_DB] get_random_suggestions user=240082844 -> 5 ids
+2026-08-05 14:13:57,023 | INFO     | deezer_helper                | [DEEZER] get_track id=3103379
+2026-08-05 14:13:58,512 | INFO     | deezer_helper                | [DEEZER] get_track id=3103379 -> Louis Armstrong - It Don't Mean a Thing (If It Ain't Got That Swing) (1990 Remaster) (genres=[])
+2026-08-05 14:13:58,513 | INFO     | deezer_helper                | [DEEZER] get_track id=13791931
+2026-08-05 14:13:59,030 | INFO     | deezer_helper                | [DEEZER] get_track id=13791931 -> Nirvana - In Bloom (genres=[])
+2026-08-05 14:13:59,030 | INFO     | deezer_helper                | [DEEZER] get_track id=100914862
+2026-08-05 14:13:59,947 | INFO     | deezer_helper                | [DEEZER] get_track id=100914862 -> The Rolling Stones - Wild Horses (2009 Mix) (genres=[])
+2026-08-05 14:13:59,947 | INFO     | deezer_helper                | [DEEZER] get_track id=531967
+2026-08-05 14:14:00,736 | INFO     | deezer_helper                | [DEEZER] get_track id=531967 -> Alan Jackson - Chattahoochee (Extended Mix) (genres=[])
+2026-08-05 14:14:00,737 | INFO     | deezer_helper                | [DEEZER] get_track id=141460363
+2026-08-05 14:14:01,314 | INFO     | deezer_helper                | [DEEZER] get_track id=141460363 -> The Heavy - How You Like Me Now (genres=[])
+2026-08-05 14:14:38,457 | INFO     | __main__                     | [STEP 1] User 240082844: Received text: 🔍 Search...
+2026-08-05 14:15:09,633 | INFO     | deezer_helper                | [DEEZER] search query='Nemiyad Googoosh' limit=5
+2026-08-05 14:15:10,184 | INFO     | deezer_helper                | [DEEZER] search query='Nemiyad Googoosh' -> 2 results
+2026-08-05 14:15:19,243 | INFO     | __main__                     | Callback received: chat_id=240082844, data=pick_original
+2026-08-05 14:15:19,845 | INFO     | deezer_helper                | [DEEZER] search query='Nemiyad Googoosh' limit=10
+2026-08-05 14:15:20,126 | INFO     | deezer_helper                | [DEEZER] search query='Nemiyad Googoosh' -> 2 results
+2026-08-05 14:15:20,127 | INFO     | deezer_helper                | [DEEZER] get_track id=12589822
+2026-08-05 14:15:20,639 | INFO     | deezer_helper                | [DEEZER] get_track id=12589822 -> Googoosh - Nemiyad (genres=[])
+2026-08-05 14:15:20,640 | INFO     | __main__                     | Fetched full track: Googoosh - Nemiyad (genres: [], artist_id: 1116739)
+2026-08-05 14:15:20,640 | INFO     | deezer_helper                | [DEEZER] search query='Googoosh' limit=10
+2026-08-05 14:15:20,954 | INFO     | deezer_helper                | [DEEZER] search query='Googoosh' -> 10 results
+2026-08-05 14:15:20,955 | INFO     | __main__                     | Search 'Googoosh': found 10 tracks, best ID=1116739 (count=9)
+2026-08-05 14:15:21,219 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 12589822
+2026-08-05 14:15:21,223 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 12589822
+2026-08-05 14:15:21,225 | INFO     | __main__                     | Analyzing track: Googoosh - Nemiyad (fast=False)
+2026-08-05 14:15:21,226 | INFO     | audio_analyzer               | Downloading preview: https://cdnt-preview.dzcdn.net/api/1/1/f/f/7/0/ff7f3c267b57685655cd3a6c8e32423c.mp3?hdnea=exp=1785927620~acl=/api/1/1/f/f/7/0/ff7f3c267b57685655cd3a6c8e32423c.mp3*~data=user_id=0,application_id=42~hmac=95b3b24f0d0bb5025feb04c8f17a0473854e6237917801d67048679729187d9c
+2026-08-05 14:15:22,011 | INFO     | musicbrainz_client           | Found MusicBrainz ID: 6bfc2e19-c408-4238-b51c-35582e0645b2 for Googoosh - Nemiyad
+2026-08-05 14:15:23,441 | INFO     | audio_analyzer               | Downloaded 479827 bytes
+2026-08-05 14:15:23,444 | INFO     | audio_analyzer               | Running librosa analysis...
+2026-08-05 14:15:23,465 | INFO     | audio_analyzer               | [LIBROSA] Starting feature extraction...
+2026-08-05 14:15:23,471 | INFO     | audio_analyzer               | [LIBROSA] Temp file created: C:\Users\Saeid\AppData\Local\Temp\tmp5rkt8wpn.mp3 (479827 bytes)
+2026-08-05 14:15:23,471 | INFO     | audio_analyzer               | [LIBROSA] Loading audio file...
+2026-08-05 14:15:27,362 | INFO     | audio_analyzer               | [LIBROSA] Audio loaded: 30.0 seconds, 22050 Hz sample rate
+2026-08-05 14:15:27,363 | INFO     | audio_analyzer               | [LIBROSA] Extracting BPM...
+2026-08-05 14:15:29,894 | INFO     | audio_analyzer               | [LIBROSA] BPM: 172.3
+2026-08-05 14:15:29,895 | INFO     | audio_analyzer               | [LIBROSA] Extracting MFCCs (timbre)...
+2026-08-05 14:15:29,949 | INFO     | audio_analyzer               | [LIBROSA] MFCCs extracted: 13 coefficients
+2026-08-05 14:15:29,949 | INFO     | audio_analyzer               | [LIBROSA] Extracting chroma (harmonics)...
+2026-08-05 14:15:30,063 | INFO     | audio_analyzer               | [LIBROSA] Chroma extracted: 12 pitch classes
+2026-08-05 14:15:30,063 | INFO     | audio_analyzer               | [LIBROSA] Extracting spectral features...
+2026-08-05 14:15:30,390 | INFO     | audio_analyzer               | [LIBROSA] Spectral: centroid=2272.8, rolloff=4620.3, bandwidth=2466.8
+2026-08-05 14:15:30,390 | INFO     | audio_analyzer               | [LIBROSA] Extracting energy (RMS)...
+2026-08-05 14:15:30,401 | INFO     | audio_analyzer               | [LIBROSA] Energy: mean=0.1422, var=0.0048
+2026-08-05 14:15:30,401 | INFO     | audio_analyzer               | [LIBROSA] Extracting onset rate...
+2026-08-05 14:15:30,452 | INFO     | audio_analyzer               | [LIBROSA] Onset rate: 1.8183
+2026-08-05 14:15:30,482 | INFO     | audio_analyzer               | [LIBROSA] Inferring musical key...
+2026-08-05 14:15:30,483 | INFO     | audio_analyzer               | [LIBROSA] Key: A
+2026-08-05 14:15:30,483 | INFO     | audio_analyzer               | [LIBROSA] Inferring scale (major/minor)...
+2026-08-05 14:15:30,483 | INFO     | audio_analyzer               | [LIBROSA] Scale: minor (major=-0.02, minor=0.14)
+2026-08-05 14:15:30,484 | INFO     | audio_analyzer               | Analyzed audio: BPM=172.3, RMS=0.142
+2026-08-05 14:15:30,485 | INFO     | __main__                     | Analysis results for Googoosh - Nemiyad:
+2026-08-05 14:15:30,485 | INFO     | __main__                     |   Audio features: OK
+2026-08-05 14:15:30,485 | INFO     | __main__                     |   MusicBrainz: OK
+2026-08-05 14:15:30,485 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 14:15:30,485 | INFO     | __main__                     |   Last.fm tags: 0
+2026-08-05 14:15:30,485 | INFO     | feature_cache                | [CACHE] Saving features for: Googoosh - Nemiyad (ID: 12589822)
+2026-08-05 14:15:30,486 | INFO     | feature_cache                | [CACHE] Audio features: BPM=172.3, Energy=0.1422, MFCCs=13 coefficients
+2026-08-05 14:15:30,486 | INFO     | feature_cache                | [CACHE] AcousticBrainz: NONE
+2026-08-05 14:15:30,486 | INFO     | feature_cache                | [CACHE] MusicBrainz ID: 6bfc2e19-c408-4238-b51c-35582e0645b2
+2026-08-05 14:15:30,486 | INFO     | feature_cache                | [CACHE] Last.fm tags: NONE
+2026-08-05 14:15:30,494 | INFO     | feature_cache                | [CACHE] ✓ Saved successfully for: Googoosh - Nemiyad
+2026-08-05 14:15:30,504 | INFO     | feature_cache                | Exported 107 tracks to cached_songs.json
+2026-08-05 14:15:30,504 | INFO     | __main__                     | [FLOW] main track analyzed: audio=True acoustic=False
+2026-08-05 14:15:31,147 | INFO     | lastfm_client                | Last.fm found 10 similar tracks for Googoosh - Nemiyad
+2026-08-05 14:15:31,148 | INFO     | __main__                     | [FLOW] Last.fm similar for Nemiyad: 10 found
+2026-08-05 14:15:31,149 | INFO     | deezer_helper                | [DEEZER] search query='Hamsafar Googoosh' limit=1
+2026-08-05 14:15:31,451 | INFO     | deezer_helper                | [DEEZER] search query='Hamsafar Googoosh' -> 1 results
+2026-08-05 14:15:31,452 | INFO     | deezer_helper                | [DEEZER] search query='Kavir Googoosh' limit=1
+2026-08-05 14:15:31,759 | INFO     | deezer_helper                | [DEEZER] search query='Kavir Googoosh' -> 1 results
+2026-08-05 14:15:31,759 | INFO     | deezer_helper                | [DEEZER] search query='Bia benevisim Mahasti' limit=1
+2026-08-05 14:15:32,052 | INFO     | deezer_helper                | [DEEZER] search query='Bia benevisim Mahasti' -> 1 results
+2026-08-05 14:15:32,053 | INFO     | deezer_helper                | [DEEZER] search query='shaneh Vigen' limit=1
+2026-08-05 14:15:32,378 | INFO     | deezer_helper                | [DEEZER] search query='shaneh Vigen' -> 1 results
+2026-08-05 14:15:32,379 | INFO     | deezer_helper                | [DEEZER] search query='Saghi Hayedeh' limit=1
+2026-08-05 14:15:32,617 | INFO     | deezer_helper                | [DEEZER] search query='Saghi Hayedeh' -> 1 results
+2026-08-05 14:15:32,617 | INFO     | deezer_helper                | [DEEZER] search query='Zemestoon Afshin Moghadam' limit=1
+2026-08-05 14:15:32,927 | INFO     | deezer_helper                | [DEEZER] search query='Zemestoon Afshin Moghadam' -> 1 results
+2026-08-05 14:15:32,928 | INFO     | deezer_helper                | [DEEZER] search query='Bezan tar Hayedeh' limit=1
+2026-08-05 14:15:33,531 | INFO     | deezer_helper                | [DEEZER] search query='Bezan tar Hayedeh' -> 1 results
+2026-08-05 14:15:33,532 | INFO     | deezer_helper                | [DEEZER] search query='Pichak Ebi' limit=1
+2026-08-05 14:15:33,787 | INFO     | deezer_helper                | [DEEZER] search query='Pichak Ebi' -> 1 results
+2026-08-05 14:15:33,788 | INFO     | deezer_helper                | [DEEZER] get_similar id=12589822 limit=20
+2026-08-05 14:15:34,018 | INFO     | deezer_helper                | [DEEZER] get_track id=12589822
+2026-08-05 14:15:34,530 | INFO     | deezer_helper                | [DEEZER] get_track id=12589822 -> Googoosh - Nemiyad (genres=[])
+2026-08-05 14:15:34,531 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=1116739 limit=20
+2026-08-05 14:15:34,838 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=1116739 -> 2 results
+2026-08-05 14:15:34,839 | INFO     | deezer_helper                | [DEEZER] get_similar id=12589822 -> 2 results (artist_top)
+2026-08-05 14:15:34,840 | INFO     | __main__                     | [FLOW] Deezer radio for Nemiyad: found 2 tracks
+2026-08-05 14:15:34,840 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=1116739 limit=10
+2026-08-05 14:15:35,103 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=1116739 -> 2 results
+2026-08-05 14:15:35,104 | INFO     | __main__                     | Same artist tracks for Googoosh (ID: 1116739): 2 found
+2026-08-05 14:15:35,105 | INFO     | __main__                     |   Added same artist: Googoosh - Bavar Kon
+2026-08-05 14:15:35,106 | INFO     | __main__                     |   Added same artist: Googoosh - Jomeh
+2026-08-05 14:15:35,107 | INFO     | __main__                     | Same artist tracks found: 2
+2026-08-05 14:15:35,108 | INFO     | __main__                     | Different artist tracks found: 6
+2026-08-05 14:15:35,109 | INFO     | __main__                     | Total similar tracks: 6
+2026-08-05 14:15:35,110 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 10866949
+2026-08-05 14:15:35,112 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 12589831
+2026-08-05 14:15:35,115 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 11003551
+2026-08-05 14:15:35,122 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 10866949
+2026-08-05 14:15:35,125 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 11003551
+2026-08-05 14:15:35,127 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 12589831
+2026-08-05 14:15:35,129 | INFO     | __main__                     | Analyzing track: Googoosh - Bavar Kon (fast=True)
+2026-08-05 14:15:35,134 | INFO     | __main__                     | Analyzing track: Googoosh - Jomeh (fast=True)
+2026-08-05 14:15:35,135 | INFO     | __main__                     | Analyzing track: Mahasti - Bia Benevisim (fast=True)
+2026-08-05 14:15:35,333 | INFO     | musicbrainz_client           | Found MusicBrainz ID: b4170c53-c4cb-4585-9382-c32b3734ae70 for Googoosh - Bavar Kon
+2026-08-05 14:15:35,643 | INFO     | __main__                     | Analysis results for Googoosh - Bavar Kon:
+2026-08-05 14:15:35,644 | INFO     | __main__                     |   Audio features: SKIPPED
+2026-08-05 14:15:35,645 | INFO     | __main__                     |   MusicBrainz: OK
+2026-08-05 14:15:35,645 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 14:15:35,646 | WARNING  | __main__                     | [FLOW] candidate analysis failed for Googoosh - Bavar Kon: 'NoneType' object has no attribute 'get'
+2026-08-05 14:15:35,647 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 12591758
+2026-08-05 14:15:35,654 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 12591758
+2026-08-05 14:15:35,657 | INFO     | __main__                     | Analyzing track: Viguen - Shaneh (fast=True)
+2026-08-05 14:15:36,338 | INFO     | musicbrainz_client           | Found MusicBrainz ID: a1266f01-9f5d-4c15-9948-2580ae1bd16b for Googoosh - Jomeh
+2026-08-05 14:15:36,652 | INFO     | __main__                     | Analysis results for Googoosh - Jomeh:
+2026-08-05 14:15:36,653 | INFO     | __main__                     |   Audio features: SKIPPED
+2026-08-05 14:15:36,654 | INFO     | __main__                     |   MusicBrainz: OK
+2026-08-05 14:15:36,655 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 14:15:36,656 | WARNING  | __main__                     | [FLOW] candidate analysis failed for Googoosh - Jomeh: 'NoneType' object has no attribute 'get'
+2026-08-05 14:15:36,657 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 11001754
+2026-08-05 14:15:36,664 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 11001754
+2026-08-05 14:15:36,667 | INFO     | __main__                     | Analyzing track: Hayedeh - Saghi (fast=True)
+2026-08-05 14:15:36,891 | INFO     | musicbrainz_client           | No MusicBrainz recording found for Viguen - Shaneh
+2026-08-05 14:15:36,892 | INFO     | __main__                     | Analysis results for Viguen - Shaneh:
+2026-08-05 14:15:36,892 | INFO     | __main__                     |   Audio features: SKIPPED
+2026-08-05 14:15:36,892 | INFO     | __main__                     |   MusicBrainz: NOT FOUND
+2026-08-05 14:15:36,893 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 14:15:36,894 | WARNING  | __main__                     | [FLOW] candidate analysis failed for Viguen - Shaneh: 'NoneType' object has no attribute 'get'
+2026-08-05 14:15:36,894 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 12590270
+2026-08-05 14:15:36,898 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 12590270
+2026-08-05 14:15:36,900 | INFO     | __main__                     | Analyzing track: Afshin Moghadam - Zemestoon (fast=True)
+2026-08-05 14:15:36,982 | INFO     | musicbrainz_client           | Found MusicBrainz ID: d2862a4d-b9de-4033-a572-65962835a0ef for Mahasti - Bia Benevisim
+2026-08-05 14:15:37,293 | INFO     | __main__                     | Analysis results for Mahasti - Bia Benevisim:
+2026-08-05 14:15:37,293 | INFO     | __main__                     |   Audio features: SKIPPED
+2026-08-05 14:15:37,294 | INFO     | __main__                     |   MusicBrainz: OK
+2026-08-05 14:15:37,295 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 14:15:37,296 | WARNING  | __main__                     | [FLOW] candidate analysis failed for Mahasti - Bia Benevisim: 'NoneType' object has no attribute 'get'
+2026-08-05 14:15:37,335 | INFO     | musicbrainz_client           | Found MusicBrainz ID: 33837e64-ae5d-4cce-95f8-7368ec5c94d9 for Hayedeh - Saghi
+2026-08-05 14:15:37,345 | INFO     | musicbrainz_client           | Found MusicBrainz ID: ee5295ef-9b19-4e8e-afec-0d3d9319a0cc for Afshin Moghadam - Zemestoon
+2026-08-05 14:15:37,657 | INFO     | __main__                     | Analysis results for Hayedeh - Saghi:
+2026-08-05 14:15:37,658 | INFO     | __main__                     |   Audio features: SKIPPED
+2026-08-05 14:15:37,659 | INFO     | __main__                     |   MusicBrainz: OK
+2026-08-05 14:15:37,660 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 14:15:37,661 | WARNING  | __main__                     | [FLOW] candidate analysis failed for Hayedeh - Saghi: 'NoneType' object has no attribute 'get'
+2026-08-05 14:15:38,023 | INFO     | __main__                     | Analysis results for Afshin Moghadam - Zemestoon:
+2026-08-05 14:15:38,024 | INFO     | __main__                     |   Audio features: SKIPPED
+2026-08-05 14:15:38,025 | INFO     | __main__                     |   MusicBrainz: OK
+2026-08-05 14:15:38,026 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 14:15:38,027 | WARNING  | __main__                     | [FLOW] candidate analysis failed for Afshin Moghadam - Zemestoon: 'NoneType' object has no attribute 'get'
+2026-08-05 14:15:38,028 | INFO     | __main__                     | [FLOW] candidate features ready: 0/6
+2026-08-05 14:15:38,029 | INFO     | __main__                     | Similarity calc: target_audio=YES, target_acoustic=NO, candidates=6
+2026-08-05 14:15:38,030 | INFO     | __main__                     | Similarity scores: [('Bia Benevisim', 0.0277084), ('Shaneh', 0.0239725), ('Saghi', 0.023112999999999998)]
+2026-08-05 14:15:38,032 | INFO     | __main__                     | Building features - target_audio: YES, genres: []
+2026-08-05 14:16:26,054 | INFO     | deezer_helper                | [DEEZER] search query='Yek Nafas Arezouye To Homayoun Shajarian' limit=5
+2026-08-05 14:16:27,028 | INFO     | deezer_helper                | [DEEZER] search query='Yek Nafas Arezouye To Homayoun Shajarian' -> 2 results
+2026-08-05 14:16:29,380 | INFO     | __main__                     | Callback received: chat_id=240082844, data=pick_original
+2026-08-05 14:16:29,789 | INFO     | deezer_helper                | [DEEZER] search query='Yek Nafas Arezouye To Homayoun Shajarian' limit=10
+2026-08-05 14:16:30,060 | INFO     | deezer_helper                | [DEEZER] search query='Yek Nafas Arezouye To Homayoun Shajarian' -> 2 results
+2026-08-05 14:16:30,061 | INFO     | deezer_helper                | [DEEZER] get_track id=2474776021
+2026-08-05 14:16:30,556 | INFO     | deezer_helper                | [DEEZER] get_track id=2474776021 -> Homayoun Shajarian - Yek Nafas Arezouye To (genres=[])
+2026-08-05 14:16:30,556 | INFO     | __main__                     | Fetched full track: Homayoun Shajarian - Yek Nafas Arezouye To (genres: [], artist_id: 3481961)
+2026-08-05 14:16:30,557 | INFO     | deezer_helper                | [DEEZER] search query='Homayoun Shajarian' limit=10
+2026-08-05 14:16:30,843 | INFO     | deezer_helper                | [DEEZER] search query='Homayoun Shajarian' -> 10 results
+2026-08-05 14:16:30,843 | INFO     | __main__                     | Search 'Homayoun Shajarian': found 10 tracks, best ID=3481961 (count=7)
+2026-08-05 14:16:31,064 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 2474776021
+2026-08-05 14:16:31,070 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 2474776021
+2026-08-05 14:16:31,075 | INFO     | __main__                     | Analyzing track: Homayoun Shajarian - Yek Nafas Arezouye To (fast=False)
+2026-08-05 14:16:31,076 | INFO     | audio_analyzer               | Downloading preview: https://cdnt-preview.dzcdn.net/api/1/1/9/4/a/0/94afa580b78f1fc55027f24715ff7a6f.mp3?hdnea=exp=1785927690~acl=/api/1/1/9/4/a/0/94afa580b78f1fc55027f24715ff7a6f.mp3*~data=user_id=0,application_id=42~hmac=9bfe2e66f802b87994920355d4a536db772cbf8202ff0f3412c0d27d3cced7d8
+2026-08-05 14:16:31,571 | INFO     | musicbrainz_client           | No MusicBrainz recording found for Homayoun Shajarian - Yek Nafas Arezouye To
+2026-08-05 14:16:32,720 | INFO     | audio_analyzer               | Downloaded 480245 bytes
+2026-08-05 14:16:32,722 | INFO     | audio_analyzer               | Running librosa analysis...
+2026-08-05 14:16:32,723 | INFO     | audio_analyzer               | [LIBROSA] Starting feature extraction...
+2026-08-05 14:16:32,726 | INFO     | audio_analyzer               | [LIBROSA] Temp file created: C:\Users\Saeid\AppData\Local\Temp\tmp61lejlx4.mp3 (480245 bytes)
+2026-08-05 14:16:32,727 | INFO     | audio_analyzer               | [LIBROSA] Loading audio file...
+2026-08-05 14:16:32,840 | INFO     | audio_analyzer               | [LIBROSA] Audio loaded: 30.0 seconds, 22050 Hz sample rate
+2026-08-05 14:16:32,841 | INFO     | audio_analyzer               | [LIBROSA] Extracting BPM...
+2026-08-05 14:16:32,938 | INFO     | audio_analyzer               | [LIBROSA] BPM: 103.4
+2026-08-05 14:16:32,938 | INFO     | audio_analyzer               | [LIBROSA] Extracting MFCCs (timbre)...
+2026-08-05 14:16:32,988 | INFO     | audio_analyzer               | [LIBROSA] MFCCs extracted: 13 coefficients
+2026-08-05 14:16:32,988 | INFO     | audio_analyzer               | [LIBROSA] Extracting chroma (harmonics)...
+2026-08-05 14:16:33,091 | INFO     | audio_analyzer               | [LIBROSA] Chroma extracted: 12 pitch classes
+2026-08-05 14:16:33,091 | INFO     | audio_analyzer               | [LIBROSA] Extracting spectral features...
+2026-08-05 14:16:33,398 | INFO     | audio_analyzer               | [LIBROSA] Spectral: centroid=1760.3, rolloff=3421.5, bandwidth=2125.3
+2026-08-05 14:16:33,399 | INFO     | audio_analyzer               | [LIBROSA] Extracting energy (RMS)...
+2026-08-05 14:16:33,408 | INFO     | audio_analyzer               | [LIBROSA] Energy: mean=0.2895, var=0.0071
+2026-08-05 14:16:33,408 | INFO     | audio_analyzer               | [LIBROSA] Extracting onset rate...
+2026-08-05 14:16:33,456 | INFO     | audio_analyzer               | [LIBROSA] Onset rate: 1.5043
+2026-08-05 14:16:33,488 | INFO     | audio_analyzer               | [LIBROSA] Inferring musical key...
+2026-08-05 14:16:33,489 | INFO     | audio_analyzer               | [LIBROSA] Key: E
+2026-08-05 14:16:33,489 | INFO     | audio_analyzer               | [LIBROSA] Inferring scale (major/minor)...
+2026-08-05 14:16:33,489 | INFO     | audio_analyzer               | [LIBROSA] Scale: major (major=0.14, minor=-0.28)
+2026-08-05 14:16:33,490 | INFO     | audio_analyzer               | Analyzed audio: BPM=103.4, RMS=0.289
+2026-08-05 14:16:33,490 | INFO     | __main__                     | Analysis results for Homayoun Shajarian - Yek Nafas Arezouye To:
+2026-08-05 14:16:33,491 | INFO     | __main__                     |   Audio features: OK
+2026-08-05 14:16:33,491 | INFO     | __main__                     |   MusicBrainz: NOT FOUND
+2026-08-05 14:16:33,492 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 14:16:33,492 | INFO     | __main__                     |   Last.fm tags: 0
+2026-08-05 14:16:33,492 | INFO     | feature_cache                | [CACHE] Saving features for: Homayoun Shajarian - Yek Nafas Arezouye To (ID: 2474776021)
+2026-08-05 14:16:33,493 | INFO     | feature_cache                | [CACHE] Audio features: BPM=103.4, Energy=0.2895, MFCCs=13 coefficients
+2026-08-05 14:16:33,493 | INFO     | feature_cache                | [CACHE] AcousticBrainz: NONE
+2026-08-05 14:16:33,493 | INFO     | feature_cache                | [CACHE] MusicBrainz ID: NONE
+2026-08-05 14:16:33,493 | INFO     | feature_cache                | [CACHE] Last.fm tags: NONE
+2026-08-05 14:16:33,501 | INFO     | feature_cache                | [CACHE] ✓ Saved successfully for: Homayoun Shajarian - Yek Nafas Arezouye To
+2026-08-05 14:16:33,513 | INFO     | feature_cache                | Exported 108 tracks to cached_songs.json
+2026-08-05 14:16:33,513 | INFO     | __main__                     | [FLOW] main track analyzed: audio=True acoustic=False
+2026-08-05 14:16:33,839 | INFO     | lastfm_client                | Last.fm found 0 similar tracks for Homayoun Shajarian - Yek Nafas Arezouye To
+2026-08-05 14:16:33,841 | INFO     | __main__                     | [FLOW] Last.fm similar for Yek Nafas Arezouye To: 0 found
+2026-08-05 14:16:33,841 | INFO     | deezer_helper                | [DEEZER] get_similar id=2474776021 limit=20
+2026-08-05 14:16:34,102 | INFO     | deezer_helper                | [DEEZER] get_track id=2474776021
+2026-08-05 14:16:34,573 | INFO     | deezer_helper                | [DEEZER] get_track id=2474776021 -> Homayoun Shajarian - Yek Nafas Arezouye To (genres=[])
+2026-08-05 14:16:34,573 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=3481961 limit=20
+2026-08-05 14:16:34,872 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=3481961 -> 1 results
+2026-08-05 14:16:34,873 | INFO     | deezer_helper                | [DEEZER] get_similar id=2474776021 -> 1 results (artist_top)
+2026-08-05 14:16:34,873 | INFO     | __main__                     | [FLOW] Deezer radio for Yek Nafas Arezouye To: found 1 tracks
+2026-08-05 14:16:34,874 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=3481961 limit=10
+2026-08-05 14:16:35,167 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=3481961 -> 1 results
+2026-08-05 14:16:35,168 | INFO     | __main__                     | Same artist tracks for Homayoun Shajarian (ID: 3481961): 1 found
+2026-08-05 14:16:35,169 | INFO     | __main__                     |   Added same artist: Homayoun Shajarian - Musighi Filme Arayeshe Ghaliz Dow (Che Danestam)
+2026-08-05 14:16:35,170 | INFO     | __main__                     | Same artist tracks found: 1
+2026-08-05 14:16:35,171 | INFO     | __main__                     | Different artist tracks found: 0
+2026-08-05 14:16:35,172 | INFO     | __main__                     | Total similar tracks: 1
+2026-08-05 14:16:35,173 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 3153329111
+2026-08-05 14:16:35,178 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 3153329111
+2026-08-05 14:16:35,182 | INFO     | __main__                     | Analyzing track: Homayoun Shajarian - Musighi Filme Arayeshe Ghaliz Dow (Che Danestam) (fast=True)
+2026-08-05 14:16:35,410 | INFO     | musicbrainz_client           | No MusicBrainz recording found for Homayoun Shajarian - Musighi Filme Arayeshe Ghaliz Dow (Che Danestam)
+2026-08-05 14:16:35,412 | INFO     | __main__                     | Analysis results for Homayoun Shajarian - Musighi Filme Arayeshe Ghaliz Dow (Che Danestam):
+2026-08-05 14:16:35,412 | INFO     | __main__                     |   Audio features: SKIPPED
+2026-08-05 14:16:35,413 | INFO     | __main__                     |   MusicBrainz: NOT FOUND
+2026-08-05 14:16:35,414 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 14:16:35,415 | WARNING  | __main__                     | [FLOW] candidate analysis failed for Homayoun Shajarian - Musighi Filme Arayeshe Ghaliz Dow (Che Danestam): 'NoneType' object has no attribute 'get'
+2026-08-05 14:16:35,416 | INFO     | __main__                     | [FLOW] candidate features ready: 0/1
+2026-08-05 14:16:35,417 | INFO     | __main__                     | Similarity calc: target_audio=YES, target_acoustic=NO, candidates=1
+2026-08-05 14:16:35,418 | INFO     | __main__                     | Similarity scores: [('Musighi Filme Arayeshe Ghaliz Dow (Che Danestam)', 0.0)]
+2026-08-05 14:16:35,418 | INFO     | __main__                     | Building features - target_audio: YES, genres: []
+2026-08-05 14:17:37,259 | INFO     | deezer_helper                | [DEEZER] search query='Akharin Avaz Ali Zandevakili' limit=5
+2026-08-05 14:17:37,834 | INFO     | deezer_helper                | [DEEZER] search query='Akharin Avaz Ali Zandevakili' -> 1 results
+2026-08-05 14:17:40,833 | INFO     | __main__                     | Callback received: chat_id=240082844, data=pick_original
+2026-08-05 14:17:41,603 | INFO     | deezer_helper                | [DEEZER] search query='Akharin Avaz Ali Zandevakili' limit=10
+2026-08-05 14:17:41,886 | INFO     | deezer_helper                | [DEEZER] search query='Akharin Avaz Ali Zandevakili' -> 1 results
+2026-08-05 14:17:41,887 | INFO     | deezer_helper                | [DEEZER] get_track id=1004409502
+2026-08-05 14:17:42,400 | INFO     | deezer_helper                | [DEEZER] get_track id=1004409502 -> Ali Zandevakili - Akharin Avaz (genres=[])
+2026-08-05 14:17:42,401 | INFO     | __main__                     | Fetched full track: Ali Zandevakili - Akharin Avaz (genres: [], artist_id: 12304508)
+2026-08-05 14:17:42,402 | INFO     | deezer_helper                | [DEEZER] search query='Ali Zandevakili' limit=10
+2026-08-05 14:17:42,757 | INFO     | deezer_helper                | [DEEZER] search query='Ali Zandevakili' -> 10 results
+2026-08-05 14:17:42,758 | INFO     | __main__                     | Search 'Ali Zandevakili': found 10 tracks, best ID=12304508 (count=10)
+2026-08-05 14:17:42,762 | INFO     | __main__                     | Added new Persian artist: Ali Zandevakili (from song: Akharin Avaz)
+2026-08-05 14:17:43,036 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 1004409502
+2026-08-05 14:17:43,042 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 1004409502
+2026-08-05 14:17:43,044 | INFO     | __main__                     | Analyzing track: Ali Zandevakili - Akharin Avaz (fast=False)
+2026-08-05 14:17:43,044 | INFO     | audio_analyzer               | Downloading preview: https://cdnt-preview.dzcdn.net/api/1/1/f/1/f/0/f1f670d11641afb4e21072b9382c4a49.mp3?hdnea=exp=1785927762~acl=/api/1/1/f/1/f/0/f1f670d11641afb4e21072b9382c4a49.mp3*~data=user_id=0,application_id=42~hmac=0158c684e121f5dd70f7b225477bd746c3a01665e437b4b4fd438681a5d16af8
+2026-08-05 14:17:43,770 | INFO     | musicbrainz_client           | No MusicBrainz recording found for Ali Zandevakili - Akharin Avaz
+2026-08-05 14:17:44,671 | INFO     | audio_analyzer               | Downloaded 480245 bytes
+2026-08-05 14:17:44,673 | INFO     | audio_analyzer               | Running librosa analysis...
+2026-08-05 14:17:44,673 | INFO     | audio_analyzer               | [LIBROSA] Starting feature extraction...
+2026-08-05 14:17:44,674 | INFO     | audio_analyzer               | [LIBROSA] Temp file created: C:\Users\Saeid\AppData\Local\Temp\tmp5glcgp7i.mp3 (480245 bytes)
+2026-08-05 14:17:44,675 | INFO     | audio_analyzer               | [LIBROSA] Loading audio file...
+2026-08-05 14:17:44,782 | INFO     | audio_analyzer               | [LIBROSA] Audio loaded: 30.0 seconds, 22050 Hz sample rate
+2026-08-05 14:17:44,783 | INFO     | audio_analyzer               | [LIBROSA] Extracting BPM...
+2026-08-05 14:17:44,887 | INFO     | audio_analyzer               | [LIBROSA] BPM: 89.1
+2026-08-05 14:17:44,887 | INFO     | audio_analyzer               | [LIBROSA] Extracting MFCCs (timbre)...
+2026-08-05 14:17:44,939 | INFO     | audio_analyzer               | [LIBROSA] MFCCs extracted: 13 coefficients
+2026-08-05 14:17:44,939 | INFO     | audio_analyzer               | [LIBROSA] Extracting chroma (harmonics)...
+2026-08-05 14:17:45,049 | INFO     | audio_analyzer               | [LIBROSA] Chroma extracted: 12 pitch classes
+2026-08-05 14:17:45,049 | INFO     | audio_analyzer               | [LIBROSA] Extracting spectral features...
+2026-08-05 14:17:45,393 | INFO     | audio_analyzer               | [LIBROSA] Spectral: centroid=2367.8, rolloff=4843.5, bandwidth=2418.0
+2026-08-05 14:17:45,393 | INFO     | audio_analyzer               | [LIBROSA] Extracting energy (RMS)...
+2026-08-05 14:17:45,401 | INFO     | audio_analyzer               | [LIBROSA] Energy: mean=0.2304, var=0.0059
+2026-08-05 14:17:45,401 | INFO     | audio_analyzer               | [LIBROSA] Extracting onset rate...
+2026-08-05 14:17:45,452 | INFO     | audio_analyzer               | [LIBROSA] Onset rate: 1.5537
+2026-08-05 14:17:45,482 | INFO     | audio_analyzer               | [LIBROSA] Inferring musical key...
+2026-08-05 14:17:45,482 | INFO     | audio_analyzer               | [LIBROSA] Key: F#
+2026-08-05 14:17:45,483 | INFO     | audio_analyzer               | [LIBROSA] Inferring scale (major/minor)...
+2026-08-05 14:17:45,483 | INFO     | audio_analyzer               | [LIBROSA] Scale: major (major=0.02, minor=-0.24)
+2026-08-05 14:17:45,484 | INFO     | audio_analyzer               | Analyzed audio: BPM=89.1, RMS=0.230
+2026-08-05 14:17:45,484 | INFO     | __main__                     | Analysis results for Ali Zandevakili - Akharin Avaz:
+2026-08-05 14:17:45,484 | INFO     | __main__                     |   Audio features: OK
+2026-08-05 14:17:45,485 | INFO     | __main__                     |   MusicBrainz: NOT FOUND
+2026-08-05 14:17:45,485 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 14:17:45,485 | INFO     | __main__                     |   Last.fm tags: 0
+2026-08-05 14:17:45,486 | INFO     | feature_cache                | [CACHE] Saving features for: Ali Zandevakili - Akharin Avaz (ID: 1004409502)
+2026-08-05 14:17:45,486 | INFO     | feature_cache                | [CACHE] Audio features: BPM=89.1, Energy=0.2304, MFCCs=13 coefficients
+2026-08-05 14:17:45,486 | INFO     | feature_cache                | [CACHE] AcousticBrainz: NONE
+2026-08-05 14:17:45,486 | INFO     | feature_cache                | [CACHE] MusicBrainz ID: NONE
+2026-08-05 14:17:45,486 | INFO     | feature_cache                | [CACHE] Last.fm tags: NONE
+2026-08-05 14:17:45,495 | INFO     | feature_cache                | [CACHE] ✓ Saved successfully for: Ali Zandevakili - Akharin Avaz
+2026-08-05 14:17:45,506 | INFO     | feature_cache                | Exported 109 tracks to cached_songs.json
+2026-08-05 14:17:45,507 | INFO     | __main__                     | [FLOW] main track analyzed: audio=True acoustic=False
+2026-08-05 14:17:45,898 | INFO     | lastfm_client                | Last.fm found 0 similar tracks for Ali Zandevakili - Akharin Avaz
+2026-08-05 14:17:45,899 | INFO     | __main__                     | [FLOW] Last.fm similar for Akharin Avaz: 0 found
+2026-08-05 14:17:45,900 | INFO     | deezer_helper                | [DEEZER] get_similar id=1004409502 limit=20
+2026-08-05 14:17:46,143 | INFO     | deezer_helper                | [DEEZER] get_track id=1004409502
+2026-08-05 14:17:46,619 | INFO     | deezer_helper                | [DEEZER] get_track id=1004409502 -> Ali Zandevakili - Akharin Avaz (genres=[])
+2026-08-05 14:17:46,619 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=12304508 limit=20
+2026-08-05 14:17:46,880 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=12304508 -> 1 results
+2026-08-05 14:17:46,881 | INFO     | deezer_helper                | [DEEZER] get_similar id=1004409502 -> 1 results (artist_top)
+2026-08-05 14:17:46,882 | INFO     | __main__                     | [FLOW] Deezer radio for Akharin Avaz: found 1 tracks
+2026-08-05 14:17:46,883 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=12304508 limit=10
+2026-08-05 14:17:47,143 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=12304508 -> 1 results
+2026-08-05 14:17:47,144 | INFO     | __main__                     | Same artist tracks for Ali Zandevakili (ID: 12304508): 1 found
+2026-08-05 14:17:47,145 | INFO     | __main__                     |   Added same artist: Ali Zandevakili - Lalaei
+2026-08-05 14:17:47,146 | INFO     | __main__                     | Same artist tracks found: 1
+2026-08-05 14:17:47,147 | INFO     | __main__                     | Different artist tracks found: 0
+2026-08-05 14:17:47,148 | INFO     | __main__                     | Total similar tracks: 1
+2026-08-05 14:17:47,149 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 392574162
+2026-08-05 14:17:47,157 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 392574162
+2026-08-05 14:17:47,160 | INFO     | __main__                     | Analyzing track: Ali Zandevakili - Lalaei (fast=True)
+2026-08-05 14:17:47,349 | INFO     | musicbrainz_client           | No MusicBrainz recording found for Ali Zandevakili - Lalaei
+2026-08-05 14:17:47,350 | INFO     | __main__                     | Analysis results for Ali Zandevakili - Lalaei:
+2026-08-05 14:17:47,351 | INFO     | __main__                     |   Audio features: SKIPPED
+2026-08-05 14:17:47,352 | INFO     | __main__                     |   MusicBrainz: NOT FOUND
+2026-08-05 14:17:47,353 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 14:17:47,354 | WARNING  | __main__                     | [FLOW] candidate analysis failed for Ali Zandevakili - Lalaei: 'NoneType' object has no attribute 'get'
+2026-08-05 14:17:47,355 | INFO     | __main__                     | [FLOW] candidate features ready: 0/1
+2026-08-05 14:17:47,356 | INFO     | __main__                     | Similarity calc: target_audio=YES, target_acoustic=NO, candidates=1
+2026-08-05 14:17:47,356 | INFO     | __main__                     | Similarity scores: [('Lalaei', 0.0)]
+2026-08-05 14:17:47,357 | INFO     | __main__                     | Building features - target_audio: YES, genres: []
+2026-08-05 14:17:47,358 | INFO     | __main__                     | [GENRE] Deezer genres empty for Ali Zandevakili - Akharin Avaz
+2026-08-05 14:17:47,704 | INFO     | lastfm_client                | Last.fm artist tags for Ali Zandevakili: ['Persian', 'iran', 'Iranian']
+2026-08-05 14:17:56,227 | INFO     | deezer_helper                | [DEEZER] search query='Akharin Avaz Ali Zandevakili' limit=5
+2026-08-05 14:17:56,653 | INFO     | deezer_helper                | [DEEZER] search query='Akharin Avaz Ali Zandevakili' -> 1 results
+2026-08-05 14:17:58,360 | INFO     | __main__                     | Callback received: chat_id=240082844, data=pick_0
+2026-08-05 14:17:58,581 | INFO     | __main__                     | Pick handler: idx=0, results_count=1
+2026-08-05 14:17:58,582 | INFO     | deezer_helper                | [DEEZER] get_track id=1004409502
+2026-08-05 14:17:59,088 | INFO     | deezer_helper                | [DEEZER] get_track id=1004409502 -> Ali Zandevakili - Akharin Avaz (genres=[])
+2026-08-05 14:17:59,089 | INFO     | __main__                     | Fetched full track: Ali Zandevakili - Akharin Avaz (genres: [], artist_id: 12304508)
+2026-08-05 14:17:59,090 | INFO     | deezer_helper                | [DEEZER] search query='Ali Zandevakili' limit=10
+2026-08-05 14:17:59,373 | INFO     | deezer_helper                | [DEEZER] search query='Ali Zandevakili' -> 10 results
+2026-08-05 14:17:59,374 | INFO     | __main__                     | Search 'Ali Zandevakili': found 10 tracks, best ID=12304508 (count=10)
+2026-08-05 14:17:59,618 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 1004409502
+2026-08-05 14:17:59,625 | INFO     | feature_cache                | [CACHE] ✓ Cache HIT for track ID: 1004409502
+2026-08-05 14:17:59,626 | INFO     | feature_cache                | [CACHE]   Audio: BPM=89.1, Energy=0.2304
+2026-08-05 14:17:59,633 | INFO     | __main__                     | Cache hit for: Ali Zandevakili - Akharin Avaz
+2026-08-05 14:17:59,634 | INFO     | __main__                     | [FLOW] main track analyzed: audio=True acoustic=False
+2026-08-05 14:17:59,965 | INFO     | lastfm_client                | Last.fm found 0 similar tracks for Ali Zandevakili - Akharin Avaz
+2026-08-05 14:17:59,967 | INFO     | __main__                     | [FLOW] Last.fm similar for Akharin Avaz: 0 found
+2026-08-05 14:17:59,968 | INFO     | deezer_helper                | [DEEZER] get_similar id=1004409502 limit=20
+2026-08-05 14:18:00,206 | INFO     | deezer_helper                | [DEEZER] get_track id=1004409502
+2026-08-05 14:18:00,705 | INFO     | deezer_helper                | [DEEZER] get_track id=1004409502 -> Ali Zandevakili - Akharin Avaz (genres=[])
+2026-08-05 14:18:00,706 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=12304508 limit=20
+2026-08-05 14:18:00,950 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=12304508 -> 1 results
+2026-08-05 14:18:00,951 | INFO     | deezer_helper                | [DEEZER] get_similar id=1004409502 -> 1 results (artist_top)
+2026-08-05 14:18:00,952 | INFO     | __main__                     | [FLOW] Deezer radio for Akharin Avaz: found 1 tracks
+2026-08-05 14:18:00,953 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=12304508 limit=10
+2026-08-05 14:18:01,200 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=12304508 -> 1 results
+2026-08-05 14:18:01,201 | INFO     | __main__                     | Same artist tracks for Ali Zandevakili (ID: 12304508): 1 found
+2026-08-05 14:18:01,202 | INFO     | __main__                     |   Added same artist: Ali Zandevakili - Lalaei
+2026-08-05 14:18:01,203 | INFO     | __main__                     | Same artist tracks found: 1
+2026-08-05 14:18:01,203 | INFO     | __main__                     | Different artist tracks found: 0
+2026-08-05 14:18:01,204 | INFO     | __main__                     | Total similar tracks: 1
+2026-08-05 14:18:01,205 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 392574162
+2026-08-05 14:18:01,210 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 392574162
+2026-08-05 14:18:01,213 | INFO     | __main__                     | Analyzing track: Ali Zandevakili - Lalaei (fast=True)
+2026-08-05 14:18:01,478 | INFO     | musicbrainz_client           | No MusicBrainz recording found for Ali Zandevakili - Lalaei
+2026-08-05 14:18:01,479 | INFO     | __main__                     | Analysis results for Ali Zandevakili - Lalaei:
+2026-08-05 14:18:01,479 | INFO     | __main__                     |   Audio features: SKIPPED
+2026-08-05 14:18:01,480 | INFO     | __main__                     |   MusicBrainz: NOT FOUND
+2026-08-05 14:18:01,481 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 14:18:01,482 | WARNING  | __main__                     | [FLOW] candidate analysis failed for Ali Zandevakili - Lalaei: 'NoneType' object has no attribute 'get'
+2026-08-05 14:18:01,483 | INFO     | __main__                     | [FLOW] candidate features ready: 0/1
+2026-08-05 14:18:01,483 | INFO     | __main__                     | Similarity calc: target_audio=YES, target_acoustic=NO, candidates=1
+2026-08-05 14:18:01,484 | INFO     | __main__                     | Similarity scores: [('Lalaei', 0.0)]
+2026-08-05 14:18:01,485 | INFO     | __main__                     | Building features - target_audio: YES, genres: []
+2026-08-05 14:18:01,486 | INFO     | __main__                     | [GENRE] Deezer genres empty for Ali Zandevakili - Akharin Avaz
+2026-08-05 14:18:01,824 | INFO     | lastfm_client                | Last.fm artist tags for Ali Zandevakili: ['Persian', 'iran', 'Iranian']
+2026-08-05 14:18:24,396 | INFO     | deezer_helper                | [DEEZER] search query='Lalaei Ali Zandevakili' limit=5
+2026-08-05 14:18:25,294 | INFO     | deezer_helper                | [DEEZER] search query='Lalaei Ali Zandevakili' -> 1 results
+2026-08-05 14:18:27,347 | INFO     | __main__                     | Callback received: chat_id=240082844, data=pick_original
+2026-08-05 14:18:27,744 | INFO     | deezer_helper                | [DEEZER] search query='Lalaei Ali Zandevakili' limit=10
+2026-08-05 14:18:27,960 | INFO     | deezer_helper                | [DEEZER] search query='Lalaei Ali Zandevakili' -> 1 results
+2026-08-05 14:18:27,961 | INFO     | deezer_helper                | [DEEZER] get_track id=392574162
+2026-08-05 14:18:28,425 | INFO     | deezer_helper                | [DEEZER] get_track id=392574162 -> Ali Zandevakili - Lalaei (genres=[])
+2026-08-05 14:18:28,426 | INFO     | __main__                     | Fetched full track: Ali Zandevakili - Lalaei (genres: [], artist_id: 12304508)
+2026-08-05 14:18:28,426 | INFO     | deezer_helper                | [DEEZER] search query='Ali Zandevakili' limit=10
+2026-08-05 14:18:28,694 | INFO     | deezer_helper                | [DEEZER] search query='Ali Zandevakili' -> 10 results
+2026-08-05 14:18:28,695 | INFO     | __main__                     | Search 'Ali Zandevakili': found 10 tracks, best ID=12304508 (count=10)
+2026-08-05 14:18:28,927 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 392574162
+2026-08-05 14:18:28,936 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 392574162
+2026-08-05 14:18:28,941 | INFO     | __main__                     | Analyzing track: Ali Zandevakili - Lalaei (fast=False)
+2026-08-05 14:18:28,942 | INFO     | audio_analyzer               | Downloading preview: https://cdnt-preview.dzcdn.net/api/1/1/d/e/0/0/de0cb330b8d7545810ec39f6f66dce02.mp3?hdnea=exp=1785927808~acl=/api/1/1/d/e/0/0/de0cb330b8d7545810ec39f6f66dce02.mp3*~data=user_id=0,application_id=42~hmac=c96fc6f2f3683262196420216927806b93e0f142b019d4bf647724dadc4cd0ba
+2026-08-05 14:18:29,467 | INFO     | musicbrainz_client           | No MusicBrainz recording found for Ali Zandevakili - Lalaei
+2026-08-05 14:18:30,556 | INFO     | audio_analyzer               | Downloaded 480245 bytes
+2026-08-05 14:18:30,559 | INFO     | audio_analyzer               | Running librosa analysis...
+2026-08-05 14:18:30,561 | INFO     | audio_analyzer               | [LIBROSA] Starting feature extraction...
+2026-08-05 14:18:30,566 | INFO     | audio_analyzer               | [LIBROSA] Temp file created: C:\Users\Saeid\AppData\Local\Temp\tmpgpndanb0.mp3 (480245 bytes)
+2026-08-05 14:18:30,568 | INFO     | audio_analyzer               | [LIBROSA] Loading audio file...
+2026-08-05 14:18:30,684 | INFO     | audio_analyzer               | [LIBROSA] Audio loaded: 30.0 seconds, 22050 Hz sample rate
+2026-08-05 14:18:30,685 | INFO     | audio_analyzer               | [LIBROSA] Extracting BPM...
+2026-08-05 14:18:30,785 | INFO     | audio_analyzer               | [LIBROSA] BPM: 161.5
+2026-08-05 14:18:30,785 | INFO     | audio_analyzer               | [LIBROSA] Extracting MFCCs (timbre)...
+2026-08-05 14:18:30,838 | INFO     | audio_analyzer               | [LIBROSA] MFCCs extracted: 13 coefficients
+2026-08-05 14:18:30,838 | INFO     | audio_analyzer               | [LIBROSA] Extracting chroma (harmonics)...
+2026-08-05 14:18:30,946 | INFO     | audio_analyzer               | [LIBROSA] Chroma extracted: 12 pitch classes
+2026-08-05 14:18:30,947 | INFO     | audio_analyzer               | [LIBROSA] Extracting spectral features...
+2026-08-05 14:18:31,248 | INFO     | audio_analyzer               | [LIBROSA] Spectral: centroid=1839.4, rolloff=3566.2, bandwidth=2026.8
+2026-08-05 14:18:31,248 | INFO     | audio_analyzer               | [LIBROSA] Extracting energy (RMS)...
+2026-08-05 14:18:31,257 | INFO     | audio_analyzer               | [LIBROSA] Energy: mean=0.2138, var=0.0104
+2026-08-05 14:18:31,257 | INFO     | audio_analyzer               | [LIBROSA] Extracting onset rate...
+2026-08-05 14:18:31,310 | INFO     | audio_analyzer               | [LIBROSA] Onset rate: 1.4544
+2026-08-05 14:18:31,340 | INFO     | audio_analyzer               | [LIBROSA] Inferring musical key...
+2026-08-05 14:18:31,341 | INFO     | audio_analyzer               | [LIBROSA] Key: G#
+2026-08-05 14:18:31,341 | INFO     | audio_analyzer               | [LIBROSA] Inferring scale (major/minor)...
+2026-08-05 14:18:31,341 | INFO     | audio_analyzer               | [LIBROSA] Scale: minor (major=-0.41, minor=-0.32)
+2026-08-05 14:18:31,342 | INFO     | audio_analyzer               | Analyzed audio: BPM=161.5, RMS=0.214
+2026-08-05 14:18:31,343 | INFO     | __main__                     | Analysis results for Ali Zandevakili - Lalaei:
+2026-08-05 14:18:31,343 | INFO     | __main__                     |   Audio features: OK
+2026-08-05 14:18:31,344 | INFO     | __main__                     |   MusicBrainz: NOT FOUND
+2026-08-05 14:18:31,344 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 14:18:31,344 | INFO     | __main__                     |   Last.fm tags: 0
+2026-08-05 14:18:31,344 | INFO     | feature_cache                | [CACHE] Saving features for: Ali Zandevakili - Lalaei (ID: 392574162)
+2026-08-05 14:18:31,345 | INFO     | feature_cache                | [CACHE] Audio features: BPM=161.5, Energy=0.2138, MFCCs=13 coefficients
+2026-08-05 14:18:31,345 | INFO     | feature_cache                | [CACHE] AcousticBrainz: NONE
+2026-08-05 14:18:31,346 | INFO     | feature_cache                | [CACHE] MusicBrainz ID: NONE
+2026-08-05 14:18:31,346 | INFO     | feature_cache                | [CACHE] Last.fm tags: NONE
+2026-08-05 14:18:31,354 | INFO     | feature_cache                | [CACHE] ✓ Saved successfully for: Ali Zandevakili - Lalaei
+2026-08-05 14:18:31,364 | INFO     | feature_cache                | Exported 110 tracks to cached_songs.json
+2026-08-05 14:18:31,365 | INFO     | __main__                     | [FLOW] main track analyzed: audio=True acoustic=False
+2026-08-05 14:18:31,764 | INFO     | lastfm_client                | Last.fm found 0 similar tracks for Ali Zandevakili - Lalaei
+2026-08-05 14:18:31,765 | INFO     | __main__                     | [FLOW] Last.fm similar for Lalaei: 0 found
+2026-08-05 14:18:31,766 | INFO     | deezer_helper                | [DEEZER] get_similar id=392574162 limit=20
+2026-08-05 14:18:31,990 | INFO     | deezer_helper                | [DEEZER] get_track id=392574162
+2026-08-05 14:18:32,432 | INFO     | deezer_helper                | [DEEZER] get_track id=392574162 -> Ali Zandevakili - Lalaei (genres=[])
+2026-08-05 14:18:32,434 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=12304508 limit=20
+2026-08-05 14:18:32,653 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=12304508 -> 0 results
+2026-08-05 14:18:32,653 | INFO     | deezer_helper                | [DEEZER] search query='Ali Zandevakili' limit=25
+2026-08-05 14:18:32,966 | INFO     | deezer_helper                | [DEEZER] search query='Ali Zandevakili' -> 25 results
+2026-08-05 14:18:32,967 | INFO     | deezer_helper                | [DEEZER] get_similar id=392574162 -> 20 results (artist_search)
+2026-08-05 14:18:32,968 | INFO     | __main__                     | [FLOW] Deezer radio for Lalaei: found 20 tracks
+2026-08-05 14:18:32,969 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=12304508 limit=10
+2026-08-05 14:18:33,206 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=12304508 -> 0 results
+2026-08-05 14:18:33,207 | INFO     | __main__                     | Same artist tracks for Ali Zandevakili (ID: 12304508): 0 found
+2026-08-05 14:18:33,208 | INFO     | __main__                     | Same artist tracks found: 0
+2026-08-05 14:18:33,209 | INFO     | __main__                     | Different artist tracks found: 1
+2026-08-05 14:18:33,210 | INFO     | __main__                     | Total similar tracks: 1
+2026-08-05 14:18:33,211 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 770547192
+2026-08-05 14:18:33,219 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 770547192
+2026-08-05 14:18:33,222 | INFO     | __main__                     | Analyzing track: Ali Zand Vakili - Jadeh Shab (fast=True)
+2026-08-05 14:18:33,751 | INFO     | musicbrainz_client           | No MusicBrainz recording found for Ali Zand Vakili - Jadeh Shab
+2026-08-05 14:18:33,753 | INFO     | __main__                     | Analysis results for Ali Zand Vakili - Jadeh Shab:
+2026-08-05 14:18:33,753 | INFO     | __main__                     |   Audio features: SKIPPED
+2026-08-05 14:18:33,754 | INFO     | __main__                     |   MusicBrainz: NOT FOUND
+2026-08-05 14:18:33,755 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 14:18:33,756 | WARNING  | __main__                     | [FLOW] candidate analysis failed for Ali Zand Vakili - Jadeh Shab: 'NoneType' object has no attribute 'get'
+2026-08-05 14:18:33,757 | INFO     | __main__                     | [FLOW] candidate features ready: 0/1
+2026-08-05 14:18:33,758 | INFO     | __main__                     | Similarity calc: target_audio=YES, target_acoustic=NO, candidates=1
+2026-08-05 14:18:33,759 | INFO     | __main__                     | Similarity scores: [('Jadeh Shab', 0.0)]
+2026-08-05 14:18:33,760 | INFO     | __main__                     | Building features - target_audio: YES, genres: []
+2026-08-05 14:18:33,761 | INFO     | __main__                     | [GENRE] Deezer genres empty for Ali Zandevakili - Lalaei
+2026-08-05 14:18:34,044 | INFO     | lastfm_client                | Last.fm artist tags for Ali Zandevakili: ['Persian', 'iran', 'Iranian']
+2026-08-05 14:18:50,538 | INFO     | deezer_helper                | [DEEZER] search query='Passionfruit Drake' limit=5
+2026-08-05 14:18:51,346 | INFO     | deezer_helper                | [DEEZER] search query='Passionfruit Drake' -> 5 results
+2026-08-05 14:18:53,245 | INFO     | __main__                     | Callback received: chat_id=240082844, data=pick_original
+2026-08-05 14:18:53,679 | INFO     | deezer_helper                | [DEEZER] search query='Passionfruit Drake' limit=10
+2026-08-05 14:18:54,021 | INFO     | deezer_helper                | [DEEZER] search query='Passionfruit Drake' -> 10 results
+2026-08-05 14:18:54,022 | INFO     | deezer_helper                | [DEEZER] get_track id=144572210
+2026-08-05 14:18:54,597 | INFO     | deezer_helper                | [DEEZER] get_track id=144572210 -> Drake - Passionfruit (genres=[])
+2026-08-05 14:18:54,598 | INFO     | __main__                     | Fetched full track: Drake - Passionfruit (genres: [], artist_id: 246791)
+2026-08-05 14:18:54,599 | INFO     | deezer_helper                | [DEEZER] search query='Drake' limit=10
+2026-08-05 14:18:54,931 | INFO     | deezer_helper                | [DEEZER] search query='Drake' -> 10 results
+2026-08-05 14:18:54,932 | INFO     | __main__                     | Search 'Drake': found 10 tracks, best ID=246791 (count=7)
+2026-08-05 14:18:55,166 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 144572210
+2026-08-05 14:18:55,173 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 144572210
+2026-08-05 14:18:55,176 | INFO     | __main__                     | Analyzing track: Drake - Passionfruit (fast=False)
+2026-08-05 14:18:55,177 | INFO     | audio_analyzer               | Downloading preview: https://cdnt-preview.dzcdn.net/api/1/1/e/b/d/0/ebd770a4b7ecbfbc98bc19a96e39f048.mp3?hdnea=exp=1785927834~acl=/api/1/1/e/b/d/0/ebd770a4b7ecbfbc98bc19a96e39f048.mp3*~data=user_id=0,application_id=42~hmac=8922d98376ebb37486b9687c50fd54d50b7cb14afafd489afedf8464b2e9d9bc
+2026-08-05 14:18:56,537 | INFO     | audio_analyzer               | Downloaded 479827 bytes
+2026-08-05 14:18:56,539 | INFO     | audio_analyzer               | Running librosa analysis...
+2026-08-05 14:18:56,541 | INFO     | audio_analyzer               | [LIBROSA] Starting feature extraction...
+2026-08-05 14:18:56,546 | INFO     | audio_analyzer               | [LIBROSA] Temp file created: C:\Users\Saeid\AppData\Local\Temp\tmpb2mlpb99.mp3 (479827 bytes)
+2026-08-05 14:18:56,547 | INFO     | audio_analyzer               | [LIBROSA] Loading audio file...
+2026-08-05 14:18:56,672 | INFO     | audio_analyzer               | [LIBROSA] Audio loaded: 30.0 seconds, 22050 Hz sample rate
+2026-08-05 14:18:56,672 | INFO     | audio_analyzer               | [LIBROSA] Extracting BPM...
+2026-08-05 14:18:56,770 | INFO     | audio_analyzer               | [LIBROSA] BPM: 112.3
+2026-08-05 14:18:56,770 | INFO     | audio_analyzer               | [LIBROSA] Extracting MFCCs (timbre)...
+2026-08-05 14:18:56,823 | INFO     | audio_analyzer               | [LIBROSA] MFCCs extracted: 13 coefficients
+2026-08-05 14:18:56,823 | INFO     | audio_analyzer               | [LIBROSA] Extracting chroma (harmonics)...
+2026-08-05 14:18:56,928 | INFO     | audio_analyzer               | [LIBROSA] Chroma extracted: 12 pitch classes
+2026-08-05 14:18:56,928 | INFO     | audio_analyzer               | [LIBROSA] Extracting spectral features...
+2026-08-05 14:18:57,011 | INFO     | musicbrainz_client           | Found MusicBrainz ID: 8eccc484-bba1-4ca0-8600-41c8be9976a9 for Drake - Passionfruit
+2026-08-05 14:18:57,248 | INFO     | audio_analyzer               | [LIBROSA] Spectral: centroid=884.2, rolloff=1665.3, bandwidth=1455.6
+2026-08-05 14:18:57,249 | INFO     | audio_analyzer               | [LIBROSA] Extracting energy (RMS)...
+2026-08-05 14:18:57,257 | INFO     | audio_analyzer               | [LIBROSA] Energy: mean=0.1745, var=0.0103
+2026-08-05 14:18:57,258 | INFO     | audio_analyzer               | [LIBROSA] Extracting onset rate...
+2026-08-05 14:18:57,310 | INFO     | audio_analyzer               | [LIBROSA] Onset rate: 1.5722
+2026-08-05 14:18:57,341 | INFO     | audio_analyzer               | [LIBROSA] Inferring musical key...
+2026-08-05 14:18:57,341 | INFO     | audio_analyzer               | [LIBROSA] Key: B
+2026-08-05 14:18:57,341 | INFO     | audio_analyzer               | [LIBROSA] Inferring scale (major/minor)...
+2026-08-05 14:18:57,342 | INFO     | audio_analyzer               | [LIBROSA] Scale: major (major=-0.11, minor=-0.41)
+2026-08-05 14:18:57,342 | INFO     | audio_analyzer               | Analyzed audio: BPM=112.3, RMS=0.174
+2026-08-05 14:18:57,535 | INFO     | __main__                     | Analysis results for Drake - Passionfruit:
+2026-08-05 14:18:57,535 | INFO     | __main__                     |   Audio features: OK
+2026-08-05 14:18:57,536 | INFO     | __main__                     |   MusicBrainz: OK
+2026-08-05 14:18:57,536 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 14:18:57,537 | INFO     | __main__                     |   Last.fm tags: 5
+2026-08-05 14:18:57,537 | INFO     | feature_cache                | [CACHE] Saving features for: Drake - Passionfruit (ID: 144572210)
+2026-08-05 14:18:57,538 | INFO     | feature_cache                | [CACHE] Audio features: BPM=112.3, Energy=0.1745, MFCCs=13 coefficients
+2026-08-05 14:18:57,538 | INFO     | feature_cache                | [CACHE] AcousticBrainz: NONE
+2026-08-05 14:18:57,539 | INFO     | feature_cache                | [CACHE] MusicBrainz ID: 8eccc484-bba1-4ca0-8600-41c8be9976a9
+2026-08-05 14:18:57,539 | INFO     | feature_cache                | [CACHE] Last.fm tags: rnb, tropical house, 2017, House, dance
+2026-08-05 14:18:57,552 | INFO     | feature_cache                | [CACHE] ✓ Saved successfully for: Drake - Passionfruit
+2026-08-05 14:18:57,575 | INFO     | feature_cache                | Exported 111 tracks to cached_songs.json
+2026-08-05 14:18:57,576 | INFO     | __main__                     | [FLOW] main track analyzed: audio=True acoustic=False
+2026-08-05 14:18:57,947 | INFO     | lastfm_client                | Last.fm found 10 similar tracks for Drake - Passionfruit
+2026-08-05 14:18:57,948 | INFO     | __main__                     | [FLOW] Last.fm similar for Passionfruit: 10 found
+2026-08-05 14:18:57,949 | INFO     | deezer_helper                | [DEEZER] search query='Blem Drake' limit=1
+2026-08-05 14:18:58,216 | INFO     | deezer_helper                | [DEEZER] search query='Blem Drake' -> 1 results
+2026-08-05 14:18:58,217 | INFO     | deezer_helper                | [DEEZER] search query='Sky Walker (feat. Travis Scott) Miguel' limit=1
+2026-08-05 14:18:58,544 | INFO     | deezer_helper                | [DEEZER] search query='Sky Walker (feat. Travis Scott) Miguel' -> 1 results
+2026-08-05 14:18:58,545 | INFO     | deezer_helper                | [DEEZER] search query='Teenage Fever Drake' limit=1
+2026-08-05 14:18:58,778 | INFO     | deezer_helper                | [DEEZER] search query='Teenage Fever Drake' -> 1 results
+2026-08-05 14:18:58,779 | INFO     | deezer_helper                | [DEEZER] search query='Pink + White Frank Ocean' limit=1
+2026-08-05 14:18:59,022 | INFO     | deezer_helper                | [DEEZER] search query='Pink + White Frank Ocean' -> 1 results
+2026-08-05 14:18:59,023 | INFO     | deezer_helper                | [DEEZER] search query='Break from Toronto PARTYNEXTDOOR' limit=1
+2026-08-05 14:18:59,286 | INFO     | deezer_helper                | [DEEZER] search query='Break from Toronto PARTYNEXTDOOR' -> 1 results
+2026-08-05 14:18:59,287 | INFO     | deezer_helper                | [DEEZER] search query='Thinkin Bout You Frank Ocean' limit=1
+2026-08-05 14:18:59,519 | INFO     | deezer_helper                | [DEEZER] search query='Thinkin Bout You Frank Ocean' -> 1 results
+2026-08-05 14:18:59,520 | INFO     | deezer_helper                | [DEEZER] search query="Don't Bryson Tiller" limit=1
+2026-08-05 14:18:59,767 | INFO     | deezer_helper                | [DEEZER] search query="Don't Bryson Tiller" -> 1 results
+2026-08-05 14:18:59,767 | INFO     | deezer_helper                | [DEEZER] search query='No Role Modelz J. Cole' limit=1
+2026-08-05 14:19:00,124 | INFO     | deezer_helper                | [DEEZER] search query='No Role Modelz J. Cole' -> 1 results
+2026-08-05 14:19:00,124 | INFO     | deezer_helper                | [DEEZER] get_similar id=144572210 limit=20
+2026-08-05 14:19:00,352 | INFO     | deezer_helper                | [DEEZER] get_track id=144572210
+2026-08-05 14:19:00,825 | INFO     | deezer_helper                | [DEEZER] get_track id=144572210 -> Drake - Passionfruit (genres=[])
+2026-08-05 14:19:00,826 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=246791 limit=20
+2026-08-05 14:19:01,151 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=246791 -> 20 results
+2026-08-05 14:19:01,152 | INFO     | deezer_helper                | [DEEZER] get_similar id=144572210 -> 20 results (artist_top)
+2026-08-05 14:19:01,153 | INFO     | __main__                     | [FLOW] Deezer radio for Passionfruit: found 20 tracks
+2026-08-05 14:19:01,154 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=246791 limit=10
+2026-08-05 14:19:01,491 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=246791 -> 10 results
+2026-08-05 14:19:01,492 | INFO     | __main__                     | Same artist tracks for Drake (ID: 246791): 10 found
+2026-08-05 14:19:01,493 | INFO     | __main__                     |   Added same artist: Drake - Janice STFU
+2026-08-05 14:19:01,494 | INFO     | __main__                     |   Added same artist: Drake - One Dance
+2026-08-05 14:19:01,495 | INFO     | __main__                     |   Added same artist: Drake - Plot Twist
+2026-08-05 14:19:01,496 | INFO     | __main__                     |   Added same artist: Drake - National Treasures
+2026-08-05 14:19:01,497 | INFO     | __main__                     |   Added same artist: Drake - Fair Trade
+2026-08-05 14:19:01,498 | INFO     | __main__                     |   Added same artist: Drake - God's Plan
+2026-08-05 14:19:01,498 | INFO     | __main__                     |   Added same artist: Drake - Headlines (Explicit Version)
+2026-08-05 14:19:01,499 | INFO     | __main__                     |   Added same artist: Drake - Hotline Bling
+2026-08-05 14:19:01,500 | INFO     | __main__                     |   Added same artist: Drake - Which One
+2026-08-05 14:19:01,501 | INFO     | __main__                     | Same artist tracks found: 9
+2026-08-05 14:19:01,502 | INFO     | __main__                     | Different artist tracks found: 8
+2026-08-05 14:19:01,503 | INFO     | __main__                     | Total similar tracks: 6
+2026-08-05 14:19:01,504 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 4022917771
+2026-08-05 14:19:01,507 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 124603270
+2026-08-05 14:19:01,509 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 4022917851
+2026-08-05 14:19:01,516 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 4022917771
+2026-08-05 14:19:01,520 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 124603270
+2026-08-05 14:19:01,522 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 4022917851
+2026-08-05 14:19:01,523 | INFO     | __main__                     | Analyzing track: Drake - Janice STFU (fast=True)
+2026-08-05 14:19:01,525 | INFO     | __main__                     | Analyzing track: Drake - One Dance (fast=True)
+2026-08-05 14:19:01,527 | INFO     | __main__                     | Analyzing track: Drake - Plot Twist (fast=True)
+2026-08-05 14:19:01,750 | INFO     | musicbrainz_client           | Found MusicBrainz ID: e9114896-a5bb-464d-8231-245ccf66ba03 for Drake - Janice STFU
+2026-08-05 14:19:02,104 | INFO     | __main__                     | Analysis results for Drake - Janice STFU:
+2026-08-05 14:19:02,105 | INFO     | __main__                     |   Audio features: SKIPPED
+2026-08-05 14:19:02,105 | INFO     | __main__                     |   MusicBrainz: OK
+2026-08-05 14:19:02,106 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 14:19:02,107 | WARNING  | __main__                     | [FLOW] candidate analysis failed for Drake - Janice STFU: 'NoneType' object has no attribute 'get'
+2026-08-05 14:19:02,108 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 434211382
+2026-08-05 14:19:02,115 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 434211382
+2026-08-05 14:19:02,119 | INFO     | __main__                     | Analyzing track: Miguel - Sky Walker (feat. Travis Scott) (fast=True)
+2026-08-05 14:19:02,923 | INFO     | musicbrainz_client           | Found MusicBrainz ID: 9180a484-08fe-4e37-b756-defa8e4132d6 for Drake - One Dance
+2026-08-05 14:19:03,232 | INFO     | __main__                     | Analysis results for Drake - One Dance:
+2026-08-05 14:19:03,232 | INFO     | __main__                     |   Audio features: SKIPPED
+2026-08-05 14:19:03,233 | INFO     | __main__                     |   MusicBrainz: OK
+2026-08-05 14:19:03,233 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 14:19:03,234 | WARNING  | __main__                     | [FLOW] candidate analysis failed for Drake - One Dance: 'NoneType' object has no attribute 'get'
+2026-08-05 14:19:03,234 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 717273862
+2026-08-05 14:19:03,238 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 717273862
+2026-08-05 14:19:03,241 | INFO     | __main__                     | Analyzing track: Frank Ocean - Pink + White (fast=True)
+2026-08-05 14:19:03,479 | INFO     | musicbrainz_client           | No MusicBrainz recording found for Miguel - Sky Walker (feat. Travis Scott)
+2026-08-05 14:19:03,480 | INFO     | __main__                     | Analysis results for Miguel - Sky Walker (feat. Travis Scott):
+2026-08-05 14:19:03,480 | INFO     | __main__                     |   Audio features: SKIPPED
+2026-08-05 14:19:03,480 | INFO     | __main__                     |   MusicBrainz: NOT FOUND
+2026-08-05 14:19:03,481 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 14:19:03,481 | WARNING  | __main__                     | [FLOW] candidate analysis failed for Miguel - Sky Walker (feat. Travis Scott): 'NoneType' object has no attribute 'get'
+2026-08-05 14:19:03,482 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 2349426035
+2026-08-05 14:19:03,486 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 2349426035
+2026-08-05 14:19:03,488 | INFO     | __main__                     | Analyzing track: PARTYNEXTDOOR - Break from Toronto (fast=True)
+2026-08-05 14:19:03,763 | INFO     | musicbrainz_client           | Found MusicBrainz ID: 6caa8fde-9af0-4a15-b477-01ee92a0a7a4 for PARTYNEXTDOOR - Break from Toronto
+2026-08-05 14:19:03,772 | INFO     | musicbrainz_client           | Found MusicBrainz ID: d90934be-302a-4e0d-a1dd-b94df3421f33 for Frank Ocean - Pink + White
+2026-08-05 14:19:03,783 | INFO     | musicbrainz_client           | Found MusicBrainz ID: a128c274-5ccd-4a49-b83f-e0b580136f82 for Drake - Plot Twist
+2026-08-05 14:19:04,103 | INFO     | __main__                     | Analysis results for PARTYNEXTDOOR - Break from Toronto:
+2026-08-05 14:19:04,103 | INFO     | __main__                     |   Audio features: SKIPPED
+2026-08-05 14:19:04,104 | INFO     | __main__                     |   MusicBrainz: OK
+2026-08-05 14:19:04,104 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 14:19:04,105 | WARNING  | __main__                     | [FLOW] candidate analysis failed for PARTYNEXTDOOR - Break from Toronto: 'NoneType' object has no attribute 'get'
+2026-08-05 14:19:04,292 | INFO     | __main__                     | Analysis results for Drake - Plot Twist:
+2026-08-05 14:19:04,293 | INFO     | __main__                     |   Audio features: SKIPPED
+2026-08-05 14:19:04,294 | INFO     | __main__                     |   MusicBrainz: OK
+2026-08-05 14:19:04,295 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 14:19:04,296 | WARNING  | __main__                     | [FLOW] candidate analysis failed for Drake - Plot Twist: 'NoneType' object has no attribute 'get'
+2026-08-05 14:19:04,573 | INFO     | __main__                     | Analysis results for Frank Ocean - Pink + White:
+2026-08-05 14:19:04,574 | INFO     | __main__                     |   Audio features: SKIPPED
+2026-08-05 14:19:04,576 | INFO     | __main__                     |   MusicBrainz: OK
+2026-08-05 14:19:04,577 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 14:19:04,577 | WARNING  | __main__                     | [FLOW] candidate analysis failed for Frank Ocean - Pink + White: 'NoneType' object has no attribute 'get'
+2026-08-05 14:19:04,578 | INFO     | __main__                     | [FLOW] candidate features ready: 0/6
+2026-08-05 14:19:04,580 | INFO     | __main__                     | Similarity calc: target_audio=YES, target_acoustic=NO, candidates=6
+2026-08-05 14:19:04,581 | INFO     | __main__                     | Similarity scores: [('Sky Walker (feat. Travis Scott)', 0.338104), ('Pink + White', 0.0553956), ('Break from Toronto', 0.052418)]
+2026-08-05 14:19:04,582 | INFO     | __main__                     | Building features - target_audio: YES, genres: []
+2026-08-05 14:19:04,582 | INFO     | __main__                     | [GENRE] Deezer genres empty for Drake - Passionfruit
+2026-08-05 14:19:04,867 | INFO     | lastfm_client                | Last.fm artist tags for Drake: ['Hip-Hop', 'rap', 'rnb', 'hip hop', 'Canadian']
+2026-08-05 14:19:04,868 | INFO     | __main__                     | [GENRE] Last.fm genre for Drake: rap
+2026-08-05 14:20:15,281 | INFO     | deezer_helper                | [DEEZER] search query='Dashi Shahin Najafi & Erfan' limit=5
+2026-08-05 14:20:16,081 | INFO     | deezer_helper                | [DEEZER] search query='Dashi Shahin Najafi & Erfan' -> 1 results
+2026-08-05 14:20:23,066 | INFO     | __main__                     | Callback received: chat_id=240082844, data=pick_original
+2026-08-05 14:20:23,703 | INFO     | deezer_helper                | [DEEZER] search query='Dashi Shahin Najafi & Erfan' limit=10
+2026-08-05 14:20:23,967 | INFO     | deezer_helper                | [DEEZER] search query='Dashi Shahin Najafi & Erfan' -> 1 results
+2026-08-05 14:20:23,968 | INFO     | deezer_helper                | [DEEZER] get_track id=4180641782
+2026-08-05 14:20:24,620 | INFO     | deezer_helper                | [DEEZER] get_track id=4180641782 -> Shahin Najafi - Dashi (genres=[])
+2026-08-05 14:20:24,621 | INFO     | __main__                     | Fetched full track: Shahin Najafi - Dashi (genres: [], artist_id: 504417)
+2026-08-05 14:20:24,622 | INFO     | deezer_helper                | [DEEZER] search query='Shahin Najafi' limit=10
+2026-08-05 14:20:24,952 | INFO     | deezer_helper                | [DEEZER] search query='Shahin Najafi' -> 10 results
+2026-08-05 14:20:24,953 | INFO     | __main__                     | Search 'Shahin Najafi': found 10 tracks, best ID=504417 (count=9)
+2026-08-05 14:20:25,156 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 4180641782
+2026-08-05 14:20:25,163 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 4180641782
+2026-08-05 14:20:25,166 | INFO     | __main__                     | Analyzing track: Shahin Najafi - Dashi (fast=False)
+2026-08-05 14:20:25,167 | INFO     | audio_analyzer               | Downloading preview: https://cdnt-preview.dzcdn.net/api/1/1/b/c/3/0/bc3e6fa32ddcd130394d3783a9e51ea9.mp3?hdnea=exp=1785927924~acl=/api/1/1/b/c/3/0/bc3e6fa32ddcd130394d3783a9e51ea9.mp3*~data=user_id=0,application_id=42~hmac=f50a0af450b95db7a46a99247b4032854c6b1cff1d0a05428b0e36c0c2c60c76
+2026-08-05 14:20:26,365 | INFO     | musicbrainz_client           | No MusicBrainz recording found for Shahin Najafi - Dashi
+2026-08-05 14:20:26,708 | INFO     | audio_analyzer               | Downloaded 479827 bytes
+2026-08-05 14:20:26,710 | INFO     | audio_analyzer               | Running librosa analysis...
+2026-08-05 14:20:26,711 | INFO     | audio_analyzer               | [LIBROSA] Starting feature extraction...
+2026-08-05 14:20:26,714 | INFO     | audio_analyzer               | [LIBROSA] Temp file created: C:\Users\Saeid\AppData\Local\Temp\tmpq2evorfx.mp3 (479827 bytes)
+2026-08-05 14:20:26,714 | INFO     | audio_analyzer               | [LIBROSA] Loading audio file...
+2026-08-05 14:20:26,825 | INFO     | audio_analyzer               | [LIBROSA] Audio loaded: 30.0 seconds, 22050 Hz sample rate
+2026-08-05 14:20:26,826 | INFO     | audio_analyzer               | [LIBROSA] Extracting BPM...
+2026-08-05 14:20:26,924 | INFO     | audio_analyzer               | [LIBROSA] BPM: 95.7
+2026-08-05 14:20:26,924 | INFO     | audio_analyzer               | [LIBROSA] Extracting MFCCs (timbre)...
+2026-08-05 14:20:26,974 | INFO     | audio_analyzer               | [LIBROSA] MFCCs extracted: 13 coefficients
+2026-08-05 14:20:26,975 | INFO     | audio_analyzer               | [LIBROSA] Extracting chroma (harmonics)...
+2026-08-05 14:20:27,074 | INFO     | audio_analyzer               | [LIBROSA] Chroma extracted: 12 pitch classes
+2026-08-05 14:20:27,074 | INFO     | audio_analyzer               | [LIBROSA] Extracting spectral features...
+2026-08-05 14:20:27,375 | INFO     | audio_analyzer               | [LIBROSA] Spectral: centroid=2180.5, rolloff=4627.7, bandwidth=2398.6
+2026-08-05 14:20:27,376 | INFO     | audio_analyzer               | [LIBROSA] Extracting energy (RMS)...
+2026-08-05 14:20:27,385 | INFO     | audio_analyzer               | [LIBROSA] Energy: mean=0.2496, var=0.0135
+2026-08-05 14:20:27,385 | INFO     | audio_analyzer               | [LIBROSA] Extracting onset rate...
+2026-08-05 14:20:27,435 | INFO     | audio_analyzer               | [LIBROSA] Onset rate: 2.1292
+2026-08-05 14:20:27,465 | INFO     | audio_analyzer               | [LIBROSA] Inferring musical key...
+2026-08-05 14:20:27,466 | INFO     | audio_analyzer               | [LIBROSA] Key: G#
+2026-08-05 14:20:27,466 | INFO     | audio_analyzer               | [LIBROSA] Inferring scale (major/minor)...
+2026-08-05 14:20:27,466 | INFO     | audio_analyzer               | [LIBROSA] Scale: minor (major=-0.12, minor=0.44)
+2026-08-05 14:20:27,467 | INFO     | audio_analyzer               | Analyzed audio: BPM=95.7, RMS=0.250
+2026-08-05 14:20:27,467 | INFO     | __main__                     | Analysis results for Shahin Najafi - Dashi:
+2026-08-05 14:20:27,468 | INFO     | __main__                     |   Audio features: OK
+2026-08-05 14:20:27,468 | INFO     | __main__                     |   MusicBrainz: NOT FOUND
+2026-08-05 14:20:27,468 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 14:20:27,469 | INFO     | __main__                     |   Last.fm tags: 0
+2026-08-05 14:20:27,469 | INFO     | feature_cache                | [CACHE] Saving features for: Shahin Najafi - Dashi (ID: 4180641782)
+2026-08-05 14:20:27,470 | INFO     | feature_cache                | [CACHE] Audio features: BPM=95.7, Energy=0.2496, MFCCs=13 coefficients
+2026-08-05 14:20:27,470 | INFO     | feature_cache                | [CACHE] AcousticBrainz: NONE
+2026-08-05 14:20:27,470 | INFO     | feature_cache                | [CACHE] MusicBrainz ID: NONE
+2026-08-05 14:20:27,470 | INFO     | feature_cache                | [CACHE] Last.fm tags: NONE
+2026-08-05 14:20:27,478 | INFO     | feature_cache                | [CACHE] ✓ Saved successfully for: Shahin Najafi - Dashi
+2026-08-05 14:20:27,489 | INFO     | feature_cache                | Exported 112 tracks to cached_songs.json
+2026-08-05 14:20:27,490 | INFO     | __main__                     | [FLOW] main track analyzed: audio=True acoustic=False
+2026-08-05 14:20:27,932 | INFO     | lastfm_client                | Last.fm found 0 similar tracks for Shahin Najafi - Dashi
+2026-08-05 14:20:27,933 | INFO     | __main__                     | [FLOW] Last.fm similar for Dashi: 0 found
+2026-08-05 14:20:27,934 | INFO     | deezer_helper                | [DEEZER] get_similar id=4180641782 limit=20
+2026-08-05 14:20:28,206 | INFO     | deezer_helper                | [DEEZER] get_track id=4180641782
+2026-08-05 14:20:28,781 | INFO     | deezer_helper                | [DEEZER] get_track id=4180641782 -> Shahin Najafi - Dashi (genres=[])
+2026-08-05 14:20:28,782 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=504417 limit=20
+2026-08-05 14:20:29,045 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=504417 -> 0 results
+2026-08-05 14:20:29,046 | INFO     | deezer_helper                | [DEEZER] search query='Shahin Najafi' limit=25
+2026-08-05 14:20:29,470 | INFO     | deezer_helper                | [DEEZER] search query='Shahin Najafi' -> 25 results
+2026-08-05 14:20:29,471 | INFO     | deezer_helper                | [DEEZER] get_similar id=4180641782 -> 20 results (artist_search)
+2026-08-05 14:20:29,472 | INFO     | __main__                     | [FLOW] Deezer radio for Dashi: found 20 tracks
+2026-08-05 14:20:29,473 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=504417 limit=10
+2026-08-05 14:20:29,849 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=504417 -> 0 results
+2026-08-05 14:20:29,850 | INFO     | __main__                     | Same artist tracks for Shahin Najafi (ID: 504417): 0 found
+2026-08-05 14:20:29,851 | INFO     | __main__                     | Same artist tracks found: 0
+2026-08-05 14:20:29,851 | INFO     | __main__                     | Different artist tracks found: 2
+2026-08-05 14:20:29,852 | INFO     | __main__                     | Total similar tracks: 2
+2026-08-05 14:20:29,853 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 3454225331
+2026-08-05 14:20:29,856 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 3768522782
+2026-08-05 14:20:29,860 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 3454225331
+2026-08-05 14:20:29,863 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 3768522782
+2026-08-05 14:20:29,865 | INFO     | __main__                     | Analyzing track: Erfan - Mastam Baat (fast=True)
+2026-08-05 14:20:29,869 | INFO     | __main__                     | Analyzing track: The Shah - Janga (fast=True)
+2026-08-05 14:20:30,076 | INFO     | musicbrainz_client           | No MusicBrainz recording found for Erfan - Mastam Baat
+2026-08-05 14:20:30,077 | INFO     | __main__                     | Analysis results for Erfan - Mastam Baat:
+2026-08-05 14:20:30,077 | INFO     | __main__                     |   Audio features: SKIPPED
+2026-08-05 14:20:30,078 | INFO     | __main__                     |   MusicBrainz: NOT FOUND
+2026-08-05 14:20:30,078 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 14:20:30,079 | WARNING  | __main__                     | [FLOW] candidate analysis failed for Erfan - Mastam Baat: 'NoneType' object has no attribute 'get'
+2026-08-05 14:20:31,240 | INFO     | musicbrainz_client           | No MusicBrainz recording found for The Shah - Janga
+2026-08-05 14:20:31,241 | INFO     | __main__                     | Analysis results for The Shah - Janga:
+2026-08-05 14:20:31,242 | INFO     | __main__                     |   Audio features: SKIPPED
+2026-08-05 14:20:31,242 | INFO     | __main__                     |   MusicBrainz: NOT FOUND
+2026-08-05 14:20:31,243 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 14:20:31,244 | WARNING  | __main__                     | [FLOW] candidate analysis failed for The Shah - Janga: 'NoneType' object has no attribute 'get'
+2026-08-05 14:20:31,245 | INFO     | __main__                     | [FLOW] candidate features ready: 0/2
+2026-08-05 14:20:31,246 | INFO     | __main__                     | Similarity calc: target_audio=YES, target_acoustic=NO, candidates=2
+2026-08-05 14:20:31,247 | INFO     | __main__                     | Similarity scores: [('Mastam Baat', 0.0), ('Janga', 0.0)]
+2026-08-05 14:20:31,247 | INFO     | __main__                     | Building features - target_audio: YES, genres: []
+2026-08-05 14:32:21,630 | INFO     | bot                          | Loaded Persian genre database: 203 artists
+2026-08-05 14:32:21,673 | INFO     | user_prefs                   | [USER_DB] init_db: tables created; PATH=C:\Users\Saeid\AppData\Local\Temp\tmp5dbgj88p\t.db
+2026-08-05 14:32:21,673 | INFO     | bot                          | Callback received: chat_id=999, data=lang_fa
+2026-08-05 14:32:21,679 | INFO     | user_prefs                   | [USER_DB] set_user_language user=240082844 lang=fa
+2026-08-05 14:32:21,680 | WARNING  | bot                          | keyboard refresh failed: cannot access local variable 'msg' where it is not associated with a value
+2026-08-05 14:32:21,683 | INFO     | bot                          | [STEP 1] User 240082844: Received text: 🔍 Search...
+2026-08-05 14:32:21,683 | INFO     | bot                          | [STEP 1] User 240082844: Received text: 📋 لیست من...
+2026-08-05 14:32:21,686 | INFO     | user_prefs                   | [PLAYLIST_DB] get_user_playlist user=240082844 -> 0 rows
+2026-08-05 14:32:21,687 | INFO     | user_prefs                   | [PLAYLIST_DB] get_user_taste_profile user=240082844
+2026-08-05 14:32:21,691 | INFO     | user_prefs                   | [PLAYLIST_DB] taste_profile user=240082844 -> total=0 recognized=0 tracks=0 bpm=0.0 energy=0.00 valence=0.00 genres=[] langs=[]
+2026-08-05 14:32:21,692 | INFO     | bot                          | [STEP 1] User 240082844: Received text: ➕ Add to Playlist...
+2026-08-05 14:32:21,692 | INFO     | bot                          | [STEP 2] User 240082844: Entering playlist mode

@@ -440,6 +440,19 @@
     "mood": ""
   },
   {
+    "track_id": 12589822,
+    "title": "Nemiyad",
+    "artist": "Googoosh",
+    "analyzed_at": "2026-08-05 10:45:30",
+    "musicbrainz_id": "6bfc2e19-c408-4238-b51c-35582e0645b2",
+    "bpm": 172.265625,
+    "key": "A",
+    "scale": "minor",
+    "energy": 0.14216546714305878,
+    "genre": "",
+    "mood": ""
+  },
+  {
     "track_id": 13174769,
     "title": "The Boxer",
     "artist": "Simon & Garfunkel",
@@ -694,6 +707,39 @@
     ]
   },
   {
+    "track_id": 144572210,
+    "title": "Passionfruit",
+    "artist": "Drake",
+    "analyzed_at": "2026-08-05 10:48:57",
+    "musicbrainz_id": "8eccc484-bba1-4ca0-8600-41c8be9976a9",
+    "bpm": 112.34714673913044,
+    "key": "B",
+    "scale": "major",
+    "energy": 0.17448292672634125,
+    "genre": "",
+    "mood": "",
+    "tags": [
+      "rnb",
+      "tropical house",
+      "2017",
+      "House",
+      "dance"
+    ]
+  },
+  {
+    "track_id": 392574162,
+    "title": "Lalaei",
+    "artist": "Ali Zandevakili",
+    "analyzed_at": "2026-08-05 10:48:31",
+    "musicbrainz_id": null,
+    "bpm": 161.4990234375,
+    "key": "G#",
+    "scale": "minor",
+    "energy": 0.21382001042366028,
+    "genre": "",
+    "mood": ""
+  },
+  {
     "track_id": 522338612,
     "title": "Ye Chizi Begoo",
     "artist": "Amir Tataloo",
@@ -822,6 +868,19 @@
     "key": "C#",
     "scale": "major",
     "energy": 0.2565310597419739,
+    "genre": "",
+    "mood": ""
+  },
+  {
+    "track_id": 1004409502,
+    "title": "Akharin Avaz",
+    "artist": "Ali Zandevakili",
+    "analyzed_at": "2026-08-05 10:47:45",
+    "musicbrainz_id": null,
+    "bpm": 89.10290948275862,
+    "key": "F#",
+    "scale": "major",
+    "energy": 0.2304391711950302,
     "genre": "",
     "mood": ""
   },
@@ -1054,6 +1113,19 @@
       "70s",
       "aerosmith"
     ]
+  },
+  {
+    "track_id": 2474776021,
+    "title": "Yek Nafas Arezouye To",
+    "artist": "Homayoun Shajarian",
+    "analyzed_at": "2026-08-05 10:46:33",
+    "musicbrainz_id": null,
+    "bpm": 103.359375,
+    "key": "E",
+    "scale": "major",
+    "energy": 0.28949275612831116,
+    "genre": "",
+    "mood": ""
   },
   {
     "track_id": 2545396411,
@@ -1452,5 +1524,18 @@
     "artist": "Queen",
     "analyzed_at": "2026-07-09 15:41:42",
     "musicbrainz_id": null
+  },
+  {
+    "track_id": 4180641782,
+    "title": "Dashi",
+    "artist": "Shahin Najafi",
+    "analyzed_at": "2026-08-05 10:50:27",
+    "musicbrainz_id": null,
+    "bpm": 95.703125,
+    "key": "G#",
+    "scale": "minor",
+    "energy": 0.2495795041322708,
+    "genre": "",
+    "mood": ""
   }
 ]

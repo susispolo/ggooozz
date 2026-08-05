@@ -1215,7 +1215,26 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     async def _analyze_candidate(track):
         async with sem:
             try:
-                return track.id, await analyze_track(track, fast_mode=True)
+                feats = await analyze_track(track, fast_mode=True)
+                # If fast-mode produced no usable audio features, try to get the
+                # track's BPM from Deezer (cheap get_track call, no librosa) and
+                # synthesize a minimal AudioFeatures so the candidate still gets
+                # a tempo/energy signal instead of scoring 0.0.
+                if feats and not (feats.get("audio_features") or feats.get("acoustic_features")):
+                    bpm = track.bpm
+                    if not bpm:
+                        try:
+                            full = await dz.get_track(track.id)
+                            bpm = getattr(full, "bpm", None) if full else None
+                        except Exception:
+                            bpm = None
+                    if bpm:
+                        af = AudioFeatures()
+                        af.bpm = float(bpm)
+                        feats["audio_features"] = af
+                        log.info("[FLOW] fast_mode: synthesized BPM %.1f for candidate %s - %s",
+                                 af.bpm, track.artist, track.title)
+                return track.id, feats
             except Exception as e:
                 log.warning("[FLOW] candidate analysis failed for %s - %s: %s", track.artist, track.title, e)
                 return track.id, None
