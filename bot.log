@@ -3717,3 +3717,6 @@ connector: <aiohttp.connector.TCPConnector object at 0x0000025ADD7076D0>
 2026-08-05 15:17:33,393 | INFO     | user_prefs                   | [PLAYLIST_DB] taste_profile user=240082844 -> total=0 recognized=0 tracks=0 bpm=0.0 energy=0.00 valence=0.00 genres=[] langs=[]
 2026-08-05 15:17:33,394 | INFO     | bot                          | [STEP 1] User 240082844: Received text: ➕ Add to Playlist...
 2026-08-05 15:17:33,394 | INFO     | bot                          | [STEP 2] User 240082844: Entering playlist mode
+2026-08-05 15:24:14,704 | WARNING  | __main__                     | Unhandled error: httpx.RemoteProtocolError: Server disconnected without sending a response.
+2026-08-05 15:24:16,266 | WARNING  | __main__                     | Unhandled error: httpx.ConnectError: 
+2026-08-05 15:44:14,962 | WARNING  | __main__                     | Unhandled error: httpx.RemoteProtocolError: Server disconnected without sending a response.
