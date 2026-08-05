@@ -72,7 +72,7 @@ from lyrics_client import LyricsClient, format_lyrics
 from card_generator import generate_music_card, generate_comparison_card
 from dna_generator import generate_musical_dna
 import i18n as i18n_mod
-from i18n import label as L, msg as M, supported_langs, set_lang as i18n_set_lang, get_lang
+from i18n import label, msg, supported_langs, set_lang as i18n_set_lang, get_lang
 
 # ═══════════════════════════════════════════════════
 # Config
@@ -549,7 +549,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await _ensure_lang(user_id)
     lang = get_lang(user_id)
     await update.message.reply_text(
-        M("start_hero", lang),
+        msg("start_hero", lang),
         parse_mode=PM,
         reply_markup=_main_menu_keyboard(lang),
     )
@@ -875,7 +875,7 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         uid = update.effective_user.id
         lang = get_lang(uid)
         await query.edit_message_text(
-            M("start_hero", lang), parse_mode=PM,
+            msg("start_hero", lang), parse_mode=PM,
             reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("🏠", callback_data="noop")]])
         )
         return
@@ -901,7 +901,7 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await query.edit_message_text(f"✅ Language set: {name}\nزبان تنظیم شد: {name}")
         # Refresh the main keyboard in the new language
         await update.effective_chat.send_message(
-            M("start_hero", code),
+            msg("start_hero", code),
             parse_mode=PM,
             reply_markup=_main_menu_keyboard(code),
         )
@@ -2848,7 +2848,7 @@ async def cmd_meforyou(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     if profile["track_count"] == 0:
         await update.message.reply_text(
-            M("for_me_empty", lang),
+            msg("for_me_empty", lang),
             parse_mode=PM,
             reply_markup=_main_menu_keyboard(lang),
         )
@@ -2859,7 +2859,7 @@ async def cmd_meforyou(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if profile["track_count"] < 10:
         remaining = 10 - profile["track_count"]
         await update.message.reply_text(
-            M("for_me_locked", lang, count=profile["track_count"], remaining=remaining),
+            msg("for_me_locked", lang, count=profile["track_count"], remaining=remaining),
             parse_mode=PM,
             reply_markup=_main_menu_keyboard(lang),
         )
@@ -2873,7 +2873,7 @@ async def cmd_meforyou(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
         if not pool_rows:
             await update.message.reply_text(
-                M("for_me_no_pool", lang),
+                msg("for_me_no_pool", lang),
                 parse_mode=PM,
                 reply_markup=_main_menu_keyboard(lang),
             )
@@ -2891,14 +2891,14 @@ async def cmd_meforyou(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
         if not recommended:
             await update.message.reply_text(
-                M("for_me_fetch_fail", lang),
+                msg("for_me_fetch_fail", lang),
                 parse_mode=PM,
                 reply_markup=_main_menu_keyboard(lang),
             )
             return
 
         # Header with taste info
-        msg = M("for_me_header", lang,
+        msg = msg("for_me_header", lang,
                 count=profile["track_count"],
                 bpm=f"{profile['avg_bpm']:.0f}",
                 energy=f"{profile['avg_energy']:.2f}")
@@ -2911,7 +2911,7 @@ async def cmd_meforyou(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 msg += f"   <a href=\"{track.deezer_url}\">▶️ Deezer</a>\n"
             msg += "\n"
 
-        msg += M("for_me_footer", lang)
+        msg += msg("for_me_footer", lang)
 
         await update.message.reply_text(msg, parse_mode=PM, disable_web_page_preview=True,
                                         reply_markup=_meforyou_keyboard(lang))

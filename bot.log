@@ -2109,3 +2109,24 @@
 2026-08-05 13:15:30,575 | INFO     | deezer_helper                | [DEEZER] get_track id=531967 -> Alan Jackson - Chattahoochee (Extended Mix) (genres=[])
 2026-08-05 13:15:30,576 | INFO     | deezer_helper                | [DEEZER] get_track id=664507
 2026-08-05 13:15:31,204 | INFO     | deezer_helper                | [DEEZER] get_track id=664507 -> Madonna - Like a Prayer (genres=[])
+2026-08-05 13:39:41,619 | INFO     | __main__                     | Loaded Persian genre database: 203 artists
+2026-08-05 13:39:41,894 | INFO     | __main__                     | Music Suggest Bot v3 starting...
+2026-08-05 13:39:42,317 | INFO     | user_prefs                   | [USER_DB] init_db: tables created; PATH=user_prefs.db
+2026-08-05 13:39:42,326 | INFO     | feature_cache                | Feature cache initialized
+2026-08-05 13:39:42,522 | INFO     | __main__                     | Bot initialized: Last.fm=OK
+2026-08-05 13:39:42,694 | INFO     | telegram.ext.Application     | Application started
+2026-08-05 13:41:05,096 | WARNING  | __main__                     | Unhandled error: name 'label' is not defined
+2026-08-05 13:41:15,553 | INFO     | __main__                     | Callback received: chat_id=240082844, data=lang_fa
+2026-08-05 13:41:15,775 | INFO     | user_prefs                   | [USER_DB] set_user_language user=240082844 lang=fa
+2026-08-05 13:41:15,997 | WARNING  | __main__                     | Unhandled error: name 'label' is not defined
+2026-08-05 13:41:22,615 | INFO     | __main__                     | [STEP 1] User 240082844: Received text: ➕ Add to Playlist...
+2026-08-05 13:41:22,615 | WARNING  | __main__                     | Unhandled error: name 'label' is not defined
+2026-08-05 13:41:31,177 | INFO     | __main__                     | [STEP 1] User 240082844: Received text: 📋 My Playlist...
+2026-08-05 13:41:31,178 | WARNING  | __main__                     | Unhandled error: name 'label' is not defined
+2026-08-05 13:41:39,252 | INFO     | __main__                     | Callback received: chat_id=240082844, data=lang_en
+2026-08-05 13:41:39,475 | INFO     | user_prefs                   | [USER_DB] set_user_language user=240082844 lang=en
+2026-08-05 13:41:39,770 | WARNING  | __main__                     | Unhandled error: name 'label' is not defined
+2026-08-05 13:41:41,236 | INFO     | __main__                     | [STEP 1] User 240082844: Received text: 📋 My Playlist...
+2026-08-05 13:41:41,236 | WARNING  | __main__                     | Unhandled error: name 'label' is not defined
+2026-08-05 13:44:15,125 | WARNING  | __main__                     | Unhandled error: httpx.RemoteProtocolError: Server disconnected without sending a response.
+2026-08-05 13:44:48,730 | INFO     | bot                          | Loaded Persian genre database: 203 artists
