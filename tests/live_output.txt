@@ -1,0 +1,143 @@
+2026-08-04 21:00:41,072 | INFO     | feature_cache                | Feature cache initialized
+
+=== SEARCH ===
+2026-08-04 21:00:41,073 | INFO     | deezer_helper                | [DEEZER] search query='queen bohemian rhapsody' limit=3
+2026-08-04 21:00:42,376 | INFO     | deezer_helper                | [DEEZER] search query='queen bohemian rhapsody' -> 3 results
+Selected: Bohemian Rhapsody (Live At Wembley Stadium / July 1986) - Queen (id=4092342471, preview=True)
+
+=== FULL TRACK ===
+2026-08-04 21:00:42,376 | INFO     | deezer_helper                | [DEEZER] get_track id=4092342471
+2026-08-04 21:00:42,892 | INFO     | deezer_helper                | [DEEZER] get_track id=4092342471 -> Queen - Bohemian Rhapsody (Live At Wembley Stadium / July 1986) (genres=[])
+  genres=[] preview=True
+
+=== ANALYZE TARGET (librosa + MB + Last.fm) ===
+2026-08-04 21:00:43,793 | INFO     | bot                          | Loaded Persian genre database: 203 artists
+2026-08-04 21:00:43,793 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 4092342471
+2026-08-04 21:00:43,795 | INFO     | feature_cache                | [CACHE] ✓ Cache HIT for track ID: 4092342471
+2026-08-04 21:00:43,796 | INFO     | bot                          | Cache hit for: Queen - Bohemian Rhapsody (Live At Wembley Stadium / July 1986)
+  audio_features: MISSING  (bpm=None)
+  acoustic_features: MISSING (dance=None)
+  lastfm_tags: []
+
+=== GET SIMILAR + RANK ===
+2026-08-04 21:00:43,796 | INFO     | deezer_helper                | [DEEZER] get_similar id=4092342471 limit=6
+2026-08-04 21:00:44,002 | INFO     | deezer_helper                | [DEEZER] get_similar id=4092342471 -> 0 results
+2026-08-04 21:00:44,002 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=412 limit=6
+2026-08-04 21:00:44,236 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=412 -> 6 results
+  similar candidates: 6
+2026-08-04 21:00:44,236 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 4091937401
+2026-08-04 21:00:44,236 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 4092329741
+2026-08-04 21:00:44,237 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 4092324041
+2026-08-04 21:00:44,239 | INFO     | feature_cache                | [CACHE] ✓ Cache HIT for track ID: 4091937401
+2026-08-04 21:00:44,239 | INFO     | feature_cache                | [CACHE]   MusicBrainz: 46fe768c-7b38-4147-9f02-815b9f0759e2
+2026-08-04 21:00:44,239 | INFO     | feature_cache                | [CACHE]   Last.fm tags: classic rock, rock, Queen
+2026-08-04 21:00:44,240 | INFO     | bot                          | Cache hit for: Queen - Bohemian Rhapsody
+2026-08-04 21:00:44,240 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 3098519
+2026-08-04 21:00:44,241 | INFO     | feature_cache                | [CACHE] ✓ Cache HIT for track ID: 3098519
+2026-08-04 21:00:44,241 | INFO     | feature_cache                | [CACHE]   Audio: BPM=112.3, Energy=0.1227
+2026-08-04 21:00:44,241 | INFO     | feature_cache                | [CACHE]   MusicBrainz: 1d8ab28e-853f-43d8-b6dc-0d74dafb3e08
+2026-08-04 21:00:44,242 | INFO     | bot                          | Cache hit for: Queen - Under Pressure
+2026-08-04 21:00:44,242 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 4091936841
+2026-08-04 21:00:44,244 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 4091936841
+2026-08-04 21:00:44,245 | INFO     | bot                          | Analyzing track: Queen - The Show Must Go On (fast=False)
+2026-08-04 21:00:44,245 | INFO     | audio_analyzer               | Downloading preview: https://cdnt-preview.dzcdn.net/api/1/1/8/f/1/0/8f188c06e94c77b5cfa15487e1649a20.mp3?hdnea=exp=1785865545~acl=/api/1/1/8/f/1/0/8f188c06e94c77b5cfa15487e1649a20.mp3*~data=user_id=0,application_id=42~hmac=3c69db104e61d35b87aec4f7a274a526f9e7f96db7d2e972403bf537dc58f589
+2026-08-04 21:00:44,251 | INFO     | feature_cache                | [CACHE] ✓ Cache HIT for track ID: 4092324041
+2026-08-04 21:00:44,251 | INFO     | feature_cache                | [CACHE]   Audio: BPM=112.3, Energy=0.1733
+2026-08-04 21:00:44,251 | INFO     | feature_cache                | [CACHE]   MusicBrainz: 4ef32b7c-e77c-4799-9245-74e74ff5f102
+2026-08-04 21:00:44,251 | INFO     | feature_cache                | [CACHE]   Last.fm tags: classic rock, rock, 80s
+2026-08-04 21:00:44,252 | INFO     | bot                          | Cache hit for: Queen - Another One Bites The Dust
+2026-08-04 21:00:44,252 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 4092326601
+2026-08-04 21:00:44,253 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 4092326601
+2026-08-04 21:00:44,254 | INFO     | bot                          | Analyzing track: Queen - Radio Ga Ga (fast=False)
+2026-08-04 21:00:44,254 | INFO     | audio_analyzer               | Downloading preview: https://cdnt-preview.dzcdn.net/api/1/1/e/5/7/0/e57331a9e106501c873d169226650966.mp3?hdnea=exp=1785865545~acl=/api/1/1/e/5/7/0/e57331a9e106501c873d169226650966.mp3*~data=user_id=0,application_id=42~hmac=57e05615ddcb1ba94c7f047fadb5c9a81965b767780a29586ee66ad5e712c6be
+2026-08-04 21:00:44,266 | INFO     | feature_cache                | [CACHE] ✓ Cache HIT for track ID: 4092329741
+2026-08-04 21:00:44,267 | INFO     | feature_cache                | [CACHE]   Audio: BPM=152.0, Energy=0.2076
+2026-08-04 21:00:44,267 | INFO     | feature_cache                | [CACHE]   MusicBrainz: 6c7bf247-ffb3-4d56-9f9e-b297abd9dd67
+2026-08-04 21:00:44,267 | INFO     | feature_cache                | [CACHE]   Last.fm tags: classic rock, rock, Queen
+2026-08-04 21:00:44,268 | INFO     | bot                          | Cache hit for: Queen - Don't Stop Me Now
+2026-08-04 21:00:46,390 | INFO     | musicbrainz_client           | Found MusicBrainz ID: 2ec628b2-ea27-4f30-b28c-d60f3ff5a37a for Queen - The Show Must Go On
+2026-08-04 21:00:46,609 | INFO     | musicbrainz_client           | Found MusicBrainz ID: ee8cf198-b502-413b-8cbe-7a8148cb1a3e for Queen - Radio Ga Ga
+2026-08-04 21:00:47,043 | INFO     | audio_analyzer               | Downloaded 479827 bytes
+2026-08-04 21:00:47,043 | INFO     | audio_analyzer               | Running librosa analysis...
+2026-08-04 21:00:47,061 | INFO     | audio_analyzer               | [LIBROSA] Starting feature extraction...
+2026-08-04 21:00:47,063 | INFO     | audio_analyzer               | [LIBROSA] Temp file created: C:\Users\Saeid\AppData\Local\Temp\tmp8jnq7f2h.mp3 (479827 bytes)
+2026-08-04 21:00:47,064 | INFO     | audio_analyzer               | [LIBROSA] Loading audio file...
+2026-08-04 21:00:47,258 | INFO     | audio_analyzer               | Downloaded 479827 bytes
+2026-08-04 21:00:47,259 | INFO     | audio_analyzer               | Running librosa analysis...
+2026-08-04 21:00:47,260 | INFO     | audio_analyzer               | [LIBROSA] Starting feature extraction...
+2026-08-04 21:00:47,261 | INFO     | audio_analyzer               | [LIBROSA] Temp file created: C:\Users\Saeid\AppData\Local\Temp\tmpwwvmxwyk.mp3 (479827 bytes)
+2026-08-04 21:00:47,261 | INFO     | audio_analyzer               | [LIBROSA] Loading audio file...
+[C:\vcpkg\buildtrees\mpg123\src\-66150af195.clean\src\libmpg123\id3.c:INT123_parse_new_id3():950] warning: ID3v2: unrealistic small tag lengh 0, skipping
+[C:\vcpkg\buildtrees\mpg123\src\-66150af195.clean\src\libmpg123\id3.c:INT123_parse_new_id3():950] warning: ID3v2: unrealistic small tag lengh 0, skipping
+2026-08-04 21:01:23,506 | INFO     | audio_analyzer               | [LIBROSA] Audio loaded: 30.0 seconds, 22050 Hz sample rate
+2026-08-04 21:01:23,507 | INFO     | audio_analyzer               | [LIBROSA] Extracting BPM...
+2026-08-04 21:01:23,512 | INFO     | audio_analyzer               | [LIBROSA] Audio loaded: 30.0 seconds, 22050 Hz sample rate
+2026-08-04 21:01:23,513 | INFO     | audio_analyzer               | [LIBROSA] Extracting BPM...
+2026-08-04 21:01:40,582 | INFO     | audio_analyzer               | [LIBROSA] BPM: 112.3
+2026-08-04 21:01:40,583 | INFO     | audio_analyzer               | [LIBROSA] Extracting MFCCs (timbre)...
+2026-08-04 21:01:40,587 | INFO     | audio_analyzer               | [LIBROSA] BPM: 83.4
+2026-08-04 21:01:40,587 | INFO     | audio_analyzer               | [LIBROSA] Extracting MFCCs (timbre)...
+2026-08-04 21:01:40,777 | INFO     | audio_analyzer               | [LIBROSA] MFCCs extracted: 13 coefficients
+2026-08-04 21:01:40,777 | INFO     | audio_analyzer               | [LIBROSA] Extracting chroma (harmonics)...
+2026-08-04 21:01:40,842 | INFO     | audio_analyzer               | [LIBROSA] MFCCs extracted: 13 coefficients
+2026-08-04 21:01:40,842 | INFO     | audio_analyzer               | [LIBROSA] Extracting chroma (harmonics)...
+2026-08-04 21:01:40,956 | INFO     | audio_analyzer               | [LIBROSA] Chroma extracted: 12 pitch classes
+2026-08-04 21:01:40,957 | INFO     | audio_analyzer               | [LIBROSA] Extracting spectral features...
+2026-08-04 21:01:41,004 | INFO     | audio_analyzer               | [LIBROSA] Chroma extracted: 12 pitch classes
+2026-08-04 21:01:41,004 | INFO     | audio_analyzer               | [LIBROSA] Extracting spectral features...
+2026-08-04 21:01:41,513 | INFO     | audio_analyzer               | [LIBROSA] Spectral: centroid=1982.0, rolloff=4164.6, bandwidth=2255.7
+2026-08-04 21:01:41,513 | INFO     | audio_analyzer               | [LIBROSA] Extracting energy (RMS)...
+2026-08-04 21:01:41,526 | INFO     | audio_analyzer               | [LIBROSA] Energy: mean=0.1997, var=0.0030
+2026-08-04 21:01:41,526 | INFO     | audio_analyzer               | [LIBROSA] Extracting onset rate...
+2026-08-04 21:01:41,547 | INFO     | audio_analyzer               | [LIBROSA] Spectral: centroid=2705.8, rolloff=5855.5, bandwidth=2646.5
+2026-08-04 21:01:41,547 | INFO     | audio_analyzer               | [LIBROSA] Extracting energy (RMS)...
+2026-08-04 21:01:41,561 | INFO     | audio_analyzer               | [LIBROSA] Energy: mean=0.1952, var=0.0023
+2026-08-04 21:01:41,561 | INFO     | audio_analyzer               | [LIBROSA] Extracting onset rate...
+2026-08-04 21:01:41,761 | INFO     | audio_analyzer               | [LIBROSA] Onset rate: 1.5024
+2026-08-04 21:01:41,808 | INFO     | audio_analyzer               | [LIBROSA] Inferring musical key...
+2026-08-04 21:01:41,809 | INFO     | audio_analyzer               | [LIBROSA] Key: F
+2026-08-04 21:01:41,809 | INFO     | audio_analyzer               | [LIBROSA] Inferring scale (major/minor)...
+2026-08-04 21:01:41,810 | INFO     | audio_analyzer               | [LIBROSA] Scale: minor (major=0.32, minor=0.32)
+2026-08-04 21:01:41,811 | INFO     | audio_analyzer               | Analyzed audio: BPM=112.3, RMS=0.200
+2026-08-04 21:01:41,811 | INFO     | bot                          | Analysis results for Queen - Radio Ga Ga:
+2026-08-04 21:01:41,811 | INFO     | bot                          |   Audio features: OK
+2026-08-04 21:01:41,811 | INFO     | bot                          |   MusicBrainz: OK
+2026-08-04 21:01:41,811 | INFO     | bot                          |   AcousticBrainz: NOT FOUND
+2026-08-04 21:01:41,811 | INFO     | bot                          |   Last.fm tags: 5
+2026-08-04 21:01:41,811 | INFO     | feature_cache                | [CACHE] Saving features for: Queen - Radio Ga Ga (ID: 4092326601)
+2026-08-04 21:01:41,811 | INFO     | feature_cache                | [CACHE] Audio features: BPM=112.3, Energy=0.1997, MFCCs=13 coefficients
+2026-08-04 21:01:41,812 | INFO     | feature_cache                | [CACHE] AcousticBrainz: NONE
+2026-08-04 21:01:41,812 | INFO     | feature_cache                | [CACHE] MusicBrainz ID: ee8cf198-b502-413b-8cbe-7a8148cb1a3e
+2026-08-04 21:01:41,812 | INFO     | feature_cache                | [CACHE] Last.fm tags: rock, classic rock, 80s, Queen, british
+2026-08-04 21:01:41,819 | INFO     | audio_analyzer               | [LIBROSA] Onset rate: 1.2203
+2026-08-04 21:01:41,822 | INFO     | feature_cache                | [CACHE] ✓ Saved successfully for: Queen - Radio Ga Ga
+2026-08-04 21:01:41,836 | INFO     | feature_cache                | Exported 77 tracks to cached_songs.json
+2026-08-04 21:01:41,866 | INFO     | audio_analyzer               | [LIBROSA] Inferring musical key...
+2026-08-04 21:01:41,867 | INFO     | audio_analyzer               | [LIBROSA] Key: F#
+2026-08-04 21:01:41,867 | INFO     | audio_analyzer               | [LIBROSA] Inferring scale (major/minor)...
+2026-08-04 21:01:41,867 | INFO     | audio_analyzer               | [LIBROSA] Scale: major (major=0.01, minor=-0.21)
+2026-08-04 21:01:41,868 | INFO     | audio_analyzer               | Analyzed audio: BPM=83.4, RMS=0.195
+2026-08-04 21:01:41,868 | INFO     | bot                          | Analysis results for Queen - The Show Must Go On:
+2026-08-04 21:01:41,868 | INFO     | bot                          |   Audio features: OK
+2026-08-04 21:01:41,868 | INFO     | bot                          |   MusicBrainz: OK
+2026-08-04 21:01:41,868 | INFO     | bot                          |   AcousticBrainz: NOT FOUND
+2026-08-04 21:01:41,868 | INFO     | bot                          |   Last.fm tags: 0
+2026-08-04 21:01:41,868 | INFO     | feature_cache                | [CACHE] Saving features for: Queen - The Show Must Go On (ID: 4091936841)
+2026-08-04 21:01:41,869 | INFO     | feature_cache                | [CACHE] Audio features: BPM=83.4, Energy=0.1952, MFCCs=13 coefficients
+2026-08-04 21:01:41,869 | INFO     | feature_cache                | [CACHE] AcousticBrainz: NONE
+2026-08-04 21:01:41,869 | INFO     | feature_cache                | [CACHE] MusicBrainz ID: 2ec628b2-ea27-4f30-b28c-d60f3ff5a37a
+2026-08-04 21:01:41,869 | INFO     | feature_cache                | [CACHE] Last.fm tags: NONE
+2026-08-04 21:01:41,876 | INFO     | feature_cache                | [CACHE] ✓ Saved successfully for: Queen - The Show Must Go On
+2026-08-04 21:01:41,888 | INFO     | feature_cache                | Exported 78 tracks to cached_songs.json
+  0.00  Bohemian Rhapsody - Queen
+  0.00  Don't Stop Me Now - Queen
+  0.00  Another One Bites The Dust - Queen
+  0.00  Under Pressure - Queen
+  0.00  The Show Must Go On - Queen
+  0.00  Radio Ga Ga - Queen
+
+=== DONE in 60.8s ===
+2026-08-04 21:01:42,212 | ERROR    | asyncio                      | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x000001D86872A3D0>
+2026-08-04 21:01:42,212 | ERROR    | asyncio                      | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x000001D86872AF90>

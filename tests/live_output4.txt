@@ -1,0 +1,299 @@
+2026-08-04 21:11:00,826 | INFO     | feature_cache                | Feature cache initialized
+
+=== SEARCH (clean-first) ===
+2026-08-04 21:11:00,826 | INFO     | deezer_helper                | [DEEZER] search query='queen bohemian rhapsody' limit=5
+2026-08-04 21:11:01,704 | INFO     | deezer_helper                | [DEEZER] search query='queen bohemian rhapsody' -> 5 results
+  [CLEAN] Bohemian Rhapsody - Queen (id=4091937401)
+  [live ] Bohemian Rhapsody (Live Aid) - Queen (id=4091936771)
+  [live ] Bohemian Rhapsody (Live At Wembley Stadium / July 1986) - Queen (id=4092342471)
+  [live ] Bohemian Rhapsody / Radio Ga Ga (Live at Wembley Stadium, 13th July 1985) - Queen (id=1306700592)
+  [live ] Bohemian Rhapsody (Live At Milton Keynes Bowl / June 1982) - Queen (id=4092314011)
+Selected: Bohemian Rhapsody - Queen (id=4091937401, preview=True)
+
+=== FULL TRACK ===
+2026-08-04 21:11:01,705 | INFO     | deezer_helper                | [DEEZER] get_track id=4091937401
+2026-08-04 21:11:02,284 | INFO     | deezer_helper                | [DEEZER] get_track id=4091937401 -> Queen - Bohemian Rhapsody (genres=[])
+  genres=[] preview=True
+
+=== ANALYZE TARGET (librosa + MB + Last.fm) ===
+2026-08-04 21:11:03,199 | INFO     | bot                          | Loaded Persian genre database: 203 artists
+2026-08-04 21:11:03,200 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 4091937401
+2026-08-04 21:11:03,201 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 4091937401
+2026-08-04 21:11:03,202 | INFO     | bot                          | Analyzing track: Queen - Bohemian Rhapsody (fast=False)
+2026-08-04 21:11:03,202 | INFO     | audio_analyzer               | Downloading preview: https://cdnt-preview.dzcdn.net/api/1/1/5/f/9/0/5f9a6a2ea1876e6d07c4b7feefa99951.mp3?hdnea=exp=1785866163~acl=/api/1/1/5/f/9/0/5f9a6a2ea1876e6d07c4b7feefa99951.mp3*~data=user_id=0,application_id=42~hmac=d4c2474d6a1a066ab30a6511879b09381686a55fd44d46a554b0617b7ed7da35
+2026-08-04 21:11:04,023 | INFO     | musicbrainz_client           | Found MusicBrainz ID: 46fe768c-7b38-4147-9f02-815b9f0759e2 for Queen - Bohemian Rhapsody
+2026-08-04 21:11:05,911 | INFO     | audio_analyzer               | Downloaded 479827 bytes
+2026-08-04 21:11:05,912 | INFO     | audio_analyzer               | Running librosa analysis...
+2026-08-04 21:11:05,921 | INFO     | audio_analyzer               | [LIBROSA] Starting feature extraction...
+2026-08-04 21:11:05,923 | INFO     | audio_analyzer               | [LIBROSA] Temp file created: C:\Users\Saeid\AppData\Local\Temp\tmppug7m5dp.mp3 (479827 bytes)
+2026-08-04 21:11:05,923 | INFO     | audio_analyzer               | [LIBROSA] Loading audio file...
+[C:\vcpkg\buildtrees\mpg123\src\-66150af195.clean\src\libmpg123\id3.c:INT123_parse_new_id3():950] warning: ID3v2: unrealistic small tag lengh 0, skipping
+2026-08-04 21:11:10,335 | INFO     | audio_analyzer               | [LIBROSA] Audio loaded: 30.0 seconds, 22050 Hz sample rate
+2026-08-04 21:11:10,336 | INFO     | audio_analyzer               | [LIBROSA] Extracting BPM...
+2026-08-04 21:11:13,438 | INFO     | audio_analyzer               | [LIBROSA] BPM: 143.6
+2026-08-04 21:11:13,438 | INFO     | audio_analyzer               | [LIBROSA] Extracting MFCCs (timbre)...
+2026-08-04 21:11:13,491 | INFO     | audio_analyzer               | [LIBROSA] MFCCs extracted: 13 coefficients
+2026-08-04 21:11:13,491 | INFO     | audio_analyzer               | [LIBROSA] Extracting chroma (harmonics)...
+2026-08-04 21:11:13,620 | INFO     | audio_analyzer               | [LIBROSA] Chroma extracted: 12 pitch classes
+2026-08-04 21:11:13,620 | INFO     | audio_analyzer               | [LIBROSA] Extracting spectral features...
+2026-08-04 21:11:14,001 | INFO     | audio_analyzer               | [LIBROSA] Spectral: centroid=1542.7, rolloff=3222.6, bandwidth=1936.7
+2026-08-04 21:11:14,002 | INFO     | audio_analyzer               | [LIBROSA] Extracting energy (RMS)...
+2026-08-04 21:11:14,009 | INFO     | audio_analyzer               | [LIBROSA] Energy: mean=0.0805, var=0.0016
+2026-08-04 21:11:14,010 | INFO     | audio_analyzer               | [LIBROSA] Extracting onset rate...
+2026-08-04 21:11:14,067 | INFO     | audio_analyzer               | [LIBROSA] Onset rate: 1.2716
+2026-08-04 21:11:14,108 | INFO     | audio_analyzer               | [LIBROSA] Inferring musical key...
+2026-08-04 21:11:14,108 | INFO     | audio_analyzer               | [LIBROSA] Key: A#
+2026-08-04 21:11:14,109 | INFO     | audio_analyzer               | [LIBROSA] Inferring scale (major/minor)...
+2026-08-04 21:11:14,109 | INFO     | audio_analyzer               | [LIBROSA] Scale: major (major=0.17, minor=0.12)
+2026-08-04 21:11:14,110 | INFO     | audio_analyzer               | Analyzed audio: BPM=143.6, RMS=0.080
+2026-08-04 21:11:14,110 | INFO     | bot                          | Analysis results for Queen - Bohemian Rhapsody:
+2026-08-04 21:11:14,110 | INFO     | bot                          |   Audio features: OK
+2026-08-04 21:11:14,110 | INFO     | bot                          |   MusicBrainz: OK
+2026-08-04 21:11:14,110 | INFO     | bot                          |   AcousticBrainz: NOT FOUND
+2026-08-04 21:11:14,110 | INFO     | bot                          |   Last.fm tags: 5
+2026-08-04 21:11:14,110 | INFO     | feature_cache                | [CACHE] Saving features for: Queen - Bohemian Rhapsody (ID: 4091937401)
+2026-08-04 21:11:14,110 | INFO     | feature_cache                | [CACHE] Audio features: BPM=143.6, Energy=0.0805, MFCCs=13 coefficients
+2026-08-04 21:11:14,110 | INFO     | feature_cache                | [CACHE] AcousticBrainz: NONE
+2026-08-04 21:11:14,110 | INFO     | feature_cache                | [CACHE] MusicBrainz ID: 46fe768c-7b38-4147-9f02-815b9f0759e2
+2026-08-04 21:11:14,110 | INFO     | feature_cache                | [CACHE] Last.fm tags: classic rock, rock, Queen, 70s, 80s
+2026-08-04 21:11:14,134 | INFO     | feature_cache                | [CACHE] ✓ Saved successfully for: Queen - Bohemian Rhapsody
+2026-08-04 21:11:14,145 | INFO     | feature_cache                | Exported 80 tracks to cached_songs.json
+  audio_features: OK  (bpm=143.5546875)
+  acoustic_features: MISSING (dance=None)
+  lastfm_tags: ['classic rock', 'rock', 'Queen', '70s', '80s']
+
+=== GET SIMILAR + RANK ===
+2026-08-04 21:11:14,145 | INFO     | deezer_helper                | [DEEZER] get_similar id=4091937401 limit=6
+2026-08-04 21:11:14,350 | INFO     | deezer_helper                | [DEEZER] get_similar id=4091937401 -> 0 results
+2026-08-04 21:11:14,350 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=412 limit=6
+2026-08-04 21:11:14,607 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=412 -> 6 results
+  similar candidates: 6
+2026-08-04 21:11:14,607 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 4091941621
+2026-08-04 21:11:14,608 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 4091932701
+2026-08-04 21:11:14,608 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 4092324041
+2026-08-04 21:11:14,610 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 4091932701
+2026-08-04 21:11:14,610 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 4091941621
+2026-08-04 21:11:14,611 | INFO     | feature_cache                | [CACHE] ✓ Cache HIT for track ID: 4092324041
+2026-08-04 21:11:14,611 | INFO     | feature_cache                | [CACHE]   Audio: BPM=112.3, Energy=0.1733
+2026-08-04 21:11:14,611 | INFO     | feature_cache                | [CACHE]   MusicBrainz: 4ef32b7c-e77c-4799-9245-74e74ff5f102
+2026-08-04 21:11:14,611 | INFO     | feature_cache                | [CACHE]   Last.fm tags: classic rock, rock, 80s
+2026-08-04 21:11:14,612 | INFO     | bot                          | Analyzing track: Queen - Bohemian Rhapsody (fast=False)
+2026-08-04 21:11:14,613 | INFO     | bot                          | Analyzing track: Queen - Don't Stop Me Now (fast=False)
+2026-08-04 21:11:14,613 | INFO     | audio_analyzer               | Downloading preview: https://cdnt-preview.dzcdn.net/api/1/1/5/f/9/0/5f9a6a2ea1876e6d07c4b7feefa99951.mp3?hdnea=exp=1785866176~acl=/api/1/1/5/f/9/0/5f9a6a2ea1876e6d07c4b7feefa99951.mp3*~data=user_id=0,application_id=42~hmac=45105e1db08e6bf67694f0d3870c30dfbeaf43deb75b2cb25b7eeaaedc16885d
+2026-08-04 21:11:14,614 | INFO     | audio_analyzer               | Downloading preview: https://cdnt-preview.dzcdn.net/api/1/1/1/1/9/0/119f4b89d07adf0cd62a0571eab8d40a.mp3?hdnea=exp=1785866176~acl=/api/1/1/1/1/9/0/119f4b89d07adf0cd62a0571eab8d40a.mp3*~data=user_id=0,application_id=42~hmac=cf12fc5305b1fea25e59f387a57d8e6dba3f00939cfd91926c57c71380ba4a34
+2026-08-04 21:11:14,614 | INFO     | bot                          | Cache hit for: Queen - Another One Bites The Dust
+2026-08-04 21:11:14,615 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 4091932171
+2026-08-04 21:11:14,619 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 4091932171
+2026-08-04 21:11:14,620 | INFO     | bot                          | Analyzing track: Queen - Under Pressure (feat. David Bowie) (fast=False)
+2026-08-04 21:11:14,620 | INFO     | audio_analyzer               | Downloading preview: https://cdnt-preview.dzcdn.net/api/1/1/d/d/5/0/dd518b80fb4e4d233212b52cf48263d7.mp3?hdnea=exp=1785866176~acl=/api/1/1/d/d/5/0/dd518b80fb4e4d233212b52cf48263d7.mp3*~data=user_id=0,application_id=42~hmac=a3c439bbaf72446d0eec68d937340e865c9cab7137af93caaced954bf9f3f12d
+2026-08-04 21:11:14,772 | WARNING  | musicbrainz_client           | MusicBrainz search failed: 503
+2026-08-04 21:11:15,832 | INFO     | musicbrainz_client           | No MusicBrainz recording found for Queen - Under Pressure (feat. David Bowie)
+2026-08-04 21:11:16,137 | INFO     | audio_analyzer               | Downloaded 479827 bytes
+2026-08-04 21:11:16,137 | INFO     | audio_analyzer               | Running librosa analysis...
+2026-08-04 21:11:16,137 | INFO     | audio_analyzer               | [LIBROSA] Starting feature extraction...
+2026-08-04 21:11:16,139 | INFO     | audio_analyzer               | [LIBROSA] Temp file created: C:\Users\Saeid\AppData\Local\Temp\tmprninqd5s.mp3 (479827 bytes)
+2026-08-04 21:11:16,139 | INFO     | audio_analyzer               | [LIBROSA] Loading audio file...
+[C:\vcpkg\buildtrees\mpg123\src\-66150af195.clean\src\libmpg123\id3.c:INT123_parse_new_id3():950] warning: ID3v2: unrealistic small tag lengh 0, skipping
+2026-08-04 21:11:16,266 | INFO     | audio_analyzer               | [LIBROSA] Audio loaded: 30.0 seconds, 22050 Hz sample rate
+2026-08-04 21:11:16,268 | INFO     | audio_analyzer               | [LIBROSA] Extracting BPM...
+2026-08-04 21:11:16,331 | WARNING  | musicbrainz_client           | MusicBrainz search failed: 503
+2026-08-04 21:11:16,409 | INFO     | audio_analyzer               | [LIBROSA] BPM: 152.0
+2026-08-04 21:11:16,410 | INFO     | audio_analyzer               | [LIBROSA] Extracting MFCCs (timbre)...
+2026-08-04 21:11:16,536 | INFO     | audio_analyzer               | [LIBROSA] MFCCs extracted: 13 coefficients
+2026-08-04 21:11:16,536 | INFO     | audio_analyzer               | [LIBROSA] Extracting chroma (harmonics)...
+2026-08-04 21:11:16,623 | INFO     | audio_analyzer               | Downloaded 479827 bytes
+2026-08-04 21:11:16,623 | INFO     | audio_analyzer               | Running librosa analysis...
+2026-08-04 21:11:16,624 | INFO     | audio_analyzer               | [LIBROSA] Starting feature extraction...
+2026-08-04 21:11:16,625 | INFO     | audio_analyzer               | [LIBROSA] Temp file created: C:\Users\Saeid\AppData\Local\Temp\tmpo8gvvmfa.mp3 (479827 bytes)
+2026-08-04 21:11:16,625 | INFO     | audio_analyzer               | [LIBROSA] Loading audio file...
+[C:\vcpkg\buildtrees\mpg123\src\-66150af195.clean\src\libmpg123\id3.c:INT123_parse_new_id3():950] warning: ID3v2: unrealistic small tag lengh 0, skipping
+2026-08-04 21:11:16,663 | INFO     | audio_analyzer               | [LIBROSA] Chroma extracted: 12 pitch classes
+2026-08-04 21:11:16,663 | INFO     | audio_analyzer               | [LIBROSA] Extracting spectral features...
+2026-08-04 21:11:16,748 | INFO     | audio_analyzer               | [LIBROSA] Audio loaded: 30.0 seconds, 22050 Hz sample rate
+2026-08-04 21:11:16,749 | INFO     | audio_analyzer               | [LIBROSA] Extracting BPM...
+2026-08-04 21:11:16,892 | INFO     | audio_analyzer               | [LIBROSA] BPM: 143.6
+2026-08-04 21:11:16,892 | INFO     | audio_analyzer               | [LIBROSA] Extracting MFCCs (timbre)...
+2026-08-04 21:11:16,975 | INFO     | audio_analyzer               | [LIBROSA] MFCCs extracted: 13 coefficients
+2026-08-04 21:11:16,975 | INFO     | audio_analyzer               | [LIBROSA] Extracting chroma (harmonics)...
+2026-08-04 21:11:17,105 | INFO     | audio_analyzer               | [LIBROSA] Spectral: centroid=2855.2, rolloff=5823.6, bandwidth=2674.4
+2026-08-04 21:11:17,105 | INFO     | audio_analyzer               | [LIBROSA] Extracting energy (RMS)...
+2026-08-04 21:11:17,114 | INFO     | audio_analyzer               | [LIBROSA] Energy: mean=0.1660, var=0.0024
+2026-08-04 21:11:17,114 | INFO     | audio_analyzer               | [LIBROSA] Extracting onset rate...
+2026-08-04 21:11:17,131 | INFO     | audio_analyzer               | Downloaded 479827 bytes
+2026-08-04 21:11:17,131 | INFO     | audio_analyzer               | Running librosa analysis...
+2026-08-04 21:11:17,132 | INFO     | audio_analyzer               | [LIBROSA] Starting feature extraction...
+2026-08-04 21:11:17,133 | INFO     | audio_analyzer               | [LIBROSA] Temp file created: C:\Users\Saeid\AppData\Local\Temp\tmpgskbo921.mp3 (479827 bytes)
+2026-08-04 21:11:17,134 | INFO     | audio_analyzer               | [LIBROSA] Loading audio file...
+2026-08-04 21:11:17,138 | INFO     | audio_analyzer               | [LIBROSA] Chroma extracted: 12 pitch classes
+2026-08-04 21:11:17,138 | INFO     | audio_analyzer               | [LIBROSA] Extracting spectral features...
+[C:\vcpkg\buildtrees\mpg123\src\-66150af195.clean\src\libmpg123\id3.c:INT123_parse_new_id3():950] warning: ID3v2: unrealistic small tag lengh 0, skipping
+2026-08-04 21:11:17,359 | INFO     | audio_analyzer               | [LIBROSA] Onset rate: 1.5568
+2026-08-04 21:11:17,366 | INFO     | audio_analyzer               | [LIBROSA] Audio loaded: 30.0 seconds, 22050 Hz sample rate
+2026-08-04 21:11:17,367 | INFO     | audio_analyzer               | [LIBROSA] Extracting BPM...
+2026-08-04 21:11:17,414 | INFO     | audio_analyzer               | [LIBROSA] Inferring musical key...
+2026-08-04 21:11:17,417 | INFO     | audio_analyzer               | [LIBROSA] Key: D
+2026-08-04 21:11:17,417 | INFO     | audio_analyzer               | [LIBROSA] Inferring scale (major/minor)...
+2026-08-04 21:11:17,418 | INFO     | audio_analyzer               | [LIBROSA] Scale: major (major=0.38, minor=0.26)
+2026-08-04 21:11:17,419 | INFO     | audio_analyzer               | Analyzed audio: BPM=152.0, RMS=0.166
+2026-08-04 21:11:17,420 | INFO     | bot                          | Analysis results for Queen - Don't Stop Me Now:
+2026-08-04 21:11:17,420 | INFO     | bot                          |   Audio features: OK
+2026-08-04 21:11:17,421 | INFO     | bot                          |   MusicBrainz: NOT FOUND
+2026-08-04 21:11:17,421 | INFO     | bot                          |   AcousticBrainz: NOT FOUND
+2026-08-04 21:11:17,421 | INFO     | bot                          |   Last.fm tags: 5
+2026-08-04 21:11:17,421 | INFO     | feature_cache                | [CACHE] Saving features for: Queen - Don't Stop Me Now (ID: 4091932701)
+2026-08-04 21:11:17,421 | INFO     | feature_cache                | [CACHE] Audio features: BPM=152.0, Energy=0.1660, MFCCs=13 coefficients
+2026-08-04 21:11:17,421 | INFO     | feature_cache                | [CACHE] AcousticBrainz: NONE
+2026-08-04 21:11:17,422 | INFO     | feature_cache                | [CACHE] MusicBrainz ID: NONE
+2026-08-04 21:11:17,422 | INFO     | feature_cache                | [CACHE] Last.fm tags: classic rock, rock, Queen, 70s, 80s
+2026-08-04 21:11:17,432 | INFO     | feature_cache                | [CACHE] ✓ Saved successfully for: Queen - Don't Stop Me Now
+2026-08-04 21:11:17,453 | INFO     | feature_cache                | Exported 81 tracks to cached_songs.json
+2026-08-04 21:11:17,453 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 4092326741
+2026-08-04 21:11:17,461 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 4092326741
+2026-08-04 21:11:17,462 | INFO     | bot                          | Analyzing track: Queen - The Show Must Go On (fast=False)
+2026-08-04 21:11:17,463 | INFO     | audio_analyzer               | Downloading preview: https://cdnt-preview.dzcdn.net/api/1/1/b/7/4/0/b74e665b8cab8f608b5de8ebf0a26fc4.mp3?hdnea=exp=1785866176~acl=/api/1/1/b/7/4/0/b74e665b8cab8f608b5de8ebf0a26fc4.mp3*~data=user_id=0,application_id=42~hmac=f22027a28e4fe9aa0d1593263b0ee5e626afcfd7b99c40c33c0dc41e1a36b2a6
+2026-08-04 21:11:17,688 | INFO     | audio_analyzer               | [LIBROSA] BPM: 112.3
+2026-08-04 21:11:17,689 | INFO     | audio_analyzer               | [LIBROSA] Extracting MFCCs (timbre)...
+2026-08-04 21:11:17,750 | INFO     | musicbrainz_client           | Found MusicBrainz ID: 2ec628b2-ea27-4f30-b28c-d60f3ff5a37a for Queen - The Show Must Go On
+2026-08-04 21:11:17,777 | INFO     | audio_analyzer               | [LIBROSA] Spectral: centroid=1542.7, rolloff=3222.6, bandwidth=1936.7
+2026-08-04 21:11:17,777 | INFO     | audio_analyzer               | [LIBROSA] Extracting energy (RMS)...
+2026-08-04 21:11:17,787 | INFO     | audio_analyzer               | [LIBROSA] Energy: mean=0.0805, var=0.0016
+2026-08-04 21:11:17,787 | INFO     | audio_analyzer               | [LIBROSA] Extracting onset rate...
+2026-08-04 21:11:17,804 | INFO     | audio_analyzer               | [LIBROSA] MFCCs extracted: 13 coefficients
+2026-08-04 21:11:17,804 | INFO     | audio_analyzer               | [LIBROSA] Extracting chroma (harmonics)...
+2026-08-04 21:11:17,905 | INFO     | audio_analyzer               | [LIBROSA] Onset rate: 1.2716
+2026-08-04 21:11:17,953 | INFO     | audio_analyzer               | [LIBROSA] Inferring musical key...
+2026-08-04 21:11:17,953 | INFO     | audio_analyzer               | [LIBROSA] Key: A#
+2026-08-04 21:11:17,953 | INFO     | audio_analyzer               | [LIBROSA] Inferring scale (major/minor)...
+2026-08-04 21:11:17,954 | INFO     | audio_analyzer               | [LIBROSA] Scale: major (major=0.17, minor=0.12)
+2026-08-04 21:11:17,954 | INFO     | audio_analyzer               | Analyzed audio: BPM=143.6, RMS=0.080
+2026-08-04 21:11:17,955 | INFO     | bot                          | Analysis results for Queen - Bohemian Rhapsody:
+2026-08-04 21:11:17,955 | INFO     | bot                          |   Audio features: OK
+2026-08-04 21:11:17,955 | INFO     | bot                          |   MusicBrainz: NOT FOUND
+2026-08-04 21:11:17,955 | INFO     | bot                          |   AcousticBrainz: NOT FOUND
+2026-08-04 21:11:17,955 | INFO     | bot                          |   Last.fm tags: 5
+2026-08-04 21:11:17,955 | INFO     | feature_cache                | [CACHE] Saving features for: Queen - Bohemian Rhapsody (ID: 4091941621)
+2026-08-04 21:11:17,955 | INFO     | feature_cache                | [CACHE] Audio features: BPM=143.6, Energy=0.0805, MFCCs=13 coefficients
+2026-08-04 21:11:17,955 | INFO     | feature_cache                | [CACHE] AcousticBrainz: NONE
+2026-08-04 21:11:17,956 | INFO     | feature_cache                | [CACHE] MusicBrainz ID: NONE
+2026-08-04 21:11:17,956 | INFO     | feature_cache                | [CACHE] Last.fm tags: classic rock, rock, Queen, 70s, 80s
+2026-08-04 21:11:17,965 | INFO     | feature_cache                | [CACHE] ✓ Saved successfully for: Queen - Bohemian Rhapsody
+2026-08-04 21:11:17,985 | INFO     | feature_cache                | Exported 82 tracks to cached_songs.json
+2026-08-04 21:11:17,986 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 4091936611
+2026-08-04 21:11:17,989 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 4091936611
+2026-08-04 21:11:17,989 | INFO     | bot                          | Analyzing track: Queen - Somebody To Love (fast=False)
+2026-08-04 21:11:17,989 | INFO     | audio_analyzer               | Downloading preview: https://cdnt-preview.dzcdn.net/api/1/1/5/2/4/0/52479ddfe7c438df8e8f8594ce0132a3.mp3?hdnea=exp=1785866176~acl=/api/1/1/5/2/4/0/52479ddfe7c438df8e8f8594ce0132a3.mp3*~data=user_id=0,application_id=42~hmac=fef1e58a0a02ab921e589f0370aa0ac508f0c70c3d224d18e84bfee240f03af0
+2026-08-04 21:11:18,001 | INFO     | audio_analyzer               | [LIBROSA] Chroma extracted: 12 pitch classes
+2026-08-04 21:11:18,001 | INFO     | audio_analyzer               | [LIBROSA] Extracting spectral features...
+2026-08-04 21:11:18,359 | INFO     | audio_analyzer               | [LIBROSA] Spectral: centroid=2263.1, rolloff=4820.9, bandwidth=2409.8
+2026-08-04 21:11:18,359 | INFO     | audio_analyzer               | [LIBROSA] Extracting energy (RMS)...
+2026-08-04 21:11:18,369 | INFO     | audio_analyzer               | [LIBROSA] Energy: mean=0.1677, var=0.0069
+2026-08-04 21:11:18,370 | INFO     | audio_analyzer               | [LIBROSA] Extracting onset rate...
+2026-08-04 21:11:18,523 | INFO     | audio_analyzer               | [LIBROSA] Onset rate: 1.6247
+2026-08-04 21:11:18,562 | INFO     | audio_analyzer               | [LIBROSA] Inferring musical key...
+2026-08-04 21:11:18,562 | INFO     | audio_analyzer               | [LIBROSA] Key: A
+2026-08-04 21:11:18,563 | INFO     | audio_analyzer               | [LIBROSA] Inferring scale (major/minor)...
+2026-08-04 21:11:18,563 | INFO     | audio_analyzer               | [LIBROSA] Scale: major (major=0.22, minor=-0.23)
+2026-08-04 21:11:18,564 | INFO     | audio_analyzer               | Analyzed audio: BPM=112.3, RMS=0.168
+2026-08-04 21:11:18,564 | INFO     | bot                          | Analysis results for Queen - Under Pressure (feat. David Bowie):
+2026-08-04 21:11:18,564 | INFO     | bot                          |   Audio features: OK
+2026-08-04 21:11:18,564 | INFO     | bot                          |   MusicBrainz: NOT FOUND
+2026-08-04 21:11:18,564 | INFO     | bot                          |   AcousticBrainz: NOT FOUND
+2026-08-04 21:11:18,564 | INFO     | bot                          |   Last.fm tags: 5
+2026-08-04 21:11:18,564 | INFO     | feature_cache                | [CACHE] Saving features for: Queen - Under Pressure (feat. David Bowie) (ID: 4091932171)
+2026-08-04 21:11:18,564 | INFO     | feature_cache                | [CACHE] Audio features: BPM=112.3, Energy=0.1677, MFCCs=13 coefficients
+2026-08-04 21:11:18,564 | INFO     | feature_cache                | [CACHE] AcousticBrainz: NONE
+2026-08-04 21:11:18,564 | INFO     | feature_cache                | [CACHE] MusicBrainz ID: NONE
+2026-08-04 21:11:18,564 | INFO     | feature_cache                | [CACHE] Last.fm tags: rock, classic rock, 80s, Queen, david bowie
+2026-08-04 21:11:18,571 | INFO     | feature_cache                | [CACHE] ✓ Saved successfully for: Queen - Under Pressure (feat. David Bowie)
+2026-08-04 21:11:18,584 | INFO     | feature_cache                | Exported 83 tracks to cached_songs.json
+2026-08-04 21:11:18,667 | WARNING  | musicbrainz_client           | MusicBrainz search failed: 503
+2026-08-04 21:11:20,854 | INFO     | audio_analyzer               | Downloaded 479827 bytes
+2026-08-04 21:11:20,855 | INFO     | audio_analyzer               | Running librosa analysis...
+2026-08-04 21:11:20,855 | INFO     | audio_analyzer               | [LIBROSA] Starting feature extraction...
+2026-08-04 21:11:20,857 | INFO     | audio_analyzer               | [LIBROSA] Temp file created: C:\Users\Saeid\AppData\Local\Temp\tmpxi10tw0o.mp3 (479827 bytes)
+2026-08-04 21:11:20,857 | INFO     | audio_analyzer               | [LIBROSA] Loading audio file...
+[C:\vcpkg\buildtrees\mpg123\src\-66150af195.clean\src\libmpg123\id3.c:INT123_parse_new_id3():950] warning: ID3v2: unrealistic small tag lengh 0, skipping
+2026-08-04 21:11:20,948 | INFO     | audio_analyzer               | [LIBROSA] Audio loaded: 30.0 seconds, 22050 Hz sample rate
+2026-08-04 21:11:20,948 | INFO     | audio_analyzer               | [LIBROSA] Extracting BPM...
+2026-08-04 21:11:21,084 | INFO     | audio_analyzer               | [LIBROSA] BPM: 83.4
+2026-08-04 21:11:21,084 | INFO     | audio_analyzer               | [LIBROSA] Extracting MFCCs (timbre)...
+2026-08-04 21:11:21,143 | INFO     | audio_analyzer               | [LIBROSA] MFCCs extracted: 13 coefficients
+2026-08-04 21:11:21,143 | INFO     | audio_analyzer               | [LIBROSA] Extracting chroma (harmonics)...
+2026-08-04 21:11:21,267 | INFO     | audio_analyzer               | [LIBROSA] Chroma extracted: 12 pitch classes
+2026-08-04 21:11:21,268 | INFO     | audio_analyzer               | [LIBROSA] Extracting spectral features...
+2026-08-04 21:11:21,588 | INFO     | audio_analyzer               | [LIBROSA] Spectral: centroid=2688.8, rolloff=5814.2, bandwidth=2636.8
+2026-08-04 21:11:21,588 | INFO     | audio_analyzer               | [LIBROSA] Extracting energy (RMS)...
+2026-08-04 21:11:21,595 | INFO     | audio_analyzer               | [LIBROSA] Energy: mean=0.1837, var=0.0020
+2026-08-04 21:11:21,595 | INFO     | audio_analyzer               | [LIBROSA] Extracting onset rate...
+2026-08-04 21:11:21,645 | INFO     | audio_analyzer               | [LIBROSA] Onset rate: 1.1671
+2026-08-04 21:11:21,683 | INFO     | audio_analyzer               | [LIBROSA] Inferring musical key...
+2026-08-04 21:11:21,683 | INFO     | audio_analyzer               | [LIBROSA] Key: F#
+2026-08-04 21:11:21,683 | INFO     | audio_analyzer               | [LIBROSA] Inferring scale (major/minor)...
+2026-08-04 21:11:21,684 | INFO     | audio_analyzer               | [LIBROSA] Scale: major (major=-0.01, minor=-0.24)
+2026-08-04 21:11:21,685 | INFO     | audio_analyzer               | Analyzed audio: BPM=83.4, RMS=0.184
+2026-08-04 21:11:21,685 | INFO     | bot                          | Analysis results for Queen - The Show Must Go On:
+2026-08-04 21:11:21,685 | INFO     | bot                          |   Audio features: OK
+2026-08-04 21:11:21,685 | INFO     | bot                          |   MusicBrainz: OK
+2026-08-04 21:11:21,685 | INFO     | bot                          |   AcousticBrainz: NOT FOUND
+2026-08-04 21:11:21,685 | INFO     | bot                          |   Last.fm tags: 0
+2026-08-04 21:11:21,686 | INFO     | feature_cache                | [CACHE] Saving features for: Queen - The Show Must Go On (ID: 4092326741)
+2026-08-04 21:11:21,686 | INFO     | feature_cache                | [CACHE] Audio features: BPM=83.4, Energy=0.1837, MFCCs=13 coefficients
+2026-08-04 21:11:21,686 | INFO     | feature_cache                | [CACHE] AcousticBrainz: NONE
+2026-08-04 21:11:21,686 | INFO     | feature_cache                | [CACHE] MusicBrainz ID: 2ec628b2-ea27-4f30-b28c-d60f3ff5a37a
+2026-08-04 21:11:21,686 | INFO     | feature_cache                | [CACHE] Last.fm tags: NONE
+2026-08-04 21:11:21,693 | INFO     | feature_cache                | [CACHE] ✓ Saved successfully for: Queen - The Show Must Go On
+2026-08-04 21:11:21,705 | INFO     | feature_cache                | Exported 84 tracks to cached_songs.json
+2026-08-04 21:11:22,047 | INFO     | audio_analyzer               | Downloaded 479827 bytes
+2026-08-04 21:11:22,047 | INFO     | audio_analyzer               | Running librosa analysis...
+2026-08-04 21:11:22,047 | INFO     | audio_analyzer               | [LIBROSA] Starting feature extraction...
+2026-08-04 21:11:22,048 | INFO     | audio_analyzer               | [LIBROSA] Temp file created: C:\Users\Saeid\AppData\Local\Temp\tmpmw3o1qii.mp3 (479827 bytes)
+2026-08-04 21:11:22,048 | INFO     | audio_analyzer               | [LIBROSA] Loading audio file...
+[C:\vcpkg\buildtrees\mpg123\src\-66150af195.clean\src\libmpg123\id3.c:INT123_parse_new_id3():950] warning: ID3v2: unrealistic small tag lengh 0, skipping
+2026-08-04 21:11:22,155 | INFO     | audio_analyzer               | [LIBROSA] Audio loaded: 30.0 seconds, 22050 Hz sample rate
+2026-08-04 21:11:22,156 | INFO     | audio_analyzer               | [LIBROSA] Extracting BPM...
+2026-08-04 21:11:22,272 | INFO     | audio_analyzer               | [LIBROSA] BPM: 73.8
+2026-08-04 21:11:22,272 | INFO     | audio_analyzer               | [LIBROSA] Extracting MFCCs (timbre)...
+2026-08-04 21:11:22,327 | INFO     | audio_analyzer               | [LIBROSA] MFCCs extracted: 13 coefficients
+2026-08-04 21:11:22,327 | INFO     | audio_analyzer               | [LIBROSA] Extracting chroma (harmonics)...
+2026-08-04 21:11:22,449 | INFO     | audio_analyzer               | [LIBROSA] Chroma extracted: 12 pitch classes
+2026-08-04 21:11:22,450 | INFO     | audio_analyzer               | [LIBROSA] Extracting spectral features...
+2026-08-04 21:11:22,810 | INFO     | audio_analyzer               | [LIBROSA] Spectral: centroid=2693.3, rolloff=5474.6, bandwidth=2596.8
+2026-08-04 21:11:22,811 | INFO     | audio_analyzer               | [LIBROSA] Extracting energy (RMS)...
+2026-08-04 21:11:22,820 | INFO     | audio_analyzer               | [LIBROSA] Energy: mean=0.1621, var=0.0025
+2026-08-04 21:11:22,820 | INFO     | audio_analyzer               | [LIBROSA] Extracting onset rate...
+2026-08-04 21:11:22,880 | INFO     | audio_analyzer               | [LIBROSA] Onset rate: 1.4749
+2026-08-04 21:11:22,917 | INFO     | audio_analyzer               | [LIBROSA] Inferring musical key...
+2026-08-04 21:11:22,917 | INFO     | audio_analyzer               | [LIBROSA] Key: C
+2026-08-04 21:11:22,917 | INFO     | audio_analyzer               | [LIBROSA] Inferring scale (major/minor)...
+2026-08-04 21:11:22,918 | INFO     | audio_analyzer               | [LIBROSA] Scale: minor (major=-0.19, minor=0.57)
+2026-08-04 21:11:22,919 | INFO     | audio_analyzer               | Analyzed audio: BPM=73.8, RMS=0.162
+2026-08-04 21:11:22,919 | INFO     | bot                          | Analysis results for Queen - Somebody To Love:
+2026-08-04 21:11:22,919 | INFO     | bot                          |   Audio features: OK
+2026-08-04 21:11:22,919 | INFO     | bot                          |   MusicBrainz: NOT FOUND
+2026-08-04 21:11:22,919 | INFO     | bot                          |   AcousticBrainz: NOT FOUND
+2026-08-04 21:11:22,919 | INFO     | bot                          |   Last.fm tags: 5
+2026-08-04 21:11:22,919 | INFO     | feature_cache                | [CACHE] Saving features for: Queen - Somebody To Love (ID: 4091936611)
+2026-08-04 21:11:22,920 | INFO     | feature_cache                | [CACHE] Audio features: BPM=73.8, Energy=0.1621, MFCCs=13 coefficients
+2026-08-04 21:11:22,920 | INFO     | feature_cache                | [CACHE] AcousticBrainz: NONE
+2026-08-04 21:11:22,920 | INFO     | feature_cache                | [CACHE] MusicBrainz ID: NONE
+2026-08-04 21:11:22,920 | INFO     | feature_cache                | [CACHE] Last.fm tags: classic rock, rock, Queen, 70s, british
+2026-08-04 21:11:22,926 | INFO     | feature_cache                | [CACHE] ✓ Saved successfully for: Queen - Somebody To Love
+2026-08-04 21:11:22,939 | INFO     | feature_cache                | Exported 85 tracks to cached_songs.json
+  1.00  Bohemian Rhapsody - Queen
+  0.83  Don't Stop Me Now - Queen
+  0.81  Another One Bites The Dust - Queen
+  0.79  Under Pressure (feat. David Bowie) - Queen
+  0.70  Somebody To Love - Queen
+  0.66  The Show Must Go On - Queen
+
+=== DONE in 22.1s ===
+2026-08-04 21:11:23,145 | ERROR    | asyncio                      | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x0000020A44038BD0>
+2026-08-04 21:11:23,145 | ERROR    | asyncio                      | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x0000020A44039850>
+2026-08-04 21:11:23,145 | ERROR    | asyncio                      | Unclosed connector
+connections: ['deque([(<aiohttp.client_proto.ResponseHandler object at 0x0000020A43FCF750>, 3486619.781), (<aiohttp.client_proto.ResponseHandler object at 0x0000020A51CA7450>, 3486620.703)])', 'deque([(<aiohttp.client_proto.ResponseHandler object at 0x0000020A440502D0>, 3486620.109)])']
+connector: <aiohttp.connector.TCPConnector object at 0x0000020A44038C50>
+2026-08-04 21:11:23,145 | ERROR    | asyncio                      | Unclosed connector
+connections: ['deque([(<aiohttp.client_proto.ResponseHandler object at 0x0000020A4F763150>, 3486618.312), (<aiohttp.client_proto.ResponseHandler object at 0x0000020A43FCF9D0>, 3486619.843), (<aiohttp.client_proto.ResponseHandler object at 0x0000020A50A765D0>, 3486620.328)])']
+connector: <aiohttp.connector.TCPConnector object at 0x0000020A44039890>

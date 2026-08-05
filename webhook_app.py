@@ -18,9 +18,9 @@ load_dotenv(os.path.join(PROJECT_DIR, ".env"))
 
 from bot import build_app
 from telegram import Update
+from logging_config import setup_logging
 
-logging.basicConfig(format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-                    level=logging.INFO)
+setup_logging(level=logging.INFO, log_file=os.path.join(PROJECT_DIR, "bot.log"))
 log = logging.getLogger(__name__)
 
 TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")

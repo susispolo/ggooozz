@@ -1,0 +1,1229 @@
+2026-08-05 00:24:03,994 | INFO     | __main__                     | Loaded Persian genre database: 203 artists
+2026-08-05 00:24:04,425 | INFO     | __main__                     | Music Suggest Bot v3 starting...
+2026-08-05 00:24:06,017 | INFO     | user_prefs                   | [USER_DB] init_db: tables created; PATH=user_prefs.db
+2026-08-05 00:24:06,025 | INFO     | feature_cache                | Feature cache initialized
+2026-08-05 00:24:06,027 | INFO     | __main__                     | Bot initialized: Last.fm=OK
+2026-08-05 00:24:06,191 | INFO     | telegram.ext.Application     | Application started
+2026-08-05 00:25:20,439 | INFO     | __main__                     | [STEP 1] User 240082844: Received text: Bohemian Rhapsody...
+2026-08-05 00:25:21,191 | INFO     | deezer_helper                | [DEEZER] search query='Bohemian Rhapsody' limit=5
+2026-08-05 00:25:22,312 | INFO     | deezer_helper                | [DEEZER] search query='Bohemian Rhapsody' -> 5 results
+2026-08-05 00:25:22,313 | INFO     | __main__                     | [SEARCH] raw=5, clean-first reorder done -> 5 shown
+2026-08-05 00:25:22,313 | INFO     | deezer_helper                | [DEEZER] search query='artist:Queen' limit=3
+2026-08-05 00:25:22,686 | INFO     | deezer_helper                | [DEEZER] search query='artist:Queen' -> 3 results
+2026-08-05 00:25:25,085 | INFO     | __main__                     | Callback received: chat_id=240082844, data=pick_original
+2026-08-05 00:25:25,476 | INFO     | deezer_helper                | [DEEZER] search query='Bohemian Rhapsody' limit=10
+2026-08-05 00:25:25,794 | INFO     | deezer_helper                | [DEEZER] search query='Bohemian Rhapsody' -> 10 results
+2026-08-05 00:25:25,794 | INFO     | deezer_helper                | [DEEZER] get_track id=4091937401
+2026-08-05 00:25:26,451 | INFO     | deezer_helper                | [DEEZER] get_track id=4091937401 -> Queen - Bohemian Rhapsody (genres=[])
+2026-08-05 00:25:26,452 | INFO     | __main__                     | Fetched full track: Queen - Bohemian Rhapsody (genres: [], artist_id: 412)
+2026-08-05 00:25:26,453 | INFO     | deezer_helper                | [DEEZER] search query='Queen' limit=10
+2026-08-05 00:25:26,740 | INFO     | deezer_helper                | [DEEZER] search query='Queen' -> 10 results
+2026-08-05 00:25:26,741 | INFO     | __main__                     | Search 'Queen': found 10 tracks, best ID=412 (count=10)
+2026-08-05 00:25:26,951 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 4091937401
+2026-08-05 00:25:26,954 | INFO     | feature_cache                | [CACHE] ✓ Cache HIT for track ID: 4091937401
+2026-08-05 00:25:26,955 | INFO     | feature_cache                | [CACHE]   Audio: BPM=143.6, Energy=0.0805
+2026-08-05 00:25:26,956 | INFO     | feature_cache                | [CACHE]   MusicBrainz: 46fe768c-7b38-4147-9f02-815b9f0759e2
+2026-08-05 00:25:26,956 | INFO     | feature_cache                | [CACHE]   Last.fm tags: classic rock, rock, Queen
+2026-08-05 00:25:26,958 | INFO     | __main__                     | Cache hit for: Queen - Bohemian Rhapsody
+2026-08-05 00:25:26,958 | INFO     | __main__                     | [FLOW] main track analyzed: audio=True acoustic=False
+2026-08-05 00:25:28,780 | INFO     | lastfm_client                | Last.fm found 10 similar tracks for Queen - Bohemian Rhapsody
+2026-08-05 00:25:28,780 | INFO     | __main__                     | [FLOW] Last.fm similar for Bohemian Rhapsody: 10 found
+2026-08-05 00:25:28,780 | INFO     | deezer_helper                | [DEEZER] search query="Don't Stop Me Now Queen" limit=1
+2026-08-05 00:25:29,094 | INFO     | deezer_helper                | [DEEZER] search query="Don't Stop Me Now Queen" -> 1 results
+2026-08-05 00:25:29,095 | INFO     | deezer_helper                | [DEEZER] search query='Another One Bites the Dust Queen' limit=1
+2026-08-05 00:25:29,453 | INFO     | deezer_helper                | [DEEZER] search query='Another One Bites the Dust Queen' -> 1 results
+2026-08-05 00:25:29,453 | INFO     | deezer_helper                | [DEEZER] search query='Dream On Aerosmith' limit=1
+2026-08-05 00:25:29,775 | INFO     | deezer_helper                | [DEEZER] search query='Dream On Aerosmith' -> 1 results
+2026-08-05 00:25:29,775 | INFO     | deezer_helper                | [DEEZER] search query='Stairway to Heaven Led Zeppelin' limit=1
+2026-08-05 00:25:30,088 | INFO     | deezer_helper                | [DEEZER] search query='Stairway to Heaven Led Zeppelin' -> 1 results
+2026-08-05 00:25:30,088 | INFO     | deezer_helper                | [DEEZER] search query='Mr. Blue Sky Electric Light Orchestra' limit=1
+2026-08-05 00:25:30,383 | INFO     | deezer_helper                | [DEEZER] search query='Mr. Blue Sky Electric Light Orchestra' -> 1 results
+2026-08-05 00:25:30,383 | INFO     | deezer_helper                | [DEEZER] search query='Starman David Bowie' limit=1
+2026-08-05 00:25:30,680 | INFO     | deezer_helper                | [DEEZER] search query='Starman David Bowie' -> 1 results
+2026-08-05 00:25:30,680 | INFO     | deezer_helper                | [DEEZER] search query='Under Pressure Queen & David Bowie' limit=1
+2026-08-05 00:25:30,961 | INFO     | deezer_helper                | [DEEZER] search query='Under Pressure Queen & David Bowie' -> 1 results
+2026-08-05 00:25:30,962 | INFO     | deezer_helper                | [DEEZER] search query="Livin' on a Prayer Bon Jovi" limit=1
+2026-08-05 00:25:31,307 | INFO     | deezer_helper                | [DEEZER] search query="Livin' on a Prayer Bon Jovi" -> 1 results
+2026-08-05 00:25:31,307 | INFO     | deezer_helper                | [DEEZER] get_similar id=4091937401 limit=20
+2026-08-05 00:25:31,550 | INFO     | deezer_helper                | [DEEZER] get_similar id=4091937401 -> 0 results
+2026-08-05 00:25:31,550 | INFO     | __main__                     | [FLOW] Deezer radio for Bohemian Rhapsody: found 0 tracks
+2026-08-05 00:25:31,551 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=412 limit=10
+2026-08-05 00:25:31,908 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=412 -> 10 results
+2026-08-05 00:25:31,909 | INFO     | __main__                     | Same artist tracks for Queen (ID: 412): 10 found
+2026-08-05 00:25:31,909 | INFO     | __main__                     |   Added same artist: Queen - I Want To Break Free (Single Remix)
+2026-08-05 00:25:31,909 | INFO     | __main__                     |   Added same artist: Queen - Don't Stop Me Now
+2026-08-05 00:25:31,909 | INFO     | __main__                     |   Added same artist: Queen - Another One Bites The Dust
+2026-08-05 00:25:31,910 | INFO     | __main__                     |   Added same artist: Queen - I Want It All
+2026-08-05 00:25:31,910 | INFO     | __main__                     |   Added same artist: Queen - Killer Queen
+2026-08-05 00:25:31,910 | INFO     | __main__                     |   Added same artist: Queen - Radio Ga Ga (Live in Budapest)
+2026-08-05 00:25:31,911 | INFO     | __main__                     |   Added same artist: Queen - The Show Must Go On
+2026-08-05 00:25:31,911 | INFO     | __main__                     |   Added same artist: Queen - Friends Will Be Friends
+2026-08-05 00:25:31,911 | INFO     | __main__                     | Same artist tracks found: 8
+2026-08-05 00:25:31,912 | INFO     | __main__                     | Different artist tracks found: 5
+2026-08-05 00:25:31,912 | INFO     | __main__                     | Total similar tracks: 6
+2026-08-05 00:25:31,913 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 4092326621
+2026-08-05 00:25:31,913 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 4092329741
+2026-08-05 00:25:31,914 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 4092324041
+2026-08-05 00:25:31,916 | INFO     | feature_cache                | [CACHE] ✓ Cache HIT for track ID: 4092329741
+2026-08-05 00:25:31,917 | INFO     | feature_cache                | [CACHE]   Audio: BPM=152.0, Energy=0.2076
+2026-08-05 00:25:31,917 | INFO     | feature_cache                | [CACHE]   MusicBrainz: 6c7bf247-ffb3-4d56-9f9e-b297abd9dd67
+2026-08-05 00:25:31,917 | INFO     | feature_cache                | [CACHE]   Last.fm tags: classic rock, rock, Queen
+2026-08-05 00:25:31,918 | INFO     | feature_cache                | [CACHE] ✓ Cache HIT for track ID: 4092324041
+2026-08-05 00:25:31,919 | INFO     | feature_cache                | [CACHE]   Audio: BPM=112.3, Energy=0.1733
+2026-08-05 00:25:31,919 | INFO     | feature_cache                | [CACHE]   MusicBrainz: 4ef32b7c-e77c-4799-9245-74e74ff5f102
+2026-08-05 00:25:31,919 | INFO     | feature_cache                | [CACHE]   Last.fm tags: classic rock, rock, 80s
+2026-08-05 00:25:31,921 | INFO     | __main__                     | Cache hit for: Queen - Don't Stop Me Now
+2026-08-05 00:25:31,921 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 2431707315
+2026-08-05 00:25:31,922 | INFO     | __main__                     | Cache hit for: Queen - Another One Bites The Dust
+2026-08-05 00:25:31,922 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 88003859
+2026-08-05 00:25:31,924 | INFO     | feature_cache                | [CACHE] ✓ Cache HIT for track ID: 2431707315
+2026-08-05 00:25:31,925 | INFO     | feature_cache                | [CACHE]   Audio: BPM=76.0, Energy=0.1105
+2026-08-05 00:25:31,925 | INFO     | feature_cache                | [CACHE]   MusicBrainz: e37f58f9-37d3-486c-8b7f-3cc0f6633926
+2026-08-05 00:25:31,925 | INFO     | feature_cache                | [CACHE]   Last.fm tags: classic rock, rock, hard rock
+2026-08-05 00:25:31,926 | INFO     | feature_cache                | [CACHE] ✓ Cache HIT for track ID: 88003859
+2026-08-05 00:25:31,928 | INFO     | __main__                     | Cache hit for: Aerosmith - Dream On
+2026-08-05 00:25:31,929 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 112662184
+2026-08-05 00:25:31,930 | INFO     | feature_cache                | [CACHE] ✓ Cache HIT for track ID: 4092326621
+2026-08-05 00:25:31,930 | INFO     | feature_cache                | [CACHE]   Audio: BPM=107.7, Energy=0.1294
+2026-08-05 00:25:31,931 | INFO     | __main__                     | Cache entry without features for Led Zeppelin - Stairway to Heaven (Remaster), re-analyzing (track 88003859)
+2026-08-05 00:25:31,931 | INFO     | __main__                     | Analyzing track: Led Zeppelin - Stairway to Heaven (Remaster) (fast=True)
+2026-08-05 00:25:31,933 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 112662184
+2026-08-05 00:25:31,934 | INFO     | __main__                     | Cache hit for: Queen - I Want To Break Free (Single Remix)
+2026-08-05 00:25:31,935 | INFO     | __main__                     | Analyzing track: Electric Light Orchestra - Mr. Blue Sky (fast=True)
+2026-08-05 00:25:32,752 | INFO     | musicbrainz_client           | No MusicBrainz recording found for Led Zeppelin - Stairway to Heaven (Remaster)
+2026-08-05 00:25:32,753 | INFO     | __main__                     | Analysis results for Led Zeppelin - Stairway to Heaven (Remaster):
+2026-08-05 00:25:32,754 | INFO     | __main__                     |   Audio features: SKIPPED
+2026-08-05 00:25:32,754 | INFO     | __main__                     |   MusicBrainz: NOT FOUND
+2026-08-05 00:25:32,754 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 00:25:32,754 | WARNING  | __main__                     | [FLOW] candidate analysis failed for Led Zeppelin - Stairway to Heaven (Remaster): 'NoneType' object has no attribute 'get'
+2026-08-05 00:25:33,097 | WARNING  | musicbrainz_client           | MusicBrainz search failed: 503
+2026-08-05 00:25:33,098 | INFO     | __main__                     | Analysis results for Electric Light Orchestra - Mr. Blue Sky:
+2026-08-05 00:25:33,098 | INFO     | __main__                     |   Audio features: SKIPPED
+2026-08-05 00:25:33,099 | INFO     | __main__                     |   MusicBrainz: NOT FOUND
+2026-08-05 00:25:33,099 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 00:25:33,099 | WARNING  | __main__                     | [FLOW] candidate analysis failed for Electric Light Orchestra - Mr. Blue Sky: 'NoneType' object has no attribute 'get'
+2026-08-05 00:25:33,100 | INFO     | __main__                     | [FLOW] candidate features ready: 4/6
+2026-08-05 00:25:33,100 | INFO     | __main__                     | Similarity calc: target_audio=YES, target_acoustic=NO, candidates=6
+2026-08-05 00:25:33,103 | INFO     | __main__                     | Similarity scores: [('I Want To Break Free (Single Remix)', 0.8303368775034323), ('Another One Bites The Dust', 0.8113152103863006), ('Dream On', 0.7645981829624984)]
+2026-08-05 00:25:33,104 | INFO     | __main__                     | Building features - target_audio: YES, genres: []
+2026-08-05 00:25:33,106 | INFO     | __main__                     | [GENRE] Deezer genres empty for Queen - Bohemian Rhapsody
+2026-08-05 00:25:33,400 | INFO     | lastfm_client                | Last.fm artist tags for Queen: ['classic rock', 'rock', 'hard rock', 'glam rock', '80s']
+2026-08-05 00:25:33,401 | INFO     | __main__                     | [GENRE] Last.fm genre for Queen: classic rock
+2026-08-05 00:26:10,247 | INFO     | __main__                     | [STEP 1] User 240082844: Received text: 📋 My Playlist...
+2026-08-05 00:26:10,256 | INFO     | user_prefs                   | [PLAYLIST_DB] get_user_playlist user=240082844 -> 0 rows
+2026-08-05 00:26:15,392 | INFO     | __main__                     | [STEP 1] User 240082844: Received text: ➕ Add to Playlist...
+2026-08-05 00:26:15,392 | INFO     | __main__                     | [STEP 2] User 240082844: Entering playlist mode
+2026-08-05 00:26:43,182 | INFO     | __main__                     | [STEP 1] User 240082844: Received text: ✅ Done (5 songs)...
+2026-08-05 00:26:43,182 | INFO     | __main__                     | [STEP 3] User 240082844: Done button pressed, starting processing
+2026-08-05 00:26:43,182 | INFO     | __main__                     | [STEP 4] User 240082844: Starting processing
+2026-08-05 00:26:43,183 | INFO     | __main__                     | [STEP 4] User 240082844: Got 5 pending songs
+2026-08-05 00:26:43,183 | INFO     | __main__                     | [STEP 4] User 240082844: Parsed 5 songs from input
+2026-08-05 00:26:43,184 | INFO     | __main__                     | [STEP 5] User 240082844: Cleaned 5 songs
+2026-08-05 00:26:43,548 | INFO     | __main__                     | [STEP 6] User 240082844: Processing 1/5: '02 The Heavy   What Makes A Good Man?' -> 'The Heavy What Makes A Good Man?'
+2026-08-05 00:26:43,800 | INFO     | __main__                     | [STEP 6] User 240082844: Searching Deezer for: The Heavy What Makes A Good Man?
+2026-08-05 00:26:43,800 | INFO     | deezer_helper                | [DEEZER] search query='The Heavy What Makes A Good Man?' limit=3
+2026-08-05 00:26:44,476 | INFO     | deezer_helper                | [DEEZER] search query='The Heavy What Makes A Good Man?' -> 3 results
+2026-08-05 00:26:44,476 | INFO     | __main__                     | [STEP 6] User 240082844: Found: What Makes A Good Man? - The Heavy
+2026-08-05 00:26:44,476 | INFO     | __main__                     | [STEP 6] User 240082844: Is Persian: False
+2026-08-05 00:26:44,477 | INFO     | __main__                     | [STEP 6] User 240082844: Analyzing features (librosa)...
+2026-08-05 00:26:44,477 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 18435591
+2026-08-05 00:26:44,478 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 18435591
+2026-08-05 00:26:44,479 | INFO     | __main__                     | Analyzing track: The Heavy - What Makes A Good Man? (fast=False)
+2026-08-05 00:26:44,480 | INFO     | audio_analyzer               | Downloading preview: https://cdnt-preview.dzcdn.net/api/1/1/c/1/9/0/c199bb54befbbff3b185ff4b47c78273.mp3?hdnea=exp=1785877906~acl=/api/1/1/c/1/9/0/c199bb54befbbff3b185ff4b47c78273.mp3*~data=user_id=0,application_id=42~hmac=6b5d2bbc96cb3602e4fb8f8bceb72539d588939473e03c63af86a814f052c893
+2026-08-05 00:26:45,877 | INFO     | musicbrainz_client           | Found MusicBrainz ID: e614f23f-2086-4c58-af33-b4d4c1e45413 for The Heavy - What Makes A Good Man?
+2026-08-05 00:26:46,577 | INFO     | audio_analyzer               | Downloaded 479827 bytes
+2026-08-05 00:26:46,578 | INFO     | audio_analyzer               | Running librosa analysis...
+2026-08-05 00:26:46,589 | INFO     | audio_analyzer               | [LIBROSA] Starting feature extraction...
+2026-08-05 00:26:46,591 | INFO     | audio_analyzer               | [LIBROSA] Temp file created: C:\Users\Saeid\AppData\Local\Temp\tmpjbfpu408.mp3 (479827 bytes)
+2026-08-05 00:26:46,593 | INFO     | audio_analyzer               | [LIBROSA] Loading audio file...
+2026-08-05 00:26:53,309 | INFO     | audio_analyzer               | [LIBROSA] Audio loaded: 30.0 seconds, 22050 Hz sample rate
+2026-08-05 00:26:53,310 | INFO     | audio_analyzer               | [LIBROSA] Extracting BPM...
+2026-08-05 00:26:56,957 | INFO     | audio_analyzer               | [LIBROSA] BPM: 92.3
+2026-08-05 00:26:56,957 | INFO     | audio_analyzer               | [LIBROSA] Extracting MFCCs (timbre)...
+2026-08-05 00:26:57,025 | INFO     | audio_analyzer               | [LIBROSA] MFCCs extracted: 13 coefficients
+2026-08-05 00:26:57,026 | INFO     | audio_analyzer               | [LIBROSA] Extracting chroma (harmonics)...
+2026-08-05 00:26:57,189 | INFO     | audio_analyzer               | [LIBROSA] Chroma extracted: 12 pitch classes
+2026-08-05 00:26:57,190 | INFO     | audio_analyzer               | [LIBROSA] Extracting spectral features...
+2026-08-05 00:26:57,585 | INFO     | audio_analyzer               | [LIBROSA] Spectral: centroid=2745.7, rolloff=6013.6, bandwidth=2801.6
+2026-08-05 00:26:57,586 | INFO     | audio_analyzer               | [LIBROSA] Extracting energy (RMS)...
+2026-08-05 00:26:57,596 | INFO     | audio_analyzer               | [LIBROSA] Energy: mean=0.2001, var=0.0103
+2026-08-05 00:26:57,596 | INFO     | audio_analyzer               | [LIBROSA] Extracting onset rate...
+2026-08-05 00:26:57,661 | INFO     | audio_analyzer               | [LIBROSA] Onset rate: 2.1650
+2026-08-05 00:26:57,698 | INFO     | audio_analyzer               | [LIBROSA] Inferring musical key...
+2026-08-05 00:26:57,698 | INFO     | audio_analyzer               | [LIBROSA] Key: A
+2026-08-05 00:26:57,699 | INFO     | audio_analyzer               | [LIBROSA] Inferring scale (major/minor)...
+2026-08-05 00:26:57,701 | INFO     | audio_analyzer               | [LIBROSA] Scale: minor (major=-0.07, minor=-0.01)
+2026-08-05 00:26:57,703 | INFO     | audio_analyzer               | Analyzed audio: BPM=92.3, RMS=0.200
+2026-08-05 00:26:57,703 | INFO     | __main__                     | Analysis results for The Heavy - What Makes A Good Man?:
+2026-08-05 00:26:57,703 | INFO     | __main__                     |   Audio features: OK
+2026-08-05 00:26:57,703 | INFO     | __main__                     |   MusicBrainz: OK
+2026-08-05 00:26:57,704 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 00:26:57,704 | INFO     | __main__                     |   Last.fm tags: 0
+2026-08-05 00:26:57,704 | INFO     | feature_cache                | [CACHE] Saving features for: The Heavy - What Makes A Good Man? (ID: 18435591)
+2026-08-05 00:26:57,704 | INFO     | feature_cache                | [CACHE] Audio features: BPM=92.3, Energy=0.2001, MFCCs=13 coefficients
+2026-08-05 00:26:57,704 | INFO     | feature_cache                | [CACHE] AcousticBrainz: NONE
+2026-08-05 00:26:57,704 | INFO     | feature_cache                | [CACHE] MusicBrainz ID: e614f23f-2086-4c58-af33-b4d4c1e45413
+2026-08-05 00:26:57,705 | INFO     | feature_cache                | [CACHE] Last.fm tags: NONE
+2026-08-05 00:26:57,713 | INFO     | feature_cache                | [CACHE] ✓ Saved successfully for: The Heavy - What Makes A Good Man?
+2026-08-05 00:26:57,726 | INFO     | feature_cache                | Exported 86 tracks to cached_songs.json
+2026-08-05 00:26:57,726 | INFO     | __main__                     | [STEP 6] User 240082844: Features OK: BPM=92.28515625
+2026-08-05 00:26:57,727 | INFO     | deezer_helper                | [DEEZER] get_similar id=18435591 limit=5
+2026-08-05 00:26:57,974 | INFO     | deezer_helper                | [DEEZER] get_similar id=18435591 -> 0 results
+2026-08-05 00:26:57,974 | INFO     | user_prefs                   | [PLAYLIST_DB] add_to_user_playlist user=240082844 track=18435591 (What Makes A Good Man? - The Heavy) bpm=92.28515625 energy=0.20011219382286072 valence=0 genre='' persian=False similar=0
+2026-08-05 00:26:57,986 | INFO     | user_prefs                   | [PLAYLIST_DB] added OK user=240082844 track=18435591
+2026-08-05 00:26:57,988 | INFO     | __main__                     | [STEP 7] User 240082844: Added: What Makes A Good Man? - The Heavy (genre: )
+2026-08-05 00:26:57,989 | INFO     | __main__                     | [STEP 6] User 240082844: Processing 2/5: 'The Who   The Seeker' -> 'The Who The Seeker'
+2026-08-05 00:26:58,673 | INFO     | __main__                     | [STEP 6] User 240082844: Searching Deezer for: The Who The Seeker
+2026-08-05 00:26:58,674 | INFO     | deezer_helper                | [DEEZER] search query='The Who The Seeker' limit=3
+2026-08-05 00:26:58,951 | INFO     | deezer_helper                | [DEEZER] search query='The Who The Seeker' -> 3 results
+2026-08-05 00:26:58,952 | INFO     | __main__                     | [STEP 6] User 240082844: Found: The Seeker (Edit) - The Who
+2026-08-05 00:26:58,952 | INFO     | __main__                     | [STEP 6] User 240082844: Is Persian: False
+2026-08-05 00:26:58,952 | INFO     | __main__                     | [STEP 6] User 240082844: Analyzing features (librosa)...
+2026-08-05 00:26:58,952 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 65414413
+2026-08-05 00:26:58,954 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 65414413
+2026-08-05 00:26:58,956 | INFO     | __main__                     | Analyzing track: The Who - The Seeker (Edit) (fast=False)
+2026-08-05 00:26:58,956 | INFO     | audio_analyzer               | Downloading preview: https://cdnt-preview.dzcdn.net/api/1/1/d/4/2/0/d42b0a77d8d39833c8c10d5afed8cc5c.mp3?hdnea=exp=1785877920~acl=/api/1/1/d/4/2/0/d42b0a77d8d39833c8c10d5afed8cc5c.mp3*~data=user_id=0,application_id=42~hmac=f41c5f119f8d0319e3a9ea7171ce6cbd7f091ecd1aefae1201681f2605187825
+2026-08-05 00:26:59,527 | INFO     | musicbrainz_client           | No MusicBrainz recording found for The Who - The Seeker (Edit)
+2026-08-05 00:27:00,496 | INFO     | audio_analyzer               | Downloaded 479827 bytes
+2026-08-05 00:27:00,497 | INFO     | audio_analyzer               | Running librosa analysis...
+2026-08-05 00:27:00,498 | INFO     | audio_analyzer               | [LIBROSA] Starting feature extraction...
+2026-08-05 00:27:00,499 | INFO     | audio_analyzer               | [LIBROSA] Temp file created: C:\Users\Saeid\AppData\Local\Temp\tmp3jibckxj.mp3 (479827 bytes)
+2026-08-05 00:27:00,499 | INFO     | audio_analyzer               | [LIBROSA] Loading audio file...
+2026-08-05 00:27:00,606 | INFO     | audio_analyzer               | [LIBROSA] Audio loaded: 30.0 seconds, 22050 Hz sample rate
+2026-08-05 00:27:00,609 | INFO     | audio_analyzer               | [LIBROSA] Extracting BPM...
+2026-08-05 00:27:00,730 | INFO     | audio_analyzer               | [LIBROSA] BPM: 89.1
+2026-08-05 00:27:00,731 | INFO     | audio_analyzer               | [LIBROSA] Extracting MFCCs (timbre)...
+2026-08-05 00:27:00,793 | INFO     | audio_analyzer               | [LIBROSA] MFCCs extracted: 13 coefficients
+2026-08-05 00:27:00,793 | INFO     | audio_analyzer               | [LIBROSA] Extracting chroma (harmonics)...
+2026-08-05 00:27:00,928 | INFO     | audio_analyzer               | [LIBROSA] Chroma extracted: 12 pitch classes
+2026-08-05 00:27:00,928 | INFO     | audio_analyzer               | [LIBROSA] Extracting spectral features...
+2026-08-05 00:27:01,310 | INFO     | audio_analyzer               | [LIBROSA] Spectral: centroid=2335.8, rolloff=4739.7, bandwidth=2302.0
+2026-08-05 00:27:01,311 | INFO     | audio_analyzer               | [LIBROSA] Extracting energy (RMS)...
+2026-08-05 00:27:01,322 | INFO     | audio_analyzer               | [LIBROSA] Energy: mean=0.1082, var=0.0007
+2026-08-05 00:27:01,323 | INFO     | audio_analyzer               | [LIBROSA] Extracting onset rate...
+2026-08-05 00:27:01,385 | INFO     | audio_analyzer               | [LIBROSA] Onset rate: 1.4206
+2026-08-05 00:27:01,424 | INFO     | audio_analyzer               | [LIBROSA] Inferring musical key...
+2026-08-05 00:27:01,424 | INFO     | audio_analyzer               | [LIBROSA] Key: A
+2026-08-05 00:27:01,424 | INFO     | audio_analyzer               | [LIBROSA] Inferring scale (major/minor)...
+2026-08-05 00:27:01,425 | INFO     | audio_analyzer               | [LIBROSA] Scale: major (major=0.38, minor=-0.28)
+2026-08-05 00:27:01,426 | INFO     | audio_analyzer               | Analyzed audio: BPM=89.1, RMS=0.108
+2026-08-05 00:27:01,426 | INFO     | __main__                     | Analysis results for The Who - The Seeker (Edit):
+2026-08-05 00:27:01,427 | INFO     | __main__                     |   Audio features: OK
+2026-08-05 00:27:01,427 | INFO     | __main__                     |   MusicBrainz: NOT FOUND
+2026-08-05 00:27:01,427 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 00:27:01,427 | INFO     | __main__                     |   Last.fm tags: 0
+2026-08-05 00:27:01,428 | INFO     | feature_cache                | [CACHE] Saving features for: The Who - The Seeker (Edit) (ID: 65414413)
+2026-08-05 00:27:01,428 | INFO     | feature_cache                | [CACHE] Audio features: BPM=89.1, Energy=0.1082, MFCCs=13 coefficients
+2026-08-05 00:27:01,428 | INFO     | feature_cache                | [CACHE] AcousticBrainz: NONE
+2026-08-05 00:27:01,429 | INFO     | feature_cache                | [CACHE] MusicBrainz ID: NONE
+2026-08-05 00:27:01,429 | INFO     | feature_cache                | [CACHE] Last.fm tags: NONE
+2026-08-05 00:27:01,438 | INFO     | feature_cache                | [CACHE] ✓ Saved successfully for: The Who - The Seeker (Edit)
+2026-08-05 00:27:01,451 | INFO     | feature_cache                | Exported 87 tracks to cached_songs.json
+2026-08-05 00:27:01,452 | INFO     | __main__                     | [STEP 6] User 240082844: Features OK: BPM=89.10290948275862
+2026-08-05 00:27:01,452 | INFO     | deezer_helper                | [DEEZER] get_similar id=65414413 limit=5
+2026-08-05 00:27:01,875 | INFO     | deezer_helper                | [DEEZER] get_similar id=65414413 -> 0 results
+2026-08-05 00:27:01,876 | INFO     | user_prefs                   | [PLAYLIST_DB] add_to_user_playlist user=240082844 track=65414413 (The Seeker (Edit) - The Who) bpm=89.10290948275862 energy=0.10818611085414886 valence=0 genre='' persian=False similar=0
+2026-08-05 00:27:01,887 | INFO     | user_prefs                   | [PLAYLIST_DB] added OK user=240082844 track=65414413
+2026-08-05 00:27:01,888 | INFO     | __main__                     | [STEP 7] User 240082844: Added: The Seeker (Edit) - The Who (genre: )
+2026-08-05 00:27:01,888 | INFO     | __main__                     | [STEP 6] User 240082844: Processing 3/5: 'Fairuz   Wa Habibi' -> 'Fairuz Wa Habibi'
+2026-08-05 00:27:02,187 | INFO     | __main__                     | [STEP 6] User 240082844: Searching Deezer for: Fairuz Wa Habibi
+2026-08-05 00:27:02,187 | INFO     | deezer_helper                | [DEEZER] search query='Fairuz Wa Habibi' limit=3
+2026-08-05 00:27:02,489 | INFO     | deezer_helper                | [DEEZER] search query='Fairuz Wa Habibi' -> 3 results
+2026-08-05 00:27:02,489 | INFO     | __main__                     | [STEP 6] User 240082844: Found: Wa Habibi - Fairuz
+2026-08-05 00:27:02,490 | INFO     | __main__                     | [STEP 6] User 240082844: Is Persian: False
+2026-08-05 00:27:02,490 | INFO     | __main__                     | [STEP 6] User 240082844: Analyzing features (librosa)...
+2026-08-05 00:27:02,490 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 78569736
+2026-08-05 00:27:02,493 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 78569736
+2026-08-05 00:27:02,494 | INFO     | __main__                     | Analyzing track: Fairuz - Wa Habibi (fast=False)
+2026-08-05 00:27:02,494 | INFO     | audio_analyzer               | Downloading preview: https://cdnt-preview.dzcdn.net/api/1/1/d/8/7/0/d878654b541ac86ddaaf99e472fcfced.mp3?hdnea=exp=1785877924~acl=/api/1/1/d/8/7/0/d878654b541ac86ddaaf99e472fcfced.mp3*~data=user_id=0,application_id=42~hmac=6c470cc2e062838cd8c16f076dcfe367afb171386acebd1ff5a3500acd1f59cc
+2026-08-05 00:27:05,440 | INFO     | audio_analyzer               | Downloaded 479827 bytes
+2026-08-05 00:27:05,441 | INFO     | audio_analyzer               | Running librosa analysis...
+2026-08-05 00:27:05,441 | INFO     | audio_analyzer               | [LIBROSA] Starting feature extraction...
+2026-08-05 00:27:05,442 | INFO     | audio_analyzer               | [LIBROSA] Temp file created: C:\Users\Saeid\AppData\Local\Temp\tmpvvxzsmwn.mp3 (479827 bytes)
+2026-08-05 00:27:05,443 | INFO     | audio_analyzer               | [LIBROSA] Loading audio file...
+2026-08-05 00:27:05,538 | INFO     | audio_analyzer               | [LIBROSA] Audio loaded: 30.0 seconds, 22050 Hz sample rate
+2026-08-05 00:27:05,538 | INFO     | audio_analyzer               | [LIBROSA] Extracting BPM...
+2026-08-05 00:27:05,660 | INFO     | audio_analyzer               | [LIBROSA] BPM: 172.3
+2026-08-05 00:27:05,661 | INFO     | audio_analyzer               | [LIBROSA] Extracting MFCCs (timbre)...
+2026-08-05 00:27:05,742 | INFO     | audio_analyzer               | [LIBROSA] MFCCs extracted: 13 coefficients
+2026-08-05 00:27:05,742 | INFO     | audio_analyzer               | [LIBROSA] Extracting chroma (harmonics)...
+2026-08-05 00:27:05,863 | INFO     | audio_analyzer               | [LIBROSA] Chroma extracted: 12 pitch classes
+2026-08-05 00:27:05,864 | INFO     | audio_analyzer               | [LIBROSA] Extracting spectral features...
+2026-08-05 00:27:06,242 | INFO     | audio_analyzer               | [LIBROSA] Spectral: centroid=808.8, rolloff=1247.7, bandwidth=1224.8
+2026-08-05 00:27:06,243 | INFO     | audio_analyzer               | [LIBROSA] Extracting energy (RMS)...
+2026-08-05 00:27:06,252 | INFO     | audio_analyzer               | [LIBROSA] Energy: mean=0.0748, var=0.0017
+2026-08-05 00:27:06,252 | INFO     | audio_analyzer               | [LIBROSA] Extracting onset rate...
+2026-08-05 00:27:06,353 | INFO     | audio_analyzer               | [LIBROSA] Onset rate: 0.8158
+2026-08-05 00:27:06,384 | INFO     | audio_analyzer               | [LIBROSA] Inferring musical key...
+2026-08-05 00:27:06,385 | INFO     | audio_analyzer               | [LIBROSA] Key: F
+2026-08-05 00:27:06,385 | INFO     | audio_analyzer               | [LIBROSA] Inferring scale (major/minor)...
+2026-08-05 00:27:06,386 | INFO     | audio_analyzer               | [LIBROSA] Scale: major (major=0.34, minor=-0.01)
+2026-08-05 00:27:06,387 | INFO     | audio_analyzer               | Analyzed audio: BPM=172.3, RMS=0.075
+2026-08-05 00:27:08,858 | INFO     | musicbrainz_client           | Found MusicBrainz ID: 4fa9e617-d767-4e96-a8b8-7b18b60168db for Fairuz - Wa Habibi
+2026-08-05 00:27:09,712 | INFO     | __main__                     | Analysis results for Fairuz - Wa Habibi:
+2026-08-05 00:27:09,714 | INFO     | __main__                     |   Audio features: OK
+2026-08-05 00:27:09,714 | INFO     | __main__                     |   MusicBrainz: OK
+2026-08-05 00:27:09,715 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 00:27:09,715 | INFO     | __main__                     |   Last.fm tags: 0
+2026-08-05 00:27:09,715 | INFO     | feature_cache                | [CACHE] Saving features for: Fairuz - Wa Habibi (ID: 78569736)
+2026-08-05 00:27:09,717 | INFO     | feature_cache                | [CACHE] Audio features: BPM=172.3, Energy=0.0748, MFCCs=13 coefficients
+2026-08-05 00:27:09,717 | INFO     | feature_cache                | [CACHE] AcousticBrainz: NONE
+2026-08-05 00:27:09,717 | INFO     | feature_cache                | [CACHE] MusicBrainz ID: 4fa9e617-d767-4e96-a8b8-7b18b60168db
+2026-08-05 00:27:09,718 | INFO     | feature_cache                | [CACHE] Last.fm tags: NONE
+2026-08-05 00:27:09,726 | INFO     | feature_cache                | [CACHE] ✓ Saved successfully for: Fairuz - Wa Habibi
+2026-08-05 00:27:09,741 | INFO     | feature_cache                | Exported 88 tracks to cached_songs.json
+2026-08-05 00:27:09,741 | INFO     | __main__                     | [STEP 6] User 240082844: Features OK: BPM=172.265625
+2026-08-05 00:27:09,741 | INFO     | deezer_helper                | [DEEZER] get_similar id=78569736 limit=5
+2026-08-05 00:27:09,979 | INFO     | deezer_helper                | [DEEZER] get_similar id=78569736 -> 0 results
+2026-08-05 00:27:09,979 | INFO     | user_prefs                   | [PLAYLIST_DB] add_to_user_playlist user=240082844 track=78569736 (Wa Habibi - Fairuz) bpm=172.265625 energy=0.07483935356140137 valence=0 genre='' persian=False similar=0
+2026-08-05 00:27:09,987 | INFO     | user_prefs                   | [PLAYLIST_DB] added OK user=240082844 track=78569736
+2026-08-05 00:27:09,987 | INFO     | __main__                     | [STEP 7] User 240082844: Added: Wa Habibi - Fairuz (genre: )
+2026-08-05 00:27:09,988 | INFO     | __main__                     | [STEP 6] User 240082844: Processing 4/5: '04 Fairuz   Saaltak Habiby' -> 'Fairuz Saaltak Habiby'
+2026-08-05 00:27:10,586 | INFO     | __main__                     | [STEP 6] User 240082844: Searching Deezer for: Fairuz Saaltak Habiby
+2026-08-05 00:27:10,586 | INFO     | deezer_helper                | [DEEZER] search query='Fairuz Saaltak Habiby' limit=3
+2026-08-05 00:27:10,866 | INFO     | deezer_helper                | [DEEZER] search query='Fairuz Saaltak Habiby' -> 2 results
+2026-08-05 00:27:10,866 | INFO     | __main__                     | [STEP 6] User 240082844: Found: Saaltak Habiby - Fairuz
+2026-08-05 00:27:10,867 | INFO     | __main__                     | [STEP 6] User 240082844: Is Persian: False
+2026-08-05 00:27:10,867 | INFO     | __main__                     | [STEP 6] User 240082844: Analyzing features (librosa)...
+2026-08-05 00:27:10,867 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 564173332
+2026-08-05 00:27:10,869 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 564173332
+2026-08-05 00:27:10,870 | INFO     | __main__                     | Analyzing track: Fairuz - Saaltak Habiby (fast=False)
+2026-08-05 00:27:10,870 | INFO     | audio_analyzer               | Downloading preview: https://cdnt-preview.dzcdn.net/api/1/1/1/8/1/0/1818bd120ab9e8d6fbcebe5128a925a5.mp3?hdnea=exp=1785877932~acl=/api/1/1/1/8/1/0/1818bd120ab9e8d6fbcebe5128a925a5.mp3*~data=user_id=0,application_id=42~hmac=500450f54f8935906506a6eb312476e345c2c6f01b3efaace4d3bdd19c5ad77c
+2026-08-05 00:27:11,950 | INFO     | musicbrainz_client           | Found MusicBrainz ID: 5a5aea91-1571-4ecd-a4bd-37a7b2d79fb9 for Fairuz - Saaltak Habiby
+2026-08-05 00:27:12,700 | INFO     | audio_analyzer               | Downloaded 479827 bytes
+2026-08-05 00:27:12,701 | INFO     | audio_analyzer               | Running librosa analysis...
+2026-08-05 00:27:12,701 | INFO     | audio_analyzer               | [LIBROSA] Starting feature extraction...
+2026-08-05 00:27:12,702 | INFO     | audio_analyzer               | [LIBROSA] Temp file created: C:\Users\Saeid\AppData\Local\Temp\tmp4srvwbdd.mp3 (479827 bytes)
+2026-08-05 00:27:12,703 | INFO     | audio_analyzer               | [LIBROSA] Loading audio file...
+2026-08-05 00:27:12,796 | INFO     | audio_analyzer               | [LIBROSA] Audio loaded: 30.0 seconds, 22050 Hz sample rate
+2026-08-05 00:27:12,796 | INFO     | audio_analyzer               | [LIBROSA] Extracting BPM...
+2026-08-05 00:27:12,924 | INFO     | audio_analyzer               | [LIBROSA] BPM: 92.3
+2026-08-05 00:27:12,925 | INFO     | audio_analyzer               | [LIBROSA] Extracting MFCCs (timbre)...
+2026-08-05 00:27:12,990 | INFO     | audio_analyzer               | [LIBROSA] MFCCs extracted: 13 coefficients
+2026-08-05 00:27:12,991 | INFO     | audio_analyzer               | [LIBROSA] Extracting chroma (harmonics)...
+2026-08-05 00:27:13,141 | INFO     | audio_analyzer               | [LIBROSA] Chroma extracted: 12 pitch classes
+2026-08-05 00:27:13,141 | INFO     | audio_analyzer               | [LIBROSA] Extracting spectral features...
+2026-08-05 00:27:13,526 | INFO     | audio_analyzer               | [LIBROSA] Spectral: centroid=2441.7, rolloff=4690.3, bandwidth=2270.0
+2026-08-05 00:27:13,527 | INFO     | audio_analyzer               | [LIBROSA] Extracting energy (RMS)...
+2026-08-05 00:27:13,537 | INFO     | audio_analyzer               | [LIBROSA] Energy: mean=0.1409, var=0.0018
+2026-08-05 00:27:13,537 | INFO     | audio_analyzer               | [LIBROSA] Extracting onset rate...
+2026-08-05 00:27:13,620 | INFO     | audio_analyzer               | [LIBROSA] Onset rate: 1.3657
+2026-08-05 00:27:13,654 | INFO     | audio_analyzer               | [LIBROSA] Inferring musical key...
+2026-08-05 00:27:13,654 | INFO     | audio_analyzer               | [LIBROSA] Key: G#
+2026-08-05 00:27:13,654 | INFO     | audio_analyzer               | [LIBROSA] Inferring scale (major/minor)...
+2026-08-05 00:27:13,655 | INFO     | audio_analyzer               | [LIBROSA] Scale: minor (major=-0.26, minor=-0.04)
+2026-08-05 00:27:13,656 | INFO     | audio_analyzer               | Analyzed audio: BPM=92.3, RMS=0.141
+2026-08-05 00:27:13,656 | INFO     | __main__                     | Analysis results for Fairuz - Saaltak Habiby:
+2026-08-05 00:27:13,656 | INFO     | __main__                     |   Audio features: OK
+2026-08-05 00:27:13,657 | INFO     | __main__                     |   MusicBrainz: OK
+2026-08-05 00:27:13,657 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 00:27:13,657 | INFO     | __main__                     |   Last.fm tags: 0
+2026-08-05 00:27:13,657 | INFO     | feature_cache                | [CACHE] Saving features for: Fairuz - Saaltak Habiby (ID: 564173332)
+2026-08-05 00:27:13,658 | INFO     | feature_cache                | [CACHE] Audio features: BPM=92.3, Energy=0.1409, MFCCs=13 coefficients
+2026-08-05 00:27:13,658 | INFO     | feature_cache                | [CACHE] AcousticBrainz: NONE
+2026-08-05 00:27:13,658 | INFO     | feature_cache                | [CACHE] MusicBrainz ID: 5a5aea91-1571-4ecd-a4bd-37a7b2d79fb9
+2026-08-05 00:27:13,658 | INFO     | feature_cache                | [CACHE] Last.fm tags: NONE
+2026-08-05 00:27:13,666 | INFO     | feature_cache                | [CACHE] ✓ Saved successfully for: Fairuz - Saaltak Habiby
+2026-08-05 00:27:13,680 | INFO     | feature_cache                | Exported 89 tracks to cached_songs.json
+2026-08-05 00:27:13,682 | INFO     | __main__                     | [STEP 6] User 240082844: Features OK: BPM=92.28515625
+2026-08-05 00:27:13,682 | INFO     | deezer_helper                | [DEEZER] get_similar id=564173332 limit=5
+2026-08-05 00:27:13,934 | INFO     | deezer_helper                | [DEEZER] get_similar id=564173332 -> 0 results
+2026-08-05 00:27:13,934 | INFO     | user_prefs                   | [PLAYLIST_DB] add_to_user_playlist user=240082844 track=564173332 (Saaltak Habiby - Fairuz) bpm=92.28515625 energy=0.14093714952468872 valence=0 genre='' persian=False similar=0
+2026-08-05 00:27:13,943 | INFO     | user_prefs                   | [PLAYLIST_DB] added OK user=240082844 track=564173332
+2026-08-05 00:27:13,943 | INFO     | __main__                     | [STEP 7] User 240082844: Added: Saaltak Habiby - Fairuz (genre: )
+2026-08-05 00:27:13,943 | INFO     | __main__                     | [STEP 6] User 240082844: Processing 5/5: 'Ana La Habibi   Fayrouz. Cover by Amal ElSakka' -> 'Ana La Habibi Fayrouz. Cover by Amal ElSakka'
+2026-08-05 00:27:14,152 | INFO     | __main__                     | [STEP 6] User 240082844: Searching Deezer for: Ana La Habibi Fayrouz. Cover by Amal ElSakka
+2026-08-05 00:27:14,152 | INFO     | deezer_helper                | [DEEZER] search query='Ana La Habibi Fayrouz. Cover by Amal ElSakka' limit=3
+2026-08-05 00:27:14,464 | INFO     | deezer_helper                | [DEEZER] search query='Ana La Habibi Fayrouz. Cover by Amal ElSakka' -> 0 results
+2026-08-05 00:27:14,464 | INFO     | __main__                     | [STEP 6] User 240082844: No results for: Ana La Habibi Fayrouz. Cover by Amal ElSakka
+2026-08-05 00:27:14,464 | INFO     | __main__                     | [STEP 7] User 240082844: Processing complete: 4/5 added, 4 recognized, 1 failed
+2026-08-05 00:27:14,465 | INFO     | user_prefs                   | [PLAYLIST_DB] get_user_taste_profile user=240082844
+2026-08-05 00:27:14,471 | INFO     | user_prefs                   | [PLAYLIST_DB] taste_profile user=240082844 -> bpm=111.5 energy=0.13 valence=0.00 tracks=4 genres=[] persian=0 english=4
+2026-08-05 00:27:14,472 | INFO     | __main__                     | [STEP 9] User 240082844: Taste profile: 4 tracks, genres: {}
+2026-08-05 00:27:14,472 | INFO     | __main__                     | [STEP 8] User 240082844: Saving playlist to database
+2026-08-05 00:27:14,872 | INFO     | __main__                     | [STEP 8] User 240082844: Results sent successfully
+2026-08-05 00:27:28,586 | INFO     | __main__                     | [STEP 1] User 240082844: Received text: 📋 My Playlist...
+2026-08-05 00:27:28,594 | INFO     | user_prefs                   | [PLAYLIST_DB] get_user_playlist user=240082844 -> 4 rows
+2026-08-05 00:27:28,596 | WARNING  | __main__                     | Unhandled error: too many values to unpack (expected 8)
+2026-08-05 00:27:41,399 | INFO     | __main__                     | [STEP 1] User 240082844: Received text: 📋 My Playlist...
+2026-08-05 00:27:41,406 | INFO     | user_prefs                   | [PLAYLIST_DB] get_user_playlist user=240082844 -> 4 rows
+2026-08-05 00:27:41,407 | WARNING  | __main__                     | Unhandled error: too many values to unpack (expected 8)
+2026-08-05 00:51:09,988 | INFO     | __main__                     | Loaded Persian genre database: 203 artists
+2026-08-05 00:51:10,413 | INFO     | __main__                     | Music Suggest Bot v3 starting...
+2026-08-05 00:51:10,959 | INFO     | user_prefs                   | [USER_DB] init_db: tables created; PATH=user_prefs.db
+2026-08-05 00:51:10,964 | INFO     | feature_cache                | Feature cache initialized
+2026-08-05 00:51:10,965 | INFO     | __main__                     | Bot initialized: Last.fm=OK
+2026-08-05 00:51:11,306 | INFO     | telegram.ext.Application     | Application started
+2026-08-05 00:51:21,732 | INFO     | __main__                     | [STEP 1] User 240082844: Received text: 📋 My Playlist...
+2026-08-05 00:51:21,744 | INFO     | user_prefs                   | [PLAYLIST_DB] get_user_playlist user=240082844 -> 0 rows
+2026-08-05 00:51:33,428 | INFO     | deezer_helper                | [DEEZER] search query='What Makes A Good Man? The Heavy' limit=5
+2026-08-05 00:51:34,458 | INFO     | deezer_helper                | [DEEZER] search query='What Makes A Good Man? The Heavy' -> 3 results
+2026-08-05 00:51:35,217 | INFO     | deezer_helper                | [DEEZER] search query='The Seeker The Who' limit=5
+2026-08-05 00:51:35,497 | INFO     | deezer_helper                | [DEEZER] search query='The Seeker The Who' -> 5 results
+2026-08-05 00:51:36,752 | INFO     | deezer_helper                | [DEEZER] search query='Wa Habibi Fairuz' limit=5
+2026-08-05 00:51:37,061 | INFO     | deezer_helper                | [DEEZER] search query='Wa Habibi Fairuz' -> 2 results
+2026-08-05 00:51:37,982 | INFO     | deezer_helper                | [DEEZER] search query='Saaltak Habiby Fairuz' limit=5
+2026-08-05 00:51:38,304 | INFO     | deezer_helper                | [DEEZER] search query='Saaltak Habiby Fairuz' -> 2 results
+2026-08-05 00:51:39,219 | INFO     | deezer_helper                | [DEEZER] search query='Fayrouz. Cover by Amal ElSakka Ana La Habibi' limit=5
+2026-08-05 00:51:39,535 | INFO     | deezer_helper                | [DEEZER] search query='Fayrouz. Cover by Amal ElSakka Ana La Habibi' -> 0 results
+2026-08-05 00:52:00,709 | INFO     | __main__                     | Callback received: chat_id=240082844, data=pick_original
+2026-08-05 00:52:00,887 | WARNING  | __main__                     | Unhandled error: Query is too old and response timeout expired or query id is invalid
+2026-08-05 00:52:00,888 | INFO     | __main__                     | Callback received: chat_id=240082844, data=pick_original
+2026-08-05 00:52:01,075 | WARNING  | __main__                     | Unhandled error: Query is too old and response timeout expired or query id is invalid
+2026-08-05 00:52:01,076 | INFO     | __main__                     | Callback received: chat_id=240082844, data=pick_original
+2026-08-05 00:52:01,256 | WARNING  | __main__                     | Unhandled error: Query is too old and response timeout expired or query id is invalid
+2026-08-05 00:52:03,664 | INFO     | __main__                     | Callback received: chat_id=240082844, data=pick_original
+2026-08-05 00:52:04,099 | INFO     | deezer_helper                | [DEEZER] search query='Saaltak Habiby Fairuz' limit=10
+2026-08-05 00:52:05,227 | INFO     | deezer_helper                | [DEEZER] search query='Saaltak Habiby Fairuz' -> 2 results
+2026-08-05 00:52:05,228 | INFO     | deezer_helper                | [DEEZER] get_track id=564173332
+2026-08-05 00:52:05,750 | INFO     | deezer_helper                | [DEEZER] get_track id=564173332 -> Fairuz - Saaltak Habiby (genres=[])
+2026-08-05 00:52:05,750 | INFO     | __main__                     | Fetched full track: Fairuz - Saaltak Habiby (genres: [], artist_id: 211187)
+2026-08-05 00:52:05,751 | INFO     | deezer_helper                | [DEEZER] search query='Fairuz' limit=10
+2026-08-05 00:52:06,100 | INFO     | deezer_helper                | [DEEZER] search query='Fairuz' -> 10 results
+2026-08-05 00:52:06,101 | INFO     | __main__                     | Search 'Fairuz': found 10 tracks, best ID=211187 (count=9)
+2026-08-05 00:52:06,295 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 564173332
+2026-08-05 00:52:06,300 | INFO     | feature_cache                | [CACHE] ✓ Cache HIT for track ID: 564173332
+2026-08-05 00:52:06,300 | INFO     | feature_cache                | [CACHE]   Audio: BPM=92.3, Energy=0.1409
+2026-08-05 00:52:06,300 | INFO     | feature_cache                | [CACHE]   MusicBrainz: 5a5aea91-1571-4ecd-a4bd-37a7b2d79fb9
+2026-08-05 00:52:06,302 | INFO     | __main__                     | Cache hit for: Fairuz - Saaltak Habiby
+2026-08-05 00:52:06,302 | INFO     | __main__                     | [FLOW] main track analyzed: audio=True acoustic=False
+2026-08-05 00:52:07,249 | INFO     | lastfm_client                | Last.fm found 10 similar tracks for Fairuz - Saaltak Habiby
+2026-08-05 00:52:07,250 | INFO     | __main__                     | [FLOW] Last.fm similar for Saaltak Habiby: 10 found
+2026-08-05 00:52:07,250 | INFO     | deezer_helper                | [DEEZER] search query='Habbaitak Be El Saif - Live Fairuz' limit=1
+2026-08-05 00:52:07,552 | INFO     | deezer_helper                | [DEEZER] search query='Habbaitak Be El Saif - Live Fairuz' -> 1 results
+2026-08-05 00:52:07,552 | INFO     | deezer_helper                | [DEEZER] search query='Rageen Ya Hawa Fairuz' limit=1
+2026-08-05 00:52:07,843 | INFO     | deezer_helper                | [DEEZER] search query='Rageen Ya Hawa Fairuz' -> 1 results
+2026-08-05 00:52:07,843 | INFO     | deezer_helper                | [DEEZER] search query='Beiny We Beinak - Live Hoda Haddad' limit=1
+2026-08-05 00:52:08,154 | INFO     | deezer_helper                | [DEEZER] search query='Beiny We Beinak - Live Hoda Haddad' -> 1 results
+2026-08-05 00:52:08,154 | INFO     | deezer_helper                | [DEEZER] search query='Matrahak Bi Albi Majida El Roumi' limit=1
+2026-08-05 00:52:08,480 | INFO     | deezer_helper                | [DEEZER] search query='Matrahak Bi Albi Majida El Roumi' -> 1 results
+2026-08-05 00:52:08,480 | INFO     | deezer_helper                | [DEEZER] search query='Koul Chi Aam Yekhlass Majida El Roumi' limit=1
+2026-08-05 00:52:08,799 | INFO     | deezer_helper                | [DEEZER] search query='Koul Chi Aam Yekhlass Majida El Roumi' -> 1 results
+2026-08-05 00:52:08,799 | INFO     | deezer_helper                | [DEEZER] search query='Yay Yay Ya Nassini Georgette Sayegh' limit=1
+2026-08-05 00:52:09,108 | INFO     | deezer_helper                | [DEEZER] search query='Yay Yay Ya Nassini Georgette Sayegh' -> 1 results
+2026-08-05 00:52:09,108 | INFO     | deezer_helper                | [DEEZER] search query='Ahwak Abdel Halim Hafez' limit=1
+2026-08-05 00:52:09,426 | INFO     | deezer_helper                | [DEEZER] search query='Ahwak Abdel Halim Hafez' -> 1 results
+2026-08-05 00:52:09,427 | INFO     | deezer_helper                | [DEEZER] search query='Awel marra Abdel Halim Hafez' limit=1
+2026-08-05 00:52:09,748 | INFO     | deezer_helper                | [DEEZER] search query='Awel marra Abdel Halim Hafez' -> 1 results
+2026-08-05 00:52:09,748 | INFO     | deezer_helper                | [DEEZER] get_similar id=564173332 limit=20
+2026-08-05 00:52:10,011 | INFO     | deezer_helper                | [DEEZER] get_similar id=564173332 -> 0 results
+2026-08-05 00:52:10,011 | INFO     | __main__                     | [FLOW] Deezer radio for Saaltak Habiby: found 0 tracks
+2026-08-05 00:52:10,012 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=211187 limit=10
+2026-08-05 00:52:10,325 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=211187 -> 10 results
+2026-08-05 00:52:10,325 | INFO     | __main__                     | Same artist tracks for Fairuz (ID: 211187): 10 found
+2026-08-05 00:52:10,326 | INFO     | __main__                     |   Added same artist: Fairuz - Le Beirut
+2026-08-05 00:52:10,326 | INFO     | __main__                     |   Added same artist: Soolking - Koula Youm
+2026-08-05 00:52:10,327 | INFO     | __main__                     |   Added same artist: Fairuz - Aloula
+2026-08-05 00:52:10,327 | INFO     | __main__                     |   Added same artist: Fairuz - Kifak Inta
+2026-08-05 00:52:10,327 | INFO     | __main__                     |   Added same artist: Fairuz - El Bosta
+2026-08-05 00:52:10,328 | INFO     | __main__                     |   Added same artist: Fairuz - Nassam Alayna El Hawa
+2026-08-05 00:52:10,328 | INFO     | __main__                     |   Added same artist: Fairuz - Ana Le Habiby
+2026-08-05 00:52:10,328 | INFO     | __main__                     |   Added same artist: Fairuz - Yemken
+2026-08-05 00:52:10,329 | INFO     | __main__                     |   Added same artist: Fairuz - Zahret El Madaen
+2026-08-05 00:52:10,329 | INFO     | __main__                     |   Added same artist: Fairuz - Baadak Ala Baly
+2026-08-05 00:52:10,329 | INFO     | __main__                     | Same artist tracks found: 10
+2026-08-05 00:52:10,329 | INFO     | __main__                     | Different artist tracks found: 5
+2026-08-05 00:52:10,330 | INFO     | __main__                     | Total similar tracks: 6
+2026-08-05 00:52:10,330 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 3119300
+2026-08-05 00:52:10,331 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 3424139671
+2026-08-05 00:52:10,332 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 97733314
+2026-08-05 00:52:10,334 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 3424139671
+2026-08-05 00:52:10,335 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 97733314
+2026-08-05 00:52:10,337 | INFO     | __main__                     | Analyzing track: Soolking - Koula Youm (fast=True)
+2026-08-05 00:52:10,337 | INFO     | __main__                     | Analyzing track: Fairuz - Aloula (fast=True)
+2026-08-05 00:52:10,341 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 3119300
+2026-08-05 00:52:10,344 | INFO     | __main__                     | Analyzing track: Fairuz - Le Beirut (fast=True)
+2026-08-05 00:52:11,730 | INFO     | musicbrainz_client           | No MusicBrainz recording found for Fairuz - Le Beirut
+2026-08-05 00:52:11,730 | INFO     | __main__                     | Analysis results for Fairuz - Le Beirut:
+2026-08-05 00:52:11,731 | INFO     | __main__                     |   Audio features: SKIPPED
+2026-08-05 00:52:11,731 | INFO     | __main__                     |   MusicBrainz: NOT FOUND
+2026-08-05 00:52:11,731 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 00:52:11,731 | WARNING  | __main__                     | [FLOW] candidate analysis failed for Fairuz - Le Beirut: 'NoneType' object has no attribute 'get'
+2026-08-05 00:52:11,732 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 880397242
+2026-08-05 00:52:11,735 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 880397242
+2026-08-05 00:52:11,737 | INFO     | __main__                     | Analyzing track: Magida El Roumi - Matrahak Bi Albi (fast=True)
+2026-08-05 00:52:14,421 | INFO     | musicbrainz_client           | Found MusicBrainz ID: 729d3a3c-012e-41d1-b9ae-73788dfaea8a for Fairuz - Aloula
+2026-08-05 00:52:15,275 | INFO     | __main__                     | Analysis results for Fairuz - Aloula:
+2026-08-05 00:52:15,275 | INFO     | __main__                     |   Audio features: SKIPPED
+2026-08-05 00:52:15,277 | INFO     | __main__                     |   MusicBrainz: OK
+2026-08-05 00:52:15,277 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 00:52:15,277 | WARNING  | __main__                     | [FLOW] candidate analysis failed for Fairuz - Aloula: 'NoneType' object has no attribute 'get'
+2026-08-05 00:52:15,278 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 880397252
+2026-08-05 00:52:15,282 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 880397252
+2026-08-05 00:52:15,283 | INFO     | __main__                     | Analyzing track: Magida El Roumi - Koul Chi Aam Yekhlass (fast=True)
+2026-08-05 00:52:16,111 | INFO     | musicbrainz_client           | No MusicBrainz recording found for Magida El Roumi - Koul Chi Aam Yekhlass
+2026-08-05 00:52:16,111 | INFO     | __main__                     | Analysis results for Magida El Roumi - Koul Chi Aam Yekhlass:
+2026-08-05 00:52:16,112 | INFO     | __main__                     |   Audio features: SKIPPED
+2026-08-05 00:52:16,112 | INFO     | __main__                     |   MusicBrainz: NOT FOUND
+2026-08-05 00:52:16,112 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 00:52:16,112 | WARNING  | __main__                     | [FLOW] candidate analysis failed for Magida El Roumi - Koul Chi Aam Yekhlass: 'NoneType' object has no attribute 'get'
+2026-08-05 00:52:16,113 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 863811482
+2026-08-05 00:52:16,115 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 863811482
+2026-08-05 00:52:16,117 | INFO     | __main__                     | Analyzing track: Georgette Sayegh - Yay Yay Ya Nassini (fast=True)
+2026-08-05 00:52:20,545 | INFO     | musicbrainz_client           | Found MusicBrainz ID: f3062cbd-9a29-44cc-b7dd-9cb636a56d35 for Georgette Sayegh - Yay Yay Ya Nassini
+2026-08-05 00:52:20,858 | INFO     | __main__                     | Analysis results for Georgette Sayegh - Yay Yay Ya Nassini:
+2026-08-05 00:52:20,858 | INFO     | __main__                     |   Audio features: SKIPPED
+2026-08-05 00:52:20,859 | INFO     | __main__                     |   MusicBrainz: OK
+2026-08-05 00:52:20,859 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 00:52:20,859 | WARNING  | __main__                     | [FLOW] candidate analysis failed for Georgette Sayegh - Yay Yay Ya Nassini: 'NoneType' object has no attribute 'get'
+2026-08-05 00:52:20,983 | ERROR    | musicbrainz_client           | MusicBrainz search error: 
+2026-08-05 00:52:20,984 | INFO     | __main__                     | Analysis results for Soolking - Koula Youm:
+2026-08-05 00:52:20,984 | INFO     | __main__                     |   Audio features: SKIPPED
+2026-08-05 00:52:20,984 | INFO     | __main__                     |   MusicBrainz: NOT FOUND
+2026-08-05 00:52:20,984 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 00:52:20,985 | WARNING  | __main__                     | [FLOW] candidate analysis failed for Soolking - Koula Youm: 'NoneType' object has no attribute 'get'
+2026-08-05 00:52:22,982 | ERROR    | musicbrainz_client           | MusicBrainz search error: 
+2026-08-05 00:52:22,983 | INFO     | __main__                     | Analysis results for Magida El Roumi - Matrahak Bi Albi:
+2026-08-05 00:52:22,984 | INFO     | __main__                     |   Audio features: SKIPPED
+2026-08-05 00:52:22,984 | INFO     | __main__                     |   MusicBrainz: NOT FOUND
+2026-08-05 00:52:22,985 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 00:52:22,985 | WARNING  | __main__                     | [FLOW] candidate analysis failed for Magida El Roumi - Matrahak Bi Albi: 'NoneType' object has no attribute 'get'
+2026-08-05 00:52:22,985 | INFO     | __main__                     | [FLOW] candidate features ready: 0/6
+2026-08-05 00:52:22,985 | INFO     | __main__                     | Similarity calc: target_audio=YES, target_acoustic=NO, candidates=6
+2026-08-05 00:52:22,986 | INFO     | __main__                     | Similarity scores: [('Matrahak Bi Albi', 0.665384), ('Koul Chi Aam Yekhlass', 0.6416839999999999), ('Yay Yay Ya Nassini', 0.572702)]
+2026-08-05 00:52:22,986 | INFO     | __main__                     | Building features - target_audio: YES, genres: []
+2026-08-05 00:52:22,987 | INFO     | __main__                     | [GENRE] Deezer genres empty for Fairuz - Saaltak Habiby
+2026-08-05 00:52:23,866 | INFO     | lastfm_client                | Last.fm artist tags for Fairuz: ['arabic', 'lebanese', 'female vocalists', 'world', 'Lebanon']
+2026-08-05 00:53:12,930 | INFO     | __main__                     | [STEP 1] User 240082844: Received text: 📋 My Playlist...
+2026-08-05 00:53:12,951 | INFO     | user_prefs                   | [PLAYLIST_DB] get_user_playlist user=240082844 -> 0 rows
+2026-08-05 00:53:15,409 | INFO     | __main__                     | [STEP 1] User 240082844: Received text: ➕ Add to Playlist...
+2026-08-05 00:53:15,410 | INFO     | __main__                     | [STEP 2] User 240082844: Entering playlist mode
+2026-08-05 00:53:36,066 | INFO     | __main__                     | [STEP 1] User 240082844: Received text: ✅ Done (5 songs)...
+2026-08-05 00:53:36,068 | INFO     | __main__                     | [STEP 3] User 240082844: Done button pressed, starting processing
+2026-08-05 00:53:36,069 | INFO     | __main__                     | [STEP 4] User 240082844: Starting processing
+2026-08-05 00:53:36,069 | INFO     | __main__                     | [STEP 4] User 240082844: Got 5 pending songs
+2026-08-05 00:53:36,069 | INFO     | __main__                     | [STEP 4] User 240082844: Parsed 5 songs from input
+2026-08-05 00:53:36,071 | INFO     | __main__                     | [STEP 5] User 240082844: Cleaned 5 songs
+2026-08-05 00:53:36,387 | INFO     | __main__                     | [STEP 6] User 240082844: Processing 1/5: '02 The Heavy   What Makes A Good Man?' -> 'The Heavy What Makes A Good Man?'
+2026-08-05 00:53:36,702 | INFO     | __main__                     | [STEP 6] User 240082844: Searching Deezer for: The Heavy What Makes A Good Man?
+2026-08-05 00:53:36,703 | INFO     | deezer_helper                | [DEEZER] search query='The Heavy What Makes A Good Man?' limit=3
+2026-08-05 00:53:37,529 | INFO     | deezer_helper                | [DEEZER] search query='The Heavy What Makes A Good Man?' -> 3 results
+2026-08-05 00:53:37,530 | INFO     | __main__                     | [STEP 6] User 240082844: Found: What Makes A Good Man? - The Heavy
+2026-08-05 00:53:37,531 | INFO     | __main__                     | [STEP 6] User 240082844: Is Persian: False
+2026-08-05 00:53:37,532 | INFO     | __main__                     | [STEP 6] User 240082844: Analyzing features (librosa)...
+2026-08-05 00:53:37,532 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 18435591
+2026-08-05 00:53:37,538 | INFO     | feature_cache                | [CACHE] ✓ Cache HIT for track ID: 18435591
+2026-08-05 00:53:37,540 | INFO     | feature_cache                | [CACHE]   Audio: BPM=92.3, Energy=0.2001
+2026-08-05 00:53:37,540 | INFO     | feature_cache                | [CACHE]   MusicBrainz: e614f23f-2086-4c58-af33-b4d4c1e45413
+2026-08-05 00:53:37,544 | INFO     | __main__                     | Cache hit for: The Heavy - What Makes A Good Man?
+2026-08-05 00:53:37,544 | INFO     | __main__                     | [STEP 6] User 240082844: Features OK: BPM=92.28515625
+2026-08-05 00:53:37,545 | INFO     | deezer_helper                | [DEEZER] get_similar id=18435591 limit=5
+2026-08-05 00:53:37,778 | INFO     | deezer_helper                | [DEEZER] get_similar id=18435591 -> 0 results
+2026-08-05 00:53:37,784 | INFO     | user_prefs                   | [PLAYLIST_DB] add_to_user_playlist user=240082844 track=18435591 (What Makes A Good Man? - The Heavy) bpm=92.28515625 energy=0.20011219382286072 valence=0 genre='' persian=False similar=0
+2026-08-05 00:53:37,804 | INFO     | user_prefs                   | [PLAYLIST_DB] added OK user=240082844 track=18435591
+2026-08-05 00:53:37,805 | INFO     | __main__                     | [STEP 7] User 240082844: Added: What Makes A Good Man? - The Heavy (genre: )
+2026-08-05 00:53:37,805 | INFO     | __main__                     | [STEP 6] User 240082844: Processing 2/5: 'The Who   The Seeker' -> 'The Who The Seeker'
+2026-08-05 00:53:38,392 | INFO     | __main__                     | [STEP 6] User 240082844: Searching Deezer for: The Who The Seeker
+2026-08-05 00:53:38,393 | INFO     | deezer_helper                | [DEEZER] search query='The Who The Seeker' limit=3
+2026-08-05 00:53:38,670 | INFO     | deezer_helper                | [DEEZER] search query='The Who The Seeker' -> 3 results
+2026-08-05 00:53:38,670 | INFO     | __main__                     | [STEP 6] User 240082844: Found: The Seeker (Edit) - The Who
+2026-08-05 00:53:38,671 | INFO     | __main__                     | [STEP 6] User 240082844: Is Persian: False
+2026-08-05 00:53:38,671 | INFO     | __main__                     | [STEP 6] User 240082844: Analyzing features (librosa)...
+2026-08-05 00:53:38,672 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 65414413
+2026-08-05 00:53:38,674 | INFO     | feature_cache                | [CACHE] ✓ Cache HIT for track ID: 65414413
+2026-08-05 00:53:38,674 | INFO     | feature_cache                | [CACHE]   Audio: BPM=89.1, Energy=0.1082
+2026-08-05 00:53:38,676 | INFO     | __main__                     | Cache hit for: The Who - The Seeker (Edit)
+2026-08-05 00:53:38,676 | INFO     | __main__                     | [STEP 6] User 240082844: Features OK: BPM=89.10290948275862
+2026-08-05 00:53:38,677 | INFO     | deezer_helper                | [DEEZER] get_similar id=65414413 limit=5
+2026-08-05 00:53:38,939 | INFO     | deezer_helper                | [DEEZER] get_similar id=65414413 -> 0 results
+2026-08-05 00:53:38,939 | INFO     | user_prefs                   | [PLAYLIST_DB] add_to_user_playlist user=240082844 track=65414413 (The Seeker (Edit) - The Who) bpm=89.10290948275862 energy=0.10818611085414886 valence=0 genre='' persian=False similar=0
+2026-08-05 00:53:38,950 | INFO     | user_prefs                   | [PLAYLIST_DB] added OK user=240082844 track=65414413
+2026-08-05 00:53:38,951 | INFO     | __main__                     | [STEP 7] User 240082844: Added: The Seeker (Edit) - The Who (genre: )
+2026-08-05 00:53:38,951 | INFO     | __main__                     | [STEP 6] User 240082844: Processing 3/5: 'Fairuz   Wa Habibi' -> 'Fairuz Wa Habibi'
+2026-08-05 00:53:39,149 | INFO     | __main__                     | [STEP 6] User 240082844: Searching Deezer for: Fairuz Wa Habibi
+2026-08-05 00:53:39,149 | INFO     | deezer_helper                | [DEEZER] search query='Fairuz Wa Habibi' limit=3
+2026-08-05 00:53:39,431 | INFO     | deezer_helper                | [DEEZER] search query='Fairuz Wa Habibi' -> 3 results
+2026-08-05 00:53:39,431 | INFO     | __main__                     | [STEP 6] User 240082844: Found: Wa Habibi - Fairuz
+2026-08-05 00:53:39,432 | INFO     | __main__                     | [STEP 6] User 240082844: Is Persian: False
+2026-08-05 00:53:39,432 | INFO     | __main__                     | [STEP 6] User 240082844: Analyzing features (librosa)...
+2026-08-05 00:53:39,432 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 78569736
+2026-08-05 00:53:39,434 | INFO     | feature_cache                | [CACHE] ✓ Cache HIT for track ID: 78569736
+2026-08-05 00:53:39,435 | INFO     | feature_cache                | [CACHE]   Audio: BPM=172.3, Energy=0.0748
+2026-08-05 00:53:39,435 | INFO     | feature_cache                | [CACHE]   MusicBrainz: 4fa9e617-d767-4e96-a8b8-7b18b60168db
+2026-08-05 00:53:39,437 | INFO     | __main__                     | Cache hit for: Fairuz - Wa Habibi
+2026-08-05 00:53:39,437 | INFO     | __main__                     | [STEP 6] User 240082844: Features OK: BPM=172.265625
+2026-08-05 00:53:39,438 | INFO     | deezer_helper                | [DEEZER] get_similar id=78569736 limit=5
+2026-08-05 00:53:39,703 | INFO     | deezer_helper                | [DEEZER] get_similar id=78569736 -> 0 results
+2026-08-05 00:53:39,703 | INFO     | user_prefs                   | [PLAYLIST_DB] add_to_user_playlist user=240082844 track=78569736 (Wa Habibi - Fairuz) bpm=172.265625 energy=0.07483935356140137 valence=0 genre='' persian=False similar=0
+2026-08-05 00:53:39,713 | INFO     | user_prefs                   | [PLAYLIST_DB] added OK user=240082844 track=78569736
+2026-08-05 00:53:39,714 | INFO     | __main__                     | [STEP 7] User 240082844: Added: Wa Habibi - Fairuz (genre: )
+2026-08-05 00:53:39,714 | INFO     | __main__                     | [STEP 6] User 240082844: Processing 4/5: '04 Fairuz   Saaltak Habiby' -> 'Fairuz Saaltak Habiby'
+2026-08-05 00:53:39,926 | INFO     | __main__                     | [STEP 6] User 240082844: Searching Deezer for: Fairuz Saaltak Habiby
+2026-08-05 00:53:39,927 | INFO     | deezer_helper                | [DEEZER] search query='Fairuz Saaltak Habiby' limit=3
+2026-08-05 00:53:40,179 | INFO     | deezer_helper                | [DEEZER] search query='Fairuz Saaltak Habiby' -> 2 results
+2026-08-05 00:53:40,179 | INFO     | __main__                     | [STEP 6] User 240082844: Found: Saaltak Habiby - Fairuz
+2026-08-05 00:53:40,180 | INFO     | __main__                     | [STEP 6] User 240082844: Is Persian: False
+2026-08-05 00:53:40,180 | INFO     | __main__                     | [STEP 6] User 240082844: Analyzing features (librosa)...
+2026-08-05 00:53:40,180 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 564173332
+2026-08-05 00:53:40,182 | INFO     | feature_cache                | [CACHE] ✓ Cache HIT for track ID: 564173332
+2026-08-05 00:53:40,183 | INFO     | feature_cache                | [CACHE]   Audio: BPM=92.3, Energy=0.1409
+2026-08-05 00:53:40,183 | INFO     | feature_cache                | [CACHE]   MusicBrainz: 5a5aea91-1571-4ecd-a4bd-37a7b2d79fb9
+2026-08-05 00:53:40,185 | INFO     | __main__                     | Cache hit for: Fairuz - Saaltak Habiby
+2026-08-05 00:53:40,185 | INFO     | __main__                     | [STEP 6] User 240082844: Features OK: BPM=92.28515625
+2026-08-05 00:53:40,185 | INFO     | deezer_helper                | [DEEZER] get_similar id=564173332 limit=5
+2026-08-05 00:53:40,461 | INFO     | deezer_helper                | [DEEZER] get_similar id=564173332 -> 0 results
+2026-08-05 00:53:40,461 | INFO     | user_prefs                   | [PLAYLIST_DB] add_to_user_playlist user=240082844 track=564173332 (Saaltak Habiby - Fairuz) bpm=92.28515625 energy=0.14093714952468872 valence=0 genre='' persian=False similar=0
+2026-08-05 00:53:40,472 | INFO     | user_prefs                   | [PLAYLIST_DB] added OK user=240082844 track=564173332
+2026-08-05 00:53:40,472 | INFO     | __main__                     | [STEP 7] User 240082844: Added: Saaltak Habiby - Fairuz (genre: )
+2026-08-05 00:53:40,473 | INFO     | __main__                     | [STEP 6] User 240082844: Processing 5/5: 'Ana La Habibi   Fayrouz. Cover by Amal ElSakka' -> 'Ana La Habibi Fayrouz. Cover by Amal ElSakka'
+2026-08-05 00:53:40,683 | INFO     | __main__                     | [STEP 6] User 240082844: Searching Deezer for: Ana La Habibi Fayrouz. Cover by Amal ElSakka
+2026-08-05 00:53:40,683 | INFO     | deezer_helper                | [DEEZER] search query='Ana La Habibi Fayrouz. Cover by Amal ElSakka' limit=3
+2026-08-05 00:53:40,947 | INFO     | deezer_helper                | [DEEZER] search query='Ana La Habibi Fayrouz. Cover by Amal ElSakka' -> 0 results
+2026-08-05 00:53:40,947 | INFO     | __main__                     | [STEP 6] User 240082844: No results for: Ana La Habibi Fayrouz. Cover by Amal ElSakka
+2026-08-05 00:53:40,947 | INFO     | __main__                     | [STEP 7] User 240082844: Processing complete: 4/5 added, 4 recognized, 1 failed
+2026-08-05 00:53:40,948 | INFO     | user_prefs                   | [PLAYLIST_DB] get_user_taste_profile user=240082844
+2026-08-05 00:53:40,955 | INFO     | user_prefs                   | [PLAYLIST_DB] taste_profile user=240082844 -> bpm=111.5 energy=0.13 valence=0.00 tracks=4 genres=[] persian=0 english=4
+2026-08-05 00:53:40,955 | INFO     | __main__                     | [STEP 9] User 240082844: Taste profile: 4 tracks, genres: {}
+2026-08-05 00:53:40,956 | INFO     | __main__                     | [STEP 8] User 240082844: Saving playlist to database
+2026-08-05 00:53:41,390 | INFO     | __main__                     | [STEP 8] User 240082844: Results sent successfully
+2026-08-05 00:54:21,830 | INFO     | __main__                     | [STEP 1] User 240082844: Received text: 📋 My Playlist...
+2026-08-05 00:54:21,840 | INFO     | user_prefs                   | [PLAYLIST_DB] get_user_playlist user=240082844 -> 4 rows
+2026-08-05 01:56:36,719 | INFO     | __main__                     | Loaded Persian genre database: 203 artists
+2026-08-05 01:56:37,047 | INFO     | __main__                     | Music Suggest Bot v3 starting...
+2026-08-05 01:56:37,433 | INFO     | user_prefs                   | [USER_DB] init_db: tables created; PATH=user_prefs.db
+2026-08-05 01:56:37,436 | INFO     | feature_cache                | Feature cache initialized
+2026-08-05 01:56:37,437 | INFO     | __main__                     | Bot initialized: Last.fm=OK
+2026-08-05 01:56:37,599 | INFO     | telegram.ext.Application     | Application started
+2026-08-05 01:56:56,465 | INFO     | __main__                     | [STEP 1] User 240082844: Received text: ➕ Add to Playlist...
+2026-08-05 01:56:56,467 | INFO     | __main__                     | [STEP 2] User 240082844: Entering playlist mode
+2026-08-05 01:57:11,385 | INFO     | __main__                     | [STEP 1] User 240082844: Received text: ✅ Done (5 songs)...
+2026-08-05 01:57:11,386 | INFO     | __main__                     | [STEP 3] User 240082844: Done button pressed, starting processing
+2026-08-05 01:57:11,387 | INFO     | __main__                     | [STEP 4] User 240082844: Starting processing
+2026-08-05 01:57:11,388 | INFO     | __main__                     | [STEP 4] User 240082844: Got 5 pending songs
+2026-08-05 01:57:11,395 | INFO     | __main__                     | [STEP 4] User 240082844: Parsed 5 songs from input
+2026-08-05 01:57:11,397 | INFO     | __main__                     | [STEP 5] User 240082844: Cleaned 5 songs
+2026-08-05 01:57:11,673 | INFO     | __main__                     | [STEP 6] User 240082844: Processing 1/5: '02 The Heavy   What Makes A Good Man?' -> 'The Heavy What Makes A Good Man?'
+2026-08-05 01:57:11,975 | INFO     | __main__                     | [STEP 6] User 240082844: Searching Deezer for: The Heavy What Makes A Good Man?
+2026-08-05 01:57:11,976 | INFO     | deezer_helper                | [DEEZER] search query='The Heavy What Makes A Good Man?' limit=3
+2026-08-05 01:57:13,021 | INFO     | deezer_helper                | [DEEZER] search query='The Heavy What Makes A Good Man?' -> 3 results
+2026-08-05 01:57:13,021 | INFO     | __main__                     | [STEP 6] User 240082844: Found: What Makes A Good Man? - The Heavy
+2026-08-05 01:57:13,021 | INFO     | deezer_helper                | [DEEZER] get_track id=18435591
+2026-08-05 01:57:13,444 | INFO     | deezer_helper                | [DEEZER] get_track id=18435591 -> The Heavy - What Makes A Good Man? (genres=[])
+2026-08-05 01:57:13,960 | INFO     | __main__                     | [STEP 6] User 240082844: Language: en (persian=False)
+2026-08-05 01:57:13,960 | INFO     | __main__                     | [STEP 6] User 240082844: Analyzing features (librosa)...
+2026-08-05 01:57:13,961 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 18435591
+2026-08-05 01:57:13,963 | INFO     | feature_cache                | [CACHE] ✓ Cache HIT for track ID: 18435591
+2026-08-05 01:57:13,964 | INFO     | feature_cache                | [CACHE]   Audio: BPM=92.3, Energy=0.2001
+2026-08-05 01:57:13,964 | INFO     | feature_cache                | [CACHE]   MusicBrainz: e614f23f-2086-4c58-af33-b4d4c1e45413
+2026-08-05 01:57:13,965 | INFO     | __main__                     | Cache hit for: The Heavy - What Makes A Good Man?
+2026-08-05 01:57:13,966 | INFO     | __main__                     | [STEP 6] User 240082844: Features OK: BPM=92.28515625
+2026-08-05 01:57:13,967 | INFO     | deezer_helper                | [DEEZER] get_similar id=18435591 limit=5
+2026-08-05 01:57:14,181 | INFO     | deezer_helper                | [DEEZER] get_similar id=18435591 -> 0 results
+2026-08-05 01:57:14,181 | INFO     | user_prefs                   | [PLAYLIST_DB] add_to_user_playlist user=240082844 track=18435591 (What Makes A Good Man? - The Heavy) bpm=92.28515625 energy=0.20011219382286072 valence=0 genre='' persian=False similar=0 lang=en recognized=True year=2012
+2026-08-05 01:57:14,202 | INFO     | user_prefs                   | [PLAYLIST_DB] added OK user=240082844 track=18435591
+2026-08-05 01:57:14,202 | INFO     | __main__                     | [STEP 7] User 240082844: Added: What Makes A Good Man? - The Heavy (genre: ) lang=en year=2012
+2026-08-05 01:57:14,203 | INFO     | __main__                     | [STEP 6] User 240082844: Processing 2/5: 'The Who   The Seeker' -> 'The Who The Seeker'
+2026-08-05 01:57:14,517 | INFO     | __main__                     | [STEP 6] User 240082844: Searching Deezer for: The Who The Seeker
+2026-08-05 01:57:14,517 | INFO     | deezer_helper                | [DEEZER] search query='The Who The Seeker' limit=3
+2026-08-05 01:57:14,787 | INFO     | deezer_helper                | [DEEZER] search query='The Who The Seeker' -> 3 results
+2026-08-05 01:57:14,788 | INFO     | __main__                     | [STEP 6] User 240082844: Found: The Seeker (Edit) - The Who
+2026-08-05 01:57:14,788 | INFO     | deezer_helper                | [DEEZER] get_track id=65414413
+2026-08-05 01:57:15,219 | INFO     | deezer_helper                | [DEEZER] get_track id=65414413 -> The Who - The Seeker (Edit) (genres=[])
+2026-08-05 01:57:15,228 | INFO     | __main__                     | [STEP 6] User 240082844: Language: en (persian=False)
+2026-08-05 01:57:15,230 | INFO     | __main__                     | [STEP 6] User 240082844: Analyzing features (librosa)...
+2026-08-05 01:57:15,230 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 65414413
+2026-08-05 01:57:15,233 | INFO     | feature_cache                | [CACHE] ✓ Cache HIT for track ID: 65414413
+2026-08-05 01:57:15,233 | INFO     | feature_cache                | [CACHE]   Audio: BPM=89.1, Energy=0.1082
+2026-08-05 01:57:15,234 | INFO     | __main__                     | Cache hit for: The Who - The Seeker (Edit)
+2026-08-05 01:57:15,234 | INFO     | __main__                     | [STEP 6] User 240082844: Features OK: BPM=89.10290948275862
+2026-08-05 01:57:15,234 | INFO     | deezer_helper                | [DEEZER] get_similar id=65414413 limit=5
+2026-08-05 01:57:15,421 | INFO     | deezer_helper                | [DEEZER] get_similar id=65414413 -> 0 results
+2026-08-05 01:57:15,421 | INFO     | user_prefs                   | [PLAYLIST_DB] add_to_user_playlist user=240082844 track=65414413 (The Seeker (Edit) - The Who) bpm=89.10290948275862 energy=0.10818611085414886 valence=0 genre='' persian=False similar=0 lang=en recognized=True year=2012
+2026-08-05 01:57:15,446 | INFO     | user_prefs                   | [PLAYLIST_DB] added OK user=240082844 track=65414413
+2026-08-05 01:57:15,447 | INFO     | __main__                     | [STEP 7] User 240082844: Added: The Seeker (Edit) - The Who (genre: ) lang=en year=2012
+2026-08-05 01:57:15,447 | INFO     | __main__                     | [STEP 6] User 240082844: Processing 3/5: 'Fairuz   Wa Habibi' -> 'Fairuz Wa Habibi'
+2026-08-05 01:57:15,727 | INFO     | __main__                     | [STEP 6] User 240082844: Searching Deezer for: Fairuz Wa Habibi
+2026-08-05 01:57:15,727 | INFO     | deezer_helper                | [DEEZER] search query='Fairuz Wa Habibi' limit=3
+2026-08-05 01:57:15,965 | INFO     | deezer_helper                | [DEEZER] search query='Fairuz Wa Habibi' -> 3 results
+2026-08-05 01:57:15,966 | INFO     | __main__                     | [STEP 6] User 240082844: Found: Wa Habibi - Fairuz
+2026-08-05 01:57:15,966 | INFO     | deezer_helper                | [DEEZER] get_track id=78569736
+2026-08-05 01:57:16,399 | INFO     | deezer_helper                | [DEEZER] get_track id=78569736 -> Fairuz - Wa Habibi (genres=[])
+2026-08-05 01:57:16,399 | INFO     | __main__                     | [STEP 6] User 240082844: Language: ar (persian=False)
+2026-08-05 01:57:16,399 | INFO     | __main__                     | [STEP 6] User 240082844: Analyzing features (librosa)...
+2026-08-05 01:57:16,400 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 78569736
+2026-08-05 01:57:16,402 | INFO     | feature_cache                | [CACHE] ✓ Cache HIT for track ID: 78569736
+2026-08-05 01:57:16,402 | INFO     | feature_cache                | [CACHE]   Audio: BPM=172.3, Energy=0.0748
+2026-08-05 01:57:16,402 | INFO     | feature_cache                | [CACHE]   MusicBrainz: 4fa9e617-d767-4e96-a8b8-7b18b60168db
+2026-08-05 01:57:16,404 | INFO     | __main__                     | Cache hit for: Fairuz - Wa Habibi
+2026-08-05 01:57:16,404 | INFO     | __main__                     | [STEP 6] User 240082844: Features OK: BPM=172.265625
+2026-08-05 01:57:16,404 | INFO     | deezer_helper                | [DEEZER] get_similar id=78569736 limit=5
+2026-08-05 01:57:16,588 | INFO     | deezer_helper                | [DEEZER] get_similar id=78569736 -> 0 results
+2026-08-05 01:57:16,588 | INFO     | user_prefs                   | [PLAYLIST_DB] add_to_user_playlist user=240082844 track=78569736 (Wa Habibi - Fairuz) bpm=172.265625 energy=0.07483935356140137 valence=0 genre='' persian=False similar=0 lang=ar recognized=True year=2014
+2026-08-05 01:57:16,597 | INFO     | user_prefs                   | [PLAYLIST_DB] added OK user=240082844 track=78569736
+2026-08-05 01:57:16,597 | INFO     | __main__                     | [STEP 7] User 240082844: Added: Wa Habibi - Fairuz (genre: ) lang=ar year=2014
+2026-08-05 01:57:16,597 | INFO     | __main__                     | [STEP 6] User 240082844: Processing 4/5: '04 Fairuz   Saaltak Habiby' -> 'Fairuz Saaltak Habiby'
+2026-08-05 01:57:16,842 | INFO     | __main__                     | [STEP 6] User 240082844: Searching Deezer for: Fairuz Saaltak Habiby
+2026-08-05 01:57:16,842 | INFO     | deezer_helper                | [DEEZER] search query='Fairuz Saaltak Habiby' limit=3
+2026-08-05 01:57:17,041 | INFO     | deezer_helper                | [DEEZER] search query='Fairuz Saaltak Habiby' -> 2 results
+2026-08-05 01:57:17,041 | INFO     | __main__                     | [STEP 6] User 240082844: Found: Saaltak Habiby - Fairuz
+2026-08-05 01:57:17,042 | INFO     | deezer_helper                | [DEEZER] get_track id=564173332
+2026-08-05 01:57:17,454 | INFO     | deezer_helper                | [DEEZER] get_track id=564173332 -> Fairuz - Saaltak Habiby (genres=[])
+2026-08-05 01:57:17,454 | INFO     | __main__                     | [STEP 6] User 240082844: Language: ar (persian=False)
+2026-08-05 01:57:17,455 | INFO     | __main__                     | [STEP 6] User 240082844: Analyzing features (librosa)...
+2026-08-05 01:57:17,455 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 564173332
+2026-08-05 01:57:17,457 | INFO     | feature_cache                | [CACHE] ✓ Cache HIT for track ID: 564173332
+2026-08-05 01:57:17,457 | INFO     | feature_cache                | [CACHE]   Audio: BPM=92.3, Energy=0.1409
+2026-08-05 01:57:17,457 | INFO     | feature_cache                | [CACHE]   MusicBrainz: 5a5aea91-1571-4ecd-a4bd-37a7b2d79fb9
+2026-08-05 01:57:17,459 | INFO     | __main__                     | Cache hit for: Fairuz - Saaltak Habiby
+2026-08-05 01:57:17,459 | INFO     | __main__                     | [STEP 6] User 240082844: Features OK: BPM=92.28515625
+2026-08-05 01:57:17,459 | INFO     | deezer_helper                | [DEEZER] get_similar id=564173332 limit=5
+2026-08-05 01:57:17,650 | INFO     | deezer_helper                | [DEEZER] get_similar id=564173332 -> 0 results
+2026-08-05 01:57:17,650 | INFO     | user_prefs                   | [PLAYLIST_DB] add_to_user_playlist user=240082844 track=564173332 (Saaltak Habiby - Fairuz) bpm=92.28515625 energy=0.14093714952468872 valence=0 genre='' persian=False similar=0 lang=ar recognized=True year=2018
+2026-08-05 01:57:17,662 | INFO     | user_prefs                   | [PLAYLIST_DB] added OK user=240082844 track=564173332
+2026-08-05 01:57:17,664 | INFO     | __main__                     | [STEP 7] User 240082844: Added: Saaltak Habiby - Fairuz (genre: ) lang=ar year=2018
+2026-08-05 01:57:17,665 | INFO     | __main__                     | [STEP 6] User 240082844: Processing 5/5: 'Ana La Habibi   Fayrouz. Cover by Amal ElSakka' -> 'Ana La Habibi Fayrouz. Cover by Amal ElSakka'
+2026-08-05 01:57:17,898 | INFO     | __main__                     | [STEP 6] User 240082844: Searching Deezer for: Ana La Habibi Fayrouz. Cover by Amal ElSakka
+2026-08-05 01:57:17,898 | INFO     | deezer_helper                | [DEEZER] search query='Ana La Habibi Fayrouz. Cover by Amal ElSakka' limit=3
+2026-08-05 01:57:18,168 | INFO     | deezer_helper                | [DEEZER] search query='Ana La Habibi Fayrouz. Cover by Amal ElSakka' -> 0 results
+2026-08-05 01:57:18,169 | INFO     | __main__                     | [STEP 6] User 240082844: No results for: Ana La Habibi Fayrouz. Cover by Amal ElSakka
+2026-08-05 01:57:18,170 | INFO     | user_prefs                   | [PLAYLIST_DB] add_to_user_playlist user=240082844 track=0 (Ana La Habibi Fayrouz. Cover by Amal ElSakka - ) bpm=0 energy=0 valence=0 genre='' persian=False similar=0 lang=en recognized=False year=0
+2026-08-05 01:57:18,181 | INFO     | user_prefs                   | [PLAYLIST_DB] added OK user=240082844 track=0
+2026-08-05 01:57:18,182 | INFO     | __main__                     | [STEP 7] User 240082844: Processing complete: 4/5 added, 4 recognized, 1 failed
+2026-08-05 01:57:18,183 | INFO     | user_prefs                   | [PLAYLIST_DB] get_user_taste_profile user=240082844
+2026-08-05 01:57:18,194 | INFO     | user_prefs                   | [PLAYLIST_DB] taste_profile user=240082844 -> total=9 recognized=8 tracks=8 bpm=111.5 energy=0.13 valence=0.00 genres=[] langs=[('en', 4), ('ar', 4)]
+2026-08-05 01:57:18,194 | INFO     | __main__                     | [STEP 9] User 240082844: Taste profile: 8 tracks, genres: {}
+2026-08-05 01:57:18,194 | INFO     | __main__                     | [STEP 8] User 240082844: Saving playlist to database
+2026-08-05 01:57:18,780 | INFO     | __main__                     | [STEP 8] User 240082844: Results sent successfully
+2026-08-05 01:57:52,547 | INFO     | __main__                     | [STEP 1] User 240082844: Received text: 🎯 For Me...
+2026-08-05 01:57:52,548 | INFO     | user_prefs                   | [PLAYLIST_DB] get_user_taste_profile user=240082844
+2026-08-05 01:57:52,560 | INFO     | user_prefs                   | [PLAYLIST_DB] taste_profile user=240082844 -> total=9 recognized=8 tracks=8 bpm=111.5 energy=0.13 valence=0.00 genres=[] langs=[('en', 4), ('ar', 4)]
+2026-08-05 01:57:54,459 | INFO     | user_prefs                   | [PLAYLIST_DB] get_all_similar_tracks user=240082844 -> 0 similar track ids (from 0 rows)
+2026-08-05 01:57:54,460 | INFO     | user_prefs                   | [PLAYLIST_DB] get_random_recommendations user=240082844 -> none available
+2026-08-05 01:58:14,808 | INFO     | __main__                     | [STEP 1] User 240082844: Received text: ➕ Add to Playlist...
+2026-08-05 01:58:14,809 | INFO     | __main__                     | [STEP 2] User 240082844: Entering playlist mode
+2026-08-05 01:58:31,623 | INFO     | __main__                     | [STEP 1] User 240082844: Received text: ✅ Done (10 songs)...
+2026-08-05 01:58:31,625 | INFO     | __main__                     | [STEP 3] User 240082844: Done button pressed, starting processing
+2026-08-05 01:58:31,626 | INFO     | __main__                     | [STEP 4] User 240082844: Starting processing
+2026-08-05 01:58:31,626 | INFO     | __main__                     | [STEP 4] User 240082844: Got 10 pending songs
+2026-08-05 01:58:31,626 | INFO     | __main__                     | [STEP 4] User 240082844: Parsed 10 songs from input
+2026-08-05 01:58:31,627 | INFO     | __main__                     | [STEP 5] User 240082844: Cleaned 10 songs
+2026-08-05 01:58:31,911 | INFO     | __main__                     | [STEP 6] User 240082844: Processing 1/10: '14 Nirvana   Where Did You Sleep Last Night' -> 'Nirvana Where Did You Sleep Last Night'
+2026-08-05 01:58:32,122 | INFO     | __main__                     | [STEP 6] User 240082844: Searching Deezer for: Nirvana Where Did You Sleep Last Night
+2026-08-05 01:58:32,123 | INFO     | deezer_helper                | [DEEZER] search query='Nirvana Where Did You Sleep Last Night' limit=3
+2026-08-05 01:58:33,133 | INFO     | deezer_helper                | [DEEZER] search query='Nirvana Where Did You Sleep Last Night' -> 3 results
+2026-08-05 01:58:33,133 | INFO     | __main__                     | [STEP 6] User 240082844: Found: Where Did You Sleep Last Night (Live) - Nirvana
+2026-08-05 01:58:33,133 | INFO     | deezer_helper                | [DEEZER] get_track id=1105746
+2026-08-05 01:58:33,652 | INFO     | deezer_helper                | [DEEZER] get_track id=1105746 -> Nirvana - Where Did You Sleep Last Night (Live) (genres=[])
+2026-08-05 01:58:33,682 | INFO     | __main__                     | [STEP 6] User 240082844: Language: af (persian=False)
+2026-08-05 01:58:33,682 | INFO     | __main__                     | [STEP 6] User 240082844: Analyzing features (librosa)...
+2026-08-05 01:58:33,682 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 1105746
+2026-08-05 01:58:33,685 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 1105746
+2026-08-05 01:58:33,686 | INFO     | __main__                     | Analyzing track: Nirvana - Where Did You Sleep Last Night (Live) (fast=False)
+2026-08-05 01:58:33,686 | INFO     | audio_analyzer               | Downloading preview: https://cdnt-preview.dzcdn.net/api/1/1/4/b/5/0/4b53adb817184366ddff1190f7792663.mp3?hdnea=exp=1785883414~acl=/api/1/1/4/b/5/0/4b53adb817184366ddff1190f7792663.mp3*~data=user_id=0,application_id=42~hmac=cf865f60fd61a68353844d7e523c88900fb2f9c836653786b34b32ddba71b5d6
+2026-08-05 01:58:34,780 | INFO     | audio_analyzer               | Downloaded 479827 bytes
+2026-08-05 01:58:34,781 | INFO     | audio_analyzer               | Running librosa analysis...
+2026-08-05 01:58:34,792 | INFO     | audio_analyzer               | [LIBROSA] Starting feature extraction...
+2026-08-05 01:58:34,794 | INFO     | audio_analyzer               | [LIBROSA] Temp file created: C:\Users\Saeid\AppData\Local\Temp\tmpxuz_7q7_.mp3 (479827 bytes)
+2026-08-05 01:58:34,795 | INFO     | audio_analyzer               | [LIBROSA] Loading audio file...
+2026-08-05 01:58:38,625 | INFO     | musicbrainz_client           | Found MusicBrainz ID: 80858d1b-075d-4bb7-8b0b-fbcc1fa483ec for Nirvana - Where Did You Sleep Last Night (Live)
+2026-08-05 01:58:40,976 | INFO     | audio_analyzer               | [LIBROSA] Audio loaded: 30.0 seconds, 22050 Hz sample rate
+2026-08-05 01:58:40,977 | INFO     | audio_analyzer               | [LIBROSA] Extracting BPM...
+2026-08-05 01:58:44,211 | INFO     | audio_analyzer               | [LIBROSA] BPM: 107.7
+2026-08-05 01:58:44,211 | INFO     | audio_analyzer               | [LIBROSA] Extracting MFCCs (timbre)...
+2026-08-05 01:58:44,273 | INFO     | audio_analyzer               | [LIBROSA] MFCCs extracted: 13 coefficients
+2026-08-05 01:58:44,273 | INFO     | audio_analyzer               | [LIBROSA] Extracting chroma (harmonics)...
+2026-08-05 01:58:44,401 | INFO     | audio_analyzer               | [LIBROSA] Chroma extracted: 12 pitch classes
+2026-08-05 01:58:44,401 | INFO     | audio_analyzer               | [LIBROSA] Extracting spectral features...
+2026-08-05 01:58:44,776 | INFO     | audio_analyzer               | [LIBROSA] Spectral: centroid=1542.2, rolloff=3257.8, bandwidth=1923.3
+2026-08-05 01:58:44,776 | INFO     | audio_analyzer               | [LIBROSA] Extracting energy (RMS)...
+2026-08-05 01:58:44,788 | INFO     | audio_analyzer               | [LIBROSA] Energy: mean=0.1307, var=0.0019
+2026-08-05 01:58:44,788 | INFO     | audio_analyzer               | [LIBROSA] Extracting onset rate...
+2026-08-05 01:58:44,852 | INFO     | audio_analyzer               | [LIBROSA] Onset rate: 1.3373
+2026-08-05 01:58:44,889 | INFO     | audio_analyzer               | [LIBROSA] Inferring musical key...
+2026-08-05 01:58:44,889 | INFO     | audio_analyzer               | [LIBROSA] Key: A#
+2026-08-05 01:58:44,890 | INFO     | audio_analyzer               | [LIBROSA] Inferring scale (major/minor)...
+2026-08-05 01:58:44,895 | INFO     | audio_analyzer               | [LIBROSA] Scale: minor (major=-0.26, minor=0.22)
+2026-08-05 01:58:44,896 | INFO     | audio_analyzer               | Analyzed audio: BPM=107.7, RMS=0.131
+2026-08-05 01:58:44,897 | INFO     | __main__                     | Analysis results for Nirvana - Where Did You Sleep Last Night (Live):
+2026-08-05 01:58:44,897 | INFO     | __main__                     |   Audio features: OK
+2026-08-05 01:58:44,897 | INFO     | __main__                     |   MusicBrainz: OK
+2026-08-05 01:58:44,897 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 01:58:44,897 | INFO     | __main__                     |   Last.fm tags: 0
+2026-08-05 01:58:44,898 | INFO     | feature_cache                | [CACHE] Saving features for: Nirvana - Where Did You Sleep Last Night (Live) (ID: 1105746)
+2026-08-05 01:58:44,898 | INFO     | feature_cache                | [CACHE] Audio features: BPM=107.7, Energy=0.1307, MFCCs=13 coefficients
+2026-08-05 01:58:44,898 | INFO     | feature_cache                | [CACHE] AcousticBrainz: NONE
+2026-08-05 01:58:44,898 | INFO     | feature_cache                | [CACHE] MusicBrainz ID: 80858d1b-075d-4bb7-8b0b-fbcc1fa483ec
+2026-08-05 01:58:44,899 | INFO     | feature_cache                | [CACHE] Last.fm tags: NONE
+2026-08-05 01:58:44,906 | INFO     | feature_cache                | [CACHE] ✓ Saved successfully for: Nirvana - Where Did You Sleep Last Night (Live)
+2026-08-05 01:58:44,918 | INFO     | feature_cache                | Exported 90 tracks to cached_songs.json
+2026-08-05 01:58:44,919 | INFO     | __main__                     | [STEP 6] User 240082844: Features OK: BPM=107.666015625
+2026-08-05 01:58:44,919 | INFO     | deezer_helper                | [DEEZER] get_similar id=1105746 limit=5
+2026-08-05 01:58:45,148 | INFO     | deezer_helper                | [DEEZER] get_similar id=1105746 -> 0 results
+2026-08-05 01:58:45,148 | INFO     | user_prefs                   | [PLAYLIST_DB] add_to_user_playlist user=240082844 track=1105746 (Where Did You Sleep Last Night (Live) - Nirvana) bpm=107.666015625 energy=0.13070020079612732 valence=0 genre='' persian=False similar=0 lang=af recognized=True year=1994
+2026-08-05 01:58:45,157 | INFO     | user_prefs                   | [PLAYLIST_DB] added OK user=240082844 track=1105746
+2026-08-05 01:58:45,158 | INFO     | __main__                     | [STEP 7] User 240082844: Added: Where Did You Sleep Last Night (Live) - Nirvana (genre: ) lang=af year=1994
+2026-08-05 01:58:45,158 | INFO     | __main__                     | [STEP 6] User 240082844: Processing 2/10: '01 The Rolling Stones   Gimme Shelter' -> 'The Rolling Stones Gimme Shelter'
+2026-08-05 01:58:45,913 | INFO     | __main__                     | [STEP 6] User 240082844: Searching Deezer for: The Rolling Stones Gimme Shelter
+2026-08-05 01:58:45,915 | INFO     | deezer_helper                | [DEEZER] search query='The Rolling Stones Gimme Shelter' limit=3
+2026-08-05 01:58:46,190 | INFO     | deezer_helper                | [DEEZER] search query='The Rolling Stones Gimme Shelter' -> 3 results
+2026-08-05 01:58:46,190 | INFO     | __main__                     | [STEP 6] User 240082844: Found: Gimme Shelter - The Rolling Stones
+2026-08-05 01:58:46,190 | INFO     | deezer_helper                | [DEEZER] get_track id=9914834
+2026-08-05 01:58:46,700 | INFO     | deezer_helper                | [DEEZER] get_track id=9914834 -> The Rolling Stones - Gimme Shelter (genres=[])
+2026-08-05 01:58:46,720 | INFO     | __main__                     | [STEP 6] User 240082844: Language: en (persian=False)
+2026-08-05 01:58:46,720 | INFO     | __main__                     | [STEP 6] User 240082844: Analyzing features (librosa)...
+2026-08-05 01:58:46,720 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 9914834
+2026-08-05 01:58:46,723 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 9914834
+2026-08-05 01:58:46,724 | INFO     | __main__                     | Analyzing track: The Rolling Stones - Gimme Shelter (fast=False)
+2026-08-05 01:58:46,724 | INFO     | audio_analyzer               | Downloading preview: https://cdnt-preview.dzcdn.net/api/1/1/8/e/5/0/8e5c03fa801b456511b511e9d70b2d6b.mp3?hdnea=exp=1785883427~acl=/api/1/1/8/e/5/0/8e5c03fa801b456511b511e9d70b2d6b.mp3*~data=user_id=0,application_id=42~hmac=ed951cd5202ec14779803d7bbc4ac0f7645007b038014da164f90b0d2c03dfa8
+2026-08-05 01:58:47,123 | INFO     | musicbrainz_client           | Found MusicBrainz ID: 404ac69d-53f1-40fc-80e7-9e988a494b52 for The Rolling Stones - Gimme Shelter
+2026-08-05 01:58:48,339 | INFO     | audio_analyzer               | Downloaded 479827 bytes
+2026-08-05 01:58:48,340 | INFO     | audio_analyzer               | Running librosa analysis...
+2026-08-05 01:58:48,340 | INFO     | audio_analyzer               | [LIBROSA] Starting feature extraction...
+2026-08-05 01:58:48,342 | INFO     | audio_analyzer               | [LIBROSA] Temp file created: C:\Users\Saeid\AppData\Local\Temp\tmpzd_c3nhw.mp3 (479827 bytes)
+2026-08-05 01:58:48,342 | INFO     | audio_analyzer               | [LIBROSA] Loading audio file...
+2026-08-05 01:58:48,454 | INFO     | audio_analyzer               | [LIBROSA] Audio loaded: 30.0 seconds, 22050 Hz sample rate
+2026-08-05 01:58:48,455 | INFO     | audio_analyzer               | [LIBROSA] Extracting BPM...
+2026-08-05 01:58:48,574 | INFO     | audio_analyzer               | [LIBROSA] BPM: 117.5
+2026-08-05 01:58:48,574 | INFO     | audio_analyzer               | [LIBROSA] Extracting MFCCs (timbre)...
+2026-08-05 01:58:48,650 | INFO     | audio_analyzer               | [LIBROSA] MFCCs extracted: 13 coefficients
+2026-08-05 01:58:48,651 | INFO     | audio_analyzer               | [LIBROSA] Extracting chroma (harmonics)...
+2026-08-05 01:58:48,779 | INFO     | audio_analyzer               | [LIBROSA] Chroma extracted: 12 pitch classes
+2026-08-05 01:58:48,780 | INFO     | audio_analyzer               | [LIBROSA] Extracting spectral features...
+2026-08-05 01:58:49,155 | INFO     | audio_analyzer               | [LIBROSA] Spectral: centroid=1895.1, rolloff=4076.8, bandwidth=2193.5
+2026-08-05 01:58:49,161 | INFO     | audio_analyzer               | [LIBROSA] Extracting energy (RMS)...
+2026-08-05 01:58:49,177 | INFO     | audio_analyzer               | [LIBROSA] Energy: mean=0.2022, var=0.0013
+2026-08-05 01:58:49,177 | INFO     | audio_analyzer               | [LIBROSA] Extracting onset rate...
+2026-08-05 01:58:49,255 | INFO     | audio_analyzer               | [LIBROSA] Onset rate: 1.6184
+2026-08-05 01:58:49,295 | INFO     | audio_analyzer               | [LIBROSA] Inferring musical key...
+2026-08-05 01:58:49,295 | INFO     | audio_analyzer               | [LIBROSA] Key: C#
+2026-08-05 01:58:49,297 | INFO     | audio_analyzer               | [LIBROSA] Inferring scale (major/minor)...
+2026-08-05 01:58:49,297 | INFO     | audio_analyzer               | [LIBROSA] Scale: major (major=-0.06, minor=-0.15)
+2026-08-05 01:58:49,299 | INFO     | audio_analyzer               | Analyzed audio: BPM=117.5, RMS=0.202
+2026-08-05 01:58:49,300 | INFO     | __main__                     | Analysis results for The Rolling Stones - Gimme Shelter:
+2026-08-05 01:58:49,300 | INFO     | __main__                     |   Audio features: OK
+2026-08-05 01:58:49,300 | INFO     | __main__                     |   MusicBrainz: OK
+2026-08-05 01:58:49,300 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 01:58:49,301 | INFO     | __main__                     |   Last.fm tags: 5
+2026-08-05 01:58:49,301 | INFO     | feature_cache                | [CACHE] Saving features for: The Rolling Stones - Gimme Shelter (ID: 9914834)
+2026-08-05 01:58:49,301 | INFO     | feature_cache                | [CACHE] Audio features: BPM=117.5, Energy=0.2022, MFCCs=13 coefficients
+2026-08-05 01:58:49,302 | INFO     | feature_cache                | [CACHE] AcousticBrainz: NONE
+2026-08-05 01:58:49,302 | INFO     | feature_cache                | [CACHE] MusicBrainz ID: 404ac69d-53f1-40fc-80e7-9e988a494b52
+2026-08-05 01:58:49,302 | INFO     | feature_cache                | [CACHE] Last.fm tags: classic rock, rock, 60s, the rolling stones, british
+2026-08-05 01:58:49,310 | INFO     | feature_cache                | [CACHE] ✓ Saved successfully for: The Rolling Stones - Gimme Shelter
+2026-08-05 01:58:49,324 | INFO     | feature_cache                | Exported 91 tracks to cached_songs.json
+2026-08-05 01:58:49,325 | INFO     | __main__                     | [STEP 6] User 240082844: Features OK: BPM=117.45383522727273
+2026-08-05 01:58:49,325 | INFO     | deezer_helper                | [DEEZER] get_similar id=9914834 limit=5
+2026-08-05 01:58:49,580 | INFO     | deezer_helper                | [DEEZER] get_similar id=9914834 -> 0 results
+2026-08-05 01:58:49,581 | INFO     | user_prefs                   | [PLAYLIST_DB] add_to_user_playlist user=240082844 track=9914834 (Gimme Shelter - The Rolling Stones) bpm=117.45383522727273 energy=0.2021569460630417 valence=0 genre='classic rock' persian=False similar=0 lang=en recognized=True year=2011
+2026-08-05 01:58:49,591 | INFO     | user_prefs                   | [PLAYLIST_DB] added OK user=240082844 track=9914834
+2026-08-05 01:58:49,592 | INFO     | __main__                     | [STEP 7] User 240082844: Added: Gimme Shelter - The Rolling Stones (genre: classic rock) lang=en year=2011
+2026-08-05 01:58:49,592 | INFO     | __main__                     | [STEP 6] User 240082844: Processing 3/10: '09 The Who Won't Get Fooled Again' -> 'The Who Won't Get Fooled Again'
+2026-08-05 01:58:49,880 | INFO     | __main__                     | [STEP 6] User 240082844: Searching Deezer for: The Who Won't Get Fooled Again
+2026-08-05 01:58:49,880 | INFO     | deezer_helper                | [DEEZER] search query="The Who Won't Get Fooled Again" limit=3
+2026-08-05 01:58:50,196 | INFO     | deezer_helper                | [DEEZER] search query="The Who Won't Get Fooled Again" -> 3 results
+2026-08-05 01:58:50,196 | INFO     | __main__                     | [STEP 6] User 240082844: Found: Won't Get Fooled Again (Original Album Version) - The Who
+2026-08-05 01:58:50,196 | INFO     | deezer_helper                | [DEEZER] get_track id=2121813
+2026-08-05 01:58:50,730 | INFO     | deezer_helper                | [DEEZER] get_track id=2121813 -> The Who - Won't Get Fooled Again (Original Album Version) (genres=[])
+2026-08-05 01:58:50,743 | INFO     | __main__                     | [STEP 6] User 240082844: Language: en (persian=False)
+2026-08-05 01:58:50,744 | INFO     | __main__                     | [STEP 6] User 240082844: Analyzing features (librosa)...
+2026-08-05 01:58:50,745 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 2121813
+2026-08-05 01:58:50,748 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 2121813
+2026-08-05 01:58:50,749 | INFO     | __main__                     | Analyzing track: The Who - Won't Get Fooled Again (Original Album Version) (fast=False)
+2026-08-05 01:58:50,750 | INFO     | audio_analyzer               | Downloading preview: https://cdnt-preview.dzcdn.net/api/1/1/f/7/9/0/f79e311b88a382995d8ff9e5ff05a1bb.mp3?hdnea=exp=1785883431~acl=/api/1/1/f/7/9/0/f79e311b88a382995d8ff9e5ff05a1bb.mp3*~data=user_id=0,application_id=42~hmac=1895ad36b6b30eb7d02c33b4bed9d186819ca14beecd55233f14b26b95a804a3
+2026-08-05 01:58:51,937 | INFO     | audio_analyzer               | Downloaded 479827 bytes
+2026-08-05 01:58:51,938 | INFO     | audio_analyzer               | Running librosa analysis...
+2026-08-05 01:58:51,939 | INFO     | audio_analyzer               | [LIBROSA] Starting feature extraction...
+2026-08-05 01:58:51,940 | INFO     | audio_analyzer               | [LIBROSA] Temp file created: C:\Users\Saeid\AppData\Local\Temp\tmp2ikuub2t.mp3 (479827 bytes)
+2026-08-05 01:58:51,941 | INFO     | audio_analyzer               | [LIBROSA] Loading audio file...
+2026-08-05 01:58:52,050 | INFO     | audio_analyzer               | [LIBROSA] Audio loaded: 30.0 seconds, 22050 Hz sample rate
+2026-08-05 01:58:52,051 | INFO     | audio_analyzer               | [LIBROSA] Extracting BPM...
+2026-08-05 01:58:52,206 | INFO     | audio_analyzer               | [LIBROSA] BPM: 136.0
+2026-08-05 01:58:52,206 | INFO     | audio_analyzer               | [LIBROSA] Extracting MFCCs (timbre)...
+2026-08-05 01:58:52,270 | INFO     | audio_analyzer               | [LIBROSA] MFCCs extracted: 13 coefficients
+2026-08-05 01:58:52,270 | INFO     | audio_analyzer               | [LIBROSA] Extracting chroma (harmonics)...
+2026-08-05 01:58:52,398 | INFO     | audio_analyzer               | [LIBROSA] Chroma extracted: 12 pitch classes
+2026-08-05 01:58:52,398 | INFO     | audio_analyzer               | [LIBROSA] Extracting spectral features...
+2026-08-05 01:58:52,759 | INFO     | audio_analyzer               | [LIBROSA] Spectral: centroid=2001.9, rolloff=4160.2, bandwidth=2263.3
+2026-08-05 01:58:52,759 | INFO     | audio_analyzer               | [LIBROSA] Extracting energy (RMS)...
+2026-08-05 01:58:52,769 | INFO     | audio_analyzer               | [LIBROSA] Energy: mean=0.2760, var=0.0019
+2026-08-05 01:58:52,770 | INFO     | audio_analyzer               | [LIBROSA] Extracting onset rate...
+2026-08-05 01:58:52,832 | INFO     | audio_analyzer               | [LIBROSA] Onset rate: 1.4105
+2026-08-05 01:58:52,871 | INFO     | audio_analyzer               | [LIBROSA] Inferring musical key...
+2026-08-05 01:58:52,871 | INFO     | audio_analyzer               | [LIBROSA] Key: A
+2026-08-05 01:58:52,871 | INFO     | audio_analyzer               | [LIBROSA] Inferring scale (major/minor)...
+2026-08-05 01:58:52,872 | INFO     | audio_analyzer               | [LIBROSA] Scale: major (major=0.24, minor=-0.60)
+2026-08-05 01:58:52,873 | INFO     | audio_analyzer               | Analyzed audio: BPM=136.0, RMS=0.276
+2026-08-05 01:58:56,123 | INFO     | musicbrainz_client           | No MusicBrainz recording found for The Who - Won't Get Fooled Again (Original Album Version)
+2026-08-05 01:58:56,123 | INFO     | __main__                     | Analysis results for The Who - Won't Get Fooled Again (Original Album Version):
+2026-08-05 01:58:56,123 | INFO     | __main__                     |   Audio features: OK
+2026-08-05 01:58:56,123 | INFO     | __main__                     |   MusicBrainz: NOT FOUND
+2026-08-05 01:58:56,124 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 01:58:56,124 | INFO     | __main__                     |   Last.fm tags: 0
+2026-08-05 01:58:56,124 | INFO     | feature_cache                | [CACHE] Saving features for: The Who - Won't Get Fooled Again (Original Album Version) (ID: 2121813)
+2026-08-05 01:58:56,124 | INFO     | feature_cache                | [CACHE] Audio features: BPM=136.0, Energy=0.2760, MFCCs=13 coefficients
+2026-08-05 01:58:56,125 | INFO     | feature_cache                | [CACHE] AcousticBrainz: NONE
+2026-08-05 01:58:56,125 | INFO     | feature_cache                | [CACHE] MusicBrainz ID: NONE
+2026-08-05 01:58:56,125 | INFO     | feature_cache                | [CACHE] Last.fm tags: NONE
+2026-08-05 01:58:56,134 | INFO     | feature_cache                | [CACHE] ✓ Saved successfully for: The Who - Won't Get Fooled Again (Original Album Version)
+2026-08-05 01:58:56,148 | INFO     | feature_cache                | Exported 92 tracks to cached_songs.json
+2026-08-05 01:58:56,149 | INFO     | __main__                     | [STEP 6] User 240082844: Features OK: BPM=135.99917763157896
+2026-08-05 01:58:56,149 | INFO     | deezer_helper                | [DEEZER] get_similar id=2121813 limit=5
+2026-08-05 01:58:56,543 | INFO     | deezer_helper                | [DEEZER] get_similar id=2121813 -> 0 results
+2026-08-05 01:58:56,543 | INFO     | user_prefs                   | [PLAYLIST_DB] add_to_user_playlist user=240082844 track=2121813 (Won't Get Fooled Again (Original Album Version) - The Who) bpm=135.99917763157896 energy=0.27598193287849426 valence=0 genre='' persian=False similar=0 lang=en recognized=True year=2003
+2026-08-05 01:58:56,553 | INFO     | user_prefs                   | [PLAYLIST_DB] added OK user=240082844 track=2121813
+2026-08-05 01:58:56,553 | INFO     | __main__                     | [STEP 7] User 240082844: Added: Won't Get Fooled Again (Original Album Version) - The Who (genre: ) lang=en year=2003
+2026-08-05 01:58:56,554 | INFO     | __main__                     | [STEP 6] User 240082844: Processing 4/10: 'Alireza Ghorbani   Behind The Curtain (Pardeh Neshin)' -> 'Alireza Ghorbani Behind The Curtain (Pardeh Neshin)'
+2026-08-05 01:58:57,901 | INFO     | __main__                     | [STEP 6] User 240082844: Searching Deezer for: Alireza Ghorbani Behind The Curtain (Pardeh Neshin)
+2026-08-05 01:58:57,902 | INFO     | deezer_helper                | [DEEZER] search query='Alireza Ghorbani Behind The Curtain (Pardeh Neshin)' limit=3
+2026-08-05 01:58:58,221 | INFO     | deezer_helper                | [DEEZER] search query='Alireza Ghorbani Behind The Curtain (Pardeh Neshin)' -> 1 results
+2026-08-05 01:58:58,221 | INFO     | __main__                     | [STEP 6] User 240082844: Found: Behind The Curtain (Pardeh Neshin) - Alireza Ghorbani
+2026-08-05 01:58:58,221 | INFO     | deezer_helper                | [DEEZER] get_track id=1120092102
+2026-08-05 01:58:58,908 | INFO     | deezer_helper                | [DEEZER] get_track id=1120092102 -> Alireza Ghorbani - Behind The Curtain (Pardeh Neshin) (genres=[])
+2026-08-05 01:58:58,921 | INFO     | __main__                     | [STEP 6] User 240082844: Language: en (persian=False)
+2026-08-05 01:58:58,921 | INFO     | __main__                     | [STEP 6] User 240082844: Analyzing features (librosa)...
+2026-08-05 01:58:58,921 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 1120092102
+2026-08-05 01:58:58,924 | INFO     | feature_cache                | [CACHE] ✓ Cache HIT for track ID: 1120092102
+2026-08-05 01:58:58,925 | INFO     | feature_cache                | [CACHE]   Audio: BPM=136.0, Energy=0.1833
+2026-08-05 01:58:58,926 | INFO     | __main__                     | Cache hit for: Alireza Ghorbani - Behind The Curtain (Pardeh Neshin)
+2026-08-05 01:58:58,926 | INFO     | __main__                     | [STEP 6] User 240082844: Features OK: BPM=135.99917763157896
+2026-08-05 01:58:58,926 | INFO     | deezer_helper                | [DEEZER] get_similar id=1120092102 limit=5
+2026-08-05 01:58:59,518 | INFO     | deezer_helper                | [DEEZER] get_similar id=1120092102 -> 0 results
+2026-08-05 01:58:59,518 | INFO     | user_prefs                   | [PLAYLIST_DB] add_to_user_playlist user=240082844 track=1120092102 (Behind The Curtain (Pardeh Neshin) - Alireza Ghorbani) bpm=135.99917763157896 energy=0.1832810640335083 valence=0 genre='Persian Traditional' persian=False similar=0 lang=en recognized=True year=2020
+2026-08-05 01:58:59,527 | INFO     | user_prefs                   | [PLAYLIST_DB] added OK user=240082844 track=1120092102
+2026-08-05 01:58:59,529 | INFO     | __main__                     | [STEP 7] User 240082844: Added: Behind The Curtain (Pardeh Neshin) - Alireza Ghorbani (genre: Persian Traditional) lang=en year=2020
+2026-08-05 01:58:59,529 | INFO     | __main__                     | [STEP 6] User 240082844: Processing 5/10: '01 The Who   Baba O Riley' -> 'The Who Baba O Riley'
+2026-08-05 01:58:59,820 | INFO     | __main__                     | [STEP 6] User 240082844: Searching Deezer for: The Who Baba O Riley
+2026-08-05 01:58:59,821 | INFO     | deezer_helper                | [DEEZER] search query='The Who Baba O Riley' limit=3
+2026-08-05 01:59:00,433 | INFO     | deezer_helper                | [DEEZER] search query='The Who Baba O Riley' -> 3 results
+2026-08-05 01:59:00,434 | INFO     | __main__                     | [STEP 6] User 240082844: Found: Baba O'Riley - The Who
+2026-08-05 01:59:00,434 | INFO     | deezer_helper                | [DEEZER] get_track id=2121805
+2026-08-05 01:59:01,027 | INFO     | deezer_helper                | [DEEZER] get_track id=2121805 -> The Who - Baba O'Riley (genres=[])
+2026-08-05 01:59:01,032 | INFO     | __main__                     | [STEP 6] User 240082844: Language: en (persian=False)
+2026-08-05 01:59:01,033 | INFO     | __main__                     | [STEP 6] User 240082844: Analyzing features (librosa)...
+2026-08-05 01:59:01,033 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 2121805
+2026-08-05 01:59:01,036 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 2121805
+2026-08-05 01:59:01,037 | INFO     | __main__                     | Analyzing track: The Who - Baba O'Riley (fast=False)
+2026-08-05 01:59:01,037 | INFO     | audio_analyzer               | Downloading preview: https://cdnt-preview.dzcdn.net/api/1/1/1/a/4/0/1a4104cbd4b8fb263cfae79dbd21a00e.mp3?hdnea=exp=1785883441~acl=/api/1/1/1/a/4/0/1a4104cbd4b8fb263cfae79dbd21a00e.mp3*~data=user_id=0,application_id=42~hmac=5586bdd4469e3cefa526c74d1be902a90de1df2ff21879057672560657952721
+2026-08-05 01:59:01,310 | INFO     | musicbrainz_client           | Found MusicBrainz ID: e7e2bcce-2d80-4336-93e5-d20442eb8083 for The Who - Baba O'Riley
+2026-08-05 01:59:02,193 | INFO     | audio_analyzer               | Downloaded 479827 bytes
+2026-08-05 01:59:02,194 | INFO     | audio_analyzer               | Running librosa analysis...
+2026-08-05 01:59:02,195 | INFO     | audio_analyzer               | [LIBROSA] Starting feature extraction...
+2026-08-05 01:59:02,197 | INFO     | audio_analyzer               | [LIBROSA] Temp file created: C:\Users\Saeid\AppData\Local\Temp\tmpcvoup4ac.mp3 (479827 bytes)
+2026-08-05 01:59:02,197 | INFO     | audio_analyzer               | [LIBROSA] Loading audio file...
+2026-08-05 01:59:02,312 | INFO     | audio_analyzer               | [LIBROSA] Audio loaded: 30.0 seconds, 22050 Hz sample rate
+2026-08-05 01:59:02,313 | INFO     | audio_analyzer               | [LIBROSA] Extracting BPM...
+2026-08-05 01:59:02,455 | INFO     | audio_analyzer               | [LIBROSA] BPM: 117.5
+2026-08-05 01:59:02,455 | INFO     | audio_analyzer               | [LIBROSA] Extracting MFCCs (timbre)...
+2026-08-05 01:59:02,520 | INFO     | audio_analyzer               | [LIBROSA] MFCCs extracted: 13 coefficients
+2026-08-05 01:59:02,520 | INFO     | audio_analyzer               | [LIBROSA] Extracting chroma (harmonics)...
+2026-08-05 01:59:02,647 | INFO     | audio_analyzer               | [LIBROSA] Chroma extracted: 12 pitch classes
+2026-08-05 01:59:02,648 | INFO     | audio_analyzer               | [LIBROSA] Extracting spectral features...
+2026-08-05 01:59:03,018 | INFO     | audio_analyzer               | [LIBROSA] Spectral: centroid=2359.0, rolloff=4862.0, bandwidth=2344.0
+2026-08-05 01:59:03,018 | INFO     | audio_analyzer               | [LIBROSA] Extracting energy (RMS)...
+2026-08-05 01:59:03,029 | INFO     | audio_analyzer               | [LIBROSA] Energy: mean=0.1636, var=0.0065
+2026-08-05 01:59:03,029 | INFO     | audio_analyzer               | [LIBROSA] Extracting onset rate...
+2026-08-05 01:59:03,096 | INFO     | audio_analyzer               | [LIBROSA] Onset rate: 1.3857
+2026-08-05 01:59:03,135 | INFO     | audio_analyzer               | [LIBROSA] Inferring musical key...
+2026-08-05 01:59:03,136 | INFO     | audio_analyzer               | [LIBROSA] Key: F
+2026-08-05 01:59:03,136 | INFO     | audio_analyzer               | [LIBROSA] Inferring scale (major/minor)...
+2026-08-05 01:59:03,137 | INFO     | audio_analyzer               | [LIBROSA] Scale: major (major=0.46, minor=0.15)
+2026-08-05 01:59:03,138 | INFO     | audio_analyzer               | Analyzed audio: BPM=117.5, RMS=0.164
+2026-08-05 01:59:03,138 | INFO     | __main__                     | Analysis results for The Who - Baba O'Riley:
+2026-08-05 01:59:03,138 | INFO     | __main__                     |   Audio features: OK
+2026-08-05 01:59:03,139 | INFO     | __main__                     |   MusicBrainz: OK
+2026-08-05 01:59:03,139 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 01:59:03,139 | INFO     | __main__                     |   Last.fm tags: 5
+2026-08-05 01:59:03,139 | INFO     | feature_cache                | [CACHE] Saving features for: The Who - Baba O'Riley (ID: 2121805)
+2026-08-05 01:59:03,140 | INFO     | feature_cache                | [CACHE] Audio features: BPM=117.5, Energy=0.1636, MFCCs=13 coefficients
+2026-08-05 01:59:03,140 | INFO     | feature_cache                | [CACHE] AcousticBrainz: NONE
+2026-08-05 01:59:03,140 | INFO     | feature_cache                | [CACHE] MusicBrainz ID: e7e2bcce-2d80-4336-93e5-d20442eb8083
+2026-08-05 01:59:03,141 | INFO     | feature_cache                | [CACHE] Last.fm tags: classic rock, rock, 70s, the who, british
+2026-08-05 01:59:03,149 | INFO     | feature_cache                | [CACHE] ✓ Saved successfully for: The Who - Baba O'Riley
+2026-08-05 01:59:03,164 | INFO     | feature_cache                | Exported 93 tracks to cached_songs.json
+2026-08-05 01:59:03,164 | INFO     | __main__                     | [STEP 6] User 240082844: Features OK: BPM=117.45383522727273
+2026-08-05 01:59:03,164 | INFO     | deezer_helper                | [DEEZER] get_similar id=2121805 limit=5
+2026-08-05 01:59:03,407 | INFO     | deezer_helper                | [DEEZER] get_similar id=2121805 -> 0 results
+2026-08-05 01:59:03,407 | INFO     | user_prefs                   | [PLAYLIST_DB] add_to_user_playlist user=240082844 track=2121805 (Baba O'Riley - The Who) bpm=117.45383522727273 energy=0.16355152428150177 valence=0 genre='classic rock' persian=False similar=0 lang=en recognized=True year=2003
+2026-08-05 01:59:03,417 | INFO     | user_prefs                   | [PLAYLIST_DB] added OK user=240082844 track=2121805
+2026-08-05 01:59:03,417 | INFO     | __main__                     | [STEP 7] User 240082844: Added: Baba O'Riley - The Who (genre: classic rock) lang=en year=2003
+2026-08-05 01:59:03,418 | INFO     | __main__                     | [STEP 6] User 240082844: Processing 6/10: 'Love   Alone Again Or' -> 'Love Alone Again Or'
+2026-08-05 01:59:03,614 | INFO     | __main__                     | [STEP 6] User 240082844: Searching Deezer for: Love Alone Again Or
+2026-08-05 01:59:03,614 | INFO     | deezer_helper                | [DEEZER] search query='Love Alone Again Or' limit=3
+2026-08-05 01:59:03,878 | INFO     | deezer_helper                | [DEEZER] search query='Love Alone Again Or' -> 3 results
+2026-08-05 01:59:03,878 | INFO     | __main__                     | [STEP 6] User 240082844: Found: Alone Again Or (2015 Remaster) - Love
+2026-08-05 01:59:03,879 | INFO     | deezer_helper                | [DEEZER] get_track id=107473746
+2026-08-05 01:59:04,479 | INFO     | deezer_helper                | [DEEZER] get_track id=107473746 -> Love - Alone Again Or (2015 Remaster) (genres=[])
+2026-08-05 01:59:04,500 | INFO     | __main__                     | [STEP 6] User 240082844: Language: de (persian=False)
+2026-08-05 01:59:04,500 | INFO     | __main__                     | [STEP 6] User 240082844: Analyzing features (librosa)...
+2026-08-05 01:59:04,500 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 107473746
+2026-08-05 01:59:04,503 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 107473746
+2026-08-05 01:59:04,504 | INFO     | __main__                     | Analyzing track: Love - Alone Again Or (2015 Remaster) (fast=False)
+2026-08-05 01:59:04,504 | INFO     | audio_analyzer               | Downloading preview: https://cdnt-preview.dzcdn.net/api/1/1/4/5/0/0/45010b35deec135debc8dcb7a085616a.mp3?hdnea=exp=1785883445~acl=/api/1/1/4/5/0/0/45010b35deec135debc8dcb7a085616a.mp3*~data=user_id=0,application_id=42~hmac=adf205153203658ef85e12949d5c274b096e22338afc59e1371d9372832af5ff
+2026-08-05 01:59:04,743 | INFO     | musicbrainz_client           | No MusicBrainz recording found for Love - Alone Again Or (2015 Remaster)
+2026-08-05 01:59:05,758 | INFO     | audio_analyzer               | Downloaded 479827 bytes
+2026-08-05 01:59:05,758 | INFO     | audio_analyzer               | Running librosa analysis...
+2026-08-05 01:59:05,759 | INFO     | audio_analyzer               | [LIBROSA] Starting feature extraction...
+2026-08-05 01:59:05,761 | INFO     | audio_analyzer               | [LIBROSA] Temp file created: C:\Users\Saeid\AppData\Local\Temp\tmpkrfx2bg5.mp3 (479827 bytes)
+2026-08-05 01:59:05,761 | INFO     | audio_analyzer               | [LIBROSA] Loading audio file...
+2026-08-05 01:59:05,879 | INFO     | audio_analyzer               | [LIBROSA] Audio loaded: 30.0 seconds, 22050 Hz sample rate
+2026-08-05 01:59:05,880 | INFO     | audio_analyzer               | [LIBROSA] Extracting BPM...
+2026-08-05 01:59:05,990 | INFO     | audio_analyzer               | [LIBROSA] BPM: 117.5
+2026-08-05 01:59:05,991 | INFO     | audio_analyzer               | [LIBROSA] Extracting MFCCs (timbre)...
+2026-08-05 01:59:06,047 | INFO     | audio_analyzer               | [LIBROSA] MFCCs extracted: 13 coefficients
+2026-08-05 01:59:06,048 | INFO     | audio_analyzer               | [LIBROSA] Extracting chroma (harmonics)...
+2026-08-05 01:59:06,174 | INFO     | audio_analyzer               | [LIBROSA] Chroma extracted: 12 pitch classes
+2026-08-05 01:59:06,174 | INFO     | audio_analyzer               | [LIBROSA] Extracting spectral features...
+2026-08-05 01:59:06,519 | INFO     | audio_analyzer               | [LIBROSA] Spectral: centroid=1747.3, rolloff=3812.4, bandwidth=2186.5
+2026-08-05 01:59:06,519 | INFO     | audio_analyzer               | [LIBROSA] Extracting energy (RMS)...
+2026-08-05 01:59:06,528 | INFO     | audio_analyzer               | [LIBROSA] Energy: mean=0.0507, var=0.0005
+2026-08-05 01:59:06,528 | INFO     | audio_analyzer               | [LIBROSA] Extracting onset rate...
+2026-08-05 01:59:06,602 | INFO     | audio_analyzer               | [LIBROSA] Onset rate: 1.5041
+2026-08-05 01:59:06,641 | INFO     | audio_analyzer               | [LIBROSA] Inferring musical key...
+2026-08-05 01:59:06,641 | INFO     | audio_analyzer               | [LIBROSA] Key: C#
+2026-08-05 01:59:06,642 | INFO     | audio_analyzer               | [LIBROSA] Inferring scale (major/minor)...
+2026-08-05 01:59:06,643 | INFO     | audio_analyzer               | [LIBROSA] Scale: major (major=-0.12, minor=-0.40)
+2026-08-05 01:59:06,644 | INFO     | audio_analyzer               | Analyzed audio: BPM=117.5, RMS=0.051
+2026-08-05 01:59:06,644 | INFO     | __main__                     | Analysis results for Love - Alone Again Or (2015 Remaster):
+2026-08-05 01:59:06,644 | INFO     | __main__                     |   Audio features: OK
+2026-08-05 01:59:06,644 | INFO     | __main__                     |   MusicBrainz: NOT FOUND
+2026-08-05 01:59:06,645 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 01:59:06,645 | INFO     | __main__                     |   Last.fm tags: 0
+2026-08-05 01:59:06,645 | INFO     | feature_cache                | [CACHE] Saving features for: Love - Alone Again Or (2015 Remaster) (ID: 107473746)
+2026-08-05 01:59:06,646 | INFO     | feature_cache                | [CACHE] Audio features: BPM=117.5, Energy=0.0507, MFCCs=13 coefficients
+2026-08-05 01:59:06,646 | INFO     | feature_cache                | [CACHE] AcousticBrainz: NONE
+2026-08-05 01:59:06,646 | INFO     | feature_cache                | [CACHE] MusicBrainz ID: NONE
+2026-08-05 01:59:06,646 | INFO     | feature_cache                | [CACHE] Last.fm tags: NONE
+2026-08-05 01:59:06,654 | INFO     | feature_cache                | [CACHE] ✓ Saved successfully for: Love - Alone Again Or (2015 Remaster)
+2026-08-05 01:59:06,669 | INFO     | feature_cache                | Exported 94 tracks to cached_songs.json
+2026-08-05 01:59:06,670 | INFO     | __main__                     | [STEP 6] User 240082844: Features OK: BPM=117.45383522727273
+2026-08-05 01:59:06,670 | INFO     | deezer_helper                | [DEEZER] get_similar id=107473746 limit=5
+2026-08-05 01:59:06,935 | INFO     | deezer_helper                | [DEEZER] get_similar id=107473746 -> 0 results
+2026-08-05 01:59:06,935 | INFO     | user_prefs                   | [PLAYLIST_DB] add_to_user_playlist user=240082844 track=107473746 (Alone Again Or (2015 Remaster) - Love) bpm=117.45383522727273 energy=0.05070759728550911 valence=0 genre='' persian=False similar=0 lang=de recognized=True year=2015
+2026-08-05 01:59:06,945 | INFO     | user_prefs                   | [PLAYLIST_DB] added OK user=240082844 track=107473746
+2026-08-05 01:59:06,945 | INFO     | __main__                     | [STEP 7] User 240082844: Added: Alone Again Or (2015 Remaster) - Love (genre: ) lang=de year=2015
+2026-08-05 01:59:06,945 | INFO     | __main__                     | [STEP 6] User 240082844: Processing 7/10: 'Alireza Ghorbani   Chera Chera (Nadan Nadan)' -> 'Alireza Ghorbani Chera Chera (Nadan Nadan)'
+2026-08-05 01:59:07,153 | INFO     | __main__                     | [STEP 6] User 240082844: Searching Deezer for: Alireza Ghorbani Chera Chera (Nadan Nadan)
+2026-08-05 01:59:07,153 | INFO     | deezer_helper                | [DEEZER] search query='Alireza Ghorbani Chera Chera (Nadan Nadan)' limit=3
+2026-08-05 01:59:07,487 | INFO     | deezer_helper                | [DEEZER] search query='Alireza Ghorbani Chera Chera (Nadan Nadan)' -> 1 results
+2026-08-05 01:59:07,487 | INFO     | __main__                     | [STEP 6] User 240082844: Found: Chera Chera (Nadan Nadan) - Alireza Ghorbani
+2026-08-05 01:59:07,488 | INFO     | deezer_helper                | [DEEZER] get_track id=2321903925
+2026-08-05 01:59:08,043 | INFO     | deezer_helper                | [DEEZER] get_track id=2321903925 -> Alireza Ghorbani - Chera Chera (Nadan Nadan) (genres=[])
+2026-08-05 01:59:08,060 | INFO     | __main__                     | [STEP 6] User 240082844: Language: id (persian=False)
+2026-08-05 01:59:08,060 | INFO     | __main__                     | [STEP 6] User 240082844: Analyzing features (librosa)...
+2026-08-05 01:59:08,060 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 2321903925
+2026-08-05 01:59:08,063 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 2321903925
+2026-08-05 01:59:08,064 | INFO     | __main__                     | Analyzing track: Alireza Ghorbani - Chera Chera (Nadan Nadan) (fast=False)
+2026-08-05 01:59:08,064 | INFO     | audio_analyzer               | Downloading preview: https://cdnt-preview.dzcdn.net/api/1/1/2/b/6/0/2b6d59dd932b4ed195622ecc800d591e.mp3?hdnea=exp=1785883449~acl=/api/1/1/2/b/6/0/2b6d59dd932b4ed195622ecc800d591e.mp3*~data=user_id=0,application_id=42~hmac=41b33f0a83a6a1ad21fc132ab2ae5f89699c8b69c3890d5fee4f099ecc53dacc
+2026-08-05 01:59:08,328 | INFO     | musicbrainz_client           | No MusicBrainz recording found for Alireza Ghorbani - Chera Chera (Nadan Nadan)
+2026-08-05 01:59:11,855 | INFO     | audio_analyzer               | Downloaded 480245 bytes
+2026-08-05 01:59:11,856 | INFO     | audio_analyzer               | Running librosa analysis...
+2026-08-05 01:59:11,857 | INFO     | audio_analyzer               | [LIBROSA] Starting feature extraction...
+2026-08-05 01:59:11,858 | INFO     | audio_analyzer               | [LIBROSA] Temp file created: C:\Users\Saeid\AppData\Local\Temp\tmp87chfkdk.mp3 (480245 bytes)
+2026-08-05 01:59:11,858 | INFO     | audio_analyzer               | [LIBROSA] Loading audio file...
+2026-08-05 01:59:11,968 | INFO     | audio_analyzer               | [LIBROSA] Audio loaded: 30.0 seconds, 22050 Hz sample rate
+2026-08-05 01:59:11,970 | INFO     | audio_analyzer               | [LIBROSA] Extracting BPM...
+2026-08-05 01:59:12,077 | INFO     | audio_analyzer               | [LIBROSA] BPM: 129.2
+2026-08-05 01:59:12,077 | INFO     | audio_analyzer               | [LIBROSA] Extracting MFCCs (timbre)...
+2026-08-05 01:59:12,162 | INFO     | audio_analyzer               | [LIBROSA] MFCCs extracted: 13 coefficients
+2026-08-05 01:59:12,162 | INFO     | audio_analyzer               | [LIBROSA] Extracting chroma (harmonics)...
+2026-08-05 01:59:12,293 | INFO     | audio_analyzer               | [LIBROSA] Chroma extracted: 12 pitch classes
+2026-08-05 01:59:12,294 | INFO     | audio_analyzer               | [LIBROSA] Extracting spectral features...
+2026-08-05 01:59:12,643 | INFO     | audio_analyzer               | [LIBROSA] Spectral: centroid=1983.2, rolloff=4260.9, bandwidth=2272.1
+2026-08-05 01:59:12,643 | INFO     | audio_analyzer               | [LIBROSA] Extracting energy (RMS)...
+2026-08-05 01:59:12,653 | INFO     | audio_analyzer               | [LIBROSA] Energy: mean=0.1922, var=0.0038
+2026-08-05 01:59:12,653 | INFO     | audio_analyzer               | [LIBROSA] Extracting onset rate...
+2026-08-05 01:59:12,713 | INFO     | audio_analyzer               | [LIBROSA] Onset rate: 1.4639
+2026-08-05 01:59:12,749 | INFO     | audio_analyzer               | [LIBROSA] Inferring musical key...
+2026-08-05 01:59:12,750 | INFO     | audio_analyzer               | [LIBROSA] Key: C
+2026-08-05 01:59:12,750 | INFO     | audio_analyzer               | [LIBROSA] Inferring scale (major/minor)...
+2026-08-05 01:59:12,751 | INFO     | audio_analyzer               | [LIBROSA] Scale: minor (major=0.24, minor=0.57)
+2026-08-05 01:59:12,752 | INFO     | audio_analyzer               | Analyzed audio: BPM=129.2, RMS=0.192
+2026-08-05 01:59:12,752 | INFO     | __main__                     | Analysis results for Alireza Ghorbani - Chera Chera (Nadan Nadan):
+2026-08-05 01:59:12,752 | INFO     | __main__                     |   Audio features: OK
+2026-08-05 01:59:12,753 | INFO     | __main__                     |   MusicBrainz: NOT FOUND
+2026-08-05 01:59:12,753 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 01:59:12,753 | INFO     | __main__                     |   Last.fm tags: 0
+2026-08-05 01:59:12,753 | INFO     | feature_cache                | [CACHE] Saving features for: Alireza Ghorbani - Chera Chera (Nadan Nadan) (ID: 2321903925)
+2026-08-05 01:59:12,754 | INFO     | feature_cache                | [CACHE] Audio features: BPM=129.2, Energy=0.1922, MFCCs=13 coefficients
+2026-08-05 01:59:12,754 | INFO     | feature_cache                | [CACHE] AcousticBrainz: NONE
+2026-08-05 01:59:12,754 | INFO     | feature_cache                | [CACHE] MusicBrainz ID: NONE
+2026-08-05 01:59:12,754 | INFO     | feature_cache                | [CACHE] Last.fm tags: NONE
+2026-08-05 01:59:12,763 | INFO     | feature_cache                | [CACHE] ✓ Saved successfully for: Alireza Ghorbani - Chera Chera (Nadan Nadan)
+2026-08-05 01:59:12,777 | INFO     | feature_cache                | Exported 95 tracks to cached_songs.json
+2026-08-05 01:59:12,778 | INFO     | __main__                     | [STEP 6] User 240082844: Features OK: BPM=129.19921875
+2026-08-05 01:59:12,778 | INFO     | deezer_helper                | [DEEZER] get_similar id=2321903925 limit=5
+2026-08-05 01:59:13,076 | INFO     | deezer_helper                | [DEEZER] get_similar id=2321903925 -> 0 results
+2026-08-05 01:59:13,076 | INFO     | user_prefs                   | [PLAYLIST_DB] add_to_user_playlist user=240082844 track=2321903925 (Chera Chera (Nadan Nadan) - Alireza Ghorbani) bpm=129.19921875 energy=0.19224226474761963 valence=0 genre='Persian Traditional' persian=False similar=0 lang=id recognized=True year=2023
+2026-08-05 01:59:13,086 | INFO     | user_prefs                   | [PLAYLIST_DB] added OK user=240082844 track=2321903925
+2026-08-05 01:59:13,086 | INFO     | __main__                     | [STEP 7] User 240082844: Added: Chera Chera (Nadan Nadan) - Alireza Ghorbani (genre: Persian Traditional) lang=id year=2023
+2026-08-05 01:59:13,086 | INFO     | __main__                     | [STEP 6] User 240082844: Processing 8/10: 'Alireza Ghorbani   Bi Gah Shod (Tasnif)' -> 'Alireza Ghorbani Bi Gah Shod (Tasnif)'
+2026-08-05 01:59:13,826 | INFO     | __main__                     | [STEP 6] User 240082844: Searching Deezer for: Alireza Ghorbani Bi Gah Shod (Tasnif)
+2026-08-05 01:59:13,826 | INFO     | deezer_helper                | [DEEZER] search query='Alireza Ghorbani Bi Gah Shod (Tasnif)' limit=3
+2026-08-05 01:59:14,136 | INFO     | deezer_helper                | [DEEZER] search query='Alireza Ghorbani Bi Gah Shod (Tasnif)' -> 1 results
+2026-08-05 01:59:14,136 | INFO     | __main__                     | [STEP 6] User 240082844: Found: Bi Gah Shod (Tasnif) - Alireza Ghorbani
+2026-08-05 01:59:14,136 | INFO     | deezer_helper                | [DEEZER] get_track id=1205831952
+2026-08-05 01:59:14,655 | INFO     | deezer_helper                | [DEEZER] get_track id=1205831952 -> Alireza Ghorbani - Bi Gah Shod (Tasnif) (genres=[])
+2026-08-05 01:59:14,705 | INFO     | __main__                     | [STEP 6] User 240082844: Language: sl (persian=False)
+2026-08-05 01:59:14,705 | INFO     | __main__                     | [STEP 6] User 240082844: Analyzing features (librosa)...
+2026-08-05 01:59:14,705 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 1205831952
+2026-08-05 01:59:14,708 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 1205831952
+2026-08-05 01:59:14,709 | INFO     | __main__                     | Analyzing track: Alireza Ghorbani - Bi Gah Shod (Tasnif) (fast=False)
+2026-08-05 01:59:14,709 | INFO     | audio_analyzer               | Downloading preview: https://cdnt-preview.dzcdn.net/api/1/1/e/7/6/0/e7653c6d3eb873deb341b0645904a560.mp3?hdnea=exp=1785883455~acl=/api/1/1/e/7/6/0/e7653c6d3eb873deb341b0645904a560.mp3*~data=user_id=0,application_id=42~hmac=1f29cb7468edadefd29de171d1ff87bbe22118a2c117fd16061c5bff6dc68fa1
+2026-08-05 01:59:17,987 | INFO     | audio_analyzer               | Downloaded 479827 bytes
+2026-08-05 01:59:17,988 | INFO     | audio_analyzer               | Running librosa analysis...
+2026-08-05 01:59:17,989 | INFO     | audio_analyzer               | [LIBROSA] Starting feature extraction...
+2026-08-05 01:59:17,990 | INFO     | audio_analyzer               | [LIBROSA] Temp file created: C:\Users\Saeid\AppData\Local\Temp\tmpp97rb5l2.mp3 (479827 bytes)
+2026-08-05 01:59:17,990 | INFO     | audio_analyzer               | [LIBROSA] Loading audio file...
+2026-08-05 01:59:18,087 | INFO     | audio_analyzer               | [LIBROSA] Audio loaded: 30.0 seconds, 22050 Hz sample rate
+2026-08-05 01:59:18,088 | INFO     | audio_analyzer               | [LIBROSA] Extracting BPM...
+2026-08-05 01:59:18,202 | INFO     | audio_analyzer               | [LIBROSA] BPM: 161.5
+2026-08-05 01:59:18,202 | INFO     | audio_analyzer               | [LIBROSA] Extracting MFCCs (timbre)...
+2026-08-05 01:59:18,328 | INFO     | audio_analyzer               | [LIBROSA] MFCCs extracted: 13 coefficients
+2026-08-05 01:59:18,329 | INFO     | audio_analyzer               | [LIBROSA] Extracting chroma (harmonics)...
+2026-08-05 01:59:18,448 | INFO     | audio_analyzer               | [LIBROSA] Chroma extracted: 12 pitch classes
+2026-08-05 01:59:18,448 | INFO     | audio_analyzer               | [LIBROSA] Extracting spectral features...
+2026-08-05 01:59:18,791 | INFO     | audio_analyzer               | [LIBROSA] Spectral: centroid=2317.9, rolloff=5088.0, bandwidth=2530.4
+2026-08-05 01:59:18,791 | INFO     | audio_analyzer               | [LIBROSA] Extracting energy (RMS)...
+2026-08-05 01:59:18,801 | INFO     | audio_analyzer               | [LIBROSA] Energy: mean=0.1521, var=0.0049
+2026-08-05 01:59:18,802 | INFO     | audio_analyzer               | [LIBROSA] Extracting onset rate...
+2026-08-05 01:59:18,862 | INFO     | audio_analyzer               | [LIBROSA] Onset rate: 1.2257
+2026-08-05 01:59:18,899 | INFO     | audio_analyzer               | [LIBROSA] Inferring musical key...
+2026-08-05 01:59:18,899 | INFO     | audio_analyzer               | [LIBROSA] Key: C
+2026-08-05 01:59:18,899 | INFO     | audio_analyzer               | [LIBROSA] Inferring scale (major/minor)...
+2026-08-05 01:59:18,900 | INFO     | audio_analyzer               | [LIBROSA] Scale: minor (major=0.18, minor=0.20)
+2026-08-05 01:59:18,900 | INFO     | audio_analyzer               | Analyzed audio: BPM=161.5, RMS=0.152
+2026-08-05 01:59:19,202 | INFO     | musicbrainz_client           | No MusicBrainz recording found for Alireza Ghorbani - Bi Gah Shod (Tasnif)
+2026-08-05 01:59:19,202 | INFO     | __main__                     | Analysis results for Alireza Ghorbani - Bi Gah Shod (Tasnif):
+2026-08-05 01:59:19,202 | INFO     | __main__                     |   Audio features: OK
+2026-08-05 01:59:19,202 | INFO     | __main__                     |   MusicBrainz: NOT FOUND
+2026-08-05 01:59:19,203 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 01:59:19,203 | INFO     | __main__                     |   Last.fm tags: 0
+2026-08-05 01:59:19,203 | INFO     | feature_cache                | [CACHE] Saving features for: Alireza Ghorbani - Bi Gah Shod (Tasnif) (ID: 1205831952)
+2026-08-05 01:59:19,203 | INFO     | feature_cache                | [CACHE] Audio features: BPM=161.5, Energy=0.1521, MFCCs=13 coefficients
+2026-08-05 01:59:19,204 | INFO     | feature_cache                | [CACHE] AcousticBrainz: NONE
+2026-08-05 01:59:19,204 | INFO     | feature_cache                | [CACHE] MusicBrainz ID: NONE
+2026-08-05 01:59:19,204 | INFO     | feature_cache                | [CACHE] Last.fm tags: NONE
+2026-08-05 01:59:19,213 | INFO     | feature_cache                | [CACHE] ✓ Saved successfully for: Alireza Ghorbani - Bi Gah Shod (Tasnif)
+2026-08-05 01:59:19,225 | INFO     | feature_cache                | Exported 96 tracks to cached_songs.json
+2026-08-05 01:59:19,226 | INFO     | __main__                     | [STEP 6] User 240082844: Features OK: BPM=161.4990234375
+2026-08-05 01:59:19,226 | INFO     | deezer_helper                | [DEEZER] get_similar id=1205831952 limit=5
+2026-08-05 01:59:19,468 | INFO     | deezer_helper                | [DEEZER] get_similar id=1205831952 -> 0 results
+2026-08-05 01:59:19,468 | INFO     | user_prefs                   | [PLAYLIST_DB] add_to_user_playlist user=240082844 track=1205831952 (Bi Gah Shod (Tasnif) - Alireza Ghorbani) bpm=161.4990234375 energy=0.15208864212036133 valence=0 genre='Persian Traditional' persian=False similar=0 lang=sl recognized=True year=2015
+2026-08-05 01:59:19,477 | INFO     | user_prefs                   | [PLAYLIST_DB] added OK user=240082844 track=1205831952
+2026-08-05 01:59:19,478 | INFO     | __main__                     | [STEP 7] User 240082844: Added: Bi Gah Shod (Tasnif) - Alireza Ghorbani (genre: Persian Traditional) lang=sl year=2015
+2026-08-05 01:59:19,478 | INFO     | __main__                     | [STEP 6] User 240082844: Processing 9/10: '05 Alan Jackson   Freight Train' -> 'Alan Jackson Freight Train'
+2026-08-05 01:59:20,884 | INFO     | __main__                     | [STEP 6] User 240082844: Searching Deezer for: Alan Jackson Freight Train
+2026-08-05 01:59:20,884 | INFO     | deezer_helper                | [DEEZER] search query='Alan Jackson Freight Train' limit=3
+2026-08-05 01:59:21,150 | INFO     | deezer_helper                | [DEEZER] search query='Alan Jackson Freight Train' -> 3 results
+2026-08-05 01:59:21,150 | INFO     | __main__                     | [STEP 6] User 240082844: Found: Freight Train - Alan Jackson
+2026-08-05 01:59:21,151 | INFO     | deezer_helper                | [DEEZER] get_track id=5545052
+2026-08-05 01:59:21,663 | INFO     | deezer_helper                | [DEEZER] get_track id=5545052 -> Alan Jackson - Freight Train (genres=[])
+2026-08-05 01:59:21,691 | INFO     | __main__                     | [STEP 6] User 240082844: Language: en (persian=False)
+2026-08-05 01:59:21,691 | INFO     | __main__                     | [STEP 6] User 240082844: Analyzing features (librosa)...
+2026-08-05 01:59:21,691 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 5545052
+2026-08-05 01:59:21,695 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 5545052
+2026-08-05 01:59:21,696 | INFO     | __main__                     | Analyzing track: Alan Jackson - Freight Train (fast=False)
+2026-08-05 01:59:21,696 | INFO     | audio_analyzer               | Downloading preview: https://cdnt-preview.dzcdn.net/api/1/1/c/8/6/0/c868e3565e3bd7ec7e17456aec6cf234.mp3?hdnea=exp=1785883462~acl=/api/1/1/c/8/6/0/c868e3565e3bd7ec7e17456aec6cf234.mp3*~data=user_id=0,application_id=42~hmac=d6ba0140346b00eaa90ed2461422663a47cc528aca65e2adf40f4c244700b914
+2026-08-05 01:59:23,015 | INFO     | audio_analyzer               | Downloaded 479827 bytes
+2026-08-05 01:59:23,016 | INFO     | audio_analyzer               | Running librosa analysis...
+2026-08-05 01:59:23,016 | INFO     | audio_analyzer               | [LIBROSA] Starting feature extraction...
+2026-08-05 01:59:23,018 | INFO     | audio_analyzer               | [LIBROSA] Temp file created: C:\Users\Saeid\AppData\Local\Temp\tmpxw8odnjt.mp3 (479827 bytes)
+2026-08-05 01:59:23,018 | INFO     | audio_analyzer               | [LIBROSA] Loading audio file...
+2026-08-05 01:59:23,115 | INFO     | audio_analyzer               | [LIBROSA] Audio loaded: 30.0 seconds, 22050 Hz sample rate
+2026-08-05 01:59:23,116 | INFO     | audio_analyzer               | [LIBROSA] Extracting BPM...
+2026-08-05 01:59:23,257 | INFO     | audio_analyzer               | [LIBROSA] BPM: 123.0
+2026-08-05 01:59:23,257 | INFO     | audio_analyzer               | [LIBROSA] Extracting MFCCs (timbre)...
+2026-08-05 01:59:23,334 | INFO     | audio_analyzer               | [LIBROSA] MFCCs extracted: 13 coefficients
+2026-08-05 01:59:23,335 | INFO     | audio_analyzer               | [LIBROSA] Extracting chroma (harmonics)...
+2026-08-05 01:59:23,463 | INFO     | audio_analyzer               | [LIBROSA] Chroma extracted: 12 pitch classes
+2026-08-05 01:59:23,463 | INFO     | audio_analyzer               | [LIBROSA] Extracting spectral features...
+2026-08-05 01:59:23,815 | INFO     | audio_analyzer               | [LIBROSA] Spectral: centroid=2040.5, rolloff=4035.2, bandwidth=2232.3
+2026-08-05 01:59:23,815 | INFO     | audio_analyzer               | [LIBROSA] Extracting energy (RMS)...
+2026-08-05 01:59:23,824 | INFO     | audio_analyzer               | [LIBROSA] Energy: mean=0.2161, var=0.0036
+2026-08-05 01:59:23,825 | INFO     | audio_analyzer               | [LIBROSA] Extracting onset rate...
+2026-08-05 01:59:23,885 | INFO     | audio_analyzer               | [LIBROSA] Onset rate: 1.7342
+2026-08-05 01:59:23,925 | INFO     | audio_analyzer               | [LIBROSA] Inferring musical key...
+2026-08-05 01:59:23,926 | INFO     | audio_analyzer               | [LIBROSA] Key: G
+2026-08-05 01:59:23,926 | INFO     | audio_analyzer               | [LIBROSA] Inferring scale (major/minor)...
+2026-08-05 01:59:23,927 | INFO     | audio_analyzer               | [LIBROSA] Scale: minor (major=0.07, minor=0.32)
+2026-08-05 01:59:23,928 | INFO     | audio_analyzer               | Analyzed audio: BPM=123.0, RMS=0.216
+2026-08-05 01:59:25,486 | INFO     | musicbrainz_client           | Found MusicBrainz ID: eb83ec9a-8749-44bd-94fa-2f6aa1998b24 for Alan Jackson - Freight Train
+2026-08-05 01:59:25,984 | INFO     | __main__                     | Analysis results for Alan Jackson - Freight Train:
+2026-08-05 01:59:25,984 | INFO     | __main__                     |   Audio features: OK
+2026-08-05 01:59:25,984 | INFO     | __main__                     |   MusicBrainz: OK
+2026-08-05 01:59:25,984 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 01:59:25,984 | INFO     | __main__                     |   Last.fm tags: 0
+2026-08-05 01:59:25,985 | INFO     | feature_cache                | [CACHE] Saving features for: Alan Jackson - Freight Train (ID: 5545052)
+2026-08-05 01:59:25,985 | INFO     | feature_cache                | [CACHE] Audio features: BPM=123.0, Energy=0.2161, MFCCs=13 coefficients
+2026-08-05 01:59:25,985 | INFO     | feature_cache                | [CACHE] AcousticBrainz: NONE
+2026-08-05 01:59:25,985 | INFO     | feature_cache                | [CACHE] MusicBrainz ID: eb83ec9a-8749-44bd-94fa-2f6aa1998b24
+2026-08-05 01:59:25,986 | INFO     | feature_cache                | [CACHE] Last.fm tags: NONE
+2026-08-05 01:59:25,994 | INFO     | feature_cache                | [CACHE] ✓ Saved successfully for: Alan Jackson - Freight Train
+2026-08-05 01:59:26,005 | INFO     | feature_cache                | Exported 97 tracks to cached_songs.json
+2026-08-05 01:59:26,006 | INFO     | __main__                     | [STEP 6] User 240082844: Features OK: BPM=123.046875
+2026-08-05 01:59:26,006 | INFO     | deezer_helper                | [DEEZER] get_similar id=5545052 limit=5
+2026-08-05 01:59:26,241 | INFO     | deezer_helper                | [DEEZER] get_similar id=5545052 -> 0 results
+2026-08-05 01:59:26,241 | INFO     | user_prefs                   | [PLAYLIST_DB] add_to_user_playlist user=240082844 track=5545052 (Freight Train - Alan Jackson) bpm=123.046875 energy=0.21610598266124725 valence=0 genre='' persian=False similar=0 lang=en recognized=True year=2010
+2026-08-05 01:59:26,250 | INFO     | user_prefs                   | [PLAYLIST_DB] added OK user=240082844 track=5545052
+2026-08-05 01:59:26,251 | INFO     | __main__                     | [STEP 7] User 240082844: Added: Freight Train - Alan Jackson (genre: ) lang=en year=2010
+2026-08-05 01:59:26,251 | INFO     | __main__                     | [STEP 6] User 240082844: Processing 10/10: '07 Cream   White Room' -> 'Cream White Room'
+2026-08-05 01:59:26,997 | INFO     | __main__                     | [STEP 6] User 240082844: Searching Deezer for: Cream White Room
+2026-08-05 01:59:26,999 | INFO     | deezer_helper                | [DEEZER] search query='Cream White Room' limit=3
+2026-08-05 01:59:27,263 | INFO     | deezer_helper                | [DEEZER] search query='Cream White Room' -> 3 results
+2026-08-05 01:59:27,263 | INFO     | __main__                     | [STEP 6] User 240082844: Found: White Room - Cream
+2026-08-05 01:59:27,263 | INFO     | deezer_helper                | [DEEZER] get_track id=1175618
+2026-08-05 01:59:27,789 | INFO     | deezer_helper                | [DEEZER] get_track id=1175618 -> Cream - White Room (genres=[])
+2026-08-05 01:59:27,801 | INFO     | __main__                     | [STEP 6] User 240082844: Language: en (persian=False)
+2026-08-05 01:59:27,802 | INFO     | __main__                     | [STEP 6] User 240082844: Analyzing features (librosa)...
+2026-08-05 01:59:27,802 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 1175618
+2026-08-05 01:59:27,804 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 1175618
+2026-08-05 01:59:27,805 | INFO     | __main__                     | Analyzing track: Cream - White Room (fast=False)
+2026-08-05 01:59:27,805 | INFO     | audio_analyzer               | Downloading preview: https://cdnt-preview.dzcdn.net/api/1/1/7/2/6/0/72641dd3f99ba7e7109078d4fe503d2a.mp3?hdnea=exp=1785883468~acl=/api/1/1/7/2/6/0/72641dd3f99ba7e7109078d4fe503d2a.mp3*~data=user_id=0,application_id=42~hmac=c91bb8f4532e7b2b21352be944fdd401f4703f8863c403a9d1fea8a487b6ab0b
+2026-08-05 01:59:29,163 | INFO     | audio_analyzer               | Downloaded 479827 bytes
+2026-08-05 01:59:29,164 | INFO     | audio_analyzer               | Running librosa analysis...
+2026-08-05 01:59:29,165 | INFO     | audio_analyzer               | [LIBROSA] Starting feature extraction...
+2026-08-05 01:59:29,166 | INFO     | audio_analyzer               | [LIBROSA] Temp file created: C:\Users\Saeid\AppData\Local\Temp\tmpo4p_edsl.mp3 (479827 bytes)
+2026-08-05 01:59:29,167 | INFO     | audio_analyzer               | [LIBROSA] Loading audio file...
+2026-08-05 01:59:29,269 | INFO     | audio_analyzer               | [LIBROSA] Audio loaded: 30.0 seconds, 22050 Hz sample rate
+2026-08-05 01:59:29,270 | INFO     | audio_analyzer               | [LIBROSA] Extracting BPM...
+2026-08-05 01:59:29,394 | INFO     | audio_analyzer               | [LIBROSA] BPM: 112.3
+2026-08-05 01:59:29,394 | INFO     | audio_analyzer               | [LIBROSA] Extracting MFCCs (timbre)...
+2026-08-05 01:59:29,451 | INFO     | audio_analyzer               | [LIBROSA] MFCCs extracted: 13 coefficients
+2026-08-05 01:59:29,451 | INFO     | audio_analyzer               | [LIBROSA] Extracting chroma (harmonics)...
+2026-08-05 01:59:29,577 | INFO     | audio_analyzer               | [LIBROSA] Chroma extracted: 12 pitch classes
+2026-08-05 01:59:29,577 | INFO     | audio_analyzer               | [LIBROSA] Extracting spectral features...
+2026-08-05 01:59:29,915 | INFO     | audio_analyzer               | [LIBROSA] Spectral: centroid=2045.7, rolloff=4519.5, bandwidth=2385.0
+2026-08-05 01:59:29,916 | INFO     | audio_analyzer               | [LIBROSA] Extracting energy (RMS)...
+2026-08-05 01:59:29,925 | INFO     | audio_analyzer               | [LIBROSA] Energy: mean=0.0884, var=0.0004
+2026-08-05 01:59:29,926 | INFO     | audio_analyzer               | [LIBROSA] Extracting onset rate...
+2026-08-05 01:59:29,984 | INFO     | audio_analyzer               | [LIBROSA] Onset rate: 1.8215
+2026-08-05 01:59:30,018 | INFO     | audio_analyzer               | [LIBROSA] Inferring musical key...
+2026-08-05 01:59:30,018 | INFO     | audio_analyzer               | [LIBROSA] Key: F
+2026-08-05 01:59:30,018 | INFO     | audio_analyzer               | [LIBROSA] Inferring scale (major/minor)...
+2026-08-05 01:59:30,019 | INFO     | audio_analyzer               | [LIBROSA] Scale: major (major=0.43, minor=0.06)
+2026-08-05 01:59:30,020 | INFO     | audio_analyzer               | Analyzed audio: BPM=112.3, RMS=0.088
+2026-08-05 01:59:31,698 | INFO     | musicbrainz_client           | Found MusicBrainz ID: 65ad4a8d-4858-4a73-aeaa-ec387e333759 for Cream - White Room
+2026-08-05 01:59:31,999 | INFO     | __main__                     | Analysis results for Cream - White Room:
+2026-08-05 01:59:31,999 | INFO     | __main__                     |   Audio features: OK
+2026-08-05 01:59:31,999 | INFO     | __main__                     |   MusicBrainz: OK
+2026-08-05 01:59:31,999 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 01:59:32,000 | INFO     | __main__                     |   Last.fm tags: 5
+2026-08-05 01:59:32,000 | INFO     | feature_cache                | [CACHE] Saving features for: Cream - White Room (ID: 1175618)
+2026-08-05 01:59:32,000 | INFO     | feature_cache                | [CACHE] Audio features: BPM=112.3, Energy=0.0884, MFCCs=13 coefficients
+2026-08-05 01:59:32,000 | INFO     | feature_cache                | [CACHE] AcousticBrainz: NONE
+2026-08-05 01:59:32,001 | INFO     | feature_cache                | [CACHE] MusicBrainz ID: 65ad4a8d-4858-4a73-aeaa-ec387e333759
+2026-08-05 01:59:32,001 | INFO     | feature_cache                | [CACHE] Last.fm tags: classic rock, 60s, blues rock, rock, Cream
+2026-08-05 01:59:32,009 | INFO     | feature_cache                | [CACHE] ✓ Saved successfully for: Cream - White Room
+2026-08-05 01:59:32,022 | INFO     | feature_cache                | Exported 98 tracks to cached_songs.json
+2026-08-05 01:59:32,022 | INFO     | __main__                     | [STEP 6] User 240082844: Features OK: BPM=112.34714673913044
+2026-08-05 01:59:32,023 | INFO     | deezer_helper                | [DEEZER] get_similar id=1175618 limit=5
+2026-08-05 01:59:32,255 | INFO     | deezer_helper                | [DEEZER] get_similar id=1175618 -> 0 results
+2026-08-05 01:59:32,255 | INFO     | user_prefs                   | [PLAYLIST_DB] add_to_user_playlist user=240082844 track=1175618 (White Room - Cream) bpm=112.34714673913044 energy=0.08844757080078125 valence=0 genre='classic rock' persian=False similar=0 lang=en recognized=True year=1994
+2026-08-05 01:59:32,264 | INFO     | user_prefs                   | [PLAYLIST_DB] added OK user=240082844 track=1175618
+2026-08-05 01:59:32,264 | INFO     | __main__                     | [STEP 7] User 240082844: Added: White Room - Cream (genre: classic rock) lang=en year=1994
+2026-08-05 01:59:32,265 | INFO     | __main__                     | [STEP 7] User 240082844: Processing complete: 10/10 added, 10 recognized, 0 failed
+2026-08-05 01:59:32,265 | INFO     | user_prefs                   | [PLAYLIST_DB] get_user_taste_profile user=240082844
+2026-08-05 01:59:32,273 | INFO     | user_prefs                   | [PLAYLIST_DB] taste_profile user=240082844 -> total=19 recognized=18 tracks=18 bpm=119.4 energy=0.15 valence=0.00 genres=['classic rock', 'Persian Traditional'] langs=[('en', 10), ('ar', 4), ('sl', 1), ('id', 1), ('de', 1), ('af', 1)]
+2026-08-05 01:59:32,273 | INFO     | __main__                     | [STEP 9] User 240082844: Taste profile: 18 tracks, genres: {'classic rock': 3, 'Persian Traditional': 3}
+2026-08-05 01:59:32,274 | INFO     | __main__                     | [STEP 8] User 240082844: Saving playlist to database
+2026-08-05 01:59:32,981 | INFO     | __main__                     | [STEP 8] User 240082844: Results sent successfully
+2026-08-05 02:01:45,337 | INFO     | __main__                     | [STEP 1] User 240082844: Received text: 🎮 Trivia...
+2026-08-05 02:01:45,338 | INFO     | trivia_game                  | [TRIVIA] start_session user=240082844 (active sessions: 1)
+2026-08-05 02:01:45,338 | INFO     | deezer_helper                | [DEEZER] search query='popular' limit=20
+2026-08-05 02:01:45,858 | INFO     | deezer_helper                | [DEEZER] search query='popular' -> 20 results
+2026-08-05 02:03:30,203 | INFO     | __main__                     | [STEP 1] User 240082844: Received text: 🎯 For Me...
+2026-08-05 02:03:30,204 | INFO     | user_prefs                   | [PLAYLIST_DB] get_user_taste_profile user=240082844
+2026-08-05 02:03:30,223 | INFO     | user_prefs                   | [PLAYLIST_DB] taste_profile user=240082844 -> total=19 recognized=18 tracks=18 bpm=119.4 energy=0.15 valence=0.00 genres=['classic rock', 'Persian Traditional'] langs=[('en', 10), ('ar', 4), ('sl', 1), ('id', 1), ('de', 1), ('af', 1)]
+2026-08-05 02:03:30,906 | INFO     | user_prefs                   | [PLAYLIST_DB] get_all_similar_tracks user=240082844 -> 0 similar track ids (from 0 rows)
+2026-08-05 02:03:30,906 | INFO     | user_prefs                   | [PLAYLIST_DB] get_random_recommendations user=240082844 -> none available
+2026-08-05 02:09:35,486 | INFO     | bot                          | Loaded Persian genre database: 203 artists
