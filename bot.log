@@ -1958,3 +1958,154 @@
 2026-08-05 13:09:27,178 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=2705 -> 5 results
 2026-08-05 13:09:27,178 | INFO     | deezer_helper                | [DEEZER] get_similar id=4006539 -> 5 results (artist_top)
 2026-08-05 13:09:27,197 | INFO     | user_prefs                   | [PLAYLIST_DB] store_suggestions user=240082844 source=4006539 -> 3 new of 5 ids
+2026-08-05 13:13:02,356 | INFO     | __main__                     | Loaded Persian genre database: 203 artists
+2026-08-05 13:13:02,645 | INFO     | __main__                     | Music Suggest Bot v3 starting...
+2026-08-05 13:13:03,383 | INFO     | user_prefs                   | [USER_DB] init_db: tables created; PATH=user_prefs.db
+2026-08-05 13:13:03,392 | INFO     | feature_cache                | Feature cache initialized
+2026-08-05 13:13:03,394 | INFO     | __main__                     | Bot initialized: Last.fm=OK
+2026-08-05 13:13:03,563 | INFO     | telegram.ext.Application     | Application started
+2026-08-05 13:13:20,531 | WARNING  | __main__                     | Unhandled error: httpx.ConnectError: 
+2026-08-05 13:13:30,172 | WARNING  | __main__                     | Unhandled error: httpx.ConnectError: 
+2026-08-05 13:13:32,795 | INFO     | __main__                     | [STEP 1] User 240082844: Received text: 🔍 Search...
+2026-08-05 13:13:49,194 | INFO     | deezer_helper                | [DEEZER] search query='Great Balls Of Fire Jerry Lee Lewis' limit=5
+2026-08-05 13:14:04,309 | WARNING  | deezer_helper                | [DEEZER] https://api.deezer.com/search/track error= retrying
+2026-08-05 13:14:08,497 | INFO     | deezer_helper                | [DEEZER] search query='Great Balls Of Fire Jerry Lee Lewis' -> 5 results
+2026-08-05 13:14:12,149 | INFO     | __main__                     | Callback received: chat_id=240082844, data=pick_original
+2026-08-05 13:14:12,696 | INFO     | deezer_helper                | [DEEZER] search query='Great Balls Of Fire Jerry Lee Lewis' limit=10
+2026-08-05 13:14:12,952 | INFO     | deezer_helper                | [DEEZER] search query='Great Balls Of Fire Jerry Lee Lewis' -> 10 results
+2026-08-05 13:14:12,953 | INFO     | deezer_helper                | [DEEZER] get_track id=4006539
+2026-08-05 13:14:13,427 | INFO     | deezer_helper                | [DEEZER] get_track id=4006539 -> Jerry Lee Lewis - Great Balls Of Fire (genres=[])
+2026-08-05 13:14:13,428 | INFO     | __main__                     | Fetched full track: Jerry Lee Lewis - Great Balls Of Fire (genres: [], artist_id: 2705)
+2026-08-05 13:14:13,429 | INFO     | deezer_helper                | [DEEZER] search query='Jerry Lee Lewis' limit=10
+2026-08-05 13:14:13,825 | INFO     | deezer_helper                | [DEEZER] search query='Jerry Lee Lewis' -> 10 results
+2026-08-05 13:14:13,826 | INFO     | __main__                     | Search 'Jerry Lee Lewis': found 10 tracks, best ID=2705 (count=5)
+2026-08-05 13:14:14,096 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 4006539
+2026-08-05 13:14:14,102 | INFO     | feature_cache                | [CACHE] ✓ Cache HIT for track ID: 4006539
+2026-08-05 13:14:14,103 | INFO     | feature_cache                | [CACHE]   Audio: BPM=86.1, Energy=0.1320
+2026-08-05 13:14:14,104 | INFO     | feature_cache                | [CACHE]   MusicBrainz: f633a668-cce3-47be-a4d2-aa94e47a000b
+2026-08-05 13:14:14,109 | INFO     | __main__                     | Cache hit for: Jerry Lee Lewis - Great Balls Of Fire
+2026-08-05 13:14:14,110 | INFO     | __main__                     | [FLOW] main track analyzed: audio=True acoustic=False
+2026-08-05 13:14:15,131 | INFO     | lastfm_client                | Last.fm found 10 similar tracks for Jerry Lee Lewis - Great Balls Of Fire
+2026-08-05 13:14:15,132 | INFO     | __main__                     | [FLOW] Last.fm similar for Great Balls Of Fire: 10 found
+2026-08-05 13:14:15,132 | INFO     | deezer_helper                | [DEEZER] search query='Johnny B. Goode Chuck Berry' limit=1
+2026-08-05 13:14:15,395 | INFO     | deezer_helper                | [DEEZER] search query='Johnny B. Goode Chuck Berry' -> 1 results
+2026-08-05 13:14:15,395 | INFO     | deezer_helper                | [DEEZER] search query='Jailhouse Rock Elvis Presley' limit=1
+2026-08-05 13:14:15,677 | INFO     | deezer_helper                | [DEEZER] search query='Jailhouse Rock Elvis Presley' -> 1 results
+2026-08-05 13:14:15,678 | INFO     | deezer_helper                | [DEEZER] search query='Hound Dog Elvis Presley' limit=1
+2026-08-05 13:14:16,004 | INFO     | deezer_helper                | [DEEZER] search query='Hound Dog Elvis Presley' -> 1 results
+2026-08-05 13:14:16,006 | INFO     | deezer_helper                | [DEEZER] search query='Summertime Blues Eddie Cochran' limit=1
+2026-08-05 13:14:16,348 | INFO     | deezer_helper                | [DEEZER] search query='Summertime Blues Eddie Cochran' -> 1 results
+2026-08-05 13:14:16,349 | INFO     | deezer_helper                | [DEEZER] search query='High School Confidential Jerry Lee Lewis' limit=1
+2026-08-05 13:14:16,671 | INFO     | deezer_helper                | [DEEZER] search query='High School Confidential Jerry Lee Lewis' -> 1 results
+2026-08-05 13:14:16,673 | INFO     | deezer_helper                | [DEEZER] search query='Tutti Frutti Little Richard' limit=1
+2026-08-05 13:14:17,198 | INFO     | deezer_helper                | [DEEZER] search query='Tutti Frutti Little Richard' -> 1 results
+2026-08-05 13:14:17,199 | INFO     | deezer_helper                | [DEEZER] search query="Whole Lotta Shakin' Goin' On Jerry Lee Lewis" limit=1
+2026-08-05 13:14:17,528 | INFO     | deezer_helper                | [DEEZER] search query="Whole Lotta Shakin' Goin' On Jerry Lee Lewis" -> 1 results
+2026-08-05 13:14:17,529 | INFO     | deezer_helper                | [DEEZER] search query='No Particular Place to Go Chuck Berry' limit=1
+2026-08-05 13:14:17,822 | INFO     | deezer_helper                | [DEEZER] search query='No Particular Place to Go Chuck Berry' -> 1 results
+2026-08-05 13:14:17,822 | INFO     | deezer_helper                | [DEEZER] get_similar id=4006539 limit=20
+2026-08-05 13:14:18,060 | INFO     | deezer_helper                | [DEEZER] get_track id=4006539
+2026-08-05 13:14:18,531 | INFO     | deezer_helper                | [DEEZER] get_track id=4006539 -> Jerry Lee Lewis - Great Balls Of Fire (genres=[])
+2026-08-05 13:14:18,532 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=2705 limit=20
+2026-08-05 13:14:18,769 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=2705 -> 2 results
+2026-08-05 13:14:18,770 | INFO     | deezer_helper                | [DEEZER] get_similar id=4006539 -> 2 results (artist_top)
+2026-08-05 13:14:18,771 | INFO     | __main__                     | [FLOW] Deezer radio for Great Balls Of Fire: found 2 tracks
+2026-08-05 13:14:18,771 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=2705 limit=10
+2026-08-05 13:14:19,011 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=2705 -> 2 results
+2026-08-05 13:14:19,012 | INFO     | __main__                     | Same artist tracks for Jerry Lee Lewis (ID: 2705): 2 found
+2026-08-05 13:14:19,013 | INFO     | __main__                     | Same artist tracks found: 0
+2026-08-05 13:14:19,014 | INFO     | __main__                     | Different artist tracks found: 8
+2026-08-05 13:14:19,015 | INFO     | __main__                     | Total similar tracks: 6
+2026-08-05 13:14:19,016 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 2689636
+2026-08-05 13:14:19,018 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 6596867
+2026-08-05 13:14:19,024 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 17479889
+2026-08-05 13:14:19,029 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 2689636
+2026-08-05 13:14:19,031 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 17479889
+2026-08-05 13:14:19,053 | INFO     | __main__                     | Analyzing track: Chuck Berry - Johnny B. Goode (fast=True)
+2026-08-05 13:14:19,056 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 6596867
+2026-08-05 13:14:19,057 | INFO     | __main__                     | Analyzing track: Elvis Presley - Hound Dog (fast=True)
+2026-08-05 13:14:19,063 | INFO     | __main__                     | Analyzing track: Elvis Presley - Jailhouse Rock (fast=True)
+2026-08-05 13:14:20,548 | INFO     | musicbrainz_client           | Found MusicBrainz ID: dd6c1828-6d94-4360-af94-4ffc3bd5e255 for Elvis Presley - Jailhouse Rock
+2026-08-05 13:14:20,637 | INFO     | musicbrainz_client           | Found MusicBrainz ID: 45ea0a3d-fd1c-4ff5-95d3-54832fd64480 for Elvis Presley - Hound Dog
+2026-08-05 13:14:21,507 | INFO     | __main__                     | Analysis results for Elvis Presley - Hound Dog:
+2026-08-05 13:14:21,508 | INFO     | __main__                     |   Audio features: SKIPPED
+2026-08-05 13:14:21,509 | INFO     | __main__                     |   MusicBrainz: OK
+2026-08-05 13:14:21,510 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 13:14:21,511 | WARNING  | __main__                     | [FLOW] candidate analysis failed for Elvis Presley - Hound Dog: 'NoneType' object has no attribute 'get'
+2026-08-05 13:14:21,512 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 3089528
+2026-08-05 13:14:21,521 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 3089528
+2026-08-05 13:14:21,527 | INFO     | __main__                     | Analyzing track: Eddie Cochran - Summertime Blues (fast=True)
+2026-08-05 13:14:21,968 | INFO     | __main__                     | Analysis results for Elvis Presley - Jailhouse Rock:
+2026-08-05 13:14:21,969 | INFO     | __main__                     |   Audio features: SKIPPED
+2026-08-05 13:14:21,969 | INFO     | __main__                     |   MusicBrainz: OK
+2026-08-05 13:14:21,970 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 13:14:21,971 | WARNING  | __main__                     | [FLOW] candidate analysis failed for Elvis Presley - Jailhouse Rock: 'NoneType' object has no attribute 'get'
+2026-08-05 13:14:21,972 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 2203627
+2026-08-05 13:14:21,979 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 2203627
+2026-08-05 13:14:21,982 | INFO     | __main__                     | Analyzing track: Little Richard - Tutti Frutti (fast=True)
+2026-08-05 13:14:22,789 | INFO     | musicbrainz_client           | Found MusicBrainz ID: 5e30ba7e-834f-4f03-9adc-6fc863f3c82d for Little Richard - Tutti Frutti
+2026-08-05 13:14:23,119 | INFO     | __main__                     | Analysis results for Little Richard - Tutti Frutti:
+2026-08-05 13:14:23,120 | INFO     | __main__                     |   Audio features: SKIPPED
+2026-08-05 13:14:23,121 | INFO     | __main__                     |   MusicBrainz: OK
+2026-08-05 13:14:23,122 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 13:14:23,122 | WARNING  | __main__                     | [FLOW] candidate analysis failed for Little Richard - Tutti Frutti: 'NoneType' object has no attribute 'get'
+2026-08-05 13:14:23,123 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 2689645
+2026-08-05 13:14:23,131 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 2689645
+2026-08-05 13:14:23,134 | INFO     | __main__                     | Analyzing track: Chuck Berry - No Particular Place To Go (fast=True)
+2026-08-05 13:14:23,827 | INFO     | musicbrainz_client           | Found MusicBrainz ID: 277553ea-1d4a-45aa-aa07-50a9861a775a for Chuck Berry - No Particular Place To Go
+2026-08-05 13:14:24,174 | INFO     | __main__                     | Analysis results for Chuck Berry - No Particular Place To Go:
+2026-08-05 13:14:24,175 | INFO     | __main__                     |   Audio features: SKIPPED
+2026-08-05 13:14:24,176 | INFO     | __main__                     |   MusicBrainz: OK
+2026-08-05 13:14:24,176 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 13:14:24,177 | WARNING  | __main__                     | [FLOW] candidate analysis failed for Chuck Berry - No Particular Place To Go: 'NoneType' object has no attribute 'get'
+2026-08-05 13:14:24,930 | INFO     | musicbrainz_client           | Found MusicBrainz ID: 53bc7487-862c-4aeb-9922-27c95619d745 for Chuck Berry - Johnny B. Goode
+2026-08-05 13:14:25,257 | INFO     | __main__                     | Analysis results for Chuck Berry - Johnny B. Goode:
+2026-08-05 13:14:25,258 | INFO     | __main__                     |   Audio features: SKIPPED
+2026-08-05 13:14:25,258 | INFO     | __main__                     |   MusicBrainz: OK
+2026-08-05 13:14:25,258 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 13:14:25,260 | WARNING  | __main__                     | [FLOW] candidate analysis failed for Chuck Berry - Johnny B. Goode: 'NoneType' object has no attribute 'get'
+2026-08-05 13:14:26,676 | INFO     | musicbrainz_client           | Found MusicBrainz ID: efabc9b6-b531-4c0c-a59e-bf8c1c3b2f2f for Eddie Cochran - Summertime Blues
+2026-08-05 13:14:27,002 | INFO     | __main__                     | Analysis results for Eddie Cochran - Summertime Blues:
+2026-08-05 13:14:27,003 | INFO     | __main__                     |   Audio features: SKIPPED
+2026-08-05 13:14:27,004 | INFO     | __main__                     |   MusicBrainz: OK
+2026-08-05 13:14:27,005 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 13:14:27,005 | WARNING  | __main__                     | [FLOW] candidate analysis failed for Eddie Cochran - Summertime Blues: 'NoneType' object has no attribute 'get'
+2026-08-05 13:14:27,006 | INFO     | __main__                     | [FLOW] candidate features ready: 0/6
+2026-08-05 13:14:27,007 | INFO     | __main__                     | Similarity calc: target_audio=YES, target_acoustic=NO, candidates=6
+2026-08-05 13:14:27,009 | INFO     | __main__                     | Similarity scores: [('Johnny B. Goode', 1.0), ('Jailhouse Rock', 0.885331), ('Hound Dog', 0.7898)]
+2026-08-05 13:14:27,010 | INFO     | __main__                     | Building features - target_audio: YES, genres: []
+2026-08-05 13:14:27,011 | INFO     | __main__                     | [GENRE] Deezer genres empty for Jerry Lee Lewis - Great Balls Of Fire
+2026-08-05 13:14:27,355 | INFO     | lastfm_client                | Last.fm artist tags for Jerry Lee Lewis: ['rockabilly', 'Rock and Roll', 'rock n roll', 'oldies', 'classic rock']
+2026-08-05 13:14:27,356 | INFO     | __main__                     | [GENRE] Last.fm genre for Jerry Lee Lewis: rockabilly
+2026-08-05 13:14:45,975 | INFO     | __main__                     | [STEP 1] User 240082844: Received text: 📋 My Playlist...
+2026-08-05 13:14:45,986 | INFO     | user_prefs                   | [PLAYLIST_DB] get_user_playlist user=240082844 -> 25 rows
+2026-08-05 13:14:45,988 | INFO     | user_prefs                   | [PLAYLIST_DB] get_user_taste_profile user=240082844
+2026-08-05 13:14:46,003 | INFO     | user_prefs                   | [PLAYLIST_DB] taste_profile user=240082844 -> total=25 recognized=21 tracks=21 bpm=118.9 energy=0.16 valence=0.00 genres=['classic rock', 'Persian Traditional', 'pop'] langs=[('en', 16), ('fa', 3), ('ar', 2)]
+2026-08-05 13:14:51,723 | INFO     | __main__                     | [STEP 1] User 240082844: Received text: 🎯 For Me...
+2026-08-05 13:14:51,725 | INFO     | user_prefs                   | [PLAYLIST_DB] get_user_taste_profile user=240082844
+2026-08-05 13:14:51,744 | INFO     | user_prefs                   | [PLAYLIST_DB] taste_profile user=240082844 -> total=25 recognized=21 tracks=21 bpm=118.9 energy=0.16 valence=0.00 genres=['classic rock', 'Persian Traditional', 'pop'] langs=[('en', 16), ('fa', 3), ('ar', 2)]
+2026-08-05 13:14:51,992 | INFO     | user_prefs                   | [PLAYLIST_DB] get_random_suggestions user=240082844 -> 5 ids
+2026-08-05 13:14:51,993 | INFO     | deezer_helper                | [DEEZER] get_track id=2970881151
+2026-08-05 13:14:53,100 | INFO     | deezer_helper                | [DEEZER] get_track id=2970881151 -> Homayoun Shajarian - Afsaneye Chashmhayat (genres=[])
+2026-08-05 13:14:53,101 | INFO     | deezer_helper                | [DEEZER] get_track id=369178941
+2026-08-05 13:14:53,705 | INFO     | deezer_helper                | [DEEZER] get_track id=369178941 -> Chuck Berry - Big Boys (genres=[])
+2026-08-05 13:14:53,706 | INFO     | deezer_helper                | [DEEZER] get_track id=4763165
+2026-08-05 13:14:54,278 | INFO     | deezer_helper                | [DEEZER] get_track id=4763165 -> Michael Jackson - Beat It (genres=[])
+2026-08-05 13:14:54,279 | INFO     | deezer_helper                | [DEEZER] get_track id=65414413
+2026-08-05 13:14:54,888 | INFO     | deezer_helper                | [DEEZER] get_track id=65414413 -> The Who - The Seeker (Edit) (genres=[])
+2026-08-05 13:14:54,889 | INFO     | deezer_helper                | [DEEZER] get_track id=68414439
+2026-08-05 13:14:55,667 | INFO     | deezer_helper                | [DEEZER] get_track id=68414439 -> Love - Everybody's Gotta Live (genres=[])
+2026-08-05 13:15:26,892 | INFO     | __main__                     | [STEP 1] User 240082844: Received text: 🎯 For Me...
+2026-08-05 13:15:26,893 | INFO     | user_prefs                   | [PLAYLIST_DB] get_user_taste_profile user=240082844
+2026-08-05 13:15:26,917 | INFO     | user_prefs                   | [PLAYLIST_DB] taste_profile user=240082844 -> total=25 recognized=21 tracks=21 bpm=118.9 energy=0.16 valence=0.00 genres=['classic rock', 'Persian Traditional', 'pop'] langs=[('en', 16), ('fa', 3), ('ar', 2)]
+2026-08-05 13:15:27,335 | INFO     | user_prefs                   | [PLAYLIST_DB] get_random_suggestions user=240082844 -> 5 ids
+2026-08-05 13:15:27,335 | INFO     | deezer_helper                | [DEEZER] get_track id=78213531
+2026-08-05 13:15:28,736 | INFO     | deezer_helper                | [DEEZER] get_track id=78213531 -> Michael Jackson - Chicago (genres=[])
+2026-08-05 13:15:28,737 | INFO     | deezer_helper                | [DEEZER] get_track id=2121805
+2026-08-05 13:15:29,379 | INFO     | deezer_helper                | [DEEZER] get_track id=2121805 -> The Who - Baba O'Riley (genres=[])
+2026-08-05 13:15:29,379 | INFO     | deezer_helper                | [DEEZER] get_track id=141460367
+2026-08-05 13:15:29,959 | INFO     | deezer_helper                | [DEEZER] get_track id=141460367 -> The Heavy - Short Change Hero (genres=[])
+2026-08-05 13:15:29,960 | INFO     | deezer_helper                | [DEEZER] get_track id=531967
+2026-08-05 13:15:30,575 | INFO     | deezer_helper                | [DEEZER] get_track id=531967 -> Alan Jackson - Chattahoochee (Extended Mix) (genres=[])
+2026-08-05 13:15:30,576 | INFO     | deezer_helper                | [DEEZER] get_track id=664507
+2026-08-05 13:15:31,204 | INFO     | deezer_helper                | [DEEZER] get_track id=664507 -> Madonna - Like a Prayer (genres=[])

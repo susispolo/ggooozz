@@ -106,6 +106,15 @@ async def init_db():
             "CREATE INDEX IF NOT EXISTS idx_user_suggestions_user ON user_suggestions(user_id)"
         )
 
+        # User language preference (i18n). One row per user.
+        await conn.execute("""
+            CREATE TABLE IF NOT EXISTS user_language (
+                user_id INTEGER PRIMARY KEY,
+                lang TEXT DEFAULT 'en',
+                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        """)
+
         # Migration: add any missing columns (schema evolved over time).
         await _migrate_add_columns(conn, "user_playlist", {
             "language": "TEXT DEFAULT 'en'",
@@ -424,6 +433,7 @@ async def clear_user_playlist(user_id: int):
     """Clear all tracks from user's playlist."""
     async with aiosqlite.connect(DB_PATH) as conn:
         await conn.execute("DELETE FROM user_playlist WHERE user_id=?", (user_id,))
+        await conn.execute("DELETE FROM user_suggestions WHERE user_id=?", (user_id,))
         await conn.commit()
 
 
@@ -628,6 +638,28 @@ async def count_suggestions(user_id: int) -> int:
     n = row[0] if row else 0
     log.info("[PLAYLIST_DB] count_suggestions user=%s -> %d", user_id, n)
     return n
+
+
+async def set_user_language(user_id: int, lang: str):
+    """Persist a user's language preference."""
+    async with aiosqlite.connect(DB_PATH) as conn:
+        await conn.execute(
+            """INSERT INTO user_language (user_id, lang) VALUES (?, ?)
+               ON CONFLICT(user_id) DO UPDATE SET lang=excluded.lang, updated_at=CURRENT_TIMESTAMP""",
+            (user_id, lang),
+        )
+        await conn.commit()
+    log.info("[USER_DB] set_user_language user=%s lang=%s", user_id, lang)
+
+
+async def get_user_language(user_id: int) -> str:
+    """Get a user's persisted language (default 'en')."""
+    async with aiosqlite.connect(DB_PATH) as conn:
+        async with conn.execute(
+            "SELECT lang FROM user_language WHERE user_id=?", (user_id,)
+        ) as cursor:
+            row = await cursor.fetchone()
+    return row[0] if row else "en"
 
 
 async def search_tracks_by_features(bpm: float, energy: float, valence: float, limit: int = 10) -> list:

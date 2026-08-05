@@ -59,6 +59,7 @@ from user_prefs import (
     add_to_user_playlist, get_user_playlist, clear_user_playlist,
     get_user_taste_profile, get_user_playlist_artists, get_random_recommendations,
     store_suggestions, get_random_suggestions, count_suggestions,
+    set_user_language, get_user_language,
 )
 from language_detect import detect_language, language_label
 from playlist_manager import generate_playlist, format_playlist_text
@@ -70,6 +71,8 @@ from trivia_game import (
 from lyrics_client import LyricsClient, format_lyrics
 from card_generator import generate_music_card, generate_comparison_card
 from dna_generator import generate_musical_dna
+import i18n as i18n_mod
+from i18n import label as L, msg as M, supported_langs, set_lang as i18n_set_lang, get_lang
 
 # ═══════════════════════════════════════════════════
 # Config
@@ -302,24 +305,24 @@ def _search_keyboard(results: list[TrackInfo], query: str = "") -> InlineKeyboar
     return InlineKeyboardMarkup(buttons)
 
 
-def _main_menu_keyboard() -> ReplyKeyboardMarkup:
+def _main_menu_keyboard(lang: str = "en") -> ReplyKeyboardMarkup:
     """Main menu keyboard under chat box."""
     return ReplyKeyboardMarkup(
         [
-            [KeyboardButton("🔍 Search"), KeyboardButton("➕ Add to Playlist")],
-            [KeyboardButton("📋 My Playlist"), KeyboardButton("🎯 For Me")],
-            [KeyboardButton("🎮 Trivia"), KeyboardButton("🎤 Lyrics")],
+            [KeyboardButton(label("search", lang)), KeyboardButton(label("add_playlist", lang))],
+            [KeyboardButton(label("my_playlist", lang)), KeyboardButton(label("for_me", lang))],
+            [KeyboardButton(label("trivia", lang)), KeyboardButton(label("language", lang))],
         ],
         resize_keyboard=True
     )
 
 
-def _playlist_mode_keyboard(count: int) -> ReplyKeyboardMarkup:
+def _playlist_mode_keyboard(count: int, lang: str = "en") -> ReplyKeyboardMarkup:
     """Keyboard shown when in playlist mode."""
     return ReplyKeyboardMarkup(
         [
-            [KeyboardButton(f"✅ Done ({count} songs)")],
-            [KeyboardButton("❌ Cancel"), KeyboardButton("🔙 Main Menu")],
+            [KeyboardButton(f"{label('done', lang)} ({count} songs)")],
+            [KeyboardButton(label("cancel", lang)), KeyboardButton(label("main_menu", lang))],
         ],
         resize_keyboard=True
     )
@@ -343,6 +346,15 @@ def _vote_keyboard(track_id: int, title: str = "", artist: str = "") -> InlineKe
         ]
     ]
     buttons.append([InlineKeyboardButton("⬇️ Open DeezerMusicBot", url=make_download_link("DeezerMusicBot"))])
+    return InlineKeyboardMarkup(buttons)
+
+
+def _meforyou_keyboard(lang: str = "en") -> InlineKeyboardMarkup:
+    """Keyboard under the For Me results: open DeezerMusicBot + fresh batch."""
+    buttons = [
+        [InlineKeyboardButton("⬇️ Open DeezerMusicBot", url=make_download_link("DeezerMusicBot"))],
+        [InlineKeyboardButton(label("refresh", lang), callback_data="meforyou_refresh")],
+    ]
     return InlineKeyboardMarkup(buttons)
 
 
@@ -522,25 +534,24 @@ async def find_similar_tracks(
 # Handlers
 # ═══════════════════════════════════════════════════
 
+async def _ensure_lang(user_id: int):
+    """Load a user's persisted language into the i18n cache."""
+    if user_id not in i18n_mod._user_lang:
+        try:
+            i18n_set_lang(user_id, await get_user_language(user_id))
+        except Exception:
+            i18n_set_lang(user_id, "en")
+
+
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    _playlist_mode[update.effective_user.id] = False
+    user_id = update.effective_user.id
+    _playlist_mode[user_id] = False
+    await _ensure_lang(user_id)
+    lang = get_lang(user_id)
     await update.message.reply_text(
-        "🎵 <b>Music Suggest Bot v3</b>\n"
-        "━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n"
-        "🎧 <b>Find music you'll love!</b>\n\n"
-        "I analyze actual audio features to find truly similar music:\n\n"
-        "🔍 <b>How it works:</b>\n"
-        "1. Send a song name\n"
-        "2. I analyze BPM, timbre, energy\n"
-        "3. Get similar tracks ranked!\n\n"
-        "📝 <b>Examples:</b>\n"
-        "  • <code>Bohemian Rhapsody</code>\n"
-        "  • <code>Hotel California</code>\n"
-        "  • <code>محسن نامجو</code> (Persian supported!)\n\n"
-        "━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
-        "Use the buttons below to navigate!",
+        M("start_hero", lang),
         parse_mode=PM,
-        reply_markup=_main_menu_keyboard(),
+        reply_markup=_main_menu_keyboard(lang),
     )
 
 
@@ -551,14 +562,16 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     user_id = update.effective_user.id
     log_step(1, user_id, f"Received text: {query[:50]}...")
+    await _ensure_lang(user_id)
 
-    # Handle keyboard buttons
-    if query == "🔍 Search":
+    # Handle keyboard buttons (match any of the bot's languages)
+    lang = get_lang(user_id)
+    if query in (label("search", "en"), label("search", "fa"), "🔍 Search"):
         _playlist_mode[user_id] = False
         await update.message.reply_text("🔍 Type a song name to search:")
         return
 
-    if query == "➕ Add to Playlist":
+    if query == label("add_playlist", lang):
         log_step(2, user_id, "Entering playlist mode")
         _playlist_mode[user_id] = True
         _pending_songs[user_id] = []
@@ -571,37 +584,37 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
             "I'll automatically add each song.\n"
             "When done, tap <b>Done</b> below!",
             parse_mode=PM,
-            reply_markup=_playlist_mode_keyboard(0),
+            reply_markup=_playlist_mode_keyboard(0, lang),
         )
         return
 
-    if query == "📋 My Playlist":
+    if query == label("my_playlist", lang):
         _playlist_mode[user_id] = False
         await cmd_myplaylist(update, context)
         return
 
-    if query == "🎯 For Me":
+    if query == label("for_me", lang):
         _playlist_mode[user_id] = False
         await cmd_meforyou(update, context)
         return
 
-    if query == "🎮 Trivia":
+    if query == label("trivia", lang):
         _playlist_mode[user_id] = False
         await cmd_trivia(update, context)
         return
 
-    if query == "🎤 Lyrics":
+    if query == label("language", lang):
         _playlist_mode[user_id] = False
-        await update.message.reply_text("🎤 Send: /lyrics Song Name Artist")
+        await _show_language_picker(update, context)
         return
 
     # Handle playlist mode
     if _playlist_mode.get(user_id, False):
-        if query.startswith("✅ Done"):
+        if query.startswith(label("done", lang)) or query.startswith("✅ Done"):
             log_step(3, user_id, "Done button pressed, starting processing")
             await cmd_done(update, context)
             return
-        if query == "❌ Cancel" or query == "🔙 Main Menu":
+        if query in (label("cancel", lang), label("main_menu", lang), "❌ Cancel", "🔙 Main Menu"):
             log_step(3, user_id, "Exiting playlist mode")
             _playlist_mode[user_id] = False
             _failed_songs.pop(user_id, None)
@@ -841,9 +854,68 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         _user_state.pop(chat_id, None)
         return
 
+    # Confirm clearing the playlist (destructive)
+    if data == "confirm_clear":
+        uid = update.effective_user.id
+        lang = get_lang(uid)
+        try:
+            await clear_user_playlist(uid)
+            await query.edit_message_text(
+                "🗑️ Playlist cleared! Add songs again with ➕ Add to Playlist.",
+                reply_markup=InlineKeyboardMarkup(
+                    [[InlineKeyboardButton(label("main_menu", lang), callback_data="back_main")]]
+                ),
+            )
+        except Exception as e:
+            log.error("confirm_clear failed: %s", e)
+            await query.edit_message_text("❌ Couldn't clear playlist. Try again.")
+        return
+
+    if data == "back_main":
+        uid = update.effective_user.id
+        lang = get_lang(uid)
+        await query.edit_message_text(
+            M("start_hero", lang), parse_mode=PM,
+            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("🏠", callback_data="noop")]])
+        )
+        return
+
+    if data == "noop":
+        return
+
     if data == "search_again":
         await query.edit_message_text("🔍 Type a song name to search:")
         _user_state.pop(chat_id, None)
+        return
+
+    # Language selection
+    if data.startswith("lang_"):
+        code = data.split("_", 1)[1]
+        uid = update.effective_user.id
+        i18n_set_lang(uid, code)
+        try:
+            await set_user_language(uid, code)
+        except Exception as e:
+            log.warning("set_user_language failed: %s", e)
+        name = supported_langs().get(code, code)
+        await query.edit_message_text(f"✅ Language set: {name}\nزبان تنظیم شد: {name}")
+        # Refresh the main keyboard in the new language
+        await update.effective_chat.send_message(
+            M("start_hero", code),
+            parse_mode=PM,
+            reply_markup=_main_menu_keyboard(code),
+        )
+        return
+
+    # Fresh batch for For Me
+    if data == "meforyou_refresh":
+        await query.edit_message_text("🎯 Refreshing your batch...")
+        # Re-run the full For Me flow on the same chat/message
+        try:
+            await cmd_meforyou(update, context)
+        except Exception as e:
+            log.error("meforyou_refresh failed: %s", e, exc_info=True)
+            await query.edit_message_text("❌ Couldn't refresh. Tap 🎯 For Me again.")
         return
 
     # Handle votes
@@ -2271,6 +2343,30 @@ async def _extract_genre(track, features) -> str:
 # Playlist Add / Done
 # ═══════════════════════════════════════════════════
 
+# ═══════════════════════════════════════════════════
+# Language
+# ═══════════════════════════════════════════════════
+
+async def _show_language_picker(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Show a picker to choose the bot's language."""
+    buttons = []
+    for code, name in supported_langs().items():
+        buttons.append([InlineKeyboardButton(name, callback_data=f"lang_{code}")])
+    await update.message.reply_text(
+        "🌐 <b>Choose your language / زبان خود را انتخاب کنید:</b>",
+        parse_mode=PM,
+        reply_markup=InlineKeyboardMarkup(buttons),
+    )
+
+
+async def cmd_language(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await _show_language_picker(update, context)
+
+
+# ═══════════════════════════════════════════════════
+# Playlist commands
+# ═══════════════════════════════════════════════════
+
 async def cmd_add(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Add a song to user's playlist."""
     user_id = update.effective_user.id
@@ -2730,25 +2826,31 @@ async def cmd_myplaylist(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 async def cmd_clearplaylist(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Clear user's playlist."""
-    await clear_user_playlist(update.effective_user.id)
+    """Clear user's playlist (with confirmation)."""
+    user_id = update.effective_user.id
+    lang = get_lang(user_id)
+    buttons = [
+        [InlineKeyboardButton("🗑️ Yes, clear it", callback_data="confirm_clear")],
+        [InlineKeyboardButton(label("cancel", lang), callback_data="cancel")],
+    ]
     await update.message.reply_text(
-        "🗑️ Playlist cleared!",
-        reply_markup=_main_menu_keyboard(),
+        "🗑️ <b>Clear your playlist?</b>\n\nAll your songs and saved suggestions will be removed. This cannot be undone.",
+        parse_mode=PM,
+        reply_markup=InlineKeyboardMarkup(buttons),
     )
 
 
 async def cmd_meforyou(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Get songs matching user's taste based on similar tracks from playlist."""
     user_id = update.effective_user.id
+    lang = get_lang(user_id)
     profile = await get_user_taste_profile(user_id)
 
     if profile["track_count"] == 0:
         await update.message.reply_text(
-            "❌ No playlist data yet!\n\n"
-            "Tap <b>➕ Add to Playlist</b> to add songs first.",
+            M("for_me_empty", lang),
             parse_mode=PM,
-            reply_markup=_main_menu_keyboard(),
+            reply_markup=_main_menu_keyboard(lang),
         )
         return
 
@@ -2757,12 +2859,9 @@ async def cmd_meforyou(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if profile["track_count"] < 10:
         remaining = 10 - profile["track_count"]
         await update.message.reply_text(
-            f"⏳ <b>Almost there!</b>\n\n"
-            f"You have <b>{profile['track_count']}</b> songs in your playlist.\n"
-            f"Add <b>{remaining} more</b> (10 total) to unlock <b>🎯 For Me</b>!\n\n"
-            f"Every song you add gives us 5 similar tracks to pick from.",
+            M("for_me_locked", lang, count=profile["track_count"], remaining=remaining),
             parse_mode=PM,
-            reply_markup=_main_menu_keyboard(),
+            reply_markup=_main_menu_keyboard(lang),
         )
         return
 
@@ -2774,10 +2873,9 @@ async def cmd_meforyou(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
         if not pool_rows:
             await update.message.reply_text(
-                "❌ No recommendations available yet.\n\n"
-                "Add more songs to your playlist!",
+                M("for_me_no_pool", lang),
                 parse_mode=PM,
-                reply_markup=_main_menu_keyboard(),
+                reply_markup=_main_menu_keyboard(lang),
             )
             return
 
@@ -2793,25 +2891,30 @@ async def cmd_meforyou(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
         if not recommended:
             await update.message.reply_text(
-                "❌ Couldn't fetch recommendations. Try again later.",
+                M("for_me_fetch_fail", lang),
                 parse_mode=PM,
-                reply_markup=_main_menu_keyboard(),
+                reply_markup=_main_menu_keyboard(lang),
             )
             return
 
         # Header with taste info
-        msg = f"🎯 <b>Songs Based on Your Taste</b>\n\n"
-        msg += f"Based on {profile['track_count']} songs in your playlist:\n"
-        msg += f"🥁 Avg BPM: {profile['avg_bpm']:.0f} · ⚡ Energy: {profile['avg_energy']:.2f}\n\n"
-        msg += "<i>Each has a 30-sec preview below 🎧</i>\n\n"
+        msg = M("for_me_header", lang,
+                count=profile["track_count"],
+                bpm=f"{profile['avg_bpm']:.0f}",
+                energy=f"{profile['avg_energy']:.2f}")
+        msg += "\n\n"
 
         for i, track in enumerate(recommended, 1):
             msg += f"{i}. <b>{h(track.title)}</b> - {h(track.artist)}\n"
+            msg += f"   <code>{h(track.title)} {h(track.artist)}</code>\n"
             if track.deezer_url:
                 msg += f"   <a href=\"{track.deezer_url}\">▶️ Deezer</a>\n"
             msg += "\n"
 
-        await update.message.reply_text(msg, parse_mode=PM, disable_web_page_preview=True)
+        msg += M("for_me_footer", lang)
+
+        await update.message.reply_text(msg, parse_mode=PM, disable_web_page_preview=True,
+                                        reply_markup=_meforyou_keyboard(lang))
 
         # Send each preview as an audio message (30-sec Deezer preview)
         for track in recommended:
@@ -2827,12 +2930,6 @@ async def cmd_meforyou(update: Update, context: ContextTypes.DEFAULT_TYPE):
                     )
                 except Exception as e:
                     log.warning("[ME_FOR_YOU] preview failed for %s: %s", track.title, e)
-
-        await update.message.reply_text(
-            "🔁 Tap <b>🎯 For Me</b> again for a fresh batch!",
-            parse_mode=PM,
-            reply_markup=_main_menu_keyboard(),
-        )
 
     except Exception as e:
         log.error("Recommendation error: %s", e, exc_info=True)
@@ -2894,6 +2991,17 @@ async def cmd_playliststats(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def post_init(application: Application):
     await init_db()
     await init_cache()
+    # Register command shortcuts so they appear in Telegram's / menu (UX guide §10)
+    try:
+        await application.bot.set_my_commands([
+            ("start", "Open main menu"),
+            ("search", "Search a song"),
+            ("meforyou", "Get songs for you"),
+            ("myplaylist", "Your playlist"),
+            ("language", "Change language / زبان"),
+        ])
+    except Exception as e:
+        log.warning("set_my_commands failed: %s", e)
     log.info("Bot initialized: Last.fm=%s", "OK" if LASTFM_API_KEY else "off")
 
 
@@ -2913,6 +3021,8 @@ def build_app() -> Application:
     # Core commands
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CommandHandler("help", cmd_help))
+    app.add_handler(CommandHandler("language", cmd_language))
+    app.add_handler(CommandHandler("lang", cmd_language))
 
     # Phase 1: Quick Wins
     app.add_handler(CommandHandler("random", cmd_random))
