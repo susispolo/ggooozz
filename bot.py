@@ -58,6 +58,7 @@ from user_prefs import (
     add_to_history, get_user_history, get_top_rated_tracks, get_most_active_users,
     add_to_user_playlist, get_user_playlist, clear_user_playlist,
     get_user_taste_profile, get_user_playlist_artists, get_random_recommendations,
+    store_suggestions, get_random_suggestions, count_suggestions,
 )
 from language_detect import detect_language, language_label
 from playlist_manager import generate_playlist, format_playlist_text
@@ -2317,6 +2318,18 @@ async def cmd_add(update: Update, context: ContextTypes.DEFAULT_TYPE):
         is_persian = has_persian(query) or has_persian(track.title) or has_persian(track.artist)
         lang = detect_language(track.title, track.artist, query)
 
+        # Find 5 similar tracks and store them in the per-user suggestion pool
+        similar_ids = []
+        try:
+            similar_tracks = await dz.get_similar(track.id, limit=5)
+            similar_ids = [t.id for t in similar_tracks]
+        except Exception as e:
+            log.warning("cmd_add: get_similar failed for %s: %s", track.id, e)
+        try:
+            await store_suggestions(user_id, track.id, similar_ids)
+        except Exception as e:
+            log.warning("cmd_add: store_suggestions failed user=%s: %s", user_id, e)
+
         # Analyze features
         features = await analyze_track(track, fast_mode=True)
         bpm = features.get("audio_features").bpm if features.get("audio_features") else 0
@@ -2507,6 +2520,13 @@ async def cmd_done(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 similar_ids = [t.id for t in similar_tracks]
             except Exception:
                 pass
+
+            # Store the similar-track IDs in the per-user suggestion pool so
+            # "For Me" can sample from them later (one row per suggestion).
+            try:
+                await store_suggestions(user_id, track.id, similar_ids)
+            except Exception as e:
+                log.warning("[PLAYLIST_DB] store_suggestions failed user=%s: %s", user_id, e)
 
             # Add to playlist
             await add_to_user_playlist(
@@ -2720,7 +2740,8 @@ async def cmd_clearplaylist(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def cmd_meforyou(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Get songs matching user's taste based on similar tracks from playlist."""
-    profile = await get_user_taste_profile(update.effective_user.id)
+    user_id = update.effective_user.id
+    profile = await get_user_taste_profile(user_id)
 
     if profile["track_count"] == 0:
         await update.message.reply_text(
@@ -2731,13 +2752,27 @@ async def cmd_meforyou(update: Update, context: ContextTypes.DEFAULT_TYPE):
         )
         return
 
+    # For Me unlocks once the user has added 10+ songs (each adds ~5 similar
+    # tracks to their pool, so there's a real pool to sample from).
+    if profile["track_count"] < 10:
+        remaining = 10 - profile["track_count"]
+        await update.message.reply_text(
+            f"⏳ <b>Almost there!</b>\n\n"
+            f"You have <b>{profile['track_count']}</b> songs in your playlist.\n"
+            f"Add <b>{remaining} more</b> (10 total) to unlock <b>🎯 For Me</b>!\n\n"
+            f"Every song you add gives us 5 similar tracks to pick from.",
+            parse_mode=PM,
+            reply_markup=_main_menu_keyboard(),
+        )
+        return
+
     await update.message.chat.send_action("typing")
 
     try:
-        # Get random recommendations from similar tracks pool
-        recommendation_ids = await get_random_recommendations(update.effective_user.id, count=5)
+        # Sample random suggestions from the per-user pool (built at add time)
+        pool_rows = await get_random_suggestions(user_id, count=5)
 
-        if not recommendation_ids:
+        if not pool_rows:
             await update.message.reply_text(
                 "❌ No recommendations available yet.\n\n"
                 "Add more songs to your playlist!",
@@ -2746,17 +2781,17 @@ async def cmd_meforyou(update: Update, context: ContextTypes.DEFAULT_TYPE):
             )
             return
 
-        # Fetch track details from Deezer
-        recommended_tracks = []
-        for track_id in recommendation_ids[:5]:
+        # Fetch live track details (IDs only in DB — keeps the pool tiny)
+        recommended = []
+        for track_id, source_id in pool_rows:
             try:
                 track_data = await dz.get_track(track_id)
                 if track_data:
-                    recommended_tracks.append(track_data)
+                    recommended.append(track_data)
             except Exception as e:
                 log.warning("[ME_FOR_YOU] fetch track %s failed: %s", track_id, e)
 
-        if not recommended_tracks:
+        if not recommended:
             await update.message.reply_text(
                 "❌ Couldn't fetch recommendations. Try again later.",
                 parse_mode=PM,
@@ -2764,16 +2799,40 @@ async def cmd_meforyou(update: Update, context: ContextTypes.DEFAULT_TYPE):
             )
             return
 
-        # Build message
+        # Header with taste info
         msg = f"🎯 <b>Songs Based on Your Taste</b>\n\n"
         msg += f"Based on {profile['track_count']} songs in your playlist:\n"
         msg += f"🥁 Avg BPM: {profile['avg_bpm']:.0f} · ⚡ Energy: {profile['avg_energy']:.2f}\n\n"
+        msg += "<i>Each has a 30-sec preview below 🎧</i>\n\n"
 
-        for i, track in enumerate(recommended_tracks, 1):
+        for i, track in enumerate(recommended, 1):
             msg += f"{i}. <b>{h(track.title)}</b> - {h(track.artist)}\n"
-            msg += f"   <code>{h(track.title)} {h(track.artist)}</code>\n\n"
+            if track.deezer_url:
+                msg += f"   <a href=\"{track.deezer_url}\">▶️ Deezer</a>\n"
+            msg += "\n"
 
-        await update.message.reply_text(msg, parse_mode=PM, reply_markup=_main_menu_keyboard())
+        await update.message.reply_text(msg, parse_mode=PM, disable_web_page_preview=True)
+
+        # Send each preview as an audio message (30-sec Deezer preview)
+        for track in recommended:
+            if track.preview_url:
+                try:
+                    await asyncio.sleep(0.3)
+                    await context.bot.send_audio(
+                        chat_id=update.effective_chat.id,
+                        audio=track.preview_url,
+                        title=f"🎵 {track.title}",
+                        performer=track.artist,
+                        duration=30,
+                    )
+                except Exception as e:
+                    log.warning("[ME_FOR_YOU] preview failed for %s: %s", track.title, e)
+
+        await update.message.reply_text(
+            "🔁 Tap <b>🎯 For Me</b> again for a fresh batch!",
+            parse_mode=PM,
+            reply_markup=_main_menu_keyboard(),
+        )
 
     except Exception as e:
         log.error("Recommendation error: %s", e, exc_info=True)

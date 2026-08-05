@@ -87,6 +87,25 @@ async def init_db():
             )
         """)
 
+        # User suggestions table (per-user pool of similar-track IDs).
+        # Built during add-to-playlist: for each recognized song we store the
+        # 5 Deezer similar-track IDs it produced. "For Me" samples randomly
+        # from this pool. Row-per-suggestion (no JSON blobs) so it scales to
+        # 1000+ users; UNIQUE(user_id, track_id) dedupes at DB level.
+        await conn.execute("""
+            CREATE TABLE IF NOT EXISTS user_suggestions (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_id INTEGER NOT NULL,
+                track_id INTEGER NOT NULL,
+                source_song_id INTEGER DEFAULT 0,
+                added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                UNIQUE(user_id, track_id)
+            )
+        """)
+        await conn.execute(
+            "CREATE INDEX IF NOT EXISTS idx_user_suggestions_user ON user_suggestions(user_id)"
+        )
+
         # Migration: add any missing columns (schema evolved over time).
         await _migrate_add_columns(conn, "user_playlist", {
             "language": "TEXT DEFAULT 'en'",
@@ -555,6 +574,60 @@ async def get_random_recommendations(user_id: int, count: int = 5) -> list:
     picked = random.sample(unique_tracks, count)
     log.info("[PLAYLIST_DB] get_random_recommendations user=%s -> %d sampled from %d unique", user_id, len(picked), len(unique_tracks))
     return picked
+
+
+async def store_suggestions(user_id: int, source_song_id: int, track_ids: list) -> int:
+    """Store similar-track IDs in the per-user suggestion pool.
+
+    Idempotent: INSERT OR IGNORE so the same track_id from different source
+    songs is stored once per user. Returns the number of new rows added.
+    """
+    if not track_ids:
+        return 0
+    valid = [int(t) for t in track_ids if int(t) > 0]
+    if not valid:
+        return 0
+
+    added = 0
+    async with aiosqlite.connect(DB_PATH) as conn:
+        for tid in valid:
+            cur = await conn.execute(
+                "INSERT OR IGNORE INTO user_suggestions (user_id, track_id, source_song_id) VALUES (?, ?, ?)",
+                (user_id, tid, source_song_id),
+            )
+            added += cur.rowcount
+        await conn.commit()
+    log.info("[PLAYLIST_DB] store_suggestions user=%s source=%s -> %d new of %d ids",
+             user_id, source_song_id, added, len(valid))
+    return added
+
+
+async def get_random_suggestions(user_id: int, count: int = 5) -> list:
+    """Sample random track IDs from the user's suggestion pool.
+
+    One indexed ORDER BY RANDOM() query — O(1) per user regardless of pool
+    size, no JSON parsing. Returns list of (track_id, source_song_id).
+    """
+    async with aiosqlite.connect(DB_PATH) as conn:
+        async with conn.execute(
+            "SELECT track_id, source_song_id FROM user_suggestions WHERE user_id=? ORDER BY RANDOM() LIMIT ?",
+            (user_id, count),
+        ) as cursor:
+            rows = await cursor.fetchall()
+    log.info("[PLAYLIST_DB] get_random_suggestions user=%s -> %d ids", user_id, len(rows))
+    return rows
+
+
+async def count_suggestions(user_id: int) -> int:
+    """Count of suggestions in the user's pool."""
+    async with aiosqlite.connect(DB_PATH) as conn:
+        async with conn.execute(
+            "SELECT COUNT(*) FROM user_suggestions WHERE user_id=?", (user_id,)
+        ) as cursor:
+            row = await cursor.fetchone()
+    n = row[0] if row else 0
+    log.info("[PLAYLIST_DB] count_suggestions user=%s -> %d", user_id, n)
+    return n
 
 
 async def search_tracks_by_features(bpm: float, energy: float, valence: float, limit: int = 10) -> list:
