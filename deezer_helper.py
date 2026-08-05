@@ -122,15 +122,61 @@ class DeezerClient:
         log.info("[DEEZER] get_track id=%s -> %s - %s (genres=%s)", track_id, track.artist, track.title, track.genres)
         return track
 
-    async def get_similar(self, track_id: int, limit: int = 10) -> list[TrackInfo]:
+    async def get_similar(self, track_id: int, limit: int = 10, track: TrackInfo = None) -> list[TrackInfo]:
+        """Get similar tracks, with Iran-resilient fallback chain.
+
+        Deezer's /track/{id}/radio returns EMPTY data in restricted regions
+        (Iran etc.). Chain of fallbacks, each tried until we have results:
+          1. radio endpoint (works outside restricted regions)
+          2. artist's top tracks (works for most Western artists)
+          3. search by artist name (works everywhere, incl. Persian artists)
+
+        Pass `track` (already-fetched TrackInfo) to skip re-fetching and get
+        the artist_id for the fallbacks.
+        """
         log.info("[DEEZER] get_similar id=%s limit=%s", track_id, limit)
+
+        # 1. Radio endpoint
         data = await self._request_with_retry(
             f"{self.BASE}/track/{track_id}/radio",
             params={"limit": limit}
         )
         results = [self._parse_track(t) for t in data.get("data", [])] if data else []
-        log.info("[DEEZER] get_similar id=%s -> %d results", track_id, len(results))
-        return results
+        if results:
+            log.info("[DEEZER] get_similar id=%s -> %d results (radio)", track_id, len(results))
+            return results[:limit]
+
+        # 2. Artist top tracks (needs artist_id)
+        artist_id = getattr(track, "artist_id", 0) or 0
+        artist_name = getattr(track, "artist", "") or ""
+        if not artist_id:
+            try:
+                t = await self.get_track(track_id)
+                if t:
+                    artist_id = t.artist_id
+                    artist_name = t.artist
+            except Exception:
+                pass
+        if artist_id:
+            results = await self.get_artist_top(artist_id, limit=limit)
+            if results:
+                log.info("[DEEZER] get_similar id=%s -> %d results (artist_top)", track_id, len(results))
+                return results[:limit]
+
+        # 3. Search by artist name (universal fallback, works for Persian too)
+        if artist_name:
+            try:
+                results = await self.search(artist_name, limit=limit + 5)
+                # Drop the seed track itself if it appears
+                results = [r for r in results if r.id != track_id][:limit]
+                if results:
+                    log.info("[DEEZER] get_similar id=%s -> %d results (artist_search)", track_id, len(results))
+                    return results
+            except Exception:
+                pass
+
+        log.info("[DEEZER] get_similar id=%s -> 0 results (all sources empty)", track_id)
+        return []
 
     async def get_artist_top(self, artist_id: int, limit: int = 10) -> list[TrackInfo]:
         log.info("[DEEZER] get_artist_top id=%s limit=%s", artist_id, limit)

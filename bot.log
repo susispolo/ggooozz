@@ -1349,3 +1349,612 @@
 2026-08-05 12:43:15,751 | INFO     | user_prefs                   | [PLAYLIST_DB] get_all_similar_tracks user=240082844 -> 0 similar track ids (from 0 rows)
 2026-08-05 12:43:15,751 | INFO     | user_prefs                   | [PLAYLIST_DB] get_random_recommendations user=240082844 -> none available
 2026-08-05 12:44:13,507 | WARNING  | __main__                     | Unhandled error: httpx.RemoteProtocolError: Server disconnected without sending a response.
+2026-08-05 12:57:23,192 | INFO     | __main__                     | Loaded Persian genre database: 203 artists
+2026-08-05 12:57:23,480 | INFO     | __main__                     | Music Suggest Bot v3 starting...
+2026-08-05 12:57:24,242 | INFO     | user_prefs                   | [USER_DB] init_db: tables created; PATH=user_prefs.db
+2026-08-05 12:57:24,250 | INFO     | feature_cache                | Feature cache initialized
+2026-08-05 12:57:24,253 | INFO     | __main__                     | Bot initialized: Last.fm=OK
+2026-08-05 12:57:24,426 | INFO     | telegram.ext.Application     | Application started
+2026-08-05 12:58:16,903 | INFO     | __main__                     | [STEP 1] User 240082844: Received text: 🔍 Search...
+2026-08-05 12:58:33,244 | INFO     | __main__                     | [STEP 1] User 240082844: Received text: 📋 My Playlist...
+2026-08-05 12:58:33,262 | INFO     | user_prefs                   | [PLAYLIST_DB] get_user_playlist user=240082844 -> 15 rows
+2026-08-05 12:58:33,263 | INFO     | user_prefs                   | [PLAYLIST_DB] get_user_taste_profile user=240082844
+2026-08-05 12:58:33,279 | INFO     | user_prefs                   | [PLAYLIST_DB] taste_profile user=240082844 -> total=15 recognized=14 tracks=14 bpm=121.7 energy=0.16 valence=0.00 genres=['classic rock', 'Persian Traditional'] langs=[('en', 9), ('fa', 3), ('ar', 2)]
+2026-08-05 12:58:42,232 | INFO     | __main__                     | [STEP 1] User 240082844: Received text: ➕ Add to Playlist...
+2026-08-05 12:58:42,233 | INFO     | __main__                     | [STEP 2] User 240082844: Entering playlist mode
+2026-08-05 12:59:15,476 | INFO     | __main__                     | [STEP 1] User 240082844: Received text: ✅ Done (11 songs)...
+2026-08-05 12:59:15,477 | INFO     | __main__                     | [STEP 3] User 240082844: Done button pressed, starting processing
+2026-08-05 12:59:15,478 | INFO     | __main__                     | [STEP 4] User 240082844: Starting processing
+2026-08-05 12:59:15,479 | INFO     | __main__                     | [STEP 4] User 240082844: Got 11 pending songs
+2026-08-05 12:59:15,480 | INFO     | __main__                     | [STEP 4] User 240082844: Parsed 11 songs from input
+2026-08-05 12:59:15,482 | INFO     | __main__                     | [STEP 5] User 240082844: Cleaned 11 songs
+2026-08-05 12:59:16,253 | INFO     | __main__                     | [STEP 6] User 240082844: Processing 1/11: 'Boney M wapos.ru Bahama Mama' -> 'Boney M wapos.ru Bahama Mama'
+2026-08-05 12:59:16,447 | INFO     | __main__                     | [STEP 6] User 240082844: Searching Deezer for: Boney M wapos.ru Bahama Mama
+2026-08-05 12:59:16,448 | INFO     | deezer_helper                | [DEEZER] search query='Boney M wapos.ru Bahama Mama' limit=3
+2026-08-05 12:59:17,716 | INFO     | deezer_helper                | [DEEZER] search query='Boney M wapos.ru Bahama Mama' -> 0 results
+2026-08-05 12:59:17,717 | INFO     | __main__                     | [STEP 6] User 240082844: No results for: Boney M wapos.ru Bahama Mama
+2026-08-05 12:59:17,738 | INFO     | user_prefs                   | [PLAYLIST_DB] added OK user=240082844 track=0 (Boney M wapos.ru Bahama Mama - ) lang=en year=0
+2026-08-05 12:59:17,741 | INFO     | __main__                     | [STEP 6] User 240082844: Processing 2/11: '12 Chuck Berry   You Never Can Tell' -> 'Chuck Berry You Never Can Tell'
+2026-08-05 12:59:17,951 | INFO     | __main__                     | [STEP 6] User 240082844: Searching Deezer for: Chuck Berry You Never Can Tell
+2026-08-05 12:59:17,952 | INFO     | deezer_helper                | [DEEZER] search query='Chuck Berry You Never Can Tell' limit=3
+2026-08-05 12:59:18,266 | INFO     | deezer_helper                | [DEEZER] search query='Chuck Berry You Never Can Tell' -> 3 results
+2026-08-05 12:59:18,267 | INFO     | __main__                     | [STEP 6] User 240082844: Found: You Never Can Tell - Chuck Berry
+2026-08-05 12:59:18,267 | INFO     | deezer_helper                | [DEEZER] get_track id=646290952
+2026-08-05 12:59:18,875 | INFO     | deezer_helper                | [DEEZER] get_track id=646290952 -> Chuck Berry - You Never Can Tell (genres=[])
+2026-08-05 12:59:18,912 | INFO     | __main__                     | [STEP 6] User 240082844: Language: en (persian=False)
+2026-08-05 12:59:18,913 | INFO     | __main__                     | [STEP 6] User 240082844: Analyzing features (librosa)...
+2026-08-05 12:59:18,914 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 646290952
+2026-08-05 12:59:18,917 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 646290952
+2026-08-05 12:59:18,918 | INFO     | __main__                     | Analyzing track: Chuck Berry - You Never Can Tell (fast=False)
+2026-08-05 12:59:18,918 | INFO     | audio_analyzer               | Downloading preview: https://cdnt-preview.dzcdn.net/api/1/1/e/4/9/0/e492f44650820a0b1f4b72eb54421ec3.mp3?hdnea=exp=1785923060~acl=/api/1/1/e/4/9/0/e492f44650820a0b1f4b72eb54421ec3.mp3*~data=user_id=0,application_id=42~hmac=4232974606546c5af9496d7fae109ce728585abe5c537cfd2f28ecb9fede6254
+2026-08-05 12:59:19,724 | INFO     | musicbrainz_client           | Found MusicBrainz ID: f45807c4-095a-44c6-95d1-7111d877c117 for Chuck Berry - You Never Can Tell
+2026-08-05 12:59:21,178 | INFO     | audio_analyzer               | Downloaded 479827 bytes
+2026-08-05 12:59:21,180 | INFO     | audio_analyzer               | Running librosa analysis...
+2026-08-05 12:59:21,233 | INFO     | audio_analyzer               | [LIBROSA] Starting feature extraction...
+2026-08-05 12:59:21,235 | INFO     | audio_analyzer               | [LIBROSA] Temp file created: C:\Users\Saeid\AppData\Local\Temp\tmp_bymqioy.mp3 (479827 bytes)
+2026-08-05 12:59:21,236 | INFO     | audio_analyzer               | [LIBROSA] Loading audio file...
+2026-08-05 12:59:34,763 | INFO     | audio_analyzer               | [LIBROSA] Audio loaded: 30.0 seconds, 22050 Hz sample rate
+2026-08-05 12:59:34,763 | INFO     | audio_analyzer               | [LIBROSA] Extracting BPM...
+2026-08-05 12:59:37,855 | INFO     | audio_analyzer               | [LIBROSA] BPM: 152.0
+2026-08-05 12:59:37,855 | INFO     | audio_analyzer               | [LIBROSA] Extracting MFCCs (timbre)...
+2026-08-05 12:59:37,907 | INFO     | audio_analyzer               | [LIBROSA] MFCCs extracted: 13 coefficients
+2026-08-05 12:59:37,908 | INFO     | audio_analyzer               | [LIBROSA] Extracting chroma (harmonics)...
+2026-08-05 12:59:38,013 | INFO     | audio_analyzer               | [LIBROSA] Chroma extracted: 12 pitch classes
+2026-08-05 12:59:38,013 | INFO     | audio_analyzer               | [LIBROSA] Extracting spectral features...
+2026-08-05 12:59:38,312 | INFO     | audio_analyzer               | [LIBROSA] Spectral: centroid=1821.6, rolloff=3705.7, bandwidth=2044.5
+2026-08-05 12:59:38,313 | INFO     | audio_analyzer               | [LIBROSA] Extracting energy (RMS)...
+2026-08-05 12:59:38,321 | INFO     | audio_analyzer               | [LIBROSA] Energy: mean=0.0956, var=0.0006
+2026-08-05 12:59:38,322 | INFO     | audio_analyzer               | [LIBROSA] Extracting onset rate...
+2026-08-05 12:59:38,373 | INFO     | audio_analyzer               | [LIBROSA] Onset rate: 1.5475
+2026-08-05 12:59:38,404 | INFO     | audio_analyzer               | [LIBROSA] Inferring musical key...
+2026-08-05 12:59:38,404 | INFO     | audio_analyzer               | [LIBROSA] Key: G
+2026-08-05 12:59:38,404 | INFO     | audio_analyzer               | [LIBROSA] Inferring scale (major/minor)...
+2026-08-05 12:59:38,405 | INFO     | audio_analyzer               | [LIBROSA] Scale: major (major=0.61, minor=0.27)
+2026-08-05 12:59:38,406 | INFO     | audio_analyzer               | Analyzed audio: BPM=152.0, RMS=0.096
+2026-08-05 12:59:38,407 | INFO     | __main__                     | Analysis results for Chuck Berry - You Never Can Tell:
+2026-08-05 12:59:38,407 | INFO     | __main__                     |   Audio features: OK
+2026-08-05 12:59:38,408 | INFO     | __main__                     |   MusicBrainz: OK
+2026-08-05 12:59:38,408 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 12:59:38,409 | INFO     | __main__                     |   Last.fm tags: 0
+2026-08-05 12:59:38,409 | INFO     | feature_cache                | [CACHE] Saving features for: Chuck Berry - You Never Can Tell (ID: 646290952)
+2026-08-05 12:59:38,409 | INFO     | feature_cache                | [CACHE] Audio features: BPM=152.0, Energy=0.0956, MFCCs=13 coefficients
+2026-08-05 12:59:38,409 | INFO     | feature_cache                | [CACHE] AcousticBrainz: NONE
+2026-08-05 12:59:38,410 | INFO     | feature_cache                | [CACHE] MusicBrainz ID: f45807c4-095a-44c6-95d1-7111d877c117
+2026-08-05 12:59:38,410 | INFO     | feature_cache                | [CACHE] Last.fm tags: NONE
+2026-08-05 12:59:38,417 | INFO     | feature_cache                | [CACHE] ✓ Saved successfully for: Chuck Berry - You Never Can Tell
+2026-08-05 12:59:38,428 | INFO     | feature_cache                | Exported 99 tracks to cached_songs.json
+2026-08-05 12:59:38,429 | INFO     | __main__                     | [STEP 6] User 240082844: Features OK: BPM=151.99908088235293
+2026-08-05 12:59:38,429 | INFO     | deezer_helper                | [DEEZER] get_similar id=646290952 limit=5
+2026-08-05 12:59:39,360 | INFO     | deezer_helper                | [DEEZER] get_similar id=646290952 -> 0 results
+2026-08-05 12:59:39,382 | INFO     | user_prefs                   | [PLAYLIST_DB] added OK user=240082844 track=646290952 (You Never Can Tell - Chuck Berry) lang=en year=2019
+2026-08-05 12:59:39,382 | INFO     | __main__                     | [STEP 7] User 240082844: Added: You Never Can Tell - Chuck Berry (genre: ) lang=en year=2019
+2026-08-05 12:59:39,383 | INFO     | __main__                     | [STEP 6] User 240082844: Processing 3/11: '1|7   Under The Black Sun   Bulbous Creation (320)' -> '1|7 Under The Black Sun Bulbous Creation'
+2026-08-05 12:59:40,520 | INFO     | __main__                     | [STEP 6] User 240082844: Searching Deezer for: 1|7 Under The Black Sun Bulbous Creation
+2026-08-05 12:59:40,521 | INFO     | deezer_helper                | [DEEZER] search query='1|7 Under The Black Sun Bulbous Creation' limit=3
+2026-08-05 12:59:40,900 | INFO     | deezer_helper                | [DEEZER] search query='1|7 Under The Black Sun Bulbous Creation' -> 0 results
+2026-08-05 12:59:40,901 | INFO     | __main__                     | [STEP 6] User 240082844: No results for: 1|7 Under The Black Sun Bulbous Creation
+2026-08-05 12:59:40,927 | INFO     | user_prefs                   | [PLAYLIST_DB] added OK user=240082844 track=0 (1|7 Under The Black Sun Bulbous Creation - ) lang=en year=0
+2026-08-05 12:59:40,929 | INFO     | __main__                     | [STEP 6] User 240082844: Processing 4/11: 'Rockin  Robin   Michael Jackson' -> 'Rockin Robin Michael Jackson'
+2026-08-05 12:59:41,191 | INFO     | __main__                     | [STEP 6] User 240082844: Searching Deezer for: Rockin Robin Michael Jackson
+2026-08-05 12:59:41,192 | INFO     | deezer_helper                | [DEEZER] search query='Rockin Robin Michael Jackson' limit=3
+2026-08-05 12:59:41,575 | INFO     | deezer_helper                | [DEEZER] search query='Rockin Robin Michael Jackson' -> 3 results
+2026-08-05 12:59:41,576 | INFO     | __main__                     | [STEP 6] User 240082844: Found: Rockin' Robin - Michael Jackson
+2026-08-05 12:59:41,577 | INFO     | deezer_helper                | [DEEZER] get_track id=920114
+2026-08-05 12:59:42,131 | INFO     | deezer_helper                | [DEEZER] get_track id=920114 -> Michael Jackson - Rockin' Robin (genres=[])
+2026-08-05 12:59:43,277 | INFO     | __main__                     | [STEP 6] User 240082844: Language: en (persian=False)
+2026-08-05 12:59:43,277 | INFO     | __main__                     | [STEP 6] User 240082844: Analyzing features (librosa)...
+2026-08-05 12:59:43,278 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 920114
+2026-08-05 12:59:43,280 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 920114
+2026-08-05 12:59:43,280 | INFO     | __main__                     | Analyzing track: Michael Jackson - Rockin' Robin (fast=False)
+2026-08-05 12:59:43,281 | INFO     | audio_analyzer               | Downloading preview: https://cdnt-preview.dzcdn.net/api/1/1/1/0/8/0/108529ef35d2691af64f7490e82358af.mp3?hdnea=exp=1785923083~acl=/api/1/1/1/0/8/0/108529ef35d2691af64f7490e82358af.mp3*~data=user_id=0,application_id=42~hmac=ddee898e9f6feb169c0409bb9f690a0a4d443b6c7376338fa516fa68e19b49d8
+2026-08-05 12:59:44,179 | INFO     | musicbrainz_client           | Found MusicBrainz ID: 9a969d77-db44-4376-a2be-90c977360ae5 for Michael Jackson - Rockin' Robin
+2026-08-05 12:59:44,885 | INFO     | audio_analyzer               | Downloaded 479827 bytes
+2026-08-05 12:59:44,887 | INFO     | audio_analyzer               | Running librosa analysis...
+2026-08-05 12:59:44,889 | INFO     | audio_analyzer               | [LIBROSA] Starting feature extraction...
+2026-08-05 12:59:44,892 | INFO     | audio_analyzer               | [LIBROSA] Temp file created: C:\Users\Saeid\AppData\Local\Temp\tmpd6t96t_q.mp3 (479827 bytes)
+2026-08-05 12:59:44,894 | INFO     | audio_analyzer               | [LIBROSA] Loading audio file...
+2026-08-05 12:59:44,999 | INFO     | audio_analyzer               | [LIBROSA] Audio loaded: 30.0 seconds, 22050 Hz sample rate
+2026-08-05 12:59:45,000 | INFO     | audio_analyzer               | [LIBROSA] Extracting BPM...
+2026-08-05 12:59:45,097 | INFO     | audio_analyzer               | [LIBROSA] BPM: 86.1
+2026-08-05 12:59:45,097 | INFO     | audio_analyzer               | [LIBROSA] Extracting MFCCs (timbre)...
+2026-08-05 12:59:45,149 | INFO     | audio_analyzer               | [LIBROSA] MFCCs extracted: 13 coefficients
+2026-08-05 12:59:45,149 | INFO     | audio_analyzer               | [LIBROSA] Extracting chroma (harmonics)...
+2026-08-05 12:59:45,255 | INFO     | audio_analyzer               | [LIBROSA] Chroma extracted: 12 pitch classes
+2026-08-05 12:59:45,256 | INFO     | audio_analyzer               | [LIBROSA] Extracting spectral features...
+2026-08-05 12:59:45,555 | INFO     | audio_analyzer               | [LIBROSA] Spectral: centroid=2439.3, rolloff=5364.3, bandwidth=2532.9
+2026-08-05 12:59:45,556 | INFO     | audio_analyzer               | [LIBROSA] Extracting energy (RMS)...
+2026-08-05 12:59:45,564 | INFO     | audio_analyzer               | [LIBROSA] Energy: mean=0.1813, var=0.0019
+2026-08-05 12:59:45,565 | INFO     | audio_analyzer               | [LIBROSA] Extracting onset rate...
+2026-08-05 12:59:45,617 | INFO     | audio_analyzer               | [LIBROSA] Onset rate: 1.6451
+2026-08-05 12:59:45,647 | INFO     | audio_analyzer               | [LIBROSA] Inferring musical key...
+2026-08-05 12:59:45,647 | INFO     | audio_analyzer               | [LIBROSA] Key: F
+2026-08-05 12:59:45,648 | INFO     | audio_analyzer               | [LIBROSA] Inferring scale (major/minor)...
+2026-08-05 12:59:45,648 | INFO     | audio_analyzer               | [LIBROSA] Scale: minor (major=0.14, minor=0.15)
+2026-08-05 12:59:45,649 | INFO     | audio_analyzer               | Analyzed audio: BPM=86.1, RMS=0.181
+2026-08-05 12:59:45,649 | INFO     | __main__                     | Analysis results for Michael Jackson - Rockin' Robin:
+2026-08-05 12:59:45,649 | INFO     | __main__                     |   Audio features: OK
+2026-08-05 12:59:45,650 | INFO     | __main__                     |   MusicBrainz: OK
+2026-08-05 12:59:45,650 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 12:59:45,650 | INFO     | __main__                     |   Last.fm tags: 0
+2026-08-05 12:59:45,650 | INFO     | feature_cache                | [CACHE] Saving features for: Michael Jackson - Rockin' Robin (ID: 920114)
+2026-08-05 12:59:45,651 | INFO     | feature_cache                | [CACHE] Audio features: BPM=86.1, Energy=0.1813, MFCCs=13 coefficients
+2026-08-05 12:59:45,651 | INFO     | feature_cache                | [CACHE] AcousticBrainz: NONE
+2026-08-05 12:59:45,651 | INFO     | feature_cache                | [CACHE] MusicBrainz ID: 9a969d77-db44-4376-a2be-90c977360ae5
+2026-08-05 12:59:45,652 | INFO     | feature_cache                | [CACHE] Last.fm tags: NONE
+2026-08-05 12:59:45,659 | INFO     | feature_cache                | [CACHE] ✓ Saved successfully for: Michael Jackson - Rockin' Robin
+2026-08-05 12:59:45,671 | INFO     | feature_cache                | Exported 100 tracks to cached_songs.json
+2026-08-05 12:59:45,671 | INFO     | __main__                     | [STEP 6] User 240082844: Features OK: BPM=86.1328125
+2026-08-05 12:59:45,671 | INFO     | deezer_helper                | [DEEZER] get_similar id=920114 limit=5
+2026-08-05 12:59:45,912 | INFO     | deezer_helper                | [DEEZER] get_similar id=920114 -> 0 results
+2026-08-05 12:59:45,936 | INFO     | user_prefs                   | [PLAYLIST_DB] added OK user=240082844 track=920114 (Rockin' Robin - Michael Jackson) lang=en year=1996
+2026-08-05 12:59:45,937 | INFO     | __main__                     | [STEP 7] User 240082844: Added: Rockin' Robin - Michael Jackson (genre: ) lang=en year=1996
+2026-08-05 12:59:45,938 | INFO     | __main__                     | [STEP 6] User 240082844: Processing 5/11: 'music' -> 'music'
+2026-08-05 12:59:46,683 | INFO     | __main__                     | [STEP 6] User 240082844: Searching Deezer for: music
+2026-08-05 12:59:46,684 | INFO     | deezer_helper                | [DEEZER] search query='music' limit=3
+2026-08-05 12:59:47,000 | INFO     | deezer_helper                | [DEEZER] search query='music' -> 3 results
+2026-08-05 12:59:47,001 | INFO     | __main__                     | [STEP 6] User 240082844: Found: Music - Madonna
+2026-08-05 12:59:47,002 | INFO     | deezer_helper                | [DEEZER] get_track id=3667551
+2026-08-05 12:59:47,721 | INFO     | deezer_helper                | [DEEZER] get_track id=3667551 -> Madonna - Music (genres=[])
+2026-08-05 12:59:47,725 | INFO     | __main__                     | [STEP 6] User 240082844: Language: en (persian=False)
+2026-08-05 12:59:47,726 | INFO     | __main__                     | [STEP 6] User 240082844: Analyzing features (librosa)...
+2026-08-05 12:59:47,727 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 3667551
+2026-08-05 12:59:47,736 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 3667551
+2026-08-05 12:59:47,739 | INFO     | __main__                     | Analyzing track: Madonna - Music (fast=False)
+2026-08-05 12:59:47,740 | INFO     | audio_analyzer               | Downloading preview: https://cdnt-preview.dzcdn.net/api/1/1/2/4/2/0/242549b4a7dd2d5b655e88ddb6f8693a.mp3?hdnea=exp=1785923088~acl=/api/1/1/2/4/2/0/242549b4a7dd2d5b655e88ddb6f8693a.mp3*~data=user_id=0,application_id=42~hmac=a37a00381f63422ee4dbb093ec90e40fe221b72edf1b22d7d9e2fe18cb6aabb3
+2026-08-05 12:59:48,140 | INFO     | musicbrainz_client           | Found MusicBrainz ID: 9eab7443-178e-4959-9034-178813cb0690 for Madonna - Music
+2026-08-05 12:59:49,375 | INFO     | audio_analyzer               | Downloaded 479827 bytes
+2026-08-05 12:59:49,377 | INFO     | audio_analyzer               | Running librosa analysis...
+2026-08-05 12:59:49,378 | INFO     | audio_analyzer               | [LIBROSA] Starting feature extraction...
+2026-08-05 12:59:49,382 | INFO     | audio_analyzer               | [LIBROSA] Temp file created: C:\Users\Saeid\AppData\Local\Temp\tmpaqaa8diz.mp3 (479827 bytes)
+2026-08-05 12:59:49,384 | INFO     | audio_analyzer               | [LIBROSA] Loading audio file...
+2026-08-05 12:59:49,515 | INFO     | audio_analyzer               | [LIBROSA] Audio loaded: 30.0 seconds, 22050 Hz sample rate
+2026-08-05 12:59:49,516 | INFO     | audio_analyzer               | [LIBROSA] Extracting BPM...
+2026-08-05 12:59:49,613 | INFO     | audio_analyzer               | [LIBROSA] BPM: 117.5
+2026-08-05 12:59:49,613 | INFO     | audio_analyzer               | [LIBROSA] Extracting MFCCs (timbre)...
+2026-08-05 12:59:49,665 | INFO     | audio_analyzer               | [LIBROSA] MFCCs extracted: 13 coefficients
+2026-08-05 12:59:49,665 | INFO     | audio_analyzer               | [LIBROSA] Extracting chroma (harmonics)...
+2026-08-05 12:59:49,769 | INFO     | audio_analyzer               | [LIBROSA] Chroma extracted: 12 pitch classes
+2026-08-05 12:59:49,770 | INFO     | audio_analyzer               | [LIBROSA] Extracting spectral features...
+2026-08-05 12:59:50,075 | INFO     | audio_analyzer               | [LIBROSA] Spectral: centroid=2930.7, rolloff=6106.3, bandwidth=2725.5
+2026-08-05 12:59:50,075 | INFO     | audio_analyzer               | [LIBROSA] Extracting energy (RMS)...
+2026-08-05 12:59:50,084 | INFO     | audio_analyzer               | [LIBROSA] Energy: mean=0.1723, var=0.0103
+2026-08-05 12:59:50,084 | INFO     | audio_analyzer               | [LIBROSA] Extracting onset rate...
+2026-08-05 12:59:50,134 | INFO     | audio_analyzer               | [LIBROSA] Onset rate: 2.8617
+2026-08-05 12:59:50,164 | INFO     | audio_analyzer               | [LIBROSA] Inferring musical key...
+2026-08-05 12:59:50,165 | INFO     | audio_analyzer               | [LIBROSA] Key: A
+2026-08-05 12:59:50,165 | INFO     | audio_analyzer               | [LIBROSA] Inferring scale (major/minor)...
+2026-08-05 12:59:50,165 | INFO     | audio_analyzer               | [LIBROSA] Scale: major (major=0.06, minor=0.01)
+2026-08-05 12:59:50,166 | INFO     | audio_analyzer               | Analyzed audio: BPM=117.5, RMS=0.172
+2026-08-05 12:59:50,167 | INFO     | __main__                     | Analysis results for Madonna - Music:
+2026-08-05 12:59:50,167 | INFO     | __main__                     |   Audio features: OK
+2026-08-05 12:59:50,167 | INFO     | __main__                     |   MusicBrainz: OK
+2026-08-05 12:59:50,167 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 12:59:50,167 | INFO     | __main__                     |   Last.fm tags: 5
+2026-08-05 12:59:50,168 | INFO     | feature_cache                | [CACHE] Saving features for: Madonna - Music (ID: 3667551)
+2026-08-05 12:59:50,168 | INFO     | feature_cache                | [CACHE] Audio features: BPM=117.5, Energy=0.1723, MFCCs=13 coefficients
+2026-08-05 12:59:50,168 | INFO     | feature_cache                | [CACHE] AcousticBrainz: NONE
+2026-08-05 12:59:50,168 | INFO     | feature_cache                | [CACHE] MusicBrainz ID: 9eab7443-178e-4959-9034-178813cb0690
+2026-08-05 12:59:50,168 | INFO     | feature_cache                | [CACHE] Last.fm tags: pop, dance, electronic, Madonna, female vocalists
+2026-08-05 12:59:50,175 | INFO     | feature_cache                | [CACHE] ✓ Saved successfully for: Madonna - Music
+2026-08-05 12:59:50,185 | INFO     | feature_cache                | Exported 101 tracks to cached_songs.json
+2026-08-05 12:59:50,185 | INFO     | __main__                     | [STEP 6] User 240082844: Features OK: BPM=117.45383522727273
+2026-08-05 12:59:50,185 | INFO     | deezer_helper                | [DEEZER] get_similar id=3667551 limit=5
+2026-08-05 12:59:51,843 | INFO     | deezer_helper                | [DEEZER] get_similar id=3667551 -> 0 results
+2026-08-05 12:59:51,868 | INFO     | user_prefs                   | [PLAYLIST_DB] added OK user=240082844 track=3667551 (Music - Madonna) lang=en year=2000
+2026-08-05 12:59:51,870 | INFO     | __main__                     | [STEP 7] User 240082844: Added: Music - Madonna (genre: pop) lang=en year=2000
+2026-08-05 12:59:51,871 | INFO     | __main__                     | [STEP 6] User 240082844: Processing 6/11: 'Dmitri Shostakovich, Russian State Symphony Orchestra, Dmitry Ya' -> 'Dmitri Shostakovich, Russian State Symphony Orchestra, Dmitry Ya'
+2026-08-05 12:59:52,900 | INFO     | __main__                     | [STEP 6] User 240082844: Searching Deezer for: Dmitri Shostakovich, Russian State Symphony Orchestra, Dmitry Ya
+2026-08-05 12:59:52,901 | INFO     | deezer_helper                | [DEEZER] search query='Dmitri Shostakovich, Russian State Symphony Orchestra, Dmitry Ya' limit=3
+2026-08-05 12:59:54,730 | INFO     | deezer_helper                | [DEEZER] search query='Dmitri Shostakovich, Russian State Symphony Orchestra, Dmitry Ya' -> 0 results
+2026-08-05 12:59:54,731 | INFO     | __main__                     | [STEP 6] User 240082844: No results for: Dmitri Shostakovich, Russian State Symphony Orchestra, Dmitry Ya
+2026-08-05 12:59:54,755 | INFO     | user_prefs                   | [PLAYLIST_DB] added OK user=240082844 track=0 (Dmitri Shostakovich, Russian State Symphony Orchestra, Dmitry Ya - ) lang=en year=0
+2026-08-05 12:59:54,757 | INFO     | __main__                     | [STEP 6] User 240082844: Processing 7/11: 'Ella Fitzgerald   Dream A Little Dream Of Me' -> 'Ella Fitzgerald Dream A Little Dream Of Me'
+2026-08-05 12:59:55,046 | INFO     | __main__                     | [STEP 6] User 240082844: Searching Deezer for: Ella Fitzgerald Dream A Little Dream Of Me
+2026-08-05 12:59:55,047 | INFO     | deezer_helper                | [DEEZER] search query='Ella Fitzgerald Dream A Little Dream Of Me' limit=3
+2026-08-05 13:00:10,291 | WARNING  | deezer_helper                | [DEEZER] https://api.deezer.com/search/track error= retrying
+2026-08-05 13:00:27,290 | WARNING  | deezer_helper                | [DEEZER] https://api.deezer.com/search/track error= retrying
+2026-08-05 13:00:29,448 | INFO     | deezer_helper                | [DEEZER] search query='Ella Fitzgerald Dream A Little Dream Of Me' -> 3 results
+2026-08-05 13:00:29,449 | INFO     | __main__                     | [STEP 6] User 240082844: Found: Dream A Little Dream Of Me - Louis Armstrong
+2026-08-05 13:00:29,449 | INFO     | deezer_helper                | [DEEZER] get_track id=10218969
+2026-08-05 13:00:30,057 | INFO     | deezer_helper                | [DEEZER] get_track id=10218969 -> Louis Armstrong - Dream A Little Dream Of Me (genres=[])
+2026-08-05 13:00:30,061 | INFO     | __main__                     | [STEP 6] User 240082844: Language: en (persian=False)
+2026-08-05 13:00:30,062 | INFO     | __main__                     | [STEP 6] User 240082844: Analyzing features (librosa)...
+2026-08-05 13:00:30,062 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 10218969
+2026-08-05 13:00:30,070 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 10218969
+2026-08-05 13:00:30,073 | INFO     | __main__                     | Analyzing track: Louis Armstrong - Dream A Little Dream Of Me (fast=False)
+2026-08-05 13:00:30,074 | INFO     | audio_analyzer               | Downloading preview: https://cdnt-preview.dzcdn.net/api/1/1/d/5/6/0/d56bae7141b57577c70cd6050a83512a.mp3?hdnea=exp=1785923131~acl=/api/1/1/d/5/6/0/d56bae7141b57577c70cd6050a83512a.mp3*~data=user_id=0,application_id=42~hmac=012b7a4a7c8d9818716380cae3d1701a266218c35e557fd4120c410e9f379338
+2026-08-05 13:00:30,930 | INFO     | musicbrainz_client           | Found MusicBrainz ID: d708ddfc-8e86-4543-ae4d-e99502eeb8f9 for Louis Armstrong - Dream A Little Dream Of Me
+2026-08-05 13:00:35,077 | ERROR    | lastfm_client                | Last.fm track info error: Connection timeout to host https://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=4f09650156d52922a148e85bfcd4cfa3&artist=Louis+Armstrong&track=Dream+A+Little+Dream+Of+Me&format=json
+2026-08-05 13:00:50,949 | INFO     | audio_analyzer               | Downloaded 479827 bytes
+2026-08-05 13:00:50,951 | INFO     | audio_analyzer               | Running librosa analysis...
+2026-08-05 13:00:50,952 | INFO     | audio_analyzer               | [LIBROSA] Starting feature extraction...
+2026-08-05 13:00:50,957 | INFO     | audio_analyzer               | [LIBROSA] Temp file created: C:\Users\Saeid\AppData\Local\Temp\tmpoppe__z4.mp3 (479827 bytes)
+2026-08-05 13:00:50,957 | INFO     | audio_analyzer               | [LIBROSA] Loading audio file...
+2026-08-05 13:00:51,079 | INFO     | audio_analyzer               | [LIBROSA] Audio loaded: 30.0 seconds, 22050 Hz sample rate
+2026-08-05 13:00:51,080 | INFO     | audio_analyzer               | [LIBROSA] Extracting BPM...
+2026-08-05 13:00:51,179 | INFO     | audio_analyzer               | [LIBROSA] BPM: 76.0
+2026-08-05 13:00:51,179 | INFO     | audio_analyzer               | [LIBROSA] Extracting MFCCs (timbre)...
+2026-08-05 13:00:51,233 | INFO     | audio_analyzer               | [LIBROSA] MFCCs extracted: 13 coefficients
+2026-08-05 13:00:51,233 | INFO     | audio_analyzer               | [LIBROSA] Extracting chroma (harmonics)...
+2026-08-05 13:00:51,336 | INFO     | audio_analyzer               | [LIBROSA] Chroma extracted: 12 pitch classes
+2026-08-05 13:00:51,337 | INFO     | audio_analyzer               | [LIBROSA] Extracting spectral features...
+2026-08-05 13:00:51,638 | INFO     | audio_analyzer               | [LIBROSA] Spectral: centroid=1678.7, rolloff=3144.5, bandwidth=1947.8
+2026-08-05 13:00:51,638 | INFO     | audio_analyzer               | [LIBROSA] Extracting energy (RMS)...
+2026-08-05 13:00:51,648 | INFO     | audio_analyzer               | [LIBROSA] Energy: mean=0.1303, var=0.0042
+2026-08-05 13:00:51,648 | INFO     | audio_analyzer               | [LIBROSA] Extracting onset rate...
+2026-08-05 13:00:51,699 | INFO     | audio_analyzer               | [LIBROSA] Onset rate: 1.5273
+2026-08-05 13:00:51,729 | INFO     | audio_analyzer               | [LIBROSA] Inferring musical key...
+2026-08-05 13:00:51,729 | INFO     | audio_analyzer               | [LIBROSA] Key: C
+2026-08-05 13:00:51,729 | INFO     | audio_analyzer               | [LIBROSA] Inferring scale (major/minor)...
+2026-08-05 13:00:51,730 | INFO     | audio_analyzer               | [LIBROSA] Scale: major (major=0.29, minor=-0.11)
+2026-08-05 13:00:51,731 | INFO     | audio_analyzer               | Analyzed audio: BPM=76.0, RMS=0.130
+2026-08-05 13:00:51,732 | INFO     | __main__                     | Analysis results for Louis Armstrong - Dream A Little Dream Of Me:
+2026-08-05 13:00:51,732 | INFO     | __main__                     |   Audio features: OK
+2026-08-05 13:00:51,732 | INFO     | __main__                     |   MusicBrainz: OK
+2026-08-05 13:00:51,732 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 13:00:51,733 | INFO     | __main__                     |   Last.fm tags: 0
+2026-08-05 13:00:51,733 | INFO     | feature_cache                | [CACHE] Saving features for: Louis Armstrong - Dream A Little Dream Of Me (ID: 10218969)
+2026-08-05 13:00:51,733 | INFO     | feature_cache                | [CACHE] Audio features: BPM=76.0, Energy=0.1303, MFCCs=13 coefficients
+2026-08-05 13:00:51,733 | INFO     | feature_cache                | [CACHE] AcousticBrainz: NONE
+2026-08-05 13:00:51,734 | INFO     | feature_cache                | [CACHE] MusicBrainz ID: d708ddfc-8e86-4543-ae4d-e99502eeb8f9
+2026-08-05 13:00:51,734 | INFO     | feature_cache                | [CACHE] Last.fm tags: NONE
+2026-08-05 13:00:51,741 | INFO     | feature_cache                | [CACHE] ✓ Saved successfully for: Louis Armstrong - Dream A Little Dream Of Me
+2026-08-05 13:00:51,752 | INFO     | feature_cache                | Exported 102 tracks to cached_songs.json
+2026-08-05 13:00:51,752 | INFO     | __main__                     | [STEP 6] User 240082844: Features OK: BPM=75.99954044117646
+2026-08-05 13:00:51,753 | INFO     | deezer_helper                | [DEEZER] get_similar id=10218969 limit=5
+2026-08-05 13:00:52,620 | INFO     | deezer_helper                | [DEEZER] get_similar id=10218969 -> 0 results
+2026-08-05 13:00:52,646 | INFO     | user_prefs                   | [PLAYLIST_DB] added OK user=240082844 track=10218969 (Dream A Little Dream Of Me - Louis Armstrong) lang=en year=2011
+2026-08-05 13:00:52,647 | INFO     | __main__                     | [STEP 7] User 240082844: Added: Dream A Little Dream Of Me - Louis Armstrong (genre: ) lang=en year=2011
+2026-08-05 13:00:52,648 | INFO     | __main__                     | [STEP 6] User 240082844: Processing 8/11: '27 Thank You' -> 'Thank You'
+2026-08-05 13:00:53,886 | INFO     | __main__                     | [STEP 6] User 240082844: Searching Deezer for: Thank You
+2026-08-05 13:00:53,887 | INFO     | deezer_helper                | [DEEZER] search query='Thank You' limit=3
+2026-08-05 13:00:54,230 | INFO     | deezer_helper                | [DEEZER] search query='Thank You' -> 3 results
+2026-08-05 13:00:54,230 | INFO     | __main__                     | [STEP 6] User 240082844: Found: Thank You (Not So Bad) - Dimitri Vegas & Like Mike
+2026-08-05 13:00:54,230 | INFO     | deezer_helper                | [DEEZER] get_track id=2545396411
+2026-08-05 13:00:54,787 | INFO     | deezer_helper                | [DEEZER] get_track id=2545396411 -> Dimitri Vegas & Like Mike - Thank You (Not So Bad) (genres=[])
+2026-08-05 13:00:54,793 | INFO     | __main__                     | [STEP 6] User 240082844: Language: en (persian=False)
+2026-08-05 13:00:54,794 | INFO     | __main__                     | [STEP 6] User 240082844: Analyzing features (librosa)...
+2026-08-05 13:00:54,795 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 2545396411
+2026-08-05 13:00:54,803 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 2545396411
+2026-08-05 13:00:54,807 | INFO     | __main__                     | Analyzing track: Dimitri Vegas & Like Mike - Thank You (Not So Bad) (fast=False)
+2026-08-05 13:00:54,808 | INFO     | audio_analyzer               | Downloading preview: https://cdnt-preview.dzcdn.net/api/1/1/8/a/d/0/8ad9a8a87f12dde2eed73428e2c39e20.mp3?hdnea=exp=1785923156~acl=/api/1/1/8/a/d/0/8ad9a8a87f12dde2eed73428e2c39e20.mp3*~data=user_id=0,application_id=42~hmac=0ffbea2078629b29f467aa75b67de4c29038115fd249200e4d3ba5568f48ccb9
+2026-08-05 13:00:56,304 | INFO     | musicbrainz_client           | Found MusicBrainz ID: bc6d2632-2c5a-4971-bba0-e449b6cff468 for Dimitri Vegas & Like Mike - Thank You (Not So Bad)
+2026-08-05 13:00:56,707 | INFO     | audio_analyzer               | Downloaded 479827 bytes
+2026-08-05 13:00:56,709 | INFO     | audio_analyzer               | Running librosa analysis...
+2026-08-05 13:00:56,711 | INFO     | audio_analyzer               | [LIBROSA] Starting feature extraction...
+2026-08-05 13:00:56,715 | INFO     | audio_analyzer               | [LIBROSA] Temp file created: C:\Users\Saeid\AppData\Local\Temp\tmpukahwqut.mp3 (479827 bytes)
+2026-08-05 13:00:56,716 | INFO     | audio_analyzer               | [LIBROSA] Loading audio file...
+2026-08-05 13:00:56,836 | INFO     | audio_analyzer               | [LIBROSA] Audio loaded: 30.0 seconds, 22050 Hz sample rate
+2026-08-05 13:00:56,837 | INFO     | audio_analyzer               | [LIBROSA] Extracting BPM...
+2026-08-05 13:00:56,938 | INFO     | audio_analyzer               | [LIBROSA] BPM: 152.0
+2026-08-05 13:00:56,939 | INFO     | audio_analyzer               | [LIBROSA] Extracting MFCCs (timbre)...
+2026-08-05 13:00:56,990 | INFO     | audio_analyzer               | [LIBROSA] MFCCs extracted: 13 coefficients
+2026-08-05 13:00:56,990 | INFO     | audio_analyzer               | [LIBROSA] Extracting chroma (harmonics)...
+2026-08-05 13:00:57,093 | INFO     | audio_analyzer               | [LIBROSA] Chroma extracted: 12 pitch classes
+2026-08-05 13:00:57,094 | INFO     | audio_analyzer               | [LIBROSA] Extracting spectral features...
+2026-08-05 13:00:57,395 | INFO     | audio_analyzer               | [LIBROSA] Spectral: centroid=2572.2, rolloff=5603.0, bandwidth=2663.2
+2026-08-05 13:00:57,396 | INFO     | audio_analyzer               | [LIBROSA] Extracting energy (RMS)...
+2026-08-05 13:00:57,406 | INFO     | audio_analyzer               | [LIBROSA] Energy: mean=0.1763, var=0.0015
+2026-08-05 13:00:57,406 | INFO     | audio_analyzer               | [LIBROSA] Extracting onset rate...
+2026-08-05 13:00:57,467 | INFO     | audio_analyzer               | [LIBROSA] Onset rate: 1.2981
+2026-08-05 13:00:57,497 | INFO     | audio_analyzer               | [LIBROSA] Inferring musical key...
+2026-08-05 13:00:57,498 | INFO     | audio_analyzer               | [LIBROSA] Key: D#
+2026-08-05 13:00:57,498 | INFO     | audio_analyzer               | [LIBROSA] Inferring scale (major/minor)...
+2026-08-05 13:00:57,498 | INFO     | audio_analyzer               | [LIBROSA] Scale: minor (major=-0.80, minor=-0.00)
+2026-08-05 13:00:57,499 | INFO     | audio_analyzer               | Analyzed audio: BPM=152.0, RMS=0.176
+2026-08-05 13:00:57,500 | INFO     | __main__                     | Analysis results for Dimitri Vegas & Like Mike - Thank You (Not So Bad):
+2026-08-05 13:00:57,500 | INFO     | __main__                     |   Audio features: OK
+2026-08-05 13:00:57,501 | INFO     | __main__                     |   MusicBrainz: OK
+2026-08-05 13:00:57,501 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 13:00:57,501 | INFO     | __main__                     |   Last.fm tags: 0
+2026-08-05 13:00:57,501 | INFO     | feature_cache                | [CACHE] Saving features for: Dimitri Vegas & Like Mike - Thank You (Not So Bad) (ID: 2545396411)
+2026-08-05 13:00:57,502 | INFO     | feature_cache                | [CACHE] Audio features: BPM=152.0, Energy=0.1763, MFCCs=13 coefficients
+2026-08-05 13:00:57,502 | INFO     | feature_cache                | [CACHE] AcousticBrainz: NONE
+2026-08-05 13:00:57,502 | INFO     | feature_cache                | [CACHE] MusicBrainz ID: bc6d2632-2c5a-4971-bba0-e449b6cff468
+2026-08-05 13:00:57,502 | INFO     | feature_cache                | [CACHE] Last.fm tags: NONE
+2026-08-05 13:00:57,511 | INFO     | feature_cache                | [CACHE] ✓ Saved successfully for: Dimitri Vegas & Like Mike - Thank You (Not So Bad)
+2026-08-05 13:00:57,522 | INFO     | feature_cache                | Exported 103 tracks to cached_songs.json
+2026-08-05 13:00:57,523 | INFO     | __main__                     | [STEP 6] User 240082844: Features OK: BPM=151.99908088235293
+2026-08-05 13:00:57,523 | INFO     | deezer_helper                | [DEEZER] get_similar id=2545396411 limit=5
+2026-08-05 13:00:57,741 | INFO     | deezer_helper                | [DEEZER] get_similar id=2545396411 -> 0 results
+2026-08-05 13:00:57,756 | INFO     | user_prefs                   | [PLAYLIST_DB] added OK user=240082844 track=2545396411 (Thank You (Not So Bad) - Dimitri Vegas & Like Mike) lang=en year=2025
+2026-08-05 13:00:57,756 | INFO     | __main__                     | [STEP 7] User 240082844: Added: Thank You (Not So Bad) - Dimitri Vegas & Like Mike (genre: ) lang=en year=2025
+2026-08-05 13:00:57,757 | INFO     | __main__                     | [STEP 6] User 240082844: Processing 9/11: '01 Beggin & Pleadin' -> 'Beggin & Pleadin'
+2026-08-05 13:00:57,972 | INFO     | __main__                     | [STEP 6] User 240082844: Searching Deezer for: Beggin & Pleadin
+2026-08-05 13:00:57,972 | INFO     | deezer_helper                | [DEEZER] search query='Beggin & Pleadin' limit=3
+2026-08-05 13:00:58,305 | INFO     | deezer_helper                | [DEEZER] search query='Beggin & Pleadin' -> 3 results
+2026-08-05 13:00:58,306 | INFO     | __main__                     | [STEP 6] User 240082844: Found: Beggin & Pleadin - Brandy
+2026-08-05 13:00:58,306 | INFO     | deezer_helper                | [DEEZER] get_track id=117852904
+2026-08-05 13:00:58,907 | INFO     | deezer_helper                | [DEEZER] get_track id=117852904 -> Brandy - Beggin & Pleadin (genres=[])
+2026-08-05 13:00:58,939 | INFO     | __main__                     | [STEP 6] User 240082844: Language: en (persian=False)
+2026-08-05 13:00:58,939 | INFO     | __main__                     | [STEP 6] User 240082844: Analyzing features (librosa)...
+2026-08-05 13:00:58,940 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 117852904
+2026-08-05 13:00:58,943 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 117852904
+2026-08-05 13:00:58,944 | INFO     | __main__                     | Analyzing track: Brandy - Beggin & Pleadin (fast=False)
+2026-08-05 13:00:58,945 | INFO     | audio_analyzer               | Downloading preview: https://cdnt-preview.dzcdn.net/api/1/1/d/0/9/0/d0947f092f1ccb17b2f8c2541effd6da.mp3?hdnea=exp=1785923160~acl=/api/1/1/d/0/9/0/d0947f092f1ccb17b2f8c2541effd6da.mp3*~data=user_id=0,application_id=42~hmac=103fa6ba845da7f19d39530e256524db09c8a6bb7977454da4a9b7acaff402db
+2026-08-05 13:00:59,970 | INFO     | musicbrainz_client           | Found MusicBrainz ID: d8d0fbcd-972e-432a-8d37-ce15a481612b for Brandy - Beggin & Pleadin
+2026-08-05 13:01:00,754 | INFO     | audio_analyzer               | Downloaded 479827 bytes
+2026-08-05 13:01:00,757 | INFO     | audio_analyzer               | Running librosa analysis...
+2026-08-05 13:01:00,758 | INFO     | audio_analyzer               | [LIBROSA] Starting feature extraction...
+2026-08-05 13:01:00,762 | INFO     | audio_analyzer               | [LIBROSA] Temp file created: C:\Users\Saeid\AppData\Local\Temp\tmpfcrganjo.mp3 (479827 bytes)
+2026-08-05 13:01:00,763 | INFO     | audio_analyzer               | [LIBROSA] Loading audio file...
+2026-08-05 13:01:00,863 | INFO     | audio_analyzer               | [LIBROSA] Audio loaded: 30.0 seconds, 22050 Hz sample rate
+2026-08-05 13:01:00,864 | INFO     | audio_analyzer               | [LIBROSA] Extracting BPM...
+2026-08-05 13:01:00,972 | INFO     | audio_analyzer               | [LIBROSA] BPM: 123.0
+2026-08-05 13:01:00,972 | INFO     | audio_analyzer               | [LIBROSA] Extracting MFCCs (timbre)...
+2026-08-05 13:01:01,026 | INFO     | audio_analyzer               | [LIBROSA] MFCCs extracted: 13 coefficients
+2026-08-05 13:01:01,026 | INFO     | audio_analyzer               | [LIBROSA] Extracting chroma (harmonics)...
+2026-08-05 13:01:01,137 | INFO     | audio_analyzer               | [LIBROSA] Chroma extracted: 12 pitch classes
+2026-08-05 13:01:01,138 | INFO     | audio_analyzer               | [LIBROSA] Extracting spectral features...
+2026-08-05 13:01:01,480 | INFO     | audio_analyzer               | [LIBROSA] Spectral: centroid=2554.6, rolloff=5190.2, bandwidth=2549.3
+2026-08-05 13:01:01,481 | INFO     | audio_analyzer               | [LIBROSA] Extracting energy (RMS)...
+2026-08-05 13:01:01,490 | INFO     | audio_analyzer               | [LIBROSA] Energy: mean=0.2443, var=0.0069
+2026-08-05 13:01:01,490 | INFO     | audio_analyzer               | [LIBROSA] Extracting onset rate...
+2026-08-05 13:01:01,555 | INFO     | audio_analyzer               | [LIBROSA] Onset rate: 1.6101
+2026-08-05 13:01:01,588 | INFO     | audio_analyzer               | [LIBROSA] Inferring musical key...
+2026-08-05 13:01:01,588 | INFO     | audio_analyzer               | [LIBROSA] Key: G#
+2026-08-05 13:01:01,589 | INFO     | audio_analyzer               | [LIBROSA] Inferring scale (major/minor)...
+2026-08-05 13:01:01,589 | INFO     | audio_analyzer               | [LIBROSA] Scale: minor (major=-0.77, minor=0.42)
+2026-08-05 13:01:01,590 | INFO     | audio_analyzer               | Analyzed audio: BPM=123.0, RMS=0.244
+2026-08-05 13:01:01,591 | INFO     | __main__                     | Analysis results for Brandy - Beggin & Pleadin:
+2026-08-05 13:01:01,591 | INFO     | __main__                     |   Audio features: OK
+2026-08-05 13:01:01,591 | INFO     | __main__                     |   MusicBrainz: OK
+2026-08-05 13:01:01,591 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 13:01:01,592 | INFO     | __main__                     |   Last.fm tags: 0
+2026-08-05 13:01:01,592 | INFO     | feature_cache                | [CACHE] Saving features for: Brandy - Beggin & Pleadin (ID: 117852904)
+2026-08-05 13:01:01,592 | INFO     | feature_cache                | [CACHE] Audio features: BPM=123.0, Energy=0.2443, MFCCs=13 coefficients
+2026-08-05 13:01:01,593 | INFO     | feature_cache                | [CACHE] AcousticBrainz: NONE
+2026-08-05 13:01:01,593 | INFO     | feature_cache                | [CACHE] MusicBrainz ID: d8d0fbcd-972e-432a-8d37-ce15a481612b
+2026-08-05 13:01:01,593 | INFO     | feature_cache                | [CACHE] Last.fm tags: NONE
+2026-08-05 13:01:01,601 | INFO     | feature_cache                | [CACHE] ✓ Saved successfully for: Brandy - Beggin & Pleadin
+2026-08-05 13:01:01,612 | INFO     | feature_cache                | Exported 104 tracks to cached_songs.json
+2026-08-05 13:01:01,614 | INFO     | __main__                     | [STEP 6] User 240082844: Features OK: BPM=123.046875
+2026-08-05 13:01:01,615 | INFO     | deezer_helper                | [DEEZER] get_similar id=117852904 limit=5
+2026-08-05 13:01:01,849 | INFO     | deezer_helper                | [DEEZER] get_similar id=117852904 -> 0 results
+2026-08-05 13:01:01,860 | INFO     | user_prefs                   | [PLAYLIST_DB] added OK user=240082844 track=117852904 (Beggin & Pleadin - Brandy) lang=en year=2016
+2026-08-05 13:01:01,860 | INFO     | __main__                     | [STEP 7] User 240082844: Added: Beggin & Pleadin - Brandy (genre: ) lang=en year=2016
+2026-08-05 13:01:01,860 | INFO     | __main__                     | [STEP 6] User 240082844: Processing 10/11: '07 Cream   White Room' -> 'Cream White Room'
+2026-08-05 13:01:02,086 | INFO     | __main__                     | [STEP 6] User 240082844: Searching Deezer for: Cream White Room
+2026-08-05 13:01:02,086 | INFO     | deezer_helper                | [DEEZER] search query='Cream White Room' limit=3
+2026-08-05 13:01:02,360 | INFO     | deezer_helper                | [DEEZER] search query='Cream White Room' -> 3 results
+2026-08-05 13:01:02,361 | INFO     | __main__                     | [STEP 6] User 240082844: Found: White Room - Cream
+2026-08-05 13:01:02,361 | INFO     | deezer_helper                | [DEEZER] get_track id=1175618
+2026-08-05 13:01:02,828 | INFO     | deezer_helper                | [DEEZER] get_track id=1175618 -> Cream - White Room (genres=[])
+2026-08-05 13:01:02,832 | INFO     | __main__                     | [STEP 6] User 240082844: Language: en (persian=False)
+2026-08-05 13:01:02,832 | INFO     | __main__                     | [STEP 6] User 240082844: Analyzing features (librosa)...
+2026-08-05 13:01:02,833 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 1175618
+2026-08-05 13:01:02,838 | INFO     | feature_cache                | [CACHE] ✓ Cache HIT for track ID: 1175618
+2026-08-05 13:01:02,839 | INFO     | feature_cache                | [CACHE]   Audio: BPM=112.3, Energy=0.0884
+2026-08-05 13:01:02,840 | INFO     | feature_cache                | [CACHE]   MusicBrainz: 65ad4a8d-4858-4a73-aeaa-ec387e333759
+2026-08-05 13:01:02,841 | INFO     | feature_cache                | [CACHE]   Last.fm tags: classic rock, 60s, blues rock
+2026-08-05 13:01:02,844 | INFO     | __main__                     | Cache hit for: Cream - White Room
+2026-08-05 13:01:02,844 | INFO     | __main__                     | [STEP 6] User 240082844: Features OK: BPM=112.34714673913044
+2026-08-05 13:01:02,845 | INFO     | deezer_helper                | [DEEZER] get_similar id=1175618 limit=5
+2026-08-05 13:01:03,066 | INFO     | deezer_helper                | [DEEZER] get_similar id=1175618 -> 0 results
+2026-08-05 13:01:03,076 | INFO     | user_prefs                   | [PLAYLIST_DB] duplicate skipped user=240082844 track=1175618 (White Room - Cream)
+2026-08-05 13:01:03,078 | INFO     | __main__                     | [STEP 7] User 240082844: Added: White Room - Cream (genre: classic rock) lang=en year=1994
+2026-08-05 13:01:03,079 | INFO     | __main__                     | [STEP 6] User 240082844: Processing 11/11: 'Great Balls Of Fire   Jerry Lee Lewis' -> 'Great Balls Of Fire Jerry Lee Lewis'
+2026-08-05 13:01:03,340 | INFO     | __main__                     | [STEP 6] User 240082844: Searching Deezer for: Great Balls Of Fire Jerry Lee Lewis
+2026-08-05 13:01:03,341 | INFO     | deezer_helper                | [DEEZER] search query='Great Balls Of Fire Jerry Lee Lewis' limit=3
+2026-08-05 13:01:03,660 | INFO     | deezer_helper                | [DEEZER] search query='Great Balls Of Fire Jerry Lee Lewis' -> 3 results
+2026-08-05 13:01:03,662 | INFO     | __main__                     | [STEP 6] User 240082844: Found: Great Balls Of Fire - Jerry Lee Lewis
+2026-08-05 13:01:03,663 | INFO     | deezer_helper                | [DEEZER] get_track id=4006539
+2026-08-05 13:01:04,277 | INFO     | deezer_helper                | [DEEZER] get_track id=4006539 -> Jerry Lee Lewis - Great Balls Of Fire (genres=[])
+2026-08-05 13:01:04,282 | INFO     | __main__                     | [STEP 6] User 240082844: Language: en (persian=False)
+2026-08-05 13:01:04,283 | INFO     | __main__                     | [STEP 6] User 240082844: Analyzing features (librosa)...
+2026-08-05 13:01:04,285 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 4006539
+2026-08-05 13:01:04,292 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 4006539
+2026-08-05 13:01:04,295 | INFO     | __main__                     | Analyzing track: Jerry Lee Lewis - Great Balls Of Fire (fast=False)
+2026-08-05 13:01:04,297 | INFO     | audio_analyzer               | Downloading preview: https://cdnt-preview.dzcdn.net/api/1/1/3/0/4/0/30489993c21daea2395b1e3e33d5ea10.mp3?hdnea=exp=1785923165~acl=/api/1/1/3/0/4/0/30489993c21daea2395b1e3e33d5ea10.mp3*~data=user_id=0,application_id=42~hmac=b0d031aee409a5caed70931188f2b37ab7dd7c06d03c32f1e2415712c4f56b7c
+2026-08-05 13:01:04,581 | INFO     | musicbrainz_client           | Found MusicBrainz ID: f633a668-cce3-47be-a4d2-aa94e47a000b for Jerry Lee Lewis - Great Balls Of Fire
+2026-08-05 13:01:06,651 | INFO     | audio_analyzer               | Downloaded 479827 bytes
+2026-08-05 13:01:06,653 | INFO     | audio_analyzer               | Running librosa analysis...
+2026-08-05 13:01:06,655 | INFO     | audio_analyzer               | [LIBROSA] Starting feature extraction...
+2026-08-05 13:01:06,659 | INFO     | audio_analyzer               | [LIBROSA] Temp file created: C:\Users\Saeid\AppData\Local\Temp\tmphfum6ijf.mp3 (479827 bytes)
+2026-08-05 13:01:06,661 | INFO     | audio_analyzer               | [LIBROSA] Loading audio file...
+2026-08-05 13:01:06,768 | INFO     | audio_analyzer               | [LIBROSA] Audio loaded: 30.0 seconds, 22050 Hz sample rate
+2026-08-05 13:01:06,769 | INFO     | audio_analyzer               | [LIBROSA] Extracting BPM...
+2026-08-05 13:01:06,867 | INFO     | audio_analyzer               | [LIBROSA] BPM: 86.1
+2026-08-05 13:01:06,867 | INFO     | audio_analyzer               | [LIBROSA] Extracting MFCCs (timbre)...
+2026-08-05 13:01:06,919 | INFO     | audio_analyzer               | [LIBROSA] MFCCs extracted: 13 coefficients
+2026-08-05 13:01:06,919 | INFO     | audio_analyzer               | [LIBROSA] Extracting chroma (harmonics)...
+2026-08-05 13:01:07,023 | INFO     | audio_analyzer               | [LIBROSA] Chroma extracted: 12 pitch classes
+2026-08-05 13:01:07,024 | INFO     | audio_analyzer               | [LIBROSA] Extracting spectral features...
+2026-08-05 13:01:07,324 | INFO     | audio_analyzer               | [LIBROSA] Spectral: centroid=2842.0, rolloff=6004.5, bandwidth=2683.8
+2026-08-05 13:01:07,324 | INFO     | audio_analyzer               | [LIBROSA] Extracting energy (RMS)...
+2026-08-05 13:01:07,333 | INFO     | audio_analyzer               | [LIBROSA] Energy: mean=0.1320, var=0.0013
+2026-08-05 13:01:07,334 | INFO     | audio_analyzer               | [LIBROSA] Extracting onset rate...
+2026-08-05 13:01:07,387 | INFO     | audio_analyzer               | [LIBROSA] Onset rate: 1.5527
+2026-08-05 13:01:07,417 | INFO     | audio_analyzer               | [LIBROSA] Inferring musical key...
+2026-08-05 13:01:07,417 | INFO     | audio_analyzer               | [LIBROSA] Key: G
+2026-08-05 13:01:07,417 | INFO     | audio_analyzer               | [LIBROSA] Inferring scale (major/minor)...
+2026-08-05 13:01:07,418 | INFO     | audio_analyzer               | [LIBROSA] Scale: major (major=0.33, minor=0.22)
+2026-08-05 13:01:07,419 | INFO     | audio_analyzer               | Analyzed audio: BPM=86.1, RMS=0.132
+2026-08-05 13:01:07,419 | INFO     | __main__                     | Analysis results for Jerry Lee Lewis - Great Balls Of Fire:
+2026-08-05 13:01:07,419 | INFO     | __main__                     |   Audio features: OK
+2026-08-05 13:01:07,420 | INFO     | __main__                     |   MusicBrainz: OK
+2026-08-05 13:01:07,420 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 13:01:07,420 | INFO     | __main__                     |   Last.fm tags: 0
+2026-08-05 13:01:07,420 | INFO     | feature_cache                | [CACHE] Saving features for: Jerry Lee Lewis - Great Balls Of Fire (ID: 4006539)
+2026-08-05 13:01:07,421 | INFO     | feature_cache                | [CACHE] Audio features: BPM=86.1, Energy=0.1320, MFCCs=13 coefficients
+2026-08-05 13:01:07,421 | INFO     | feature_cache                | [CACHE] AcousticBrainz: NONE
+2026-08-05 13:01:07,421 | INFO     | feature_cache                | [CACHE] MusicBrainz ID: f633a668-cce3-47be-a4d2-aa94e47a000b
+2026-08-05 13:01:07,421 | INFO     | feature_cache                | [CACHE] Last.fm tags: NONE
+2026-08-05 13:01:07,429 | INFO     | feature_cache                | [CACHE] ✓ Saved successfully for: Jerry Lee Lewis - Great Balls Of Fire
+2026-08-05 13:01:07,443 | INFO     | feature_cache                | Exported 105 tracks to cached_songs.json
+2026-08-05 13:01:07,443 | INFO     | __main__                     | [STEP 6] User 240082844: Features OK: BPM=86.1328125
+2026-08-05 13:01:07,444 | INFO     | deezer_helper                | [DEEZER] get_similar id=4006539 limit=5
+2026-08-05 13:01:07,652 | INFO     | deezer_helper                | [DEEZER] get_similar id=4006539 -> 0 results
+2026-08-05 13:01:07,672 | INFO     | user_prefs                   | [PLAYLIST_DB] added OK user=240082844 track=4006539 (Great Balls Of Fire - Jerry Lee Lewis) lang=en year=2008
+2026-08-05 13:01:07,673 | INFO     | __main__                     | [STEP 7] User 240082844: Added: Great Balls Of Fire - Jerry Lee Lewis (genre: ) lang=en year=2008
+2026-08-05 13:01:07,674 | INFO     | __main__                     | [STEP 7] User 240082844: Processing complete: 8/11 added, 8 recognized, 3 failed
+2026-08-05 13:01:07,675 | INFO     | user_prefs                   | [PLAYLIST_DB] get_user_taste_profile user=240082844
+2026-08-05 13:01:07,695 | INFO     | user_prefs                   | [PLAYLIST_DB] taste_profile user=240082844 -> total=25 recognized=21 tracks=21 bpm=118.9 energy=0.16 valence=0.00 genres=['classic rock', 'Persian Traditional', 'pop'] langs=[('en', 16), ('fa', 3), ('ar', 2)]
+2026-08-05 13:01:07,697 | INFO     | __main__                     | [STEP 9] User 240082844: Taste profile: 21 tracks, genres: {'classic rock': 3, 'Persian Traditional': 3, 'pop': 1}
+2026-08-05 13:01:07,698 | INFO     | __main__                     | [STEP 8] User 240082844: Saving playlist to database
+2026-08-05 13:01:08,185 | INFO     | __main__                     | [STEP 8] User 240082844: Results sent successfully
+2026-08-05 13:01:29,935 | INFO     | __main__                     | [STEP 1] User 240082844: Received text: 📋 My Playlist...
+2026-08-05 13:01:29,956 | INFO     | user_prefs                   | [PLAYLIST_DB] get_user_playlist user=240082844 -> 25 rows
+2026-08-05 13:01:29,957 | INFO     | user_prefs                   | [PLAYLIST_DB] get_user_taste_profile user=240082844
+2026-08-05 13:01:29,970 | INFO     | user_prefs                   | [PLAYLIST_DB] taste_profile user=240082844 -> total=25 recognized=21 tracks=21 bpm=118.9 energy=0.16 valence=0.00 genres=['classic rock', 'Persian Traditional', 'pop'] langs=[('en', 16), ('fa', 3), ('ar', 2)]
+2026-08-05 13:01:54,231 | INFO     | __main__                     | [STEP 1] User 240082844: Received text: 🎯 For Me...
+2026-08-05 13:01:54,232 | INFO     | user_prefs                   | [PLAYLIST_DB] get_user_taste_profile user=240082844
+2026-08-05 13:01:54,252 | INFO     | user_prefs                   | [PLAYLIST_DB] taste_profile user=240082844 -> total=25 recognized=21 tracks=21 bpm=118.9 energy=0.16 valence=0.00 genres=['classic rock', 'Persian Traditional', 'pop'] langs=[('en', 16), ('fa', 3), ('ar', 2)]
+2026-08-05 13:01:55,057 | INFO     | user_prefs                   | [PLAYLIST_DB] get_random_suggestions user=240082844 -> 0 ids
+2026-08-05 13:02:02,205 | INFO     | __main__                     | [STEP 1] User 240082844: Received text: 🎯 For Me...
+2026-08-05 13:02:02,205 | INFO     | user_prefs                   | [PLAYLIST_DB] get_user_taste_profile user=240082844
+2026-08-05 13:02:02,236 | INFO     | user_prefs                   | [PLAYLIST_DB] taste_profile user=240082844 -> total=25 recognized=21 tracks=21 bpm=118.9 energy=0.16 valence=0.00 genres=['classic rock', 'Persian Traditional', 'pop'] langs=[('en', 16), ('fa', 3), ('ar', 2)]
+2026-08-05 13:02:03,308 | INFO     | user_prefs                   | [PLAYLIST_DB] get_random_suggestions user=240082844 -> 0 ids
+2026-08-05 13:03:59,274 | INFO     | __main__                     | [STEP 1] User 240082844: Received text: 🎤 Lyrics...
+2026-08-05 13:04:05,936 | INFO     | __main__                     | [STEP 1] User 240082844: Received text: 🎤 Lyrics...
+2026-08-05 13:04:12,772 | WARNING  | __main__                     | Unhandled error: httpx.RemoteProtocolError: Server disconnected without sending a response.
+2026-08-05 13:04:33,117 | INFO     | deezer_helper                | [DEEZER] search query='letdown radiohead' limit=1
+2026-08-05 13:04:33,928 | INFO     | deezer_helper                | [DEEZER] search query='letdown radiohead' -> 1 results
+2026-08-05 13:04:35,280 | INFO     | lyrics_client                | Found lyrics for Radiohead - Let Down
+2026-08-05 13:09:03,329 | INFO     | deezer_helper                | [DEEZER] get_track id=18435591
+2026-08-05 13:09:04,116 | INFO     | deezer_helper                | [DEEZER] get_track id=18435591 -> The Heavy - What Makes A Good Man? (genres=[])
+2026-08-05 13:09:04,117 | INFO     | deezer_helper                | [DEEZER] get_similar id=18435591 limit=5
+2026-08-05 13:09:04,357 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=62971 limit=5
+2026-08-05 13:09:04,645 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=62971 -> 5 results
+2026-08-05 13:09:04,645 | INFO     | deezer_helper                | [DEEZER] get_similar id=18435591 -> 5 results (artist_top)
+2026-08-05 13:09:04,657 | INFO     | user_prefs                   | [PLAYLIST_DB] store_suggestions user=240082844 source=18435591 -> 5 new of 5 ids
+2026-08-05 13:09:04,657 | INFO     | deezer_helper                | [DEEZER] get_track id=65414413
+2026-08-05 13:09:05,158 | INFO     | deezer_helper                | [DEEZER] get_track id=65414413 -> The Who - The Seeker (Edit) (genres=[])
+2026-08-05 13:09:05,159 | INFO     | deezer_helper                | [DEEZER] get_similar id=65414413 limit=5
+2026-08-05 13:09:05,378 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=817 limit=5
+2026-08-05 13:09:05,741 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=817 -> 5 results
+2026-08-05 13:09:05,741 | INFO     | deezer_helper                | [DEEZER] get_similar id=65414413 -> 5 results (artist_top)
+2026-08-05 13:09:05,752 | INFO     | user_prefs                   | [PLAYLIST_DB] store_suggestions user=240082844 source=65414413 -> 5 new of 5 ids
+2026-08-05 13:09:05,752 | INFO     | deezer_helper                | [DEEZER] get_track id=78569736
+2026-08-05 13:09:06,242 | INFO     | deezer_helper                | [DEEZER] get_track id=78569736 -> Fairuz - Wa Habibi (genres=[])
+2026-08-05 13:09:06,242 | INFO     | deezer_helper                | [DEEZER] get_similar id=78569736 limit=5
+2026-08-05 13:09:06,486 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=211187 limit=5
+2026-08-05 13:09:06,794 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=211187 -> 5 results
+2026-08-05 13:09:06,795 | INFO     | deezer_helper                | [DEEZER] get_similar id=78569736 -> 5 results (artist_top)
+2026-08-05 13:09:06,817 | INFO     | user_prefs                   | [PLAYLIST_DB] store_suggestions user=240082844 source=78569736 -> 5 new of 5 ids
+2026-08-05 13:09:06,818 | INFO     | deezer_helper                | [DEEZER] get_track id=564173332
+2026-08-05 13:09:07,389 | INFO     | deezer_helper                | [DEEZER] get_track id=564173332 -> Fairuz - Saaltak Habiby (genres=[])
+2026-08-05 13:09:07,389 | INFO     | deezer_helper                | [DEEZER] get_similar id=564173332 limit=5
+2026-08-05 13:09:07,613 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=211187 limit=5
+2026-08-05 13:09:07,883 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=211187 -> 5 results
+2026-08-05 13:09:07,884 | INFO     | deezer_helper                | [DEEZER] get_similar id=564173332 -> 5 results (artist_top)
+2026-08-05 13:09:07,903 | INFO     | user_prefs                   | [PLAYLIST_DB] store_suggestions user=240082844 source=564173332 -> 0 new of 5 ids
+2026-08-05 13:09:07,903 | INFO     | deezer_helper                | [DEEZER] get_track id=1105746
+2026-08-05 13:09:08,408 | INFO     | deezer_helper                | [DEEZER] get_track id=1105746 -> Nirvana - Where Did You Sleep Last Night (Live) (genres=[])
+2026-08-05 13:09:08,408 | INFO     | deezer_helper                | [DEEZER] get_similar id=1105746 limit=5
+2026-08-05 13:09:08,628 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=415 limit=5
+2026-08-05 13:09:08,911 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=415 -> 5 results
+2026-08-05 13:09:08,912 | INFO     | deezer_helper                | [DEEZER] get_similar id=1105746 -> 5 results (artist_top)
+2026-08-05 13:09:08,929 | INFO     | user_prefs                   | [PLAYLIST_DB] store_suggestions user=240082844 source=1105746 -> 5 new of 5 ids
+2026-08-05 13:09:08,930 | INFO     | deezer_helper                | [DEEZER] get_track id=9914834
+2026-08-05 13:09:09,426 | INFO     | deezer_helper                | [DEEZER] get_track id=9914834 -> The Rolling Stones - Gimme Shelter (genres=[])
+2026-08-05 13:09:09,426 | INFO     | deezer_helper                | [DEEZER] get_similar id=9914834 limit=5
+2026-08-05 13:09:09,673 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=11 limit=5
+2026-08-05 13:09:09,959 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=11 -> 5 results
+2026-08-05 13:09:09,960 | INFO     | deezer_helper                | [DEEZER] get_similar id=9914834 -> 5 results (artist_top)
+2026-08-05 13:09:09,972 | INFO     | user_prefs                   | [PLAYLIST_DB] store_suggestions user=240082844 source=9914834 -> 5 new of 5 ids
+2026-08-05 13:09:09,972 | INFO     | deezer_helper                | [DEEZER] get_track id=2121813
+2026-08-05 13:09:10,692 | INFO     | deezer_helper                | [DEEZER] get_track id=2121813 -> The Who - Won't Get Fooled Again (Original Album Version) (genres=[])
+2026-08-05 13:09:10,692 | INFO     | deezer_helper                | [DEEZER] get_similar id=2121813 limit=5
+2026-08-05 13:09:10,975 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=817 limit=5
+2026-08-05 13:09:11,323 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=817 -> 5 results
+2026-08-05 13:09:11,324 | INFO     | deezer_helper                | [DEEZER] get_similar id=2121813 -> 5 results (artist_top)
+2026-08-05 13:09:11,347 | INFO     | user_prefs                   | [PLAYLIST_DB] store_suggestions user=240082844 source=2121813 -> 0 new of 5 ids
+2026-08-05 13:09:11,348 | INFO     | deezer_helper                | [DEEZER] get_track id=1120092102
+2026-08-05 13:09:12,030 | INFO     | deezer_helper                | [DEEZER] get_track id=1120092102 -> Alireza Ghorbani - Behind The Curtain (Pardeh Neshin) (genres=[])
+2026-08-05 13:09:12,030 | INFO     | deezer_helper                | [DEEZER] get_similar id=1120092102 limit=5
+2026-08-05 13:09:12,266 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=394823 limit=5
+2026-08-05 13:09:12,502 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=394823 -> 1 results
+2026-08-05 13:09:12,503 | INFO     | deezer_helper                | [DEEZER] get_similar id=1120092102 -> 1 results (artist_top)
+2026-08-05 13:09:12,530 | INFO     | user_prefs                   | [PLAYLIST_DB] store_suggestions user=240082844 source=1120092102 -> 1 new of 1 ids
+2026-08-05 13:09:12,530 | INFO     | deezer_helper                | [DEEZER] get_track id=2121805
+2026-08-05 13:09:13,128 | INFO     | deezer_helper                | [DEEZER] get_track id=2121805 -> The Who - Baba O'Riley (genres=[])
+2026-08-05 13:09:13,128 | INFO     | deezer_helper                | [DEEZER] get_similar id=2121805 limit=5
+2026-08-05 13:09:13,415 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=817 limit=5
+2026-08-05 13:09:13,799 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=817 -> 5 results
+2026-08-05 13:09:13,799 | INFO     | deezer_helper                | [DEEZER] get_similar id=2121805 -> 5 results (artist_top)
+2026-08-05 13:09:13,823 | INFO     | user_prefs                   | [PLAYLIST_DB] store_suggestions user=240082844 source=2121805 -> 0 new of 5 ids
+2026-08-05 13:09:13,824 | INFO     | deezer_helper                | [DEEZER] get_track id=107473746
+2026-08-05 13:09:14,289 | INFO     | deezer_helper                | [DEEZER] get_track id=107473746 -> Love - Alone Again Or (2015 Remaster) (genres=[])
+2026-08-05 13:09:14,289 | INFO     | deezer_helper                | [DEEZER] get_similar id=107473746 limit=5
+2026-08-05 13:09:14,502 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=4715 limit=5
+2026-08-05 13:09:14,790 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=4715 -> 5 results
+2026-08-05 13:09:14,790 | INFO     | deezer_helper                | [DEEZER] get_similar id=107473746 -> 5 results (artist_top)
+2026-08-05 13:09:14,808 | INFO     | user_prefs                   | [PLAYLIST_DB] store_suggestions user=240082844 source=107473746 -> 5 new of 5 ids
+2026-08-05 13:09:14,808 | INFO     | deezer_helper                | [DEEZER] get_track id=2321903925
+2026-08-05 13:09:15,300 | INFO     | deezer_helper                | [DEEZER] get_track id=2321903925 -> Alireza Ghorbani - Chera Chera (Nadan Nadan) (genres=[])
+2026-08-05 13:09:15,301 | INFO     | deezer_helper                | [DEEZER] get_similar id=2321903925 limit=5
+2026-08-05 13:09:15,547 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=394823 limit=5
+2026-08-05 13:09:15,812 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=394823 -> 1 results
+2026-08-05 13:09:15,812 | INFO     | deezer_helper                | [DEEZER] get_similar id=2321903925 -> 1 results (artist_top)
+2026-08-05 13:09:15,826 | INFO     | user_prefs                   | [PLAYLIST_DB] store_suggestions user=240082844 source=2321903925 -> 0 new of 1 ids
+2026-08-05 13:09:15,827 | INFO     | deezer_helper                | [DEEZER] get_track id=1205831952
+2026-08-05 13:09:16,283 | INFO     | deezer_helper                | [DEEZER] get_track id=1205831952 -> Alireza Ghorbani - Bi Gah Shod (Tasnif) (genres=[])
+2026-08-05 13:09:16,283 | INFO     | deezer_helper                | [DEEZER] get_similar id=1205831952 limit=5
+2026-08-05 13:09:16,558 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=394823 limit=5
+2026-08-05 13:09:16,822 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=394823 -> 1 results
+2026-08-05 13:09:16,822 | INFO     | deezer_helper                | [DEEZER] get_similar id=1205831952 -> 1 results (artist_top)
+2026-08-05 13:09:16,840 | INFO     | user_prefs                   | [PLAYLIST_DB] store_suggestions user=240082844 source=1205831952 -> 0 new of 1 ids
+2026-08-05 13:09:16,840 | INFO     | deezer_helper                | [DEEZER] get_track id=5545052
+2026-08-05 13:09:17,338 | INFO     | deezer_helper                | [DEEZER] get_track id=5545052 -> Alan Jackson - Freight Train (genres=[])
+2026-08-05 13:09:17,339 | INFO     | deezer_helper                | [DEEZER] get_similar id=5545052 limit=5
+2026-08-05 13:09:17,558 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=517 limit=5
+2026-08-05 13:09:17,835 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=517 -> 5 results
+2026-08-05 13:09:17,836 | INFO     | deezer_helper                | [DEEZER] get_similar id=5545052 -> 5 results (artist_top)
+2026-08-05 13:09:17,858 | INFO     | user_prefs                   | [PLAYLIST_DB] store_suggestions user=240082844 source=5545052 -> 5 new of 5 ids
+2026-08-05 13:09:17,858 | INFO     | deezer_helper                | [DEEZER] get_track id=1175618
+2026-08-05 13:09:18,364 | INFO     | deezer_helper                | [DEEZER] get_track id=1175618 -> Cream - White Room (genres=[])
+2026-08-05 13:09:18,364 | INFO     | deezer_helper                | [DEEZER] get_similar id=1175618 limit=5
+2026-08-05 13:09:18,587 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=1796 limit=5
+2026-08-05 13:09:18,841 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=1796 -> 5 results
+2026-08-05 13:09:18,842 | INFO     | deezer_helper                | [DEEZER] get_similar id=1175618 -> 5 results (artist_top)
+2026-08-05 13:09:18,854 | INFO     | user_prefs                   | [PLAYLIST_DB] store_suggestions user=240082844 source=1175618 -> 5 new of 5 ids
+2026-08-05 13:09:18,855 | INFO     | deezer_helper                | [DEEZER] get_track id=646290952
+2026-08-05 13:09:19,366 | INFO     | deezer_helper                | [DEEZER] get_track id=646290952 -> Chuck Berry - You Never Can Tell (genres=[])
+2026-08-05 13:09:19,368 | INFO     | deezer_helper                | [DEEZER] get_similar id=646290952 limit=5
+2026-08-05 13:09:19,608 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=2833 limit=5
+2026-08-05 13:09:19,917 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=2833 -> 5 results
+2026-08-05 13:09:19,918 | INFO     | deezer_helper                | [DEEZER] get_similar id=646290952 -> 5 results (artist_top)
+2026-08-05 13:09:19,936 | INFO     | user_prefs                   | [PLAYLIST_DB] store_suggestions user=240082844 source=646290952 -> 5 new of 5 ids
+2026-08-05 13:09:19,937 | INFO     | deezer_helper                | [DEEZER] get_track id=920114
+2026-08-05 13:09:20,559 | INFO     | deezer_helper                | [DEEZER] get_track id=920114 -> Michael Jackson - Rockin' Robin (genres=[])
+2026-08-05 13:09:20,560 | INFO     | deezer_helper                | [DEEZER] get_similar id=920114 limit=5
+2026-08-05 13:09:20,784 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=259 limit=5
+2026-08-05 13:09:21,091 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=259 -> 5 results
+2026-08-05 13:09:21,092 | INFO     | deezer_helper                | [DEEZER] get_similar id=920114 -> 5 results (artist_top)
+2026-08-05 13:09:21,102 | INFO     | user_prefs                   | [PLAYLIST_DB] store_suggestions user=240082844 source=920114 -> 5 new of 5 ids
+2026-08-05 13:09:21,102 | INFO     | deezer_helper                | [DEEZER] get_track id=3667551
+2026-08-05 13:09:21,677 | INFO     | deezer_helper                | [DEEZER] get_track id=3667551 -> Madonna - Music (genres=[])
+2026-08-05 13:09:21,677 | INFO     | deezer_helper                | [DEEZER] get_similar id=3667551 limit=5
+2026-08-05 13:09:21,897 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=290 limit=5
+2026-08-05 13:09:22,222 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=290 -> 5 results
+2026-08-05 13:09:22,222 | INFO     | deezer_helper                | [DEEZER] get_similar id=3667551 -> 5 results (artist_top)
+2026-08-05 13:09:22,231 | INFO     | user_prefs                   | [PLAYLIST_DB] store_suggestions user=240082844 source=3667551 -> 5 new of 5 ids
+2026-08-05 13:09:22,231 | INFO     | deezer_helper                | [DEEZER] get_track id=10218969
+2026-08-05 13:09:22,707 | INFO     | deezer_helper                | [DEEZER] get_track id=10218969 -> Louis Armstrong - Dream A Little Dream Of Me (genres=[])
+2026-08-05 13:09:22,707 | INFO     | deezer_helper                | [DEEZER] get_similar id=10218969 limit=5
+2026-08-05 13:09:23,076 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=2337 limit=5
+2026-08-05 13:09:23,438 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=2337 -> 5 results
+2026-08-05 13:09:23,438 | INFO     | deezer_helper                | [DEEZER] get_similar id=10218969 -> 5 results (artist_top)
+2026-08-05 13:09:23,475 | INFO     | user_prefs                   | [PLAYLIST_DB] store_suggestions user=240082844 source=10218969 -> 5 new of 5 ids
+2026-08-05 13:09:23,475 | INFO     | deezer_helper                | [DEEZER] get_track id=2545396411
+2026-08-05 13:09:24,003 | INFO     | deezer_helper                | [DEEZER] get_track id=2545396411 -> Dimitri Vegas & Like Mike - Thank You (Not So Bad) (genres=[])
+2026-08-05 13:09:24,003 | INFO     | deezer_helper                | [DEEZER] get_similar id=2545396411 limit=5
+2026-08-05 13:09:24,251 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=262271 limit=5
+2026-08-05 13:09:24,577 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=262271 -> 5 results
+2026-08-05 13:09:24,577 | INFO     | deezer_helper                | [DEEZER] get_similar id=2545396411 -> 5 results (artist_top)
+2026-08-05 13:09:24,588 | INFO     | user_prefs                   | [PLAYLIST_DB] store_suggestions user=240082844 source=2545396411 -> 5 new of 5 ids
+2026-08-05 13:09:24,588 | INFO     | deezer_helper                | [DEEZER] get_track id=117852904
+2026-08-05 13:09:25,211 | INFO     | deezer_helper                | [DEEZER] get_track id=117852904 -> Brandy - Beggin & Pleadin (genres=[])
+2026-08-05 13:09:25,211 | INFO     | deezer_helper                | [DEEZER] get_similar id=117852904 limit=5
+2026-08-05 13:09:25,437 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=269 limit=5
+2026-08-05 13:09:25,816 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=269 -> 5 results
+2026-08-05 13:09:25,816 | INFO     | deezer_helper                | [DEEZER] get_similar id=117852904 -> 5 results (artist_top)
+2026-08-05 13:09:25,837 | INFO     | user_prefs                   | [PLAYLIST_DB] store_suggestions user=240082844 source=117852904 -> 5 new of 5 ids
+2026-08-05 13:09:25,838 | INFO     | deezer_helper                | [DEEZER] get_track id=4006539
+2026-08-05 13:09:26,361 | INFO     | deezer_helper                | [DEEZER] get_track id=4006539 -> Jerry Lee Lewis - Great Balls Of Fire (genres=[])
+2026-08-05 13:09:26,361 | INFO     | deezer_helper                | [DEEZER] get_similar id=4006539 limit=5
+2026-08-05 13:09:26,612 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=2705 limit=5
+2026-08-05 13:09:27,178 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=2705 -> 5 results
+2026-08-05 13:09:27,178 | INFO     | deezer_helper                | [DEEZER] get_similar id=4006539 -> 5 results (artist_top)
+2026-08-05 13:09:27,197 | INFO     | user_prefs                   | [PLAYLIST_DB] store_suggestions user=240082844 source=4006539 -> 3 new of 5 ids

@@ -65,6 +65,19 @@
     "mood": ""
   },
   {
+    "track_id": 920114,
+    "title": "Rockin' Robin",
+    "artist": "Michael Jackson",
+    "analyzed_at": "2026-08-05 09:29:45",
+    "musicbrainz_id": "9a969d77-db44-4376-a2be-90c977360ae5",
+    "bpm": 86.1328125,
+    "key": "F",
+    "scale": "minor",
+    "energy": 0.1813264936208725,
+    "genre": "",
+    "mood": ""
+  },
+  {
     "track_id": 936899,
     "title": "Where Is My Mind?",
     "artist": "Pixies",
@@ -191,6 +204,39 @@
     "mood": ""
   },
   {
+    "track_id": 3667551,
+    "title": "Music",
+    "artist": "Madonna",
+    "analyzed_at": "2026-08-05 09:29:50",
+    "musicbrainz_id": "9eab7443-178e-4959-9034-178813cb0690",
+    "bpm": 117.45383522727273,
+    "key": "A",
+    "scale": "major",
+    "energy": 0.17225530743598938,
+    "genre": "",
+    "mood": "",
+    "tags": [
+      "pop",
+      "dance",
+      "electronic",
+      "Madonna",
+      "female vocalists"
+    ]
+  },
+  {
+    "track_id": 4006539,
+    "title": "Great Balls Of Fire",
+    "artist": "Jerry Lee Lewis",
+    "analyzed_at": "2026-08-05 09:31:07",
+    "musicbrainz_id": "f633a668-cce3-47be-a4d2-aa94e47a000b",
+    "bpm": 86.1328125,
+    "key": "G",
+    "scale": "major",
+    "energy": 0.13204684853553772,
+    "genre": "",
+    "mood": ""
+  },
+  {
     "track_id": 5094396,
     "title": "Give Me the Night",
     "artist": "George Benson",
@@ -268,6 +314,19 @@
       "the rolling stones",
       "british"
     ]
+  },
+  {
+    "track_id": 10218969,
+    "title": "Dream A Little Dream Of Me",
+    "artist": "Louis Armstrong",
+    "analyzed_at": "2026-08-05 09:30:51",
+    "musicbrainz_id": "d708ddfc-8e86-4543-ae4d-e99502eeb8f9",
+    "bpm": 75.99954044117646,
+    "key": "C",
+    "scale": "major",
+    "energy": 0.13026374578475952,
+    "genre": "",
+    "mood": ""
   },
   {
     "track_id": 10686130,
@@ -519,6 +578,19 @@
     "mood": ""
   },
   {
+    "track_id": 117852904,
+    "title": "Beggin & Pleadin",
+    "artist": "Brandy",
+    "analyzed_at": "2026-08-05 09:31:01",
+    "musicbrainz_id": "d8d0fbcd-972e-432a-8d37-ce15a481612b",
+    "bpm": 123.046875,
+    "key": "G#",
+    "scale": "minor",
+    "energy": 0.24432562291622162,
+    "genre": "",
+    "mood": ""
+  },
+  {
     "track_id": 121546582,
     "title": "Zombie Ritual",
     "artist": "Death",
@@ -686,6 +758,19 @@
     "artist": "Queen",
     "analyzed_at": "2026-07-09 14:55:35",
     "musicbrainz_id": "705fe881-49cd-4460-8d57-4a54e6d00a80"
+  },
+  {
+    "track_id": 646290952,
+    "title": "You Never Can Tell",
+    "artist": "Chuck Berry",
+    "analyzed_at": "2026-08-05 09:29:38",
+    "musicbrainz_id": "f45807c4-095a-44c6-95d1-7111d877c117",
+    "bpm": 151.99908088235293,
+    "key": "G",
+    "scale": "major",
+    "energy": 0.0956188216805458,
+    "genre": "",
+    "mood": ""
   },
   {
     "track_id": 908604612,
@@ -949,6 +1034,19 @@
       "70s",
       "aerosmith"
     ]
+  },
+  {
+    "track_id": 2545396411,
+    "title": "Thank You (Not So Bad)",
+    "artist": "Dimitri Vegas & Like Mike",
+    "analyzed_at": "2026-08-05 09:30:57",
+    "musicbrainz_id": "bc6d2632-2c5a-4971-bba0-e449b6cff468",
+    "bpm": 151.99908088235293,
+    "key": "D#",
+    "scale": "minor",
+    "energy": 0.17630702257156372,
+    "genre": "",
+    "mood": ""
   },
   {
     "track_id": 2590786262,
