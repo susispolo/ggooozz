@@ -566,12 +566,15 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     # Handle keyboard buttons (match any of the bot's languages)
     lang = get_lang(user_id)
-    if query in (label("search", "en"), label("search", "fa"), "🔍 Search"):
+    def matches(key):
+        return query == label(key, lang) or query == label(key, "en")
+
+    if matches("search"):
         _playlist_mode[user_id] = False
         await update.message.reply_text("🔍 Type a song name to search:")
         return
 
-    if query == label("add_playlist", lang):
+    if matches("add_playlist"):
         log_step(2, user_id, "Entering playlist mode")
         _playlist_mode[user_id] = True
         _pending_songs[user_id] = []
@@ -588,40 +591,40 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
         )
         return
 
-    if query == label("my_playlist", lang):
+    if matches("my_playlist"):
         _playlist_mode[user_id] = False
         await cmd_myplaylist(update, context)
         return
 
-    if query == label("for_me", lang):
+    if matches("for_me"):
         _playlist_mode[user_id] = False
         await cmd_meforyou(update, context)
         return
 
-    if query == label("trivia", lang):
+    if matches("trivia"):
         _playlist_mode[user_id] = False
         await cmd_trivia(update, context)
         return
 
-    if query == label("language", lang):
+    if matches("language"):
         _playlist_mode[user_id] = False
         await _show_language_picker(update, context)
         return
 
     # Handle playlist mode
     if _playlist_mode.get(user_id, False):
-        if query.startswith(label("done", lang)) or query.startswith("✅ Done"):
+        if query.startswith(label("done", lang)) or query.startswith(label("done", "en")) or query.startswith("✅ Done"):
             log_step(3, user_id, "Done button pressed, starting processing")
             await cmd_done(update, context)
             return
-        if query in (label("cancel", lang), label("main_menu", lang), "❌ Cancel", "🔙 Main Menu"):
+        if query in (label("cancel", lang), label("main_menu", lang), label("cancel", "en"), label("main_menu", "en"), "❌ Cancel", "🔙 Main Menu"):
             log_step(3, user_id, "Exiting playlist mode")
             _playlist_mode[user_id] = False
             _failed_songs.pop(user_id, None)
             _pending_songs.pop(user_id, None)
             await update.message.reply_text(
                 "❌ Playlist mode exited.",
-                reply_markup=_main_menu_keyboard(),
+                reply_markup=_main_menu_keyboard(lang),
             )
             return
 
@@ -898,13 +901,19 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         except Exception as e:
             log.warning("set_user_language failed: %s", e)
         name = supported_langs().get(code, code)
-        await query.edit_message_text(f"✅ Language set: {name}\nزبان تنظیم شد: {name}")
-        # Refresh the main keyboard in the new language
-        await update.effective_chat.send_message(
-            msg("start_hero", code),
-            parse_mode=PM,
-            reply_markup=_main_menu_keyboard(code),
+        # Edit the picker message in place + refresh the reply keyboard
+        await query.edit_message_text(
+            f"✅ Language set: {name}\nزبان تنظیم شد: {name}"
         )
+        # Refresh the main reply keyboard in the new language
+        try:
+            await update.effective_chat.send_message(
+                msg("start_hero", code),
+                parse_mode=PM,
+                reply_markup=_main_menu_keyboard(code),
+            )
+        except Exception as e:
+            log.warning("keyboard refresh failed: %s", e)
         return
 
     # Fresh batch for For Me

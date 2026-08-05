@@ -2361,3 +2361,217 @@ Traceback (most recent call last):
 UnboundLocalError: cannot access local variable 'msg' where it is not associated with a value
 2026-08-05 13:57:49,173 | INFO     | bot                          | Loaded Persian genre database: 203 artists
 2026-08-05 13:57:59,862 | INFO     | bot                          | Loaded Persian genre database: 203 artists
+2026-08-05 14:01:44,578 | INFO     | __main__                     | Loaded Persian genre database: 203 artists
+2026-08-05 14:01:44,925 | INFO     | __main__                     | Music Suggest Bot v3 starting...
+2026-08-05 14:01:45,654 | INFO     | user_prefs                   | [USER_DB] init_db: tables created; PATH=user_prefs.db
+2026-08-05 14:01:45,660 | INFO     | feature_cache                | Feature cache initialized
+2026-08-05 14:01:45,843 | INFO     | __main__                     | Bot initialized: Last.fm=OK
+2026-08-05 14:01:46,020 | INFO     | telegram.ext.Application     | Application started
+2026-08-05 14:02:41,307 | INFO     | __main__                     | [STEP 1] User 240082844: Received text: 🔍 Search...
+2026-08-05 14:02:51,729 | INFO     | __main__                     | [STEP 1] User 240082844: Received text: my ironl ung...
+2026-08-05 14:02:52,144 | INFO     | deezer_helper                | [DEEZER] search query='my ironl ung' limit=5
+2026-08-05 14:02:53,553 | INFO     | deezer_helper                | [DEEZER] search query='my ironl ung' -> 5 results
+2026-08-05 14:02:53,553 | INFO     | __main__                     | [SEARCH] raw=5, clean-first reorder done -> 5 shown
+2026-08-05 14:02:53,554 | INFO     | deezer_helper                | [DEEZER] search query='artist:Radiohead' limit=3
+2026-08-05 14:02:53,868 | INFO     | deezer_helper                | [DEEZER] search query='artist:Radiohead' -> 0 results
+2026-08-05 14:02:56,666 | INFO     | __main__                     | Callback received: chat_id=240082844, data=pick_0
+2026-08-05 14:02:56,862 | INFO     | __main__                     | Pick handler: idx=0, results_count=5
+2026-08-05 14:02:56,863 | INFO     | deezer_helper                | [DEEZER] get_track id=138544271
+2026-08-05 14:02:57,450 | INFO     | deezer_helper                | [DEEZER] get_track id=138544271 -> Radiohead - My Iron Lung (genres=[])
+2026-08-05 14:02:57,451 | INFO     | __main__                     | Fetched full track: Radiohead - My Iron Lung (genres: [], artist_id: 399)
+2026-08-05 14:02:57,452 | INFO     | deezer_helper                | [DEEZER] search query='Radiohead' limit=10
+2026-08-05 14:02:57,714 | INFO     | deezer_helper                | [DEEZER] search query='Radiohead' -> 10 results
+2026-08-05 14:02:57,714 | INFO     | __main__                     | Search 'Radiohead': found 10 tracks, best ID=399 (count=10)
+2026-08-05 14:02:57,945 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 138544271
+2026-08-05 14:02:57,952 | INFO     | feature_cache                | [CACHE] ✓ Cache HIT for track ID: 138544271
+2026-08-05 14:02:57,953 | INFO     | feature_cache                | [CACHE]   Audio: BPM=95.7, Energy=0.1438
+2026-08-05 14:02:57,954 | INFO     | feature_cache                | [CACHE]   MusicBrainz: 1969d6f0-0e4e-47e6-9d68-8072d9adce7f
+2026-08-05 14:02:57,955 | INFO     | feature_cache                | [CACHE]   Last.fm tags: alternative rock, alternative, rock
+2026-08-05 14:02:57,961 | INFO     | __main__                     | Cache hit for: Radiohead - My Iron Lung
+2026-08-05 14:02:57,961 | INFO     | __main__                     | [FLOW] main track analyzed: audio=True acoustic=False
+2026-08-05 14:02:58,834 | INFO     | lastfm_client                | Last.fm found 10 similar tracks for Radiohead - My Iron Lung
+2026-08-05 14:02:58,835 | INFO     | __main__                     | [FLOW] Last.fm similar for My Iron Lung: 10 found
+2026-08-05 14:02:58,836 | INFO     | deezer_helper                | [DEEZER] search query='Just Radiohead' limit=1
+2026-08-05 14:02:59,111 | INFO     | deezer_helper                | [DEEZER] search query='Just Radiohead' -> 1 results
+2026-08-05 14:02:59,112 | INFO     | deezer_helper                | [DEEZER] search query='The Bends Radiohead' limit=1
+2026-08-05 14:02:59,424 | INFO     | deezer_helper                | [DEEZER] search query='The Bends Radiohead' -> 1 results
+2026-08-05 14:02:59,425 | INFO     | deezer_helper                | [DEEZER] search query='All I Think About Now Pixies' limit=1
+2026-08-05 14:02:59,661 | INFO     | deezer_helper                | [DEEZER] search query='All I Think About Now Pixies' -> 1 results
+2026-08-05 14:02:59,662 | INFO     | deezer_helper                | [DEEZER] search query='Everlong Foo Fighters' limit=1
+2026-08-05 14:03:00,043 | INFO     | deezer_helper                | [DEEZER] search query='Everlong Foo Fighters' -> 1 results
+2026-08-05 14:03:00,044 | INFO     | deezer_helper                | [DEEZER] search query='Grace Jeff Buckley' limit=1
+2026-08-05 14:03:00,299 | INFO     | deezer_helper                | [DEEZER] search query='Grace Jeff Buckley' -> 1 results
+2026-08-05 14:03:00,300 | INFO     | deezer_helper                | [DEEZER] search query='Undone - The Sweater Song Weezer' limit=1
+2026-08-05 14:03:00,604 | INFO     | deezer_helper                | [DEEZER] search query='Undone - The Sweater Song Weezer' -> 1 results
+2026-08-05 14:03:00,605 | INFO     | deezer_helper                | [DEEZER] search query='Where Is My Mind? Pixies' limit=1
+2026-08-05 14:03:00,850 | INFO     | deezer_helper                | [DEEZER] search query='Where Is My Mind? Pixies' -> 1 results
+2026-08-05 14:03:00,851 | INFO     | deezer_helper                | [DEEZER] search query="Say It Ain't So Weezer" limit=1
+2026-08-05 14:03:01,197 | INFO     | deezer_helper                | [DEEZER] search query="Say It Ain't So Weezer" -> 1 results
+2026-08-05 14:03:01,197 | INFO     | deezer_helper                | [DEEZER] get_similar id=138544271 limit=20
+2026-08-05 14:03:01,472 | INFO     | deezer_helper                | [DEEZER] get_track id=138544271
+2026-08-05 14:03:01,993 | INFO     | deezer_helper                | [DEEZER] get_track id=138544271 -> Radiohead - My Iron Lung (genres=[])
+2026-08-05 14:03:01,994 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=399 limit=20
+2026-08-05 14:03:02,310 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=399 -> 20 results
+2026-08-05 14:03:02,312 | INFO     | deezer_helper                | [DEEZER] get_similar id=138544271 -> 20 results (artist_top)
+2026-08-05 14:03:02,313 | INFO     | __main__                     | [FLOW] Deezer radio for My Iron Lung: found 20 tracks
+2026-08-05 14:03:02,313 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=399 limit=10
+2026-08-05 14:03:02,676 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=399 -> 10 results
+2026-08-05 14:03:02,677 | INFO     | __main__                     | Same artist tracks for Radiohead (ID: 399): 10 found
+2026-08-05 14:03:02,678 | INFO     | __main__                     |   Added same artist: Radiohead - Creep
+2026-08-05 14:03:02,679 | INFO     | __main__                     |   Added same artist: Radiohead - No Surprises
+2026-08-05 14:03:02,680 | INFO     | __main__                     |   Added same artist: Radiohead - Let Down
+2026-08-05 14:03:02,681 | INFO     | __main__                     |   Added same artist: Radiohead - Karma Police
+2026-08-05 14:03:02,681 | INFO     | __main__                     |   Added same artist: Radiohead - Exit Music (For A Film)
+2026-08-05 14:03:02,682 | INFO     | __main__                     |   Added same artist: Radiohead - Everything In Its Right Place
+2026-08-05 14:03:02,683 | INFO     | __main__                     |   Added same artist: Radiohead - Jigsaw Falling Into Place
+2026-08-05 14:03:02,684 | INFO     | __main__                     |   Added same artist: Radiohead - Weird Fishes / Arpeggi
+2026-08-05 14:03:02,684 | INFO     | __main__                     |   Added same artist: Radiohead - Fake Plastic Trees
+2026-08-05 14:03:02,685 | INFO     | __main__                     |   Added same artist: Radiohead - All I Need
+2026-08-05 14:03:02,686 | INFO     | __main__                     | Same artist tracks found: 10
+2026-08-05 14:03:02,687 | INFO     | __main__                     | Different artist tracks found: 6
+2026-08-05 14:03:02,688 | INFO     | __main__                     | Total similar tracks: 6
+2026-08-05 14:03:02,689 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 138547415
+2026-08-05 14:03:02,692 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 138539157
+2026-08-05 14:03:02,694 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 138539979
+2026-08-05 14:03:02,700 | INFO     | feature_cache                | [CACHE] ✓ Cache HIT for track ID: 138539157
+2026-08-05 14:03:02,701 | INFO     | feature_cache                | [CACHE]   MusicBrainz: 13bf8f0c-d871-4a41-96aa-2ebc74a9c95d
+2026-08-05 14:03:02,702 | INFO     | feature_cache                | [CACHE]   Last.fm tags: alternative, alternative rock, radiohead
+2026-08-05 14:03:02,704 | INFO     | feature_cache                | [CACHE] ✓ Cache HIT for track ID: 138547415
+2026-08-05 14:03:02,705 | INFO     | feature_cache                | [CACHE]   MusicBrainz: f5fdaa7e-5986-4eba-a394-af37e3705677
+2026-08-05 14:03:02,706 | INFO     | feature_cache                | [CACHE]   Last.fm tags: alternative, alternative rock, rock
+2026-08-05 14:03:02,708 | INFO     | feature_cache                | [CACHE] ✓ Cache HIT for track ID: 138539979
+2026-08-05 14:03:02,709 | INFO     | feature_cache                | [CACHE]   MusicBrainz: e0030e37-586f-40fb-babe-64a2a3279c49
+2026-08-05 14:03:02,710 | INFO     | feature_cache                | [CACHE]   Last.fm tags: alternative, alternative rock, rock
+2026-08-05 14:03:02,712 | INFO     | __main__                     | Cache entry without features for Radiohead - No Surprises, re-analyzing (track 138539157)
+2026-08-05 14:03:02,713 | INFO     | __main__                     | Analyzing track: Radiohead - No Surprises (fast=True)
+2026-08-05 14:03:02,716 | INFO     | __main__                     | Cache entry without features for Radiohead - Creep, re-analyzing (track 138547415)
+2026-08-05 14:03:02,717 | INFO     | __main__                     | Analyzing track: Radiohead - Creep (fast=True)
+2026-08-05 14:03:02,720 | INFO     | __main__                     | Cache entry without features for Radiohead - Let Down, re-analyzing (track 138539979)
+2026-08-05 14:03:02,721 | INFO     | __main__                     | Analyzing track: Radiohead - Let Down (fast=True)
+2026-08-05 14:03:03,136 | INFO     | musicbrainz_client           | Found MusicBrainz ID: a7cab58b-9976-4b1a-9645-d2ebbcf1478f for Radiohead - No Surprises
+2026-08-05 14:03:03,934 | INFO     | musicbrainz_client           | Found MusicBrainz ID: c5b644d0-c748-44c0-bebc-0f58140aaa83 for Radiohead - Creep
+2026-08-05 14:03:04,173 | INFO     | __main__                     | Analysis results for Radiohead - No Surprises:
+2026-08-05 14:03:04,174 | INFO     | __main__                     |   Audio features: SKIPPED
+2026-08-05 14:03:04,175 | INFO     | __main__                     |   MusicBrainz: OK
+2026-08-05 14:03:04,175 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 14:03:04,176 | WARNING  | __main__                     | [FLOW] candidate analysis failed for Radiohead - No Surprises: 'NoneType' object has no attribute 'get'
+2026-08-05 14:03:04,177 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 1907457927
+2026-08-05 14:03:04,182 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 1907457927
+2026-08-05 14:03:04,184 | INFO     | __main__                     | Analyzing track: Pixies - All I Think About Now (fast=True)
+2026-08-05 14:03:04,464 | INFO     | musicbrainz_client           | Found MusicBrainz ID: e0030e37-586f-40fb-babe-64a2a3279c49 for Radiohead - Let Down
+2026-08-05 14:03:04,778 | INFO     | __main__                     | Analysis results for Radiohead - Let Down:
+2026-08-05 14:03:04,779 | INFO     | __main__                     |   Audio features: SKIPPED
+2026-08-05 14:03:04,779 | INFO     | __main__                     |   MusicBrainz: OK
+2026-08-05 14:03:04,780 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 14:03:04,780 | WARNING  | __main__                     | [FLOW] candidate analysis failed for Radiohead - Let Down: 'NoneType' object has no attribute 'get'
+2026-08-05 14:03:04,781 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 4762041
+2026-08-05 14:03:04,786 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 4762041
+2026-08-05 14:03:04,788 | INFO     | __main__                     | Analyzing track: Foo Fighters - Everlong (fast=True)
+2026-08-05 14:03:04,811 | INFO     | __main__                     | Analysis results for Radiohead - Creep:
+2026-08-05 14:03:04,811 | INFO     | __main__                     |   Audio features: SKIPPED
+2026-08-05 14:03:04,812 | INFO     | __main__                     |   MusicBrainz: OK
+2026-08-05 14:03:04,812 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 14:03:04,813 | WARNING  | __main__                     | [FLOW] candidate analysis failed for Radiohead - Creep: 'NoneType' object has no attribute 'get'
+2026-08-05 14:03:04,813 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 108733456
+2026-08-05 14:03:04,817 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 108733456
+2026-08-05 14:03:04,819 | INFO     | __main__                     | Analyzing track: Jeff Buckley - Grace (fast=True)
+2026-08-05 14:03:04,945 | INFO     | musicbrainz_client           | Found MusicBrainz ID: 874d598c-61ea-4068-9cd1-e304691eb94e for Pixies - All I Think About Now
+2026-08-05 14:03:05,300 | INFO     | __main__                     | Analysis results for Pixies - All I Think About Now:
+2026-08-05 14:03:05,301 | INFO     | __main__                     |   Audio features: SKIPPED
+2026-08-05 14:03:05,301 | INFO     | __main__                     |   MusicBrainz: OK
+2026-08-05 14:03:05,302 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 14:03:05,303 | WARNING  | __main__                     | [FLOW] candidate analysis failed for Pixies - All I Think About Now: 'NoneType' object has no attribute 'get'
+2026-08-05 14:03:05,937 | INFO     | musicbrainz_client           | Found MusicBrainz ID: faf3057d-6ee5-4859-8c5f-a016e2cafca4 for Foo Fighters - Everlong
+2026-08-05 14:03:06,110 | INFO     | musicbrainz_client           | Found MusicBrainz ID: 71feb283-9a0d-491d-a40b-8ccae7fc728b for Jeff Buckley - Grace
+2026-08-05 14:03:06,265 | INFO     | __main__                     | Analysis results for Foo Fighters - Everlong:
+2026-08-05 14:03:06,266 | INFO     | __main__                     |   Audio features: SKIPPED
+2026-08-05 14:03:06,266 | INFO     | __main__                     |   MusicBrainz: OK
+2026-08-05 14:03:06,267 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 14:03:06,267 | WARNING  | __main__                     | [FLOW] candidate analysis failed for Foo Fighters - Everlong: 'NoneType' object has no attribute 'get'
+2026-08-05 14:03:06,476 | INFO     | __main__                     | Analysis results for Jeff Buckley - Grace:
+2026-08-05 14:03:06,477 | INFO     | __main__                     |   Audio features: SKIPPED
+2026-08-05 14:03:06,478 | INFO     | __main__                     |   MusicBrainz: OK
+2026-08-05 14:03:06,479 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 14:03:06,479 | WARNING  | __main__                     | [FLOW] candidate analysis failed for Jeff Buckley - Grace: 'NoneType' object has no attribute 'get'
+2026-08-05 14:03:06,480 | INFO     | __main__                     | [FLOW] candidate features ready: 0/6
+2026-08-05 14:03:06,481 | INFO     | __main__                     | Similarity calc: target_audio=YES, target_acoustic=NO, candidates=6
+2026-08-05 14:03:06,483 | INFO     | __main__                     | Similarity scores: [('All I Think About Now', 0.21482100000000004), ('Everlong', 0.210986), ('Grace', 0.210577)]
+2026-08-05 14:03:06,483 | INFO     | __main__                     | Building features - target_audio: YES, genres: []
+2026-08-05 14:03:06,484 | INFO     | __main__                     | [GENRE] Deezer genres empty for Radiohead - My Iron Lung
+2026-08-05 14:03:06,789 | INFO     | lastfm_client                | Last.fm artist tags for Radiohead: ['rock', 'alternative', 'alternative rock', 'indie', 'electronic']
+2026-08-05 14:03:06,790 | INFO     | __main__                     | [GENRE] Last.fm genre for Radiohead: rock
+2026-08-05 14:03:59,664 | INFO     | __main__                     | [STEP 1] User 240082844: Received text: 📋 My Playlist...
+2026-08-05 14:03:59,675 | INFO     | user_prefs                   | [PLAYLIST_DB] get_user_playlist user=240082844 -> 25 rows
+2026-08-05 14:03:59,675 | INFO     | user_prefs                   | [PLAYLIST_DB] get_user_taste_profile user=240082844
+2026-08-05 14:03:59,686 | INFO     | user_prefs                   | [PLAYLIST_DB] taste_profile user=240082844 -> total=25 recognized=21 tracks=21 bpm=118.9 energy=0.16 valence=0.00 genres=['classic rock', 'Persian Traditional', 'pop'] langs=[('en', 16), ('fa', 3), ('ar', 2)]
+2026-08-05 14:04:02,561 | INFO     | __main__                     | [STEP 1] User 240082844: Received text: 🎯 For Me...
+2026-08-05 14:04:02,562 | INFO     | user_prefs                   | [PLAYLIST_DB] get_user_taste_profile user=240082844
+2026-08-05 14:04:02,593 | INFO     | user_prefs                   | [PLAYLIST_DB] taste_profile user=240082844 -> total=25 recognized=21 tracks=21 bpm=118.9 energy=0.16 valence=0.00 genres=['classic rock', 'Persian Traditional', 'pop'] langs=[('en', 16), ('fa', 3), ('ar', 2)]
+2026-08-05 14:04:02,805 | INFO     | user_prefs                   | [PLAYLIST_DB] get_random_suggestions user=240082844 -> 5 ids
+2026-08-05 14:04:02,806 | INFO     | deezer_helper                | [DEEZER] get_track id=4125592
+2026-08-05 14:04:03,535 | INFO     | deezer_helper                | [DEEZER] get_track id=4125592 -> The Rolling Stones - Start Me Up (Remastered 2009) (genres=[])
+2026-08-05 14:04:03,536 | INFO     | deezer_helper                | [DEEZER] get_track id=13791930
+2026-08-05 14:04:04,030 | INFO     | deezer_helper                | [DEEZER] get_track id=13791930 -> Nirvana - Smells Like Teen Spirit (genres=[])
+2026-08-05 14:04:04,030 | INFO     | deezer_helper                | [DEEZER] get_track id=10236721
+2026-08-05 14:04:04,516 | INFO     | deezer_helper                | [DEEZER] get_track id=10236721 -> The Heavy - Coleen feat. The Dap-Kings Horns (genres=[])
+2026-08-05 14:04:04,517 | INFO     | deezer_helper                | [DEEZER] get_track id=2556748
+2026-08-05 14:04:05,028 | INFO     | deezer_helper                | [DEEZER] get_track id=2556748 -> Alan Jackson - Good Time (genres=[])
+2026-08-05 14:04:05,029 | INFO     | deezer_helper                | [DEEZER] get_track id=664507
+2026-08-05 14:04:05,588 | INFO     | deezer_helper                | [DEEZER] get_track id=664507 -> Madonna - Like a Prayer (genres=[])
+2026-08-05 14:04:15,331 | WARNING  | __main__                     | Unhandled error: httpx.RemoteProtocolError: Server disconnected without sending a response.
+2026-08-05 14:04:24,901 | INFO     | __main__                     | [STEP 1] User 240082844: Received text: 🌐 Language / زبان...
+2026-08-05 14:04:26,450 | INFO     | __main__                     | Callback received: chat_id=240082844, data=lang_fa
+2026-08-05 14:04:26,665 | INFO     | user_prefs                   | [USER_DB] set_user_language user=240082844 lang=fa
+2026-08-05 14:04:26,903 | WARNING  | __main__                     | Unhandled error: cannot access local variable 'msg' where it is not associated with a value
+2026-08-05 14:04:29,624 | INFO     | __main__                     | [STEP 1] User 240082844: Received text: 📋 My Playlist...
+2026-08-05 14:04:29,817 | INFO     | deezer_helper                | [DEEZER] search query='📋 My Playlist' limit=5
+2026-08-05 14:04:30,652 | INFO     | deezer_helper                | [DEEZER] search query='📋 My Playlist' -> 0 results
+2026-08-05 14:04:30,653 | INFO     | __main__                     | [SEARCH] raw=0, clean-first reorder done -> 0 shown
+2026-08-05 14:04:36,795 | INFO     | __main__                     | [STEP 1] User 240082844: Received text: ➕ Add to Playlist...
+2026-08-05 14:04:37,775 | INFO     | deezer_helper                | [DEEZER] search query='➕ Add to Playlist' limit=5
+2026-08-05 14:04:38,044 | INFO     | deezer_helper                | [DEEZER] search query='➕ Add to Playlist' -> 0 results
+2026-08-05 14:04:38,046 | INFO     | __main__                     | [SEARCH] raw=0, clean-first reorder done -> 0 shown
+2026-08-05 14:09:06,310 | INFO     | bot                          | Loaded Persian genre database: 203 artists
+2026-08-05 14:10:22,183 | INFO     | bot                          | Loaded Persian genre database: 203 artists
+2026-08-05 14:10:48,401 | INFO     | bot                          | Loaded Persian genre database: 203 artists
+2026-08-05 14:10:48,445 | INFO     | user_prefs                   | [USER_DB] init_db: tables created; PATH=C:\Users\Saeid\AppData\Local\Temp\tmpn333h5uo\t.db
+2026-08-05 14:10:48,449 | INFO     | bot                          | [STEP 1] User 240082844: Received text: 🔍 Search...
+2026-08-05 14:10:48,452 | INFO     | bot                          | [STEP 1] User 240082844: Received text: 📋 لیست من...
+2026-08-05 14:10:48,452 | INFO     | bot                          | [STEP 1] User 240082844: Received text: ➕ Add to Playlist...
+2026-08-05 14:10:48,452 | INFO     | bot                          | [STEP 2] User 240082844: Entering playlist mode
+2026-08-05 14:11:07,005 | INFO     | bot                          | Loaded Persian genre database: 203 artists
+2026-08-05 14:11:07,052 | INFO     | user_prefs                   | [USER_DB] init_db: tables created; PATH=C:\Users\Saeid\AppData\Local\Temp\tmppaymo2pc\t.db
+2026-08-05 14:11:07,052 | INFO     | bot                          | Callback received: chat_id=999, data=lang_fa
+2026-08-05 14:11:07,061 | INFO     | user_prefs                   | [USER_DB] set_user_language user=240082844 lang=fa
+2026-08-05 14:11:07,061 | WARNING  | bot                          | keyboard refresh failed: cannot access local variable 'msg' where it is not associated with a value
+2026-08-05 14:11:07,065 | INFO     | bot                          | [STEP 1] User 240082844: Received text: 🔍 Search...
+2026-08-05 14:11:07,065 | INFO     | bot                          | [STEP 1] User 240082844: Received text: 📋 لیست من...
+2026-08-05 14:11:07,068 | INFO     | user_prefs                   | [PLAYLIST_DB] get_user_playlist user=240082844 -> 0 rows
+2026-08-05 14:11:07,068 | INFO     | user_prefs                   | [PLAYLIST_DB] get_user_taste_profile user=240082844
+2026-08-05 14:11:07,073 | INFO     | user_prefs                   | [PLAYLIST_DB] taste_profile user=240082844 -> total=0 recognized=0 tracks=0 bpm=0.0 energy=0.00 valence=0.00 genres=[] langs=[]
+2026-08-05 14:11:07,073 | INFO     | bot                          | [STEP 1] User 240082844: Received text: ➕ Add to Playlist...
+2026-08-05 14:11:07,073 | INFO     | bot                          | [STEP 2] User 240082844: Entering playlist mode
+2026-08-05 14:11:15,974 | INFO     | bot                          | Loaded Persian genre database: 203 artists
+2026-08-05 14:11:16,022 | INFO     | user_prefs                   | [USER_DB] init_db: tables created; PATH=C:\Users\Saeid\AppData\Local\Temp\tmp331l7wwz\t.db
+2026-08-05 14:11:16,022 | INFO     | bot                          | Callback received: chat_id=999, data=lang_fa
+2026-08-05 14:11:16,030 | INFO     | user_prefs                   | [USER_DB] set_user_language user=240082844 lang=fa
+2026-08-05 14:11:16,030 | WARNING  | bot                          | keyboard refresh failed: cannot access local variable 'msg' where it is not associated with a value
+2026-08-05 14:11:16,034 | INFO     | bot                          | [STEP 1] User 240082844: Received text: 🔍 Search...
+2026-08-05 14:11:16,034 | INFO     | bot                          | [STEP 1] User 240082844: Received text: 📋 لیست من...
+2026-08-05 14:11:16,037 | INFO     | user_prefs                   | [PLAYLIST_DB] get_user_playlist user=240082844 -> 0 rows
+2026-08-05 14:11:16,037 | INFO     | user_prefs                   | [PLAYLIST_DB] get_user_taste_profile user=240082844
+2026-08-05 14:11:16,042 | INFO     | user_prefs                   | [PLAYLIST_DB] taste_profile user=240082844 -> total=0 recognized=0 tracks=0 bpm=0.0 energy=0.00 valence=0.00 genres=[] langs=[]
+2026-08-05 14:11:16,042 | INFO     | bot                          | [STEP 1] User 240082844: Received text: ➕ Add to Playlist...
+2026-08-05 14:11:16,043 | INFO     | bot                          | [STEP 2] User 240082844: Entering playlist mode
+2026-08-05 14:11:25,172 | INFO     | bot                          | Loaded Persian genre database: 203 artists
+2026-08-05 14:11:25,215 | INFO     | user_prefs                   | [USER_DB] init_db: tables created; PATH=C:\Users\Saeid\AppData\Local\Temp\tmpehgqzbq0\t.db
+2026-08-05 14:11:25,215 | INFO     | bot                          | Callback received: chat_id=999, data=lang_fa
+2026-08-05 14:11:25,225 | INFO     | user_prefs                   | [USER_DB] set_user_language user=240082844 lang=fa
+2026-08-05 14:11:25,225 | WARNING  | bot                          | keyboard refresh failed: cannot access local variable 'msg' where it is not associated with a value
+2026-08-05 14:11:25,229 | INFO     | bot                          | [STEP 1] User 240082844: Received text: 🔍 Search...
+2026-08-05 14:11:25,229 | INFO     | bot                          | [STEP 1] User 240082844: Received text: 📋 لیست من...
+2026-08-05 14:11:25,231 | INFO     | user_prefs                   | [PLAYLIST_DB] get_user_playlist user=240082844 -> 0 rows
+2026-08-05 14:11:25,231 | INFO     | user_prefs                   | [PLAYLIST_DB] get_user_taste_profile user=240082844
+2026-08-05 14:11:25,236 | INFO     | user_prefs                   | [PLAYLIST_DB] taste_profile user=240082844 -> total=0 recognized=0 tracks=0 bpm=0.0 energy=0.00 valence=0.00 genres=[] langs=[]
+2026-08-05 14:11:25,237 | INFO     | bot                          | [STEP 1] User 240082844: Received text: ➕ Add to Playlist...
+2026-08-05 14:11:25,237 | INFO     | bot                          | [STEP 2] User 240082844: Entering playlist mode
