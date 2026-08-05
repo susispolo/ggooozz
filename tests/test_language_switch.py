@@ -14,6 +14,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import bot
 import user_prefs as up
+from i18n import set_lang as i18n_set_lang
 
 up.DB_PATH = os.path.join(tempfile.mkdtemp(), "t.db")
 
@@ -80,6 +81,18 @@ class FakeUpdate:
 async def main():
     await up.init_db()
     uid = 240082844
+    # Seed a chosen language so the first-time picker doesn't hijack the flow
+    await up.set_user_language(uid, "en")
+    i18n_set_lang(uid, "en")
+
+    # 0. First-time user (no language row) must be routed to the picker
+    fresh_uid = 888000
+    upd = FakeUpdate(fresh_uid, "", msg_text="🔍 Search")
+    try:
+        await bot.handle_text(upd, None)
+        check("first-time user routed to language picker", True)
+    except Exception as e:
+        check(f"first-time user routed to language picker (got {e!r})", False)
 
     # 1. Language callback: lang_fa must not raise
     upd = FakeUpdate(uid, "lang_fa")

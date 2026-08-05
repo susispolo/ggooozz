@@ -3294,3 +3294,227 @@ UnboundLocalError: cannot access local variable 'msg' where it is not associated
 2026-08-05 14:32:21,691 | INFO     | user_prefs                   | [PLAYLIST_DB] taste_profile user=240082844 -> total=0 recognized=0 tracks=0 bpm=0.0 energy=0.00 valence=0.00 genres=[] langs=[]
 2026-08-05 14:32:21,692 | INFO     | bot                          | [STEP 1] User 240082844: Received text: ➕ Add to Playlist...
 2026-08-05 14:32:21,692 | INFO     | bot                          | [STEP 2] User 240082844: Entering playlist mode
+2026-08-05 14:36:09,531 | INFO     | __main__                     | Loaded Persian genre database: 203 artists
+2026-08-05 14:36:09,818 | INFO     | __main__                     | Music Suggest Bot v3 starting...
+2026-08-05 14:36:11,808 | INFO     | user_prefs                   | [USER_DB] init_db: tables created; PATH=user_prefs.db
+2026-08-05 14:36:11,814 | INFO     | feature_cache                | Feature cache initialized
+2026-08-05 14:36:12,405 | INFO     | __main__                     | Bot initialized: Last.fm=OK
+2026-08-05 14:36:12,897 | INFO     | telegram.ext.Application     | Application started
+2026-08-05 14:36:40,256 | INFO     | __main__                     | [STEP 1] User 240082844: Received text: 🔍 Search...
+2026-08-05 14:36:53,259 | INFO     | deezer_helper                | [DEEZER] search query='Dashi Shahin Najafi & Erfan' limit=5
+2026-08-05 14:36:53,767 | INFO     | deezer_helper                | [DEEZER] search query='Dashi Shahin Najafi & Erfan' -> 1 results
+2026-08-05 14:36:59,100 | INFO     | __main__                     | Callback received: chat_id=240082844, data=pick_original
+2026-08-05 14:36:59,653 | INFO     | deezer_helper                | [DEEZER] search query='Dashi Shahin Najafi & Erfan' limit=10
+2026-08-05 14:36:59,905 | INFO     | deezer_helper                | [DEEZER] search query='Dashi Shahin Najafi & Erfan' -> 1 results
+2026-08-05 14:36:59,906 | INFO     | deezer_helper                | [DEEZER] get_track id=4180641782
+2026-08-05 14:37:00,399 | INFO     | deezer_helper                | [DEEZER] get_track id=4180641782 -> Shahin Najafi - Dashi (genres=[])
+2026-08-05 14:37:00,400 | INFO     | __main__                     | Fetched full track: Shahin Najafi - Dashi (genres: [], artist_id: 504417)
+2026-08-05 14:37:00,400 | INFO     | deezer_helper                | [DEEZER] search query='Shahin Najafi' limit=10
+2026-08-05 14:37:00,735 | INFO     | deezer_helper                | [DEEZER] search query='Shahin Najafi' -> 10 results
+2026-08-05 14:37:00,736 | INFO     | __main__                     | Search 'Shahin Najafi': found 10 tracks, best ID=504417 (count=9)
+2026-08-05 14:37:01,000 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 4180641782
+2026-08-05 14:37:01,003 | INFO     | feature_cache                | [CACHE] ✓ Cache HIT for track ID: 4180641782
+2026-08-05 14:37:01,003 | INFO     | feature_cache                | [CACHE]   Audio: BPM=95.7, Energy=0.2496
+2026-08-05 14:37:01,006 | INFO     | __main__                     | Cache hit for: Shahin Najafi - Dashi
+2026-08-05 14:37:01,006 | INFO     | __main__                     | [FLOW] main track analyzed: audio=True acoustic=False
+2026-08-05 14:37:01,893 | INFO     | lastfm_client                | Last.fm found 0 similar tracks for Shahin Najafi - Dashi
+2026-08-05 14:37:01,894 | INFO     | __main__                     | [FLOW] Last.fm similar for Dashi: 0 found
+2026-08-05 14:37:01,894 | INFO     | deezer_helper                | [DEEZER] get_similar id=4180641782 limit=20
+2026-08-05 14:37:02,183 | INFO     | deezer_helper                | [DEEZER] get_track id=4180641782
+2026-08-05 14:37:02,654 | INFO     | deezer_helper                | [DEEZER] get_track id=4180641782 -> Shahin Najafi - Dashi (genres=[])
+2026-08-05 14:37:02,654 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=504417 limit=20
+2026-08-05 14:37:02,979 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=504417 -> 6 results
+2026-08-05 14:37:02,980 | INFO     | deezer_helper                | [DEEZER] get_similar id=4180641782 -> 6 results (artist_top)
+2026-08-05 14:37:02,981 | INFO     | __main__                     | [FLOW] Deezer radio for Dashi: found 6 tracks
+2026-08-05 14:37:02,982 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=504417 limit=10
+2026-08-05 14:37:03,233 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=504417 -> 6 results
+2026-08-05 14:37:03,234 | INFO     | __main__                     | Same artist tracks for Shahin Najafi (ID: 504417): 6 found
+2026-08-05 14:37:03,236 | INFO     | __main__                     |   Added same artist: Shahin Najafi - Zahraab
+2026-08-05 14:37:03,236 | INFO     | __main__                     |   Added same artist: Shahin Najafi - Aram
+2026-08-05 14:37:03,237 | INFO     | __main__                     |   Added same artist: Shahin Najafi - Hameh Ja Keshid
+2026-08-05 14:37:03,238 | INFO     | __main__                     |   Added same artist: Shahin Najafi - Radikal
+2026-08-05 14:37:03,239 | INFO     | __main__                     |   Added same artist: Shahin Najafi - Mosaddegh
+2026-08-05 14:37:03,240 | INFO     | __main__                     |   Added same artist: Shahin Najafi - Aleh
+2026-08-05 14:37:03,241 | INFO     | __main__                     | Same artist tracks found: 6
+2026-08-05 14:37:03,242 | INFO     | __main__                     | Different artist tracks found: 0
+2026-08-05 14:37:03,243 | INFO     | __main__                     | Total similar tracks: 6
+2026-08-05 14:37:03,244 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 142388205
+2026-08-05 14:37:03,247 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 142388213
+2026-08-05 14:37:03,249 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 142388203
+2026-08-05 14:37:03,255 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 142388213
+2026-08-05 14:37:03,257 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 142388205
+2026-08-05 14:37:03,260 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 142388203
+2026-08-05 14:37:03,262 | INFO     | __main__                     | Analyzing track: Shahin Najafi - Aram (fast=True)
+2026-08-05 14:37:03,263 | INFO     | __main__                     | Analyzing track: Shahin Najafi - Zahraab (fast=True)
+2026-08-05 14:37:03,266 | INFO     | __main__                     | Analyzing track: Shahin Najafi - Hameh Ja Keshid (fast=True)
+2026-08-05 14:37:04,696 | INFO     | musicbrainz_client           | Found MusicBrainz ID: 08480073-ec8e-4afc-9130-024506ff1a3a for Shahin Najafi - Zahraab
+2026-08-05 14:37:05,166 | INFO     | musicbrainz_client           | Found MusicBrainz ID: 061f4d21-ad97-4da1-bab5-aa1ba5ba7a3f for Shahin Najafi - Hameh Ja Keshid
+2026-08-05 14:37:05,573 | INFO     | __main__                     | Analysis results for Shahin Najafi - Zahraab:
+2026-08-05 14:37:05,575 | INFO     | __main__                     |   Audio features: SKIPPED
+2026-08-05 14:37:05,576 | INFO     | __main__                     |   MusicBrainz: OK
+2026-08-05 14:37:05,577 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 14:37:05,578 | WARNING  | __main__                     | [FLOW] candidate analysis failed for Shahin Najafi - Zahraab: 'NoneType' object has no attribute 'get'
+2026-08-05 14:37:05,579 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 142388201
+2026-08-05 14:37:05,585 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 142388201
+2026-08-05 14:37:05,589 | INFO     | __main__                     | Analyzing track: Shahin Najafi - Radikal (fast=True)
+2026-08-05 14:37:05,847 | INFO     | __main__                     | Analysis results for Shahin Najafi - Hameh Ja Keshid:
+2026-08-05 14:37:05,848 | INFO     | __main__                     |   Audio features: SKIPPED
+2026-08-05 14:37:05,849 | INFO     | __main__                     |   MusicBrainz: OK
+2026-08-05 14:37:05,850 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 14:37:05,850 | WARNING  | __main__                     | [FLOW] candidate analysis failed for Shahin Najafi - Hameh Ja Keshid: 'NoneType' object has no attribute 'get'
+2026-08-05 14:37:05,851 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 142388211
+2026-08-05 14:37:05,857 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 142388211
+2026-08-05 14:37:05,860 | INFO     | __main__                     | Analyzing track: Shahin Najafi - Mosaddegh (fast=True)
+2026-08-05 14:37:13,288 | ERROR    | musicbrainz_client           | MusicBrainz search error: 
+2026-08-05 14:37:13,289 | INFO     | __main__                     | Analysis results for Shahin Najafi - Aram:
+2026-08-05 14:37:13,289 | INFO     | __main__                     |   Audio features: SKIPPED
+2026-08-05 14:37:13,289 | INFO     | __main__                     |   MusicBrainz: NOT FOUND
+2026-08-05 14:37:13,289 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 14:37:13,290 | WARNING  | __main__                     | [FLOW] candidate analysis failed for Shahin Najafi - Aram: 'NoneType' object has no attribute 'get'
+2026-08-05 14:37:13,290 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 142388209
+2026-08-05 14:37:13,293 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 142388209
+2026-08-05 14:37:13,294 | INFO     | __main__                     | Analyzing track: Shahin Najafi - Aleh (fast=True)
+2026-08-05 14:37:15,763 | INFO     | musicbrainz_client           | Found MusicBrainz ID: 0a48d9f8-446e-45e9-8204-920846ad4014 for Shahin Najafi - Aleh
+2026-08-05 14:37:15,914 | INFO     | musicbrainz_client           | Found MusicBrainz ID: c5daa1ff-5990-49bd-80d9-9088b669b23d for Shahin Najafi - Mosaddegh
+2026-08-05 14:37:16,173 | INFO     | musicbrainz_client           | Found MusicBrainz ID: eb6ce45d-c729-481b-af3b-bfcd0a2393ef for Shahin Najafi - Radikal
+2026-08-05 14:37:16,212 | INFO     | __main__                     | Analysis results for Shahin Najafi - Mosaddegh:
+2026-08-05 14:37:16,213 | INFO     | __main__                     |   Audio features: SKIPPED
+2026-08-05 14:37:16,213 | INFO     | __main__                     |   MusicBrainz: OK
+2026-08-05 14:37:16,213 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 14:37:16,213 | WARNING  | __main__                     | [FLOW] candidate analysis failed for Shahin Najafi - Mosaddegh: 'NoneType' object has no attribute 'get'
+2026-08-05 14:37:16,682 | INFO     | __main__                     | Analysis results for Shahin Najafi - Aleh:
+2026-08-05 14:37:16,683 | INFO     | __main__                     |   Audio features: SKIPPED
+2026-08-05 14:37:16,683 | INFO     | __main__                     |   MusicBrainz: OK
+2026-08-05 14:37:16,683 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 14:37:16,683 | WARNING  | __main__                     | [FLOW] candidate analysis failed for Shahin Najafi - Aleh: 'NoneType' object has no attribute 'get'
+2026-08-05 14:37:17,716 | INFO     | __main__                     | Analysis results for Shahin Najafi - Radikal:
+2026-08-05 14:37:17,717 | INFO     | __main__                     |   Audio features: SKIPPED
+2026-08-05 14:37:17,717 | INFO     | __main__                     |   MusicBrainz: OK
+2026-08-05 14:37:17,717 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 14:37:17,717 | WARNING  | __main__                     | [FLOW] candidate analysis failed for Shahin Najafi - Radikal: 'NoneType' object has no attribute 'get'
+2026-08-05 14:37:17,718 | INFO     | __main__                     | [FLOW] candidate features ready: 0/6
+2026-08-05 14:37:17,718 | INFO     | __main__                     | Similarity calc: target_audio=YES, target_acoustic=NO, candidates=6
+2026-08-05 14:37:17,718 | INFO     | __main__                     | Similarity scores: [('Zahraab', 0.0), ('Aram', 0.0), ('Hameh Ja Keshid', 0.0)]
+2026-08-05 14:37:17,719 | INFO     | __main__                     | Building features - target_audio: YES, genres: []
+2026-08-05 14:37:39,987 | INFO     | deezer_helper                | [DEEZER] search query='Akharin Avaz Ali Zandevakili' limit=5
+2026-08-05 14:37:42,122 | INFO     | deezer_helper                | [DEEZER] search query='Akharin Avaz Ali Zandevakili' -> 1 results
+2026-08-05 14:37:43,910 | INFO     | __main__                     | Callback received: chat_id=240082844, data=pick_original
+2026-08-05 14:37:46,201 | INFO     | deezer_helper                | [DEEZER] search query='Akharin Avaz Ali Zandevakili' limit=10
+2026-08-05 14:37:48,054 | INFO     | deezer_helper                | [DEEZER] search query='Akharin Avaz Ali Zandevakili' -> 1 results
+2026-08-05 14:37:48,055 | INFO     | deezer_helper                | [DEEZER] get_track id=1004409502
+2026-08-05 14:37:49,592 | INFO     | deezer_helper                | [DEEZER] get_track id=1004409502 -> Ali Zandevakili - Akharin Avaz (genres=[])
+2026-08-05 14:37:49,593 | INFO     | __main__                     | Fetched full track: Ali Zandevakili - Akharin Avaz (genres: [], artist_id: 12304508)
+2026-08-05 14:37:49,594 | INFO     | deezer_helper                | [DEEZER] search query='Ali Zandevakili' limit=10
+2026-08-05 14:37:50,131 | INFO     | deezer_helper                | [DEEZER] search query='Ali Zandevakili' -> 10 results
+2026-08-05 14:37:50,132 | INFO     | __main__                     | Search 'Ali Zandevakili': found 10 tracks, best ID=12304508 (count=10)
+2026-08-05 14:37:50,397 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 1004409502
+2026-08-05 14:37:50,403 | INFO     | feature_cache                | [CACHE] ✓ Cache HIT for track ID: 1004409502
+2026-08-05 14:37:50,404 | INFO     | feature_cache                | [CACHE]   Audio: BPM=89.1, Energy=0.2304
+2026-08-05 14:37:50,408 | INFO     | __main__                     | Cache hit for: Ali Zandevakili - Akharin Avaz
+2026-08-05 14:37:50,408 | INFO     | __main__                     | [FLOW] main track analyzed: audio=True acoustic=False
+2026-08-05 14:37:50,985 | INFO     | lastfm_client                | Last.fm found 0 similar tracks for Ali Zandevakili - Akharin Avaz
+2026-08-05 14:37:50,986 | INFO     | __main__                     | [FLOW] Last.fm similar for Akharin Avaz: 0 found
+2026-08-05 14:37:50,987 | INFO     | deezer_helper                | [DEEZER] get_similar id=1004409502 limit=20
+2026-08-05 14:37:51,658 | INFO     | deezer_helper                | [DEEZER] get_track id=1004409502
+2026-08-05 14:37:52,820 | INFO     | deezer_helper                | [DEEZER] get_track id=1004409502 -> Ali Zandevakili - Akharin Avaz (genres=[])
+2026-08-05 14:37:52,820 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=12304508 limit=20
+2026-08-05 14:37:53,624 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=12304508 -> 0 results
+2026-08-05 14:37:53,625 | INFO     | deezer_helper                | [DEEZER] search query='Ali Zandevakili' limit=25
+2026-08-05 14:37:54,761 | INFO     | deezer_helper                | [DEEZER] search query='Ali Zandevakili' -> 25 results
+2026-08-05 14:37:54,762 | INFO     | deezer_helper                | [DEEZER] get_similar id=1004409502 -> 20 results (artist_search)
+2026-08-05 14:37:54,762 | INFO     | __main__                     | [FLOW] Deezer radio for Akharin Avaz: found 20 tracks
+2026-08-05 14:37:54,763 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=12304508 limit=10
+2026-08-05 14:37:55,477 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=12304508 -> 0 results
+2026-08-05 14:37:55,479 | INFO     | __main__                     | Same artist tracks for Ali Zandevakili (ID: 12304508): 0 found
+2026-08-05 14:37:55,480 | INFO     | __main__                     | Same artist tracks found: 0
+2026-08-05 14:37:55,481 | INFO     | __main__                     | Different artist tracks found: 1
+2026-08-05 14:37:55,482 | INFO     | __main__                     | Total similar tracks: 1
+2026-08-05 14:37:55,483 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 770547192
+2026-08-05 14:37:55,490 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 770547192
+2026-08-05 14:37:55,493 | INFO     | __main__                     | Analyzing track: Ali Zand Vakili - Jadeh Shab (fast=True)
+2026-08-05 14:38:06,286 | ERROR    | musicbrainz_client           | MusicBrainz search error: 
+2026-08-05 14:38:06,287 | INFO     | __main__                     | Analysis results for Ali Zand Vakili - Jadeh Shab:
+2026-08-05 14:38:06,288 | INFO     | __main__                     |   Audio features: SKIPPED
+2026-08-05 14:38:06,289 | INFO     | __main__                     |   MusicBrainz: NOT FOUND
+2026-08-05 14:38:06,290 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 14:38:06,290 | WARNING  | __main__                     | [FLOW] candidate analysis failed for Ali Zand Vakili - Jadeh Shab: 'NoneType' object has no attribute 'get'
+2026-08-05 14:38:06,292 | INFO     | __main__                     | [FLOW] candidate features ready: 0/1
+2026-08-05 14:38:06,292 | INFO     | __main__                     | Similarity calc: target_audio=YES, target_acoustic=NO, candidates=1
+2026-08-05 14:38:06,294 | INFO     | __main__                     | Similarity scores: [('Jadeh Shab', 0.0)]
+2026-08-05 14:38:06,295 | INFO     | __main__                     | Building features - target_audio: YES, genres: []
+2026-08-05 14:38:06,296 | INFO     | __main__                     | [GENRE] Deezer genres empty for Ali Zandevakili - Akharin Avaz
+2026-08-05 14:38:07,194 | INFO     | lastfm_client                | Last.fm artist tags for Ali Zandevakili: ['Persian', 'iran', 'Iranian']
+2026-08-05 14:38:34,788 | INFO     | deezer_helper                | [DEEZER] search query='Yek Nafas Arezouye To Homayoun Shajarian' limit=5
+2026-08-05 14:38:50,289 | WARNING  | deezer_helper                | [DEEZER] https://api.deezer.com/search/track error= retrying
+2026-08-05 14:38:52,206 | INFO     | deezer_helper                | [DEEZER] search query='Yek Nafas Arezouye To Homayoun Shajarian' -> 2 results
+2026-08-05 14:38:57,978 | INFO     | __main__                     | Callback received: chat_id=240082844, data=pick_original
+2026-08-05 14:39:13,004 | WARNING  | __main__                     | Unhandled error: Timed out
+2026-08-05 14:39:27,589 | INFO     | __main__                     | Callback received: chat_id=240082844, data=pick_original
+2026-08-05 14:39:28,164 | INFO     | deezer_helper                | [DEEZER] search query='Yek Nafas Arezouye To Homayoun Shajarian' limit=10
+2026-08-05 14:39:29,463 | INFO     | deezer_helper                | [DEEZER] search query='Yek Nafas Arezouye To Homayoun Shajarian' -> 2 results
+2026-08-05 14:39:29,464 | INFO     | deezer_helper                | [DEEZER] get_track id=2474776021
+2026-08-05 14:39:30,021 | INFO     | deezer_helper                | [DEEZER] get_track id=2474776021 -> Homayoun Shajarian - Yek Nafas Arezouye To (genres=[])
+2026-08-05 14:39:30,022 | INFO     | __main__                     | Fetched full track: Homayoun Shajarian - Yek Nafas Arezouye To (genres: [], artist_id: 3481961)
+2026-08-05 14:39:30,022 | INFO     | deezer_helper                | [DEEZER] search query='Homayoun Shajarian' limit=10
+2026-08-05 14:39:30,360 | INFO     | deezer_helper                | [DEEZER] search query='Homayoun Shajarian' -> 10 results
+2026-08-05 14:39:30,361 | INFO     | __main__                     | Search 'Homayoun Shajarian': found 10 tracks, best ID=3481961 (count=7)
+2026-08-05 14:39:30,570 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 2474776021
+2026-08-05 14:39:30,577 | INFO     | feature_cache                | [CACHE] ✓ Cache HIT for track ID: 2474776021
+2026-08-05 14:39:30,578 | INFO     | feature_cache                | [CACHE]   Audio: BPM=103.4, Energy=0.2895
+2026-08-05 14:39:30,583 | INFO     | __main__                     | Cache hit for: Homayoun Shajarian - Yek Nafas Arezouye To
+2026-08-05 14:39:30,584 | INFO     | __main__                     | [FLOW] main track analyzed: audio=True acoustic=False
+2026-08-05 14:39:31,500 | INFO     | lastfm_client                | Last.fm found 0 similar tracks for Homayoun Shajarian - Yek Nafas Arezouye To
+2026-08-05 14:39:31,500 | INFO     | __main__                     | [FLOW] Last.fm similar for Yek Nafas Arezouye To: 0 found
+2026-08-05 14:39:31,501 | INFO     | deezer_helper                | [DEEZER] get_similar id=2474776021 limit=20
+2026-08-05 14:39:31,792 | INFO     | deezer_helper                | [DEEZER] get_track id=2474776021
+2026-08-05 14:39:32,833 | INFO     | deezer_helper                | [DEEZER] get_track id=2474776021 -> Homayoun Shajarian - Yek Nafas Arezouye To (genres=[])
+2026-08-05 14:39:32,834 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=3481961 limit=20
+2026-08-05 14:39:33,112 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=3481961 -> 1 results
+2026-08-05 14:39:33,113 | INFO     | deezer_helper                | [DEEZER] get_similar id=2474776021 -> 1 results (artist_top)
+2026-08-05 14:39:33,114 | INFO     | __main__                     | [FLOW] Deezer radio for Yek Nafas Arezouye To: found 1 tracks
+2026-08-05 14:39:33,114 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=3481961 limit=10
+2026-08-05 14:39:33,422 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=3481961 -> 1 results
+2026-08-05 14:39:33,423 | INFO     | __main__                     | Same artist tracks for Homayoun Shajarian (ID: 3481961): 1 found
+2026-08-05 14:39:33,424 | INFO     | __main__                     |   Added same artist: Homayoun Shajarian - Musighi Filme Arayeshe Ghaliz Dow (Che Danestam)
+2026-08-05 14:39:33,425 | INFO     | __main__                     | Same artist tracks found: 1
+2026-08-05 14:39:33,426 | INFO     | __main__                     | Different artist tracks found: 0
+2026-08-05 14:39:33,427 | INFO     | __main__                     | Total similar tracks: 1
+2026-08-05 14:39:33,428 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 3153329111
+2026-08-05 14:39:33,433 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 3153329111
+2026-08-05 14:39:33,436 | INFO     | __main__                     | Analyzing track: Homayoun Shajarian - Musighi Filme Arayeshe Ghaliz Dow (Che Danestam) (fast=True)
+2026-08-05 14:39:35,341 | INFO     | musicbrainz_client           | No MusicBrainz recording found for Homayoun Shajarian - Musighi Filme Arayeshe Ghaliz Dow (Che Danestam)
+2026-08-05 14:39:35,342 | INFO     | __main__                     | Analysis results for Homayoun Shajarian - Musighi Filme Arayeshe Ghaliz Dow (Che Danestam):
+2026-08-05 14:39:35,343 | INFO     | __main__                     |   Audio features: SKIPPED
+2026-08-05 14:39:35,344 | INFO     | __main__                     |   MusicBrainz: NOT FOUND
+2026-08-05 14:39:35,345 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 14:39:35,346 | WARNING  | __main__                     | [FLOW] candidate analysis failed for Homayoun Shajarian - Musighi Filme Arayeshe Ghaliz Dow (Che Danestam): 'NoneType' object has no attribute 'get'
+2026-08-05 14:39:35,347 | INFO     | __main__                     | [FLOW] candidate features ready: 0/1
+2026-08-05 14:39:35,348 | INFO     | __main__                     | Similarity calc: target_audio=YES, target_acoustic=NO, candidates=1
+2026-08-05 14:39:35,349 | INFO     | __main__                     | Similarity scores: [('Musighi Filme Arayeshe Ghaliz Dow (Che Danestam)', 0.0)]
+2026-08-05 14:39:35,350 | INFO     | __main__                     | Building features - target_audio: YES, genres: []
+2026-08-05 14:53:44,159 | INFO     | bot                          | Loaded Persian genre database: 203 artists
+2026-08-05 14:53:44,199 | INFO     | user_prefs                   | [USER_DB] init_db: tables created; PATH=C:\Users\Saeid\AppData\Local\Temp\tmpciblzes3\t.db
+2026-08-05 14:53:44,199 | INFO     | bot                          | Callback received: chat_id=999, data=lang_fa
+2026-08-05 14:53:44,207 | INFO     | user_prefs                   | [USER_DB] set_user_language user=240082844 lang=fa
+2026-08-05 14:53:44,207 | WARNING  | bot                          | keyboard refresh failed: cannot access local variable 'msg' where it is not associated with a value
+2026-08-05 14:53:44,210 | INFO     | bot                          | [STEP 1] User 240082844: Received text: 🔍 Search...
+2026-08-05 14:53:44,211 | INFO     | bot                          | [STEP 1] User 240082844: Received text: 📋 لیست من...
+2026-08-05 14:53:44,213 | INFO     | user_prefs                   | [PLAYLIST_DB] get_user_playlist user=240082844 -> 0 rows
+2026-08-05 14:53:44,213 | INFO     | user_prefs                   | [PLAYLIST_DB] get_user_taste_profile user=240082844
+2026-08-05 14:53:44,217 | INFO     | user_prefs                   | [PLAYLIST_DB] taste_profile user=240082844 -> total=0 recognized=0 tracks=0 bpm=0.0 energy=0.00 valence=0.00 genres=[] langs=[]
+2026-08-05 14:53:44,218 | INFO     | bot                          | [STEP 1] User 240082844: Received text: ➕ Add to Playlist...
+2026-08-05 14:53:44,218 | INFO     | bot                          | [STEP 2] User 240082844: Entering playlist mode
+2026-08-05 14:55:53,972 | INFO     | bot                          | Loaded Persian genre database: 203 artists
+2026-08-05 14:55:54,019 | INFO     | user_prefs                   | [USER_DB] init_db: tables created; PATH=C:\Users\Saeid\AppData\Local\Temp\tmp4jeb3czr\t.db
+2026-08-05 14:55:54,028 | INFO     | user_prefs                   | [USER_DB] set_user_language user=240082844 lang=en
+2026-08-05 14:55:54,028 | INFO     | bot                          | [STEP 1] User 888000: Received text: 🔍 Search...
+2026-08-05 14:55:54,031 | INFO     | bot                          | Callback received: chat_id=999, data=lang_fa
+2026-08-05 14:55:54,038 | INFO     | user_prefs                   | [USER_DB] set_user_language user=240082844 lang=fa
+2026-08-05 14:55:54,038 | WARNING  | bot                          | keyboard refresh failed: cannot access local variable 'msg' where it is not associated with a value
+2026-08-05 14:55:54,042 | INFO     | bot                          | [STEP 1] User 240082844: Received text: 🔍 Search...
+2026-08-05 14:55:54,042 | INFO     | bot                          | [STEP 1] User 240082844: Received text: 📋 لیست من...
+2026-08-05 14:55:54,045 | INFO     | user_prefs                   | [PLAYLIST_DB] get_user_playlist user=240082844 -> 0 rows
+2026-08-05 14:55:54,045 | INFO     | user_prefs                   | [PLAYLIST_DB] get_user_taste_profile user=240082844
+2026-08-05 14:55:54,050 | INFO     | user_prefs                   | [PLAYLIST_DB] taste_profile user=240082844 -> total=0 recognized=0 tracks=0 bpm=0.0 energy=0.00 valence=0.00 genres=[] langs=[]
+2026-08-05 14:55:54,051 | INFO     | bot                          | [STEP 1] User 240082844: Received text: ➕ Add to Playlist...
+2026-08-05 14:55:54,051 | INFO     | bot                          | [STEP 2] User 240082844: Entering playlist mode

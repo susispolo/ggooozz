@@ -311,7 +311,7 @@ def _main_menu_keyboard(lang: str = "en") -> ReplyKeyboardMarkup:
         [
             [KeyboardButton(label("search", lang)), KeyboardButton(label("add_playlist", lang))],
             [KeyboardButton(label("my_playlist", lang)), KeyboardButton(label("for_me", lang))],
-            [KeyboardButton(label("trivia", lang)), KeyboardButton(label("language", lang))],
+            [KeyboardButton(label("trivia", lang)), KeyboardButton(label("lyrics", lang))],
         ],
         resize_keyboard=True
     )
@@ -548,6 +548,12 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     _playlist_mode[user_id] = False
     await _ensure_lang(user_id)
     lang = get_lang(user_id)
+
+    # First-time users: ask for language once (no language button in the menu).
+    if lang not in supported_langs():
+        await _show_language_picker(update, context)
+        return
+
     await update.message.reply_text(
         msg("start_hero", lang),
         parse_mode=PM,
@@ -563,6 +569,11 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
     log_step(1, user_id, f"Received text: {query[:50]}...")
     await _ensure_lang(user_id)
+
+    # First-time users (no language chosen yet): ask once before anything else.
+    if get_lang(user_id) not in supported_langs():
+        await _show_language_picker(update, context)
+        return
 
     # Handle keyboard buttons (match any of the bot's languages)
     lang = get_lang(user_id)
@@ -606,9 +617,14 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await cmd_trivia(update, context)
         return
 
-    if matches("language"):
+    if matches("lyrics"):
         _playlist_mode[user_id] = False
-        await _show_language_picker(update, context)
+        _user_state[chat_id] = {"action": "lyrics"}
+        await update.message.reply_text(
+            "🎤 <b>Send a song name</b> (e.g. <code>Hotel California Eagles</code>)\n"
+            "and I'll fetch its lyrics.",
+            parse_mode=PM,
+        )
         return
 
     # Handle playlist mode
@@ -642,6 +658,14 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # Handle "Search Again" response
     if query.lower() in ["search again", "search", "again"]:
         await update.message.reply_text("🔍 Type a song name to search:")
+        return
+
+    # Lyrics flow: user pressed 🎤 Lyrics, now they send a song name
+    chat_id = update.effective_chat.id
+    state = _user_state.get(chat_id)
+    if state and state.get("action") == "lyrics":
+        _user_state.pop(chat_id, None)
+        await cmd_lyrics_by_name(update, context, query)
         return
 
     await update.message.chat.send_action("typing")
@@ -1173,6 +1197,39 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         except Exception as e:
             log.error("Error searching by artist: %s", e, exc_info=True)
 
+    # Persian same-genre cross-artist fallback.
+    # For Persian classic/traditional artists, Deezer radio + artist_top and
+    # Last.fm often return 0-1 tracks. When the pool is thin, pull tracks from
+    # OTHER artists in the same Persian genre (from the PERSIAN_GENRES database)
+    # so users still get real cross-artist recommendations.
+    if len(same_artist_tracks) + len(diff_artist_tracks) < 3:
+        artist_genres = PERSIAN_GENRES.get(selected_track.artist, [])
+        if artist_genres and has_persian(selected_track.artist):
+            target_genre = artist_genres[0]
+            log.info("[FLOW] Persian genre fallback: %s (%s) pool=%d, searching same-genre artists",
+                     selected_track.artist, target_genre, len(same_artist_tracks) + len(diff_artist_tracks))
+            try:
+                for other_artist, other_genres in PERSIAN_GENRES.items():
+                    if other_artist == selected_track.artist:
+                        continue
+                    if target_genre not in other_genres:
+                        continue
+                    try:
+                        other_tracks = await dz.search(other_artist, limit=5)
+                        for t in other_tracks:
+                            if t.id != selected_track.id and not is_duplicate(t):
+                                if t.artist_id != selected_track.artist_id:
+                                    diff_artist_tracks.append((t, 0.35))  # genre match bonus
+                                else:
+                                    same_artist_tracks.append(t)
+                                seen_titles.add(t.title.lower())
+                        if len(same_artist_tracks) + len(diff_artist_tracks) >= 6:
+                            break
+                    except Exception as e:
+                        log.warning("[FLOW] Persian genre lookup failed for %s: %s", other_artist, e)
+            except Exception as e:
+                log.warning("[FLOW] Persian genre fallback error: %s", e)
+
     # Combine - try to get 6 total, mixing same artist and different artists.
     # Different-artist tracks carry a Last.fm match score; best matches first.
     log.info("Same artist tracks found: %d", len(same_artist_tracks))
@@ -1378,13 +1435,17 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         if track.preview_url:
             try:
                 await asyncio.sleep(0.3)
-                await context.bot.send_audio(
+                audio_kwargs = dict(
                     chat_id=chat_id,
                     audio=track.preview_url,
                     title=f"🎵 {track.title}",
                     performer=track.artist,
                     duration=30,
                 )
+                # Attach the album cover as the thumbnail only if available
+                if getattr(track, "album_art", None):
+                    audio_kwargs["thumb"] = track.album_art
+                await context.bot.send_audio(**audio_kwargs)
                 vote_msg = f"🎧 <b>{h(track.title)}</b> - {h(track.artist)}\n\n📝 <b>Tap to copy — paste in @DeezerMusicBot:</b>\n<code>{h(track.title)} - {h(track.artist)}</code>\n\n⭐ Rate this track:"
                 await context.bot.send_message(
                     chat_id=chat_id,
@@ -1910,12 +1971,16 @@ async def cmd_trivia(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
         # Send audio preview
         if correct_track.preview_url:
-            await context.bot.send_audio(
+            audio_kwargs = dict(
                 chat_id=update.effective_chat.id,
                 audio=correct_track.preview_url,
                 title="🎵 Trivia Clue",
                 duration=30,
             )
+            # Attach the album cover as the thumbnail only if available
+            if getattr(correct_track, "album_art", None):
+                audio_kwargs["thumb"] = correct_track.album_art
+            await context.bot.send_audio(**audio_kwargs)
 
         # Send question
         msg = format_question(question)
@@ -2022,6 +2087,11 @@ async def cmd_lyrics(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text("Usage: /lyrics Song Name Artist")
         return
 
+    await cmd_lyrics_by_name(update, context, query)
+
+
+async def cmd_lyrics_by_name(update: Update, context: ContextTypes.DEFAULT_TYPE, query: str):
+    """Fetch lyrics for a song name (shared by /lyrics and the 🎤 button flow)."""
     await update.message.chat.send_action("typing")
 
     lyrics_client = LyricsClient()
@@ -2448,6 +2518,24 @@ async def cmd_add(update: Update, context: ContextTypes.DEFAULT_TYPE):
             similar_ids = [t.id for t in similar_tracks]
         except Exception as e:
             log.warning("cmd_add: get_similar failed for %s: %s", track.id, e)
+
+        # Persian same-genre fallback for thin pools
+        if len(similar_ids) < 3 and is_persian:
+            genre = PERSIAN_GENRES.get(track.artist, [""])[0] if track.artist in PERSIAN_GENRES else ""
+            try:
+                for other_artist, other_genres in PERSIAN_GENRES.items():
+                    if other_artist.lower() == (track.artist or "").lower():
+                        continue
+                    if genre and genre in other_genres:
+                        extra = await dz.search(other_artist, limit=3)
+                        for t in extra:
+                            if t.id not in similar_ids:
+                                similar_ids.append(t.id)
+                        if len(similar_ids) >= 5:
+                            break
+            except Exception as e:
+                log.warning("cmd_add: Persian genre pool fallback failed: %s", e)
+
         try:
             await store_suggestions(user_id, track.id, similar_ids)
         except Exception as e:
@@ -2643,6 +2731,24 @@ async def cmd_done(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 similar_ids = [t.id for t in similar_tracks]
             except Exception:
                 pass
+
+            # Persian same-genre fallback: if the pool is thin and this is a
+            # Persian artist, add tracks from other artists in the same genre so
+            # "For Me" doesn't run dry on classic/traditional artists.
+            if len(similar_ids) < 3 and (is_persian or genre):
+                try:
+                    for other_artist, other_genres in PERSIAN_GENRES.items():
+                        if other_artist.lower() == (track.artist or "").lower():
+                            continue
+                        if genre and genre in other_genres:
+                            extra = await dz.search(other_artist, limit=3)
+                            for t in extra:
+                                if t.id not in similar_ids:
+                                    similar_ids.append(t.id)
+                            if len(similar_ids) >= 5:
+                                break
+                except Exception as e:
+                    log.warning("[PLAYLIST] Persian genre pool fallback failed user=%s: %s", user_id, e)
 
             # Store the similar-track IDs in the per-user suggestion pool so
             # "For Me" can sample from them later (one row per suggestion).
@@ -2947,13 +3053,17 @@ async def cmd_meforyou(update: Update, context: ContextTypes.DEFAULT_TYPE):
             if track.preview_url:
                 try:
                     await asyncio.sleep(0.3)
-                    await context.bot.send_audio(
+                    audio_kwargs = dict(
                         chat_id=update.effective_chat.id,
                         audio=track.preview_url,
                         title=f"🎵 {track.title}",
                         performer=track.artist,
                         duration=30,
                     )
+                    # Attach the album cover as the thumbnail only if available
+                    if getattr(track, "album_art", None):
+                        audio_kwargs["thumb"] = track.album_art
+                    await context.bot.send_audio(**audio_kwargs)
                 except Exception as e:
                     log.warning("[ME_FOR_YOU] preview failed for %s: %s", track.title, e)
 
@@ -3024,6 +3134,7 @@ async def post_init(application: Application):
             ("search", "Search a song"),
             ("meforyou", "Get songs for you"),
             ("myplaylist", "Your playlist"),
+            ("lyrics", "Get song lyrics"),
             ("language", "Change language / زبان"),
         ])
     except Exception as e:

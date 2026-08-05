@@ -653,13 +653,17 @@ async def set_user_language(user_id: int, lang: str):
 
 
 async def get_user_language(user_id: int) -> str:
-    """Get a user's persisted language (default 'en')."""
+    """Get a user's persisted language.
+
+    Returns '' if the user has never chosen a language (first-time) so the
+    bot can ask once; otherwise their chosen 'en'/'fa'.
+    """
     async with aiosqlite.connect(DB_PATH) as conn:
         async with conn.execute(
             "SELECT lang FROM user_language WHERE user_id=?", (user_id,)
         ) as cursor:
             row = await cursor.fetchone()
-    return row[0] if row else "en"
+    return row[0] if row else ""
 
 
 async def search_tracks_by_features(bpm: float, energy: float, valence: float, limit: int = 10) -> list:

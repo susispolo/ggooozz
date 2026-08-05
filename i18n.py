@@ -96,7 +96,12 @@ _user_lang = {}
 
 
 def set_lang(user_id: int, code: str):
-    _user_lang[user_id] = code if code in _LANGS else "en"
+    # Preserve '' (first-time user, not yet chosen) so /start can detect it;
+    # any other unknown code falls back to English.
+    if code == "":
+        _user_lang[user_id] = ""
+    else:
+        _user_lang[user_id] = code if code in _LANGS else "en"
 
 
 def get_lang(user_id: int) -> str:
