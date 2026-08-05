@@ -106,6 +106,23 @@ try:
 except Exception as e:
     log.warning("Could not load Persian genre database: %s", e)
 
+# Merge auto-detected Persian artists (new_persian_artists.json) so artists the
+# bot discovered at runtime are also known. Their placeholder genre
+# 'Persian (Auto-detected)' is useless for same-genre matching, so we skip
+# artists whose ONLY genre is the placeholder (they'd match nothing).
+try:
+    with open("new_persian_artists.json", "r", encoding="utf-8") as f:
+        auto_artists = json.load(f)
+    merged = 0
+    for artist, genres in auto_artists.items():
+        real_genres = [g for g in genres if "Auto-detected" not in g]
+        if artist not in PERSIAN_GENRES and real_genres:
+            PERSIAN_GENRES[artist] = real_genres
+            merged += 1
+    log.info("Merged %d auto-detected artists into Persian genre DB (total=%d)", merged, len(PERSIAN_GENRES))
+except Exception as e:
+    log.warning("Could not merge auto-detected artists: %s", e)
+
 
 def detect_persian_artist(artist_name: str) -> bool:
     """Detect if an artist is likely Persian based on name patterns."""
@@ -1204,6 +1221,10 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # so users still get real cross-artist recommendations.
     if len(same_artist_tracks) + len(diff_artist_tracks) < 3:
         artist_genres = PERSIAN_GENRES.get(selected_track.artist, [])
+        # Auto-detected artists carry the useless placeholder genre; treat them
+        # as Persian Traditional so the same-genre fallback still finds peers.
+        if artist_genres and "Auto-detected" in artist_genres[0]:
+            artist_genres = ["Persian Traditional"]
         if artist_genres and has_persian(selected_track.artist):
             target_genre = artist_genres[0]
             log.info("[FLOW] Persian genre fallback: %s (%s) pool=%d, searching same-genre artists",
@@ -1444,7 +1465,7 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 )
                 # Attach the album cover as the thumbnail only if available
                 if getattr(track, "album_art", None):
-                    audio_kwargs["thumb"] = track.album_art
+                    audio_kwargs["thumbnail"] = track.album_art
                 await context.bot.send_audio(**audio_kwargs)
                 vote_msg = f"🎧 <b>{h(track.title)}</b> - {h(track.artist)}\n\n📝 <b>Tap to copy — paste in @DeezerMusicBot:</b>\n<code>{h(track.title)} - {h(track.artist)}</code>\n\n⭐ Rate this track:"
                 await context.bot.send_message(
@@ -1979,7 +2000,7 @@ async def cmd_trivia(update: Update, context: ContextTypes.DEFAULT_TYPE):
             )
             # Attach the album cover as the thumbnail only if available
             if getattr(correct_track, "album_art", None):
-                audio_kwargs["thumb"] = correct_track.album_art
+                audio_kwargs["thumbnail"] = correct_track.album_art
             await context.bot.send_audio(**audio_kwargs)
 
         # Send question
@@ -2521,7 +2542,10 @@ async def cmd_add(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
         # Persian same-genre fallback for thin pools
         if len(similar_ids) < 3 and is_persian:
-            genre = PERSIAN_GENRES.get(track.artist, [""])[0] if track.artist in PERSIAN_GENRES else ""
+            db_genres = PERSIAN_GENRES.get(track.artist or "", [])
+            if db_genres and "Auto-detected" in db_genres[0]:
+                db_genres = ["Persian Traditional"]
+            genre = db_genres[0] if db_genres else ""
             try:
                 for other_artist, other_genres in PERSIAN_GENRES.items():
                     if other_artist.lower() == (track.artist or "").lower():
@@ -2736,11 +2760,17 @@ async def cmd_done(update: Update, context: ContextTypes.DEFAULT_TYPE):
             # Persian artist, add tracks from other artists in the same genre so
             # "For Me" doesn't run dry on classic/traditional artists.
             if len(similar_ids) < 3 and (is_persian or genre):
+                # Resolve the genre: prefer the Persian genre DB (with the
+                # auto-detected placeholder mapped to Persian Traditional).
+                db_genres = PERSIAN_GENRES.get(track.artist or "", [])
+                if db_genres and "Auto-detected" in db_genres[0]:
+                    db_genres = ["Persian Traditional"]
+                match_genre = (db_genres[0] if db_genres else "") or genre
                 try:
                     for other_artist, other_genres in PERSIAN_GENRES.items():
                         if other_artist.lower() == (track.artist or "").lower():
                             continue
-                        if genre and genre in other_genres:
+                        if match_genre and match_genre in other_genres:
                             extra = await dz.search(other_artist, limit=3)
                             for t in extra:
                                 if t.id not in similar_ids:
@@ -3062,7 +3092,7 @@ async def cmd_meforyou(update: Update, context: ContextTypes.DEFAULT_TYPE):
                     )
                     # Attach the album cover as the thumbnail only if available
                     if getattr(track, "album_art", None):
-                        audio_kwargs["thumb"] = track.album_art
+                        audio_kwargs["thumbnail"] = track.album_art
                     await context.bot.send_audio(**audio_kwargs)
                 except Exception as e:
                     log.warning("[ME_FOR_YOU] preview failed for %s: %s", track.title, e)

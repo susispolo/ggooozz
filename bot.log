@@ -3518,3 +3518,202 @@ UnboundLocalError: cannot access local variable 'msg' where it is not associated
 2026-08-05 14:55:54,050 | INFO     | user_prefs                   | [PLAYLIST_DB] taste_profile user=240082844 -> total=0 recognized=0 tracks=0 bpm=0.0 energy=0.00 valence=0.00 genres=[] langs=[]
 2026-08-05 14:55:54,051 | INFO     | bot                          | [STEP 1] User 240082844: Received text: ➕ Add to Playlist...
 2026-08-05 14:55:54,051 | INFO     | bot                          | [STEP 2] User 240082844: Entering playlist mode
+2026-08-05 15:04:15,092 | WARNING  | __main__                     | Unhandled error: httpx.RemoteProtocolError: Server disconnected without sending a response.
+2026-08-05 15:05:52,520 | INFO     | __main__                     | Loaded Persian genre database: 203 artists
+2026-08-05 15:05:52,843 | INFO     | __main__                     | Music Suggest Bot v3 starting...
+2026-08-05 15:05:53,994 | INFO     | user_prefs                   | [USER_DB] init_db: tables created; PATH=user_prefs.db
+2026-08-05 15:05:53,999 | INFO     | feature_cache                | Feature cache initialized
+2026-08-05 15:05:54,728 | INFO     | __main__                     | Bot initialized: Last.fm=OK
+2026-08-05 15:05:54,954 | INFO     | telegram.ext.Application     | Application started
+2026-08-05 15:07:18,668 | INFO     | __main__                     | [STEP 1] User 240082844: Received text: 🔍 Search...
+2026-08-05 15:07:39,261 | INFO     | deezer_helper                | [DEEZER] search query='Yek Nafas Arezouye To Homayoun Shajarian' limit=5
+2026-08-05 15:07:40,137 | INFO     | deezer_helper                | [DEEZER] search query='Yek Nafas Arezouye To Homayoun Shajarian' -> 2 results
+2026-08-05 15:07:42,682 | INFO     | __main__                     | Callback received: chat_id=240082844, data=pick_original
+2026-08-05 15:07:43,065 | INFO     | deezer_helper                | [DEEZER] search query='Yek Nafas Arezouye To Homayoun Shajarian' limit=10
+2026-08-05 15:07:43,402 | INFO     | deezer_helper                | [DEEZER] search query='Yek Nafas Arezouye To Homayoun Shajarian' -> 2 results
+2026-08-05 15:07:43,403 | INFO     | deezer_helper                | [DEEZER] get_track id=2474776021
+2026-08-05 15:07:43,931 | INFO     | deezer_helper                | [DEEZER] get_track id=2474776021 -> Homayoun Shajarian - Yek Nafas Arezouye To (genres=[])
+2026-08-05 15:07:43,931 | INFO     | __main__                     | Fetched full track: Homayoun Shajarian - Yek Nafas Arezouye To (genres: [], artist_id: 3481961)
+2026-08-05 15:07:43,931 | INFO     | deezer_helper                | [DEEZER] search query='Homayoun Shajarian' limit=10
+2026-08-05 15:07:44,250 | INFO     | deezer_helper                | [DEEZER] search query='Homayoun Shajarian' -> 10 results
+2026-08-05 15:07:44,251 | INFO     | __main__                     | Search 'Homayoun Shajarian': found 10 tracks, best ID=3481961 (count=7)
+2026-08-05 15:07:44,514 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 2474776021
+2026-08-05 15:07:44,521 | INFO     | feature_cache                | [CACHE] ✓ Cache HIT for track ID: 2474776021
+2026-08-05 15:07:44,522 | INFO     | feature_cache                | [CACHE]   Audio: BPM=103.4, Energy=0.2895
+2026-08-05 15:07:44,526 | INFO     | __main__                     | Cache hit for: Homayoun Shajarian - Yek Nafas Arezouye To
+2026-08-05 15:07:44,527 | INFO     | __main__                     | [FLOW] main track analyzed: audio=True acoustic=False
+2026-08-05 15:07:45,831 | INFO     | lastfm_client                | Last.fm found 0 similar tracks for Homayoun Shajarian - Yek Nafas Arezouye To
+2026-08-05 15:07:45,832 | INFO     | __main__                     | [FLOW] Last.fm similar for Yek Nafas Arezouye To: 0 found
+2026-08-05 15:07:45,833 | INFO     | deezer_helper                | [DEEZER] get_similar id=2474776021 limit=20
+2026-08-05 15:07:46,172 | INFO     | deezer_helper                | [DEEZER] get_track id=2474776021
+2026-08-05 15:07:46,831 | INFO     | deezer_helper                | [DEEZER] get_track id=2474776021 -> Homayoun Shajarian - Yek Nafas Arezouye To (genres=[])
+2026-08-05 15:07:46,832 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=3481961 limit=20
+2026-08-05 15:07:47,120 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=3481961 -> 9 results
+2026-08-05 15:07:47,121 | INFO     | deezer_helper                | [DEEZER] get_similar id=2474776021 -> 9 results (artist_top)
+2026-08-05 15:07:47,121 | INFO     | __main__                     | [FLOW] Deezer radio for Yek Nafas Arezouye To: found 9 tracks
+2026-08-05 15:07:47,122 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=3481961 limit=10
+2026-08-05 15:07:47,419 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=3481961 -> 9 results
+2026-08-05 15:07:47,420 | INFO     | __main__                     | Same artist tracks for Homayoun Shajarian (ID: 3481961): 9 found
+2026-08-05 15:07:47,421 | INFO     | __main__                     |   Added same artist: Homayoun Shajarian - Iran
+2026-08-05 15:07:47,422 | INFO     | __main__                     |   Added same artist: Homayoun Shajarian - Afsaneye Chashmhayat
+2026-08-05 15:07:47,422 | INFO     | __main__                     |   Added same artist: Homayoun Shajarian - Pulled Along (Prelude and Vocals)
+2026-08-05 15:07:47,423 | INFO     | __main__                     |   Added same artist: Homayoun Shajarian - Avaz on Rumi Sonnet, Isfahan (Avaz, Kalam Molavi)
+2026-08-05 15:07:47,424 | INFO     | __main__                     |   Added same artist: Homayoun Shajarian - Flaming
+2026-08-05 15:07:47,425 | INFO     | __main__                     |   Added same artist: Homayoun Shajarian - Norooz
+2026-08-05 15:07:47,426 | INFO     | __main__                     |   Added same artist: Homayoun Shajarian - Liberation: Tasnif on Khayam Quatrain (Tasnif, Kalam Khayyam)
+2026-08-05 15:07:47,427 | INFO     | __main__                     |   Added same artist: Homayoun Shajarian - Asemane Abri
+2026-08-05 15:07:47,428 | INFO     | __main__                     | Same artist tracks found: 8
+2026-08-05 15:07:47,430 | INFO     | __main__                     | Different artist tracks found: 0
+2026-08-05 15:07:47,431 | INFO     | __main__                     | Total similar tracks: 6
+2026-08-05 15:07:47,432 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 555221082
+2026-08-05 15:07:47,434 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 2970881151
+2026-08-05 15:07:47,436 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 555220982
+2026-08-05 15:07:47,444 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 555221082
+2026-08-05 15:07:47,446 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 555220982
+2026-08-05 15:07:47,448 | INFO     | __main__                     | Analyzing track: Homayoun Shajarian - Iran (fast=True)
+2026-08-05 15:07:47,449 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 2970881151
+2026-08-05 15:07:47,451 | INFO     | __main__                     | Analyzing track: Homayoun Shajarian - Pulled Along (Prelude and Vocals) (fast=True)
+2026-08-05 15:07:47,452 | INFO     | __main__                     | Analyzing track: Homayoun Shajarian - Afsaneye Chashmhayat (fast=True)
+2026-08-05 15:07:47,927 | INFO     | musicbrainz_client           | Found MusicBrainz ID: caced686-7975-4dba-85d3-de8b736b98d2 for Homayoun Shajarian - Iran
+2026-08-05 15:07:48,740 | INFO     | __main__                     | Analysis results for Homayoun Shajarian - Iran:
+2026-08-05 15:07:48,741 | INFO     | __main__                     |   Audio features: SKIPPED
+2026-08-05 15:07:48,742 | INFO     | __main__                     |   MusicBrainz: OK
+2026-08-05 15:07:48,743 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 15:07:48,744 | WARNING  | __main__                     | [FLOW] candidate analysis failed for Homayoun Shajarian - Iran: 'NoneType' object has no attribute 'get'
+2026-08-05 15:07:48,745 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 3209157901
+2026-08-05 15:07:48,750 | INFO     | musicbrainz_client           | No MusicBrainz recording found for Homayoun Shajarian - Pulled Along (Prelude and Vocals)
+2026-08-05 15:07:48,752 | INFO     | __main__                     | Analysis results for Homayoun Shajarian - Pulled Along (Prelude and Vocals):
+2026-08-05 15:07:48,753 | INFO     | __main__                     |   Audio features: SKIPPED
+2026-08-05 15:07:48,755 | INFO     | __main__                     |   MusicBrainz: NOT FOUND
+2026-08-05 15:07:48,755 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 15:07:48,756 | WARNING  | __main__                     | [FLOW] candidate analysis failed for Homayoun Shajarian - Pulled Along (Prelude and Vocals): 'NoneType' object has no attribute 'get'
+2026-08-05 15:07:48,757 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 1373680262
+2026-08-05 15:07:48,760 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 3209157901
+2026-08-05 15:07:48,764 | INFO     | __main__                     | Analyzing track: Homayoun Shajarian - Avaz on Rumi Sonnet, Isfahan (Avaz, Kalam Molavi) (fast=True)
+2026-08-05 15:07:48,765 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 1373680262
+2026-08-05 15:07:48,768 | INFO     | __main__                     | Analyzing track: Homayoun Shajarian - Flaming (fast=True)
+2026-08-05 15:07:49,696 | INFO     | musicbrainz_client           | No MusicBrainz recording found for Homayoun Shajarian - Avaz on Rumi Sonnet, Isfahan (Avaz, Kalam Molavi)
+2026-08-05 15:07:49,697 | INFO     | __main__                     | Analysis results for Homayoun Shajarian - Avaz on Rumi Sonnet, Isfahan (Avaz, Kalam Molavi):
+2026-08-05 15:07:49,698 | INFO     | __main__                     |   Audio features: SKIPPED
+2026-08-05 15:07:49,699 | INFO     | __main__                     |   MusicBrainz: NOT FOUND
+2026-08-05 15:07:49,700 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 15:07:49,701 | WARNING  | __main__                     | [FLOW] candidate analysis failed for Homayoun Shajarian - Avaz on Rumi Sonnet, Isfahan (Avaz, Kalam Molavi): 'NoneType' object has no attribute 'get'
+2026-08-05 15:07:49,702 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 555221042
+2026-08-05 15:07:49,708 | INFO     | feature_cache                | [CACHE] Cache MISS for track ID: 555221042
+2026-08-05 15:07:49,711 | INFO     | __main__                     | Analyzing track: Homayoun Shajarian - Norooz (fast=True)
+2026-08-05 15:07:49,889 | INFO     | musicbrainz_client           | Found MusicBrainz ID: 86eeae72-4757-4ca1-b13b-02d7d9d75ea2 for Homayoun Shajarian - Afsaneye Chashmhayat
+2026-08-05 15:07:49,932 | INFO     | musicbrainz_client           | No MusicBrainz recording found for Homayoun Shajarian - Flaming
+2026-08-05 15:07:49,935 | INFO     | __main__                     | Analysis results for Homayoun Shajarian - Flaming:
+2026-08-05 15:07:49,936 | INFO     | __main__                     |   Audio features: SKIPPED
+2026-08-05 15:07:49,937 | INFO     | __main__                     |   MusicBrainz: NOT FOUND
+2026-08-05 15:07:49,937 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 15:07:49,939 | WARNING  | __main__                     | [FLOW] candidate analysis failed for Homayoun Shajarian - Flaming: 'NoneType' object has no attribute 'get'
+2026-08-05 15:07:50,202 | INFO     | __main__                     | Analysis results for Homayoun Shajarian - Afsaneye Chashmhayat:
+2026-08-05 15:07:50,202 | INFO     | __main__                     |   Audio features: SKIPPED
+2026-08-05 15:07:50,203 | INFO     | __main__                     |   MusicBrainz: OK
+2026-08-05 15:07:50,204 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 15:07:50,205 | WARNING  | __main__                     | [FLOW] candidate analysis failed for Homayoun Shajarian - Afsaneye Chashmhayat: 'NoneType' object has no attribute 'get'
+2026-08-05 15:07:50,797 | INFO     | musicbrainz_client           | Found MusicBrainz ID: 774e2d3b-b093-4a08-9e62-9ffc69ea87c9 for Homayoun Shajarian - Norooz
+2026-08-05 15:07:51,103 | INFO     | __main__                     | Analysis results for Homayoun Shajarian - Norooz:
+2026-08-05 15:07:51,104 | INFO     | __main__                     |   Audio features: SKIPPED
+2026-08-05 15:07:51,104 | INFO     | __main__                     |   MusicBrainz: OK
+2026-08-05 15:07:51,105 | INFO     | __main__                     |   AcousticBrainz: NOT FOUND
+2026-08-05 15:07:51,106 | WARNING  | __main__                     | [FLOW] candidate analysis failed for Homayoun Shajarian - Norooz: 'NoneType' object has no attribute 'get'
+2026-08-05 15:07:51,107 | INFO     | __main__                     | [FLOW] candidate features ready: 0/6
+2026-08-05 15:07:51,108 | INFO     | __main__                     | Similarity calc: target_audio=YES, target_acoustic=NO, candidates=6
+2026-08-05 15:07:51,109 | INFO     | __main__                     | Similarity scores: [('Iran', 0.0), ('Afsaneye Chashmhayat', 0.0), ('Pulled Along (Prelude and Vocals)', 0.0)]
+2026-08-05 15:07:51,110 | INFO     | __main__                     | Building features - target_audio: YES, genres: []
+2026-08-05 15:07:52,206 | ERROR    | __main__                     | Failed to send preview for Iran: ExtBot.send_audio() got an unexpected keyword argument 'thumb'
+2026-08-05 15:07:52,518 | ERROR    | __main__                     | Failed to send preview for Afsaneye Chashmhayat: ExtBot.send_audio() got an unexpected keyword argument 'thumb'
+2026-08-05 15:07:52,830 | ERROR    | __main__                     | Failed to send preview for Pulled Along (Prelude and Vocals): ExtBot.send_audio() got an unexpected keyword argument 'thumb'
+2026-08-05 15:07:53,144 | ERROR    | __main__                     | Failed to send preview for Avaz on Rumi Sonnet, Isfahan (Avaz, Kalam Molavi): ExtBot.send_audio() got an unexpected keyword argument 'thumb'
+2026-08-05 15:07:53,456 | ERROR    | __main__                     | Failed to send preview for Flaming: ExtBot.send_audio() got an unexpected keyword argument 'thumb'
+2026-08-05 15:07:53,767 | ERROR    | __main__                     | Failed to send preview for Norooz: ExtBot.send_audio() got an unexpected keyword argument 'thumb'
+2026-08-05 15:08:07,556 | INFO     | deezer_helper                | [DEEZER] search query='Akharin Avaz Ali Zandevakili' limit=5
+2026-08-05 15:08:08,056 | INFO     | deezer_helper                | [DEEZER] search query='Akharin Avaz Ali Zandevakili' -> 1 results
+2026-08-05 15:08:09,360 | INFO     | __main__                     | Callback received: chat_id=240082844, data=pick_original
+2026-08-05 15:08:09,934 | INFO     | deezer_helper                | [DEEZER] search query='Akharin Avaz Ali Zandevakili' limit=10
+2026-08-05 15:08:10,225 | INFO     | deezer_helper                | [DEEZER] search query='Akharin Avaz Ali Zandevakili' -> 1 results
+2026-08-05 15:08:10,226 | INFO     | deezer_helper                | [DEEZER] get_track id=1004409502
+2026-08-05 15:08:11,332 | INFO     | deezer_helper                | [DEEZER] get_track id=1004409502 -> Ali Zandevakili - Akharin Avaz (genres=[])
+2026-08-05 15:08:11,333 | INFO     | __main__                     | Fetched full track: Ali Zandevakili - Akharin Avaz (genres: [], artist_id: 12304508)
+2026-08-05 15:08:11,333 | INFO     | deezer_helper                | [DEEZER] search query='Ali Zandevakili' limit=10
+2026-08-05 15:08:11,744 | INFO     | deezer_helper                | [DEEZER] search query='Ali Zandevakili' -> 10 results
+2026-08-05 15:08:11,746 | INFO     | __main__                     | Search 'Ali Zandevakili': found 10 tracks, best ID=12304508 (count=10)
+2026-08-05 15:08:12,008 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 1004409502
+2026-08-05 15:08:12,015 | INFO     | feature_cache                | [CACHE] ✓ Cache HIT for track ID: 1004409502
+2026-08-05 15:08:12,016 | INFO     | feature_cache                | [CACHE]   Audio: BPM=89.1, Energy=0.2304
+2026-08-05 15:08:12,019 | INFO     | __main__                     | Cache hit for: Ali Zandevakili - Akharin Avaz
+2026-08-05 15:08:12,020 | INFO     | __main__                     | [FLOW] main track analyzed: audio=True acoustic=False
+2026-08-05 15:08:12,857 | INFO     | lastfm_client                | Last.fm found 0 similar tracks for Ali Zandevakili - Akharin Avaz
+2026-08-05 15:08:12,858 | INFO     | __main__                     | [FLOW] Last.fm similar for Akharin Avaz: 0 found
+2026-08-05 15:08:12,858 | INFO     | deezer_helper                | [DEEZER] get_similar id=1004409502 limit=20
+2026-08-05 15:08:13,101 | INFO     | deezer_helper                | [DEEZER] get_track id=1004409502
+2026-08-05 15:08:14,105 | INFO     | deezer_helper                | [DEEZER] get_track id=1004409502 -> Ali Zandevakili - Akharin Avaz (genres=[])
+2026-08-05 15:08:14,107 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=12304508 limit=20
+2026-08-05 15:08:14,499 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=12304508 -> 1 results
+2026-08-05 15:08:14,500 | INFO     | deezer_helper                | [DEEZER] get_similar id=1004409502 -> 1 results (artist_top)
+2026-08-05 15:08:14,501 | INFO     | __main__                     | [FLOW] Deezer radio for Akharin Avaz: found 1 tracks
+2026-08-05 15:08:14,502 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=12304508 limit=10
+2026-08-05 15:08:14,767 | INFO     | deezer_helper                | [DEEZER] get_artist_top id=12304508 -> 1 results
+2026-08-05 15:08:14,768 | INFO     | __main__                     | Same artist tracks for Ali Zandevakili (ID: 12304508): 1 found
+2026-08-05 15:08:14,769 | INFO     | __main__                     |   Added same artist: Ali Zandevakili - Lalaei
+2026-08-05 15:08:14,770 | INFO     | __main__                     | Same artist tracks found: 1
+2026-08-05 15:08:14,771 | INFO     | __main__                     | Different artist tracks found: 0
+2026-08-05 15:08:14,772 | INFO     | __main__                     | Total similar tracks: 1
+2026-08-05 15:08:14,773 | INFO     | feature_cache                | [CACHE] Looking up features for track ID: 392574162
+2026-08-05 15:08:14,780 | INFO     | feature_cache                | [CACHE] ✓ Cache HIT for track ID: 392574162
+2026-08-05 15:08:14,781 | INFO     | feature_cache                | [CACHE]   Audio: BPM=161.5, Energy=0.2138
+2026-08-05 15:08:14,784 | INFO     | __main__                     | Cache hit for: Ali Zandevakili - Lalaei
+2026-08-05 15:08:14,786 | INFO     | __main__                     | [FLOW] candidate features ready: 1/1
+2026-08-05 15:08:14,787 | INFO     | __main__                     | Similarity calc: target_audio=YES, target_acoustic=NO, candidates=1
+2026-08-05 15:08:14,788 | INFO     | __main__                     | Similarity scores: [('Lalaei', 0.8389021081691496)]
+2026-08-05 15:08:14,789 | INFO     | __main__                     | Building features - target_audio: YES, genres: []
+2026-08-05 15:08:14,790 | INFO     | __main__                     | [GENRE] Deezer genres empty for Ali Zandevakili - Akharin Avaz
+2026-08-05 15:08:15,087 | INFO     | lastfm_client                | Last.fm artist tags for Ali Zandevakili: ['Persian', 'iran', 'Iranian']
+2026-08-05 15:08:15,679 | ERROR    | __main__                     | Failed to send preview for Lalaei: ExtBot.send_audio() got an unexpected keyword argument 'thumb'
+2026-08-05 15:12:30,932 | INFO     | bot                          | Loaded Persian genre database: 204 artists
+2026-08-05 15:12:30,934 | INFO     | bot                          | Merged 0 auto-detected artists into Persian genre DB (total=204)
+2026-08-05 15:12:51,548 | INFO     | bot                          | Loaded Persian genre database: 204 artists
+2026-08-05 15:12:51,548 | INFO     | bot                          | Merged 0 auto-detected artists into Persian genre DB (total=204)
+2026-08-05 15:13:08,758 | INFO     | bot                          | Loaded Persian genre database: 204 artists
+2026-08-05 15:13:08,762 | INFO     | bot                          | Merged 0 auto-detected artists into Persian genre DB (total=204)
+2026-08-05 15:13:08,851 | INFO     | user_prefs                   | [USER_DB] init_db: tables created; PATH=C:\Users\Saeid\AppData\Local\Temp\tmp6ckmc3p4\t.db
+2026-08-05 15:13:08,867 | INFO     | user_prefs                   | [USER_DB] set_user_language user=240082844 lang=en
+2026-08-05 15:13:08,867 | INFO     | bot                          | [STEP 1] User 888000: Received text: 🔍 Search...
+2026-08-05 15:13:08,875 | INFO     | bot                          | Callback received: chat_id=999, data=lang_fa
+2026-08-05 15:13:08,886 | INFO     | user_prefs                   | [USER_DB] set_user_language user=240082844 lang=fa
+2026-08-05 15:13:08,886 | WARNING  | bot                          | keyboard refresh failed: cannot access local variable 'msg' where it is not associated with a value
+2026-08-05 15:13:08,895 | INFO     | bot                          | [STEP 1] User 240082844: Received text: 🔍 Search...
+2026-08-05 15:13:08,896 | INFO     | bot                          | [STEP 1] User 240082844: Received text: 📋 لیست من...
+2026-08-05 15:13:08,905 | INFO     | user_prefs                   | [PLAYLIST_DB] get_user_playlist user=240082844 -> 0 rows
+2026-08-05 15:13:08,906 | INFO     | user_prefs                   | [PLAYLIST_DB] get_user_taste_profile user=240082844
+2026-08-05 15:13:08,920 | INFO     | user_prefs                   | [PLAYLIST_DB] taste_profile user=240082844 -> total=0 recognized=0 tracks=0 bpm=0.0 energy=0.00 valence=0.00 genres=[] langs=[]
+2026-08-05 15:13:08,921 | INFO     | bot                          | [STEP 1] User 240082844: Received text: ➕ Add to Playlist...
+2026-08-05 15:13:08,921 | INFO     | bot                          | [STEP 2] User 240082844: Entering playlist mode
+2026-08-05 15:13:22,686 | INFO     | bot                          | Loaded Persian genre database: 204 artists
+2026-08-05 15:13:22,687 | INFO     | bot                          | Merged 0 auto-detected artists into Persian genre DB (total=204)
+2026-08-05 15:13:22,688 | INFO     | deezer_helper                | [DEEZER] search query='Akharin Avaz Ali Zandevakili' limit=1
+2026-08-05 15:13:23,468 | INFO     | deezer_helper                | [DEEZER] search query='Akharin Avaz Ali Zandevakili' -> 1 results
+2026-08-05 15:13:23,468 | INFO     | deezer_helper                | [DEEZER] search query='Azam Ali' limit=3
+2026-08-05 15:13:23,744 | INFO     | deezer_helper                | [DEEZER] search query='Azam Ali' -> 3 results
+2026-08-05 15:13:23,744 | ERROR    | asyncio                      | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x0000025ADD5C1150>
+2026-08-05 15:13:23,745 | ERROR    | asyncio                      | Unclosed connector
+connections: ['deque([(<aiohttp.client_proto.ResponseHandler object at 0x0000025ADE983BD0>, 11986.453)])']
+connector: <aiohttp.connector.TCPConnector object at 0x0000025ADD7076D0>
+2026-08-05 15:17:33,309 | INFO     | bot                          | Loaded Persian genre database: 204 artists
+2026-08-05 15:17:33,309 | INFO     | bot                          | Merged 0 auto-detected artists into Persian genre DB (total=204)
+2026-08-05 15:17:33,362 | INFO     | user_prefs                   | [USER_DB] init_db: tables created; PATH=C:\Users\Saeid\AppData\Local\Temp\tmpyhi1wihw\t.db
+2026-08-05 15:17:33,370 | INFO     | user_prefs                   | [USER_DB] set_user_language user=240082844 lang=en
+2026-08-05 15:17:33,370 | INFO     | bot                          | [STEP 1] User 888000: Received text: 🔍 Search...
+2026-08-05 15:17:33,374 | INFO     | bot                          | Callback received: chat_id=999, data=lang_fa
+2026-08-05 15:17:33,381 | INFO     | user_prefs                   | [USER_DB] set_user_language user=240082844 lang=fa
+2026-08-05 15:17:33,381 | WARNING  | bot                          | keyboard refresh failed: cannot access local variable 'msg' where it is not associated with a value
+2026-08-05 15:17:33,386 | INFO     | bot                          | [STEP 1] User 240082844: Received text: 🔍 Search...
+2026-08-05 15:17:33,386 | INFO     | bot                          | [STEP 1] User 240082844: Received text: 📋 لیست من...
+2026-08-05 15:17:33,388 | INFO     | user_prefs                   | [PLAYLIST_DB] get_user_playlist user=240082844 -> 0 rows
+2026-08-05 15:17:33,388 | INFO     | user_prefs                   | [PLAYLIST_DB] get_user_taste_profile user=240082844
+2026-08-05 15:17:33,393 | INFO     | user_prefs                   | [PLAYLIST_DB] taste_profile user=240082844 -> total=0 recognized=0 tracks=0 bpm=0.0 energy=0.00 valence=0.00 genres=[] langs=[]
+2026-08-05 15:17:33,394 | INFO     | bot                          | [STEP 1] User 240082844: Received text: ➕ Add to Playlist...
+2026-08-05 15:17:33,394 | INFO     | bot                          | [STEP 2] User 240082844: Entering playlist mode
