@@ -69,18 +69,6 @@ MESSAGES = {
                "روی دکمه <b>@DeezerMusicBot</b> زیر هر نتیجه بزنید — نام آهنگ را جای‌گذاری کنید و دانلود کنید. 🎧\n\n"
                "👉 نام یک آهنگ را بفرستید یا روی یکی از دکمه‌های زیر بزنید! 🚀"),
     },
-    "download_howto": {
-        "en": ("⬇️ <b>How to play & download this song:</b>\n"
-               "1️⃣ Tap <b>@DeezerMusicBot</b> button below 👇\n"
-               "2️⃣ Paste this name in the chat:\n"
-               "<code>{title} - {artist}</code>\n"
-               "3️⃣ Send it — the bot replies with a link to <b>listen or download</b> the MP3! 🎧"),
-        "fa": ("⬇️ <b>راهنمای پخش و دانلود این آهنگ:</b>\n"
-               "1️⃣ روی دکمه <b>@DeezerMusicBot</b> زیر 👇 بزنید\n"
-               "2️⃣ این نام را در چت جای‌گذاری کنید:\n"
-               "<code>{title} - {artist}</code>\n"
-               "3️⃣ ارسال کنید — ربات با لینک <b>پخش یا دانلود</b> MP3 جواب می‌دهد! 🎧"),
-    },
     "help_text": {
         "en": ("🎵 <b>Music Suggest Bot</b> 🎶\n"
                "━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n"
@@ -117,6 +105,18 @@ MESSAGES = {
         "en": "🔍 <b>Type a song name to search</b> 🎵\ne.g. <i>Bohemian Rhapsody</i> or <i>Shape of You</i>\n\nI'll find it, show its details, and recommend similar tracks!",
         "fa": "🔍 <b>نام یک آهنگ را برای جستجو بفرستید</b> 🎵\nمثلاً <i>بوهمین راپسودی</i> یا <i>شِیپ آو یو</i>\n\nآن را پیدا می‌کنم، جزئیاتش را نشان می‌دهم و آهنگ‌های مشابه را پیشنهاد می‌کنم!",
     },
+    "copy_hint": {
+        "en": "⬆️ <i>Tap to copy</i>",
+        "fa": "⬆️ <i>برای کپی بزنید</i>",
+    },
+    "selected_track_header": {
+        "en": "━━━ <b>Selected Track</b> ━━━",
+        "fa": "━━━ <b>آهنگ انتخاب‌شده</b> ━━━",
+    },
+    "similar_tracks_header": {
+        "en": "🎯 <b>Similar Tracks</b>",
+        "fa": "🎯 <b>آهنگ‌های مشابه</b>",
+    },
     "download_cta": {
         "en": "🎧 <b>Want to listen or download this?</b>\nTap the <b>⬇️ @DeezerMusicBot</b> button below 🔽\n\nPaste the song name there and download it for free! 💾",
         "fa": "🎧 <b>می‌خواهید این را گوش دهید یا دانلود کنید؟</b>\nروی دکمه <b>⬇️ @DeezerMusicBot</b> زیر 🔽 بزنید\n\nنام آهنگ را آنجا جای‌گذاری کنید و رایگان دانلود کنید! 💾",
@@ -133,17 +133,13 @@ MESSAGES = {
     },
     "for_me_footer": {
         "en": ("━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
-               "⬇️ <b>To play or download any song:</b>\n"
-               "1️⃣ Tap the <b>@DeezerMusicBot</b> button below 👇\n"
-               "2️⃣ Paste the song name in that chat\n"
-               "3️⃣ Send it — get the download link! 🎧\n"
-               "<i>(Each song also has a 30-sec preview above 🎧)</i>"),
+               "⬇️ <b>Want to play or download?</b>\n"
+               "Tap the <b>@DeezerMusicBot</b> button below 👇\n"
+               "<i>(Each song has a 30-sec preview above 🎧)</i>"),
         "fa": ("━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
-               "⬇️ <b>برای پخش یا دانلود هر آهنگ:</b>\n"
-               "1️⃣ روی دکمه <b>@DeezerMusicBot</b> زیر 👇 بزنید\n"
-               "2️⃣ نام آهنگ را در آن چت جای‌گذاری کنید\n"
-               "3️⃣ ارسال کنید — لینک دانلود بگیرید! 🎧\n"
-               "<i>(هر آهنگ پیش‌نمایش ۳۰ ثانیه‌ای هم دارد 🎧)</i>"),
+               "⬇️ <b>می‌خواهید پخش یا دانلود کنید؟</b>\n"
+               "روی دکمه <b>@DeezerMusicBot</b> زیر 👇 بزنید\n"
+               "<i>(هر آهنگ پیش‌نمایش ۳۰ ثانیه‌ای دارد 🎧)</i>"),
     },
     "for_me_locked": {
         "en": ("⏳ <b>Almost there!</b>\n\n"

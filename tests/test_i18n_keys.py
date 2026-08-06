@@ -2,7 +2,8 @@ import sys
 sys.path.insert(0, r"D:\music-suggest-bot")
 from i18n import msg, label
 
-for k in ["start_hero", "help_text", "download_howto", "search_prompt", "for_me_footer", "for_me_locked", "download_cta"]:
+for k in ["start_hero", "help_text", "search_prompt", "for_me_footer", "for_me_locked", "download_cta",
+          "copy_hint", "selected_track_header", "similar_tracks_header"]:
     for lang in ["en", "fa"]:
         m = msg(k, lang)
         if not m:

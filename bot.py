@@ -1382,10 +1382,10 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # ═══════════════════════════════════════════════════
 
     lines = [
-        "━━━ <b>Selected Track</b> ━━━",
+        msg("selected_track_header", lang),
         "",
-        f"🎵 <b>{h(selected_track.title)}</b>",
-        f"👤 {h(selected_track.artist)}",
+        f"<b><code>{h(selected_track.title)} - {h(selected_track.artist)}</code></b>",
+        msg("copy_hint", lang),
         f"💿 {h(selected_track.album)}",
     ]
 
@@ -1447,15 +1447,11 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if selected_track.deezer_url:
         lines.append(f'🔊 <a href="{selected_track.deezer_url}">Listen on Deezer</a>')
 
-    # Prominent, bilingual download callout (Fix: people couldn't see how to download)
-    lines.append("")
-    lines.append(msg("download_howto", lang, title=selected_track.title, artist=selected_track.artist))
-
-    lines.extend(["", "━━━━━━━━━━━━━━━━━━━━━━━━━━━━", "🎯 <b>Similar Tracks</b>", "━━━━━━━━━━━━━━━━━━━━━━━━━━━━", ""])
+    lines.extend(["", "━━━━━━━━━━━━━━━━━━━━━━━━━━━━", msg("similar_tracks_header", lang), "━━━━━━━━━━━━━━━━━━━━━━━━━━━━", ""])
 
     for i, result in enumerate(results[:6], 1):
         score_text = format_similarity_score(result.similarity_score) if result.similarity_score > 0 else ""
-        lines.append(f"{i}. <code>{h(result.title)} - {h(result.artist)}</code>")
+        lines.append(f"{i}. <b><code>{h(result.title)} - {h(result.artist)}</code></b>")
         if score_text:
             lines.append(f"   {score_text}")
         lines.append("")
@@ -1501,7 +1497,7 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 if getattr(track, "album_art", None):
                     audio_kwargs["thumbnail"] = track.album_art
                 await context.bot.send_audio(**audio_kwargs)
-                vote_msg = msg("download_howto", lang, title=track.title, artist=track.artist).replace("⬇️", "🎧") + "\n\n⭐ Rate this track:"
+                vote_msg = f"<b><code>{h(track.title)} - {h(track.artist)}</code></b>\n{msg('copy_hint', lang)}\n\n⭐ Rate this track:"
                 await context.bot.send_message(
                     chat_id=chat_id,
                     text=vote_msg,
@@ -3069,7 +3065,7 @@ async def cmd_meforyou(update: Update, context: ContextTypes.DEFAULT_TYPE):
         text += "\n\n"
 
         for i, track in enumerate(recommended, 1):
-            text += f"{i}. <code>{h(track.title)} - {h(track.artist)}</code>\n"
+            text += f"{i}. <b><code>{h(track.title)} - {h(track.artist)}</code></b>\n"
             if track.deezer_url:
                 text += f"   <a href=\"{track.deezer_url}\">▶️ Deezer</a>\n"
             text += "\n"
