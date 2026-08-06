@@ -31,19 +31,95 @@ LABELS = {
     "main_menu":   {"en": "🔙 Main Menu",    "fa": "🏠 منوی اصلی"},
     "refresh":     {"en": "🔄 Fresh Batch", "fa": "🔄 دسته جدید"},
     "language":    {"en": "🌐 Language / زبان", "fa": "🌐 زبان"},
+    "search_again": {"en": "🔄 Search Again", "fa": "🔄 جستجوی دوباره"},
+    "how_to_play": {"en": "🎧 How to play & download", "fa": "🎧 راهنمای پخش و دانلود"},
 }
 
 # ── Longer text messages ──
 MESSAGES = {
     "start_hero": {
-        "en": ("🎵 <b>Music Suggest Bot</b>\n"
+        "en": ("🎵 <b>Music Suggest Bot</b> 🎶\n"
                "━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n"
-               "🎧 Find music you'll love!\n\n"
-               "Send a song name or tap a button below to begin."),
-        "fa": ("🎵 <b>ربات پیشنهاد موسیقی</b>\n"
+               "👋 <b>Hi! I'm your personal music finder.</b>\n"
+               "Send me any <b>song name</b> 🎤 or an <b>MP3/voice</b> 🎧 and I'll find it, "
+               "show you its details (BPM, genre, energy…) and recommend <b>similar tracks</b> you'll love! 💜\n\n"
+               "🕹️ <b>What the buttons do:</b>\n"
+               "🔍 <b>Search</b> — type a song name, I'll find it + similar tracks\n"
+               "➕ <b>Add to Playlist</b> — build your taste profile\n"
+               "📋 <b>My Playlist</b> — see what you've added\n"
+               "🎯 <b>For Me</b> — songs picked for YOUR taste (unlocks at 10 songs)\n"
+               "🎮 <b>Trivia</b> — guess the song, fun game!\n"
+               "🎤 <b>Lyrics</b> — get song lyrics\n\n"
+               "⬇️ <b>Want to listen or download?</b>\n"
+               "Tap <b>@DeezerMusicBot</b> button on any song result — paste the song name and download it. 🎧\n\n"
+               "👉 Type a song name or tap a button below to start! 🚀"),
+        "fa": ("🎵 <b>ربات پیشنهاد موسیقی</b> 🎶\n"
                "━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n"
-               "🎧 موسیقی دلخواه‌تان را پیدا کنید!\n\n"
-               "نام آهنگ را بفرستید یا از دکمه‌های پایین استفاده کنید."),
+               "👋 <b>سلام! من دستیار شخصی موسیقی شما هستم.</b>\n"
+               "هر <b>نام آهنگ</b> 🎤 یا <b>فایل صوتی/ویس</b> 🎧 بفرستید تا پیدایش کنم، "
+               "جزئیاتش (BPM، سبک، انرژی و…) را نشان دهم و <b>آهنگ‌های مشابه</b> را پیشنهاد دهم! 💜\n\n"
+               "🕹️ <b>دکمه‌ها چه کاری انجام می‌دهند:</b>\n"
+               "🔍 <b>جستجو</b> — نام آهنگ را بفرستید، پیدا می‌کنم + آهنگ‌های مشابه\n"
+               "➕ <b>افزودن به لیست</b> — بسازید سلیقه‌تان را بشناسد\n"
+               "📋 <b>لیست من</b> — ببینید چه افزوده‌اید\n"
+               "🎯 <b>برای من</b> — آهنگ‌های مخصوص سلیقه شما (با ۱۰ آهنگ فعال می‌شود)\n"
+               "🎮 <b>مسابقه</b> — حدس بزنید آهنگ چیست!\n"
+               "🎤 <b>متن آهنگ</b> — متن آهنگ‌ها را بگیرید\n\n"
+               "⬇️ <b>می‌خواهید گوش دهید یا دانلود کنید؟</b>\n"
+               "روی دکمه <b>@DeezerMusicBot</b> زیر هر نتیجه بزنید — نام آهنگ را جای‌گذاری کنید و دانلود کنید. 🎧\n\n"
+               "👉 نام یک آهنگ را بفرستید یا روی یکی از دکمه‌های زیر بزنید! 🚀"),
+    },
+    "download_howto": {
+        "en": ("⬇️ <b>How to play & download this song:</b>\n"
+               "1️⃣ Tap <b>@DeezerMusicBot</b> button below 👇\n"
+               "2️⃣ Paste this name in the chat:\n"
+               "<code>{title} - {artist}</code>\n"
+               "3️⃣ Send it — the bot replies with a link to <b>listen or download</b> the MP3! 🎧"),
+        "fa": ("⬇️ <b>راهنمای پخش و دانلود این آهنگ:</b>\n"
+               "1️⃣ روی دکمه <b>@DeezerMusicBot</b> زیر 👇 بزنید\n"
+               "2️⃣ این نام را در چت جای‌گذاری کنید:\n"
+               "<code>{title} - {artist}</code>\n"
+               "3️⃣ ارسال کنید — ربات با لینک <b>پخش یا دانلود</b> MP3 جواب می‌دهد! 🎧"),
+    },
+    "help_text": {
+        "en": ("🎵 <b>Music Suggest Bot</b> 🎶\n"
+               "━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n"
+               "🤖 <b>What I do:</b> find songs by name, recognize MP3/voice files, "
+               "show BPM/genre/energy, recommend similar tracks, and learn your taste to pick songs for you.\n\n"
+               "🕹️ <b>Menu buttons:</b>\n"
+               "🔍 <b>Search</b> — type a song name, pick the right one, get similar tracks\n"
+               "➕ <b>Add to Playlist</b> — add songs (type names or send audio); tap <b>✅ Done</b> when finished\n"
+               "📋 <b>My Playlist</b> — view your songs + taste stats\n"
+               "🎯 <b>For Me</b> — 5 fresh songs matched to your taste (needs 10+ songs)\n"
+               "🎮 <b>Trivia</b> — guess the song from its preview\n"
+               "🎤 <b>Lyrics</b> — send <i>song artist</i> to get lyrics\n\n"
+               "🎧 <b>How to download a song:</b>\n"
+               "Tap the <b>⬇️ @DeezerMusicBot</b> button on any result, paste the song name there, and download. Simple! 😉\n\n"
+               "📌 Tip: tap any <code>song - artist</code> text to copy it.\n"
+               "🌐 Switch language anytime with <b>/language</b>."),
+        "fa": ("🎵 <b>ربات پیشنهاد موسیقی</b> 🎶\n"
+               "━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n"
+               "🤖 <b>چه کاری انجام می‌دهم:</b> پیدا کردن آهنگ با نام، تشخیص فایل صوتی/ویس، "
+               "نمایش BPM/سبک/انرژی، پیشنهاد آهنگ‌های مشابه، و شناخت سلیقه شما برای انتخاب آهنگ.\n\n"
+               "🕹️ <b>دکمه‌های منو:</b>\n"
+               "🔍 <b>جستجو</b> — نام آهنگ را بفرستید، مورد درست را انتخاب کنید، آهنگ‌های مشابه بگیرید\n"
+               "➕ <b>افزودن به لیست</b> — آهنگ اضافه کنید (نام بفرستید یا فایل صوتی)؛ در پایان <b>✅ تمام</b> را بزنید\n"
+               "📋 <b>لیست من</b> — آهنگ‌ها و آمار سلیقه‌تان\n"
+               "🎯 <b>برای من</b> — ۵ آهنگ تازه متناسب با سلیقه شما (به ۱۰+ آهنگ نیاز دارد)\n"
+               "🎮 <b>مسابقه</b> — آهنگ را از پیش‌نمایش حدس بزنید\n"
+               "🎤 <b>متن آهنگ</b> — <i>نام آهنگ و خواننده</i> را بفرستید تا متن بگیرید\n\n"
+               "🎧 <b>چطور آهنگ را دانلود کنیم:</b>\n"
+               "روی دکمه <b>⬇️ @DeezerMusicBot</b> زیر هر نتیجه بزنید، نام آهنگ را آنجا جای‌گذاری کنید و دانلود کنید. ساده! 😉\n\n"
+               "📌 نکته: روی هر متن <code>آهنگ - خواننده</code> بزنید تا کپی شود.\n"
+               "🌐 هر وقت خواستید با <b>/language</b> زبان را عوض کنید."),
+    },
+    "search_prompt": {
+        "en": "🔍 <b>Type a song name to search</b> 🎵\ne.g. <i>Bohemian Rhapsody</i> or <i>Shape of You</i>\n\nI'll find it, show its details, and recommend similar tracks!",
+        "fa": "🔍 <b>نام یک آهنگ را برای جستجو بفرستید</b> 🎵\nمثلاً <i>بوهمین راپسودی</i> یا <i>شِیپ آو یو</i>\n\nآن را پیدا می‌کنم، جزئیاتش را نشان می‌دهم و آهنگ‌های مشابه را پیشنهاد می‌کنم!",
+    },
+    "download_cta": {
+        "en": "🎧 <b>Want to listen or download this?</b>\nTap the <b>⬇️ @DeezerMusicBot</b> button below 🔽\n\nPaste the song name there and download it for free! 💾",
+        "fa": "🎧 <b>می‌خواهید این را گوش دهید یا دانلود کنید؟</b>\nروی دکمه <b>⬇️ @DeezerMusicBot</b> زیر 🔽 بزنید\n\nنام آهنگ را آنجا جای‌گذاری کنید و رایگان دانلود کنید! 💾",
     },
     "for_me_header": {
         "en": ("🎯 <b>Songs Based on Your Taste</b>\n\n"
@@ -57,11 +133,17 @@ MESSAGES = {
     },
     "for_me_footer": {
         "en": ("━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
-               "📝 <b>Paste the name in @DeezerMusicBot</b> to listen or download it.\n"
-               "<i>Each has a 30-sec preview below 🎧</i>"),
+               "⬇️ <b>To play or download any song:</b>\n"
+               "1️⃣ Tap the <b>@DeezerMusicBot</b> button below 👇\n"
+               "2️⃣ Paste the song name in that chat\n"
+               "3️⃣ Send it — get the download link! 🎧\n"
+               "<i>(Each song also has a 30-sec preview above 🎧)</i>"),
         "fa": ("━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
-               "📝 <b>نام را در @DeezerMusicBot جای‌گذاری کنید</b> تا پخش یا دانلود شود.\n"
-               "<i>هرکدام پیش‌نمایش ۳۰ ثانیه‌ای دارند 🎧</i>"),
+               "⬇️ <b>برای پخش یا دانلود هر آهنگ:</b>\n"
+               "1️⃣ روی دکمه <b>@DeezerMusicBot</b> زیر 👇 بزنید\n"
+               "2️⃣ نام آهنگ را در آن چت جای‌گذاری کنید\n"
+               "3️⃣ ارسال کنید — لینک دانلود بگیرید! 🎧\n"
+               "<i>(هر آهنگ پیش‌نمایش ۳۰ ثانیه‌ای هم دارد 🎧)</i>"),
     },
     "for_me_locked": {
         "en": ("⏳ <b>Almost there!</b>\n\n"

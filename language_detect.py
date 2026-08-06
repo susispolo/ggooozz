@@ -3,14 +3,19 @@ Language detection for playlist songs.
 
 Strategy (in priority order):
   1. Character-script detection (native scripts: Persian, Arabic, Cyrillic,
-     Japanese, Korean, Thai, Chinese, etc.)
+     Japanese, Korean, Thai, Chinese, etc.) — authoritative.
   2. Curated artist -> language map (catches transliterated names, e.g.
      "Fairuz" -> Arabic, K-pop/J-pop groups in Latin script, Persian artists
      written in English, etc.). Artist map OVERRIDES langdetect because
      langdetect is unreliable on short song titles (e.g. it guesses "tr"/"sw"
      for Fairuz's Arabic songs).
-  3. langdetect fallback for titles in Latin script whose artist is unknown.
-     Used only to fill in gaps (Spanish/Italian/French/German titles etc.)
+  3. English detection: any ASCII/Latin-script title with no foreign
+     diacritics and no foreign signal is treated as English — this kills the
+     "random Swedish/German/Czech" problem where langdetect mis-guessed
+     ordinary English song titles on short strings.
+  4. langdetect is ONLY used when the title carries a clear foreign signal
+     (accented letters like é/ñ/ü/å), and only for a small set of very
+     distinctive languages. Unknown stays "unknown" ('') — never a fake guess.
 
 Language codes: ISO 639-1 (en, fa, ar, ko, ja, ru, tr, es, fr, de, it, ...)
 """
@@ -283,13 +288,36 @@ def _lookup_artist_map(artist: str) -> str:
     return ""
 
 
-# Languages langdetect is trusted for on short title strings.
-# It's notoriously wrong on Persian/Arabic/Turkish/Slavic (guesses like
-# "sl"/"tr"/"cy"), so we only accept European-language guesses where it has
-# real signal, and we also require the artist name to be UNKNOWN (not in map)
-# and the text to be multi-word.
+# Languages langdetect is trusted for. We only call langdetect when the text
+# already carries a clear non-English signal (accented letters / diacritics),
+# so we keep only a small set of languages that are both (a) reasonably
+# distinctive and (b) common enough to matter. German/Spanish/French/Italian
+# all keep their accented-title behavior; everything else that used to be
+# guessed (sv/no/da/fi/pl/cs/hu/ro...) falls back to English/unknown.
 TRUSTED_LANGDETECT_LANGS = {
-    "es", "fr", "de", "it", "pt", "nl", "sv", "no", "da", "fi", "pl", "cs", "hu", "ro", "id", "ms", "vi",
+    "es", "fr", "de", "it", "pt", "nl",
+}
+
+# Latin-script accented letters — the reliable hint that a title is NOT
+# plain English. These trigger the langdetect path. (Englisch titles almost
+# never use them; Spanish/German/French/Portuguese titles almost always do.)
+_LATIN_DIACRITICS = set("áàâäãåæçéèêëíìîïñóòôöõøúùûüýÿßþð")
+
+# Strongly-foreign diacritics that overwhelmingly point to one language,
+# checked before generic langdetect (no ambiguity).
+_STRONG_DIACRITIC_MAP = {
+    "ñ": "es",  # Spanish-only letter
+    "ã": "pt",  # Portuguese-only nasal vowel
+    "õ": "pt",  # Portuguese-only nasal vowel
+    "ą": "pl", "ę": "pl", "ś": "pl", "ł": "pl", "ż": "pl", "ź": "pl", "ć": "pl",
+    "č": "cs", "ř": "cs", "š": "cs", "ž": "cs", "ě": "cs", "ů": "cs",
+    "ő": "hu", "ű": "hu",
+    "å": "sv", "ä": "sv", "ö": "sv",
+    "ø": "da", "æ": "da",
+    "þ": "is",
+    "ñ": "es",
+    "ç": "fr", "œ": "fr", "à": "fr",
+    "ß": "de", "ü": "de", "ä": "de", "ö": "de",
 }
 
 
@@ -339,29 +367,104 @@ def _has_english_hint(text: str) -> bool:
     return bool(words & _ENGLISH_HINTS)
 
 
-def _langdetect_fallback(text: str) -> str:
-    """Use langdetect as a conservative last resort.
+def _has_diacritics(text: str) -> bool:
+    """True if the text contains any Latin accented letters (é, ñ, ü, å...)."""
+    return any(ch in _LATIN_DIACRITICS for ch in text)
 
-    Only accepts a small whitelist of languages (European/Latin-script ones)
-    where it's reasonably accurate. Never trusts its Slavic/ME/Arabic guesses
-    ("sl", "tr", "cy", "az", etc.) — those are almost always wrong on song
-    titles.
+
+def _strong_diacritic_lang(text: str) -> str:
+    """Return the language clearly implied by a distinctive diacritic, or ''."""
+    if not text:
+        return ""
+    for ch in text:
+        if ch in _STRONG_DIACRITIC_MAP:
+            return _STRONG_DIACRITIC_MAP[ch]
+    return ""
+
+
+def _langdetect_fallback(text: str) -> str:
+    """Use langdetect ONLY when the text already shows a clear foreign signal.
+
+    Called with a title that contains Latin diacritics (so we know it's not
+    plain English). Only a small whitelist of distinctive languages is
+    accepted; anything ambiguous returns '' (unknown) instead of a guess.
     """
+    if not _has_diacritics(text) or len(text) < 4:
+        return ""
     try:
-        from langdetect import detect, DetectorFactory, LangDetectException
+        from langdetect import detect, DetectorFactory
         DetectorFactory.seed = 0
-        if not text or len(text) < 4:
-            return ""
         lang = detect(text)
         if lang in TRUSTED_LANGDETECT_LANGS:
             return lang
-        return ""
     except Exception:
-        return ""
+        pass
+    return ""
+
+
+def _is_plain_english(text: str) -> bool:
+    """A conservative English check for Latin-script titles.
+
+    A title is "plain English" if it contains no foreign diacritics and no
+    clearly-foreign character clusters (ß/ñ/æ etc. — already covered above)
+    and doesn't consist of a single bare proper noun with no English signal.
+    """
+    if not text:
+        return False
+    # Not ASCII/Latin → caller handles script detection; bail.
+    if not re.fullmatch(r"[A-Za-z0-9\s'’\-&.,!?()\[\]/%]+", text):
+        return False
+    return True
+
+
+def detect_language(title: str, artist: str, original_text: str = "") -> str:
+    """
+    Detect the language of a song.
+    Returns ISO 639-1 code (e.g. 'en', 'fa', 'ar', 'ko') or '' (unknown).
+
+    Priority: script -> curated artist map -> English -> langdetect (only on
+    clear foreign diacritic signal). Unknown stays '' — never a fake guess.
+    """
+    # 1. Script detection on original text (native scripts) — authoritative.
+    for src in (original_text, title, artist):
+        if src:
+            script_lang = detect_script(src)
+            if script_lang:
+                return script_lang
+
+    # 2. Curated artist map (overrides langdetect for known transliterated artists)
+    map_lang = _lookup_artist_map(artist)
+    if map_lang:
+        return map_lang
+
+    # 2a. Artist map also searched in the TITLE (covers "Fayrouz. Cover by ..."
+    #     style entries where the artist name lives in the title field).
+    if title:
+        map_lang = _lookup_artist_map(title)
+        if map_lang:
+            return map_lang
+
+    # 3. English: no diacritics + no foreign signal -> English. This kills the
+    #    random "German/Swedish/Czech" mis-guesses on ordinary English titles.
+    if title and _is_plain_english(title):
+        return "en"
+
+    # 4. langdetect — ONLY when the title carries a foreign diacritic signal.
+    if title and _has_diacritics(title):
+        # Strong single-language diacritics first (ñ→es, ß/ü→de, ...).
+        strong = _strong_diacritic_lang(title)
+        if strong:
+            return strong
+        guess = _langdetect_fallback(f"{title} {artist}".strip())
+        if guess:
+            return guess
+
+    return ""
 
 
 # Language display names + flag emoji
 LANGUAGE_DISPLAY = {
+    "": ("Unknown", "❔"),
     "en": ("English", "🇬🇧"),
     "fa": ("Persian", "🇮🇷"),
     "ar": ("Arabic", "🇱🇧"),
@@ -401,45 +504,7 @@ LANGUAGE_DISPLAY = {
 }
 
 
-def detect_language(title: str, artist: str, original_text: str = "") -> str:
-    """
-    Detect the language of a song.
-    Returns ISO 639-1 code (e.g. 'en', 'fa', 'ar', 'ko').
-
-    Priority: script -> curated artist map -> langdetect fallback.
-    """
-    # 1. Script detection on original text (native scripts)
-    for src in (original_text, title, artist):
-        if src:
-            script_lang = detect_script(src)
-            if script_lang:
-                return script_lang
-
-    # 2. Curated artist map (overrides langdetect for known transliterated artists)
-    map_lang = _lookup_artist_map(artist)
-    if map_lang:
-        return map_lang
-
-    # 2a. Artist map also searched in the TITLE (covers "Fayrouz. Cover by ..."
-    #     style entries where the artist name lives in the title field).
-    if title:
-        map_lang = _lookup_artist_map(title)
-        if map_lang:
-            return map_lang
-
-    # 2b. English-word hint (before langdetect: short English titles like
-    #     "Freight Train" must not be tagged German/French by the whitelist).
-    if title and _has_english_hint(title):
-        return "en"
-
-    # 3. langdetect fallback on the title (Latin-script unknown artists)
-    if title:
-        return _langdetect_fallback(f"{title} {artist}".strip()) or "en"
-
-    return "en"
-
-
 def language_label(code: str) -> str:
     """Return (name, flag) for a language code."""
-    name, flag = LANGUAGE_DISPLAY.get(code, (code, "🌐"))
+    name, flag = LANGUAGE_DISPLAY.get(code, ("Unknown", "❔"))
     return name, flag

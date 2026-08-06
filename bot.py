@@ -96,6 +96,13 @@ mb = MusicBrainzClient()
 lfm = LastfmClient(LASTFM_API_KEY) if LASTFM_API_KEY else None
 PM = ParseMode.HTML
 
+# Global cap on concurrent heavy track-analysis work across ALL users.
+# Each request still runs its own candidates in parallel, but this bounds
+# the total librosa/API load so one burst of users can't saturate the
+# event loop or the upstream APIs. 4 was chosen as a sane ceiling for a
+# single machine; raise it if you have more cores / a faster host.
+_HEAVY_ANALYSIS_LIMIT = asyncio.Semaphore(4)
+
 # Load Persian genre database
 PERSIAN_GENRES = {}
 try:
@@ -345,14 +352,17 @@ def _playlist_mode_keyboard(count: int, lang: str = "en") -> ReplyKeyboardMarkup
     )
 
 
-def _similarity_keyboard(result: SimilarityResult) -> InlineKeyboardMarkup:
-    buttons = []
-    buttons.append([InlineKeyboardButton("⬇️ Open DeezerMusicBot", url=make_download_link("DeezerMusicBot"))])
-    buttons.append([InlineKeyboardButton("🔄 Search Again", callback_data="search_again")])
+def _similarity_keyboard(lang: str = "en") -> InlineKeyboardMarkup:
+    buttons = [
+        [InlineKeyboardButton(
+            "⬇️ @DeezerMusicBot",
+            url=make_download_link("DeezerMusicBot"))],
+        [InlineKeyboardButton(label("search_again", lang), callback_data="search_again")],
+    ]
     return InlineKeyboardMarkup(buttons)
 
 
-def _vote_keyboard(track_id: int, title: str = "", artist: str = "") -> InlineKeyboardMarkup:
+def _vote_keyboard(track_id: int, title: str = "", artist: str = "", lang: str = "en") -> InlineKeyboardMarkup:
     buttons = [
         [
             InlineKeyboardButton("⭐1", callback_data=f"vote_{track_id}_1"),
@@ -360,16 +370,18 @@ def _vote_keyboard(track_id: int, title: str = "", artist: str = "") -> InlineKe
             InlineKeyboardButton("⭐3", callback_data=f"vote_{track_id}_3"),
             InlineKeyboardButton("⭐4", callback_data=f"vote_{track_id}_4"),
             InlineKeyboardButton("⭐5", callback_data=f"vote_{track_id}_5"),
-        ]
+        ],
+        # Prominent, always-visible download button in each language.
+        [InlineKeyboardButton(
+            "⬇️ @DeezerMusicBot", url=make_download_link("DeezerMusicBot"))],
     ]
-    buttons.append([InlineKeyboardButton("⬇️ Open DeezerMusicBot", url=make_download_link("DeezerMusicBot"))])
     return InlineKeyboardMarkup(buttons)
 
 
 def _meforyou_keyboard(lang: str = "en") -> InlineKeyboardMarkup:
     """Keyboard under the For Me results: open DeezerMusicBot + fresh batch."""
     buttons = [
-        [InlineKeyboardButton("⬇️ Open DeezerMusicBot", url=make_download_link("DeezerMusicBot"))],
+        [InlineKeyboardButton("⬇️ @DeezerMusicBot", url=make_download_link("DeezerMusicBot"))],
         [InlineKeyboardButton(label("refresh", lang), callback_data="meforyou_refresh")],
     ]
     return InlineKeyboardMarkup(buttons)
@@ -511,7 +523,9 @@ async def find_similar_tracks(
     semaphore = asyncio.Semaphore(3)
 
     async def analyze_with_limit(track):
-        async with semaphore:
+        # Per-request semaphore + bot-wide heavy-work limiter: keeps each
+        # request's own candidates parallel while capping total load.
+        async with semaphore, _HEAVY_ANALYSIS_LIMIT:
             return await analyze_track(track)
 
     # Analyze candidates
@@ -599,7 +613,7 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     if matches("search"):
         _playlist_mode[user_id] = False
-        await update.message.reply_text("🔍 Type a song name to search:")
+        await update.message.reply_text(msg("search_prompt", lang), parse_mode=PM)
         return
 
     if matches("add_playlist"):
@@ -674,7 +688,7 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     # Handle "Search Again" response
     if query.lower() in ["search again", "search", "again"]:
-        await update.message.reply_text("🔍 Type a song name to search:")
+        await update.message.reply_text(msg("search_prompt", lang), parse_mode=PM)
         return
 
     # Lyrics flow: user pressed 🎤 Lyrics, now they send a song name
@@ -888,6 +902,11 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     data = query.data
     log.info("Callback received: chat_id=%s, data=%s", chat_id, data)
 
+    # Load user language for bilingual messages/buttons
+    uid = update.effective_user.id
+    await _ensure_lang(uid)
+    lang = get_lang(uid)
+
     # Answer immediately to prevent timeout
     await query.answer()
 
@@ -928,7 +947,7 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return
 
     if data == "search_again":
-        await query.edit_message_text("🔍 Type a song name to search:")
+        await query.edit_message_text(msg("search_prompt", lang), parse_mode=PM)
         _user_state.pop(chat_id, None)
         return
 
@@ -1291,7 +1310,10 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     sem = asyncio.Semaphore(3)
 
     async def _analyze_candidate(track):
-        async with sem:
+        # Global cap + per-request parallelism: each analysis also holds a
+        # slot on the bot-wide heavy-work limiter so concurrent users don't
+        # all hit librosa/API work at the same time.
+        async with sem, _HEAVY_ANALYSIS_LIMIT:
             try:
                 feats = await analyze_track(track, fast_mode=True)
                 # If fast-mode produced no usable audio features, try to get the
@@ -1419,8 +1441,9 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if selected_track.deezer_url:
         lines.append(f'🔊 <a href="{selected_track.deezer_url}">Listen on Deezer</a>')
 
-    lines.append(f'📝 <b>Tap to copy — paste in @DeezerMusicBot:</b>')
-    lines.append(f'<code>{h(selected_track.title)} - {h(selected_track.artist)}</code>')
+    # Prominent, bilingual download callout (Fix: people couldn't see how to download)
+    lines.append("")
+    lines.append(msg("download_howto", lang, title=selected_track.title, artist=selected_track.artist))
 
     lines.extend(["", "━━━━━━━━━━━━━━━━━━━━━━━━━━━━", "🎯 <b>Similar Tracks</b>", "━━━━━━━━━━━━━━━━━━━━━━━━━━━━", ""])
 
@@ -1446,8 +1469,13 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if current:
         parts.append(current)
 
-    # SEND COMPLETE MESSAGE (with features)
-    await query.message.reply_text(msg, parse_mode=PM, disable_web_page_preview=True)
+    # SEND COMPLETE MESSAGE (with features) + download button
+    await query.message.reply_text(
+        msg,
+        parse_mode=PM,
+        disable_web_page_preview=True,
+        reply_markup=_similarity_keyboard(lang),
+    )
 
     # Send previews
     _user_state.set(chat_id, {"last_track_title": selected_track.title, "last_track_artist": selected_track.artist})
@@ -1467,11 +1495,11 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 if getattr(track, "album_art", None):
                     audio_kwargs["thumbnail"] = track.album_art
                 await context.bot.send_audio(**audio_kwargs)
-                vote_msg = f"🎧 <b>{h(track.title)}</b> - {h(track.artist)}\n\n📝 <b>Tap to copy — paste in @DeezerMusicBot:</b>\n<code>{h(track.title)} - {h(track.artist)}</code>\n\n⭐ Rate this track:"
+                vote_msg = msg("download_howto", lang, title=track.title, artist=track.artist).replace("⬇️", "🎧") + "\n\n⭐ Rate this track:"
                 await context.bot.send_message(
                     chat_id=chat_id,
                     text=vote_msg,
-                    reply_markup=_vote_keyboard(track.id, track.title, track.artist),
+                    reply_markup=_vote_keyboard(track.id, track.title, track.artist, lang),
                     parse_mode=PM,
                 )
             except Exception as e:
@@ -2217,8 +2245,10 @@ async def cmd_share(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 valence = ac.valence
                 danceability = ac.danceability
 
-        # Generate card image
-        card_bytes = generate_music_card(
+    # Generate card image (sync Pillow rendering -> thread pool so it never
+    # blocks the event loop for other users)
+        card_bytes = await asyncio.to_thread(
+            generate_music_card,
             title=track.title,
             artist=track.artist,
             bpm=bpm,
@@ -2311,8 +2341,10 @@ async def cmd_dna(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 valence = ac.valence
                 danceability = ac.danceability
 
-        # Generate DNA image
-        dna_bytes = generate_musical_dna(
+        # Generate DNA image (sync Pillow rendering -> thread pool so it never
+        # blocks the event loop for other users)
+        dna_bytes = await asyncio.to_thread(
+            generate_musical_dna,
             title=track.title,
             artist=track.artist,
             bpm=bpm,
@@ -2337,47 +2369,10 @@ async def cmd_dna(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def cmd_help(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Show all available commands."""
-    msg = """
-🎵 <b>Music Suggest Bot v3</b>
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-<b>🔍 Discovery</b>
-  /search <i>Song Name</i> - Search for songs
-  /random [genre] - Random discovery
-  /chart <i>Song Artist</i> - Similar tracks
-
-<b>🎯 Recommendations</b>
-  /mood - happy, chill, workout, sad, party
-  /activity - running, studying, gaming
-  /playlist - Generate playlist
-
-<b>📊 Analysis</b>
-  /compare <i>Song1 vs Song2</i> - Compare songs
-  /dna <i>Song Artist</i> - Musical DNA
-  /share <i>Song Artist</i> - Share card
-
-<b>👤 Personal</b>
-  /profile - Your taste profile
-  /recommend - Get recommendations
-  /history - Your history
-
-<b>🎮 Fun</b>
-  /trivia - Play trivia game
-  /top - Global leaderboard
-
-<b>🎤 Lyrics</b>
-  /lyrics <i>Song Artist</i> - Get lyrics
-
-<b>📋 My Playlist</b>
-  /add <i>Song Artist</i> - Add to playlist
-  /done - Finish adding songs
-  /myplaylist - View playlist
-  /clearplaylist - Clear playlist
-  /meforyou - Get songs matching your taste
-  /playliststats - See your taste stats
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-"""
-    await update.message.reply_text(msg, parse_mode=PM)
+    user_id = update.effective_user.id
+    await _ensure_lang(user_id)
+    lang = get_lang(user_id)
+    await update.message.reply_text(msg("help_text", lang), parse_mode=PM)
 
 
 # ═══════════════════════════════════════════════════
