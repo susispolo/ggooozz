@@ -469,6 +469,12 @@ async def analyze_track(track: TrackInfo, fast_mode: bool = False) -> dict:
     mb_data = results[1] if not isinstance(results[1], Exception) else {}
     lastfm_data = results[2] if not isinstance(results[2], Exception) else {}
 
+    # _null_coro() returns None (fast_mode skips audio/lastfm) — normalize to {}
+    if lastfm_data is None:
+        lastfm_data = {}
+    if mb_data is None:
+        mb_data = {}
+
     log.info("Analysis results for %s - %s:", track.artist, track.title)
     log.info("  Audio features: %s", "OK" if audio_features else "SKIPPED" if fast_mode else "FAILED")
     log.info("  MusicBrainz: %s", "OK" if mb_data.get("musicbrainz_id") else "NOT FOUND")
@@ -1454,12 +1460,12 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
             lines.append(f"   {score_text}")
         lines.append("")
 
-    msg = "\n".join(lines)
+    msg_text = "\n".join(lines)
 
     # Split message if too long
     parts = []
     current = ""
-    for line in msg.split("\n"):
+    for line in msg_text.split("\n"):
         if len(current) + len(line) + 1 > 4000:
             if current:
                 parts.append(current)
@@ -1471,7 +1477,7 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     # SEND COMPLETE MESSAGE (with features) + download button
     await query.message.reply_text(
-        msg,
+        msg_text,
         parse_mode=PM,
         disable_web_page_preview=True,
         reply_markup=_similarity_keyboard(lang),
