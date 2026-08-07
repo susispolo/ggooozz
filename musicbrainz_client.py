@@ -168,55 +168,60 @@ class MusicBrainzClient:
         # High-level features
         hl = highlevel.get("highlevel", {})
 
+        # Helper to safely extract value
+        def safe_value(data, key, default=0.0):
+            """Safely extract value from AcousticBrainz response."""
+            if key not in data:
+                return default
+            val = data[key]
+            if isinstance(val, dict):
+                return val.get("value", default)
+            elif isinstance(val, (int, float)):
+                return float(val)
+            elif isinstance(val, str):
+                try:
+                    return float(val)
+                except ValueError:
+                    return default
+            return default
+
         # Danceability
-        if "danceability" in hl:
-            features.danceability = hl["danceability"].get("value", 0.0)
+        features.danceability = safe_value(hl, "danceability")
 
         # Energy
-        if "energy" in hl:
-            features.energy = hl["energy"].get("value", 0.0)
+        features.energy = safe_value(hl, "energy")
 
         # Valence (happiness)
-        if "valence" in hl:
-            features.valence = hl["valence"].get("value", 0.0)
+        features.valence = safe_value(hl, "valence")
 
         # Acousticness
-        if "acoustic" in hl:
-            features.acousticness = hl["acoustic"].get("value", 0.0)
+        features.acousticness = safe_value(hl, "acoustic")
 
         # Instrumentalness
-        if "instrumental" in hl:
-            features.instrumentalness = hl["instrumental"].get("value", 0.0)
+        features.instrumentalness = safe_value(hl, "instrumental")
 
         # Speechiness
-        if "speechiness" in hl:
-            features.speechiness = hl["speechiness"].get("value", 0.0)
+        features.speechiness = safe_value(hl, "speechiness")
 
         # Mood tags
-        if "mood_happy" in hl:
-            features.mood_happy = hl["mood_happy"].get("value", 0.0)
-        if "mood_sad" in hl:
-            features.mood_sad = hl["mood_sad"].get("value", 0.0)
-        if "mood_aggressive" in hl:
-            features.mood_aggressive = hl["mood_aggressive"].get("value", 0.0)
-        if "mood_relaxed" in hl:
-            features.mood_relaxed = hl["mood_relaxed"].get("value", 0.0)
-        if "mood_party" in hl:
-            features.mood_party = hl["mood_party"].get("value", 0.0)
+        features.mood_happy = safe_value(hl, "mood_happy")
+        features.mood_sad = safe_value(hl, "mood_sad")
+        features.mood_aggressive = safe_value(hl, "mood_aggressive")
+        features.mood_relaxed = safe_value(hl, "mood_relaxed")
+        features.mood_party = safe_value(hl, "mood_party")
 
         # Genre tags
-        if "genre_rosamerica" in hl:
-            genre = hl["genre_rosamerica"].get("value", "")
-            if genre == "rock":
-                features.genre_rock = 1.0
-            elif genre == "pop":
-                features.genre_pop = 1.0
-            elif genre == "jazz":
-                features.genre_jazz = 1.0
-            elif genre == "electronic":
-                features.genre_electronic = 1.0
-            elif genre == "hip_hop":
-                features.genre_hip_hop = 1.0
+        genre = safe_value(hl, "genre_rosamerica", "")
+        if genre == "rock":
+            features.genre_rock = 1.0
+        elif genre == "pop":
+            features.genre_pop = 1.0
+        elif genre == "jazz":
+            features.genre_jazz = 1.0
+        elif genre == "electronic":
+            features.genre_electronic = 1.0
+        elif genre == "hip_hop":
+            features.genre_hip_hop = 1.0
 
         # Low-level features
         ll = lowlevel.get("lowlevel", {})

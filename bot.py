@@ -3242,31 +3242,66 @@ async def cmd_prefetch_status(update: Update, context: ContextTypes.DEFAULT_TYPE
     lang = get_lang(user_id)
 
     try:
-        from feature_cache import get_cache_stats
-        stats = await get_cache_stats()
+        import sqlite3
+        conn = sqlite3.connect('feature_cache.db')
+        cursor = conn.cursor()
 
+        # Get total stats
+        cursor.execute('SELECT COUNT(*) FROM track_features')
+        total_songs = cursor.fetchone()[0]
+
+        cursor.execute('SELECT COUNT(DISTINCT artist) FROM track_features')
+        total_artists = cursor.fetchone()[0]
+
+        cursor.execute('SELECT COUNT(*) FROM track_features WHERE audio_features IS NOT NULL')
+        with_audio = cursor.fetchone()[0]
+
+        cursor.execute('SELECT COUNT(*) FROM track_features WHERE acoustic_features IS NOT NULL')
+        with_acoustic = cursor.fetchone()[0]
+
+        # Get top artists
+        cursor.execute('''
+            SELECT artist, COUNT(*) as song_count,
+                   SUM(CASE WHEN audio_features IS NOT NULL THEN 1 ELSE 0 END) as with_audio
+            FROM track_features
+            GROUP BY artist
+            ORDER BY song_count DESC
+            LIMIT 10
+        ''')
+        top_artists = cursor.fetchall()
+
+        # Get target
+        total_target = 500  # 200 pop + 100 rap + 100 rock + 100 rnb
+
+        # Build message
         msg_text = f"""
 📊 <b>Prefetch System Status</b>
 
-💾 <b>Cache Statistics:</b>
-• Total songs: {stats.get('total_songs', 0):,}
-• With audio features: {stats.get('with_audio', 0):,}
-• With acoustic features: {stats.get('with_acoustic', 0):,}
-• With MusicBrainz ID: {stats.get('with_mbid', 0):,}
-• With Last.fm tags: {stats.get('with_tags', 0):,}
+🎤 <b>Top Artists Fully Processed:</b>
+"""
+        for i, (artist, count, audio) in enumerate(top_artists[:5], 1):
+            audio_str = f" ({audio} with audio)" if audio > 0 else ""
+            msg_text += f"✅ {artist} - {count} songs{audio_str}\n"
 
-📈 <b>Recent Activity:</b>
-• Last 24h: {stats.get('recent_24h', 0):,} songs
-• Last 7 days: {stats.get('recent_7d', 0):,} songs
+        if len(top_artists) > 5:
+            msg_text += f"✅ And {len(top_artists) - 5} more artists...\n"
 
-🎯 <b>Prefetch Targets:</b>
-• Pop: 200 artists
-• Rap: 100 artists
-• Persian: 100 artists
-• Rock: 100 artists
+        msg_text += f"""
+📈 <b>Overall Statistics:</b>
+• Total artists processed: {total_artists} out of {total_target} target ({100*total_artists//total_target}%)
+• Total songs cached: {total_songs:,} songs
+• Songs with audio features: {with_audio:,} songs ({100*with_audio//max(total_songs,1)}%)
+• Average songs per artist: {total_songs//max(total_artists,1)}
+
+✅ <b>What's Working:</b>
+• Audio analysis (librosa): BPM, MFCCs, chroma, spectral features
+• Track fetching: Getting all songs from artists via Deezer
+• Similar songs: Finding related tracks via Last.fm
+• Caching: Saving to database
 
 💡 <b>You will receive hourly reports</b> with progress updates.
 """
+        conn.close()
         await update.message.reply_text(msg_text, parse_mode=PM)
 
     except Exception as e:

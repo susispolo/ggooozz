@@ -2,6 +2,29 @@ venv/
 __pycache__/
 *.pyc
 .env
-.env
 tokens.png
 *.png
+
+# Database files (should not be in version control)
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+
+# Log files
+*.log
+logs/
+
+# Generated/cache files
+cached_songs.json
+new_persian_artists.json
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
