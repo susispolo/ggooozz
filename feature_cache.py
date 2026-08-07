@@ -15,26 +15,45 @@ log = logging.getLogger(__name__)
 
 DB_PATH = "feature_cache.db"
 
+# Connection pool for feature cache
+_pool: aiosqlite.Connection | None = None
+
+
+async def get_connection():
+    """Get a database connection from the pool."""
+    global _pool
+    if _pool is None:
+        _pool = await aiosqlite.connect(DB_PATH)
+    return _pool
+
+
+async def close_pool():
+    """Close the connection pool."""
+    global _pool
+    if _pool:
+        await _pool.close()
+        _pool = None
+
 
 async def init_cache():
     """Initialize the feature cache database."""
-    async with aiosqlite.connect(DB_PATH) as conn:
-        await conn.execute("""
-            CREATE TABLE IF NOT EXISTS track_features (
-                track_id INTEGER PRIMARY KEY,
-                title TEXT,
-                artist TEXT,
-                audio_features TEXT,
-                acoustic_features TEXT,
-                musicbrainz_id TEXT,
-                lastfm_tags TEXT,
-                analyzed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-            )
-        """)
-        await conn.execute("""
-            CREATE INDEX IF NOT EXISTS idx_artist_track ON track_features(title, artist)
-        """)
-        await conn.commit()
+    conn = await get_connection()
+    await conn.execute("""
+        CREATE TABLE IF NOT EXISTS track_features (
+            track_id INTEGER PRIMARY KEY,
+            title TEXT,
+            artist TEXT,
+            audio_features TEXT,
+            acoustic_features TEXT,
+            musicbrainz_id TEXT,
+            lastfm_tags TEXT,
+            analyzed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    """)
+    await conn.execute("""
+        CREATE INDEX IF NOT EXISTS idx_artist_track ON track_features(title, artist)
+    """)
+    await conn.commit()
     log.info("Feature cache initialized")
 
 
@@ -43,54 +62,40 @@ async def get_cached_features(track_id: int) -> Optional[dict]:
     Get cached features for a track.
     Returns dict with audio_features, acoustic_features, etc. or None.
     """
-    log.info("[CACHE] Looking up features for track ID: %d", track_id)
+    log.debug("[CACHE] Looking up features for track ID: %d", track_id)
 
-    async with aiosqlite.connect(DB_PATH) as conn:
-        async with conn.execute(
-            "SELECT audio_features, acoustic_features, musicbrainz_id, lastfm_tags FROM track_features WHERE track_id=?",
-            (track_id,)
-        ) as cursor:
-            row = await cursor.fetchone()
-            if not row:
-                log.info("[CACHE] Cache MISS for track ID: %d", track_id)
-                return None
+    conn = await get_connection()
+    async with conn.execute(
+        "SELECT audio_features, acoustic_features, musicbrainz_id, lastfm_tags FROM track_features WHERE track_id=?",
+        (track_id,)
+    ) as cursor:
+        row = await cursor.fetchone()
+        if not row:
+            log.debug("[CACHE] Cache MISS for track ID: %d", track_id)
+            return None
 
-            audio_data, acoustic_data, mbid, tags_data = row
+        audio_data, acoustic_data, mbid, tags_data = row
 
-            log.info("[CACHE] ✓ Cache HIT for track ID: %d", track_id)
-            if audio_data:
-                af = json.loads(audio_data)
-                if isinstance(af, dict):
-                    log.info("[CACHE]   Audio: BPM=%.1f, Energy=%.4f", af.get("bpm", 0), af.get("rms_energy", 0))
-            if acoustic_data:
-                ac = json.loads(acoustic_data)
-                if isinstance(ac, dict):
-                    log.info("[CACHE]   Acoustic: dance=%.2f, energy=%.2f, valence=%.2f",
-                             ac.get("danceability", 0), ac.get("energy", 0), ac.get("valence", 0))
-            if mbid:
-                log.info("[CACHE]   MusicBrainz: %s", mbid)
-            if tags_data:
-                tags = json.loads(tags_data)
-                log.info("[CACHE]   Last.fm tags: %s", ", ".join(tags[:3]) if tags else "none")
+        log.info("[CACHE] Cache HIT for track ID: %d", track_id)
 
-            audio_feat = None
-            if audio_data:
-                parsed = json.loads(audio_data)
-                if isinstance(parsed, dict):
-                    audio_feat = AudioFeatures.from_dict(parsed)
+        audio_feat = None
+        if audio_data:
+            parsed = json.loads(audio_data)
+            if isinstance(parsed, dict):
+                audio_feat = AudioFeatures.from_dict(parsed)
 
-            acoustic_feat = None
-            if acoustic_data:
-                parsed = json.loads(acoustic_data)
-                if isinstance(parsed, dict):
-                    acoustic_feat = AcousticBrainzFeatures.from_dict(parsed)
+        acoustic_feat = None
+        if acoustic_data:
+            parsed = json.loads(acoustic_data)
+            if isinstance(parsed, dict):
+                acoustic_feat = AcousticBrainzFeatures.from_dict(parsed)
 
-            return {
-                "audio_features": audio_feat,
-                "acoustic_features": acoustic_feat,
-                "musicbrainz_id": mbid,
-                "lastfm_tags": json.loads(tags_data) if tags_data else [],
-            }
+        return {
+            "audio_features": audio_feat,
+            "acoustic_features": acoustic_feat,
+            "musicbrainz_id": mbid,
+            "lastfm_tags": json.loads(tags_data) if tags_data else [],
+        }
 
 async def cache_features(
     track_id: int,
@@ -108,40 +113,17 @@ async def cache_features(
     acoustic_json = json.dumps(acoustic_features.to_dict()) if acoustic_features else None
     tags_json = json.dumps(lastfm_tags) if lastfm_tags else None
 
-    # Log what's being saved
-    if audio_features:
-        log.info("[CACHE] Audio features: BPM=%.1f, Energy=%.4f, MFCCs=%d coefficients",
-                 audio_features.bpm, audio_features.rms_energy, len(audio_features.mfcc_mean))
-    else:
-        log.info("[CACHE] Audio features: NONE")
+    conn = await get_connection()
+    await conn.execute("""
+        INSERT OR REPLACE INTO track_features
+        (track_id, title, artist, audio_features, acoustic_features, musicbrainz_id, lastfm_tags)
+        VALUES (?, ?, ?, ?, ?, ?, ?)
+    """, (track_id, title, artist, audio_json, acoustic_json, musicbrainz_id, tags_json))
+    await conn.commit()
 
-    if acoustic_features:
-        log.info("[CACHE] AcousticBrainz: danceability=%.2f, energy=%.2f, valence=%.2f",
-                 acoustic_features.danceability, acoustic_features.energy, acoustic_features.valence)
-    else:
-        log.info("[CACHE] AcousticBrainz: NONE")
+    log.info("[CACHE] Saved successfully for: %s - %s", artist, title)
 
-    if musicbrainz_id:
-        log.info("[CACHE] MusicBrainz ID: %s", musicbrainz_id)
-    else:
-        log.info("[CACHE] MusicBrainz ID: NONE")
-
-    if lastfm_tags:
-        log.info("[CACHE] Last.fm tags: %s", ", ".join(lastfm_tags[:5]))
-    else:
-        log.info("[CACHE] Last.fm tags: NONE")
-
-    async with aiosqlite.connect(DB_PATH) as conn:
-        await conn.execute("""
-            INSERT OR REPLACE INTO track_features
-            (track_id, title, artist, audio_features, acoustic_features, musicbrainz_id, lastfm_tags)
-            VALUES (?, ?, ?, ?, ?, ?, ?)
-        """, (track_id, title, artist, audio_json, acoustic_json, musicbrainz_id, tags_json))
-        await conn.commit()
-
-    log.info("[CACHE] ✓ Saved successfully for: %s - %s", artist, title)
-
-    # Auto-export to JSON for easy viewing
+    # Auto-export to JSON for easy viewing (async, non-blocking)
     try:
         await export_cache_to_json()
     except Exception:
@@ -213,11 +195,11 @@ async def get_or_analyze(
 
 async def export_cache_to_json(filename: str = "cached_songs.json"):
     """Export all cached tracks to a JSON file for easy viewing."""
-    async with aiosqlite.connect(DB_PATH) as conn:
-        async with conn.execute(
-            "SELECT track_id, title, artist, audio_features, acoustic_features, musicbrainz_id, lastfm_tags, analyzed_at FROM track_features"
-        ) as cursor:
-            rows = await cursor.fetchall()
+    conn = await get_connection()
+    async with conn.execute(
+        "SELECT track_id, title, artist, audio_features, acoustic_features, musicbrainz_id, lastfm_tags, analyzed_at FROM track_features"
+    ) as cursor:
+        rows = await cursor.fetchall()
 
     tracks = []
     for row in rows:
@@ -257,5 +239,86 @@ async def export_cache_to_json(filename: str = "cached_songs.json"):
     with open(filename, 'w', encoding='utf-8') as f:
         f.write(json.dumps(tracks, indent=2, ensure_ascii=False))
 
-    log.info("Exported %d tracks to %s", len(tracks), filename)
+    log.debug("Exported %d tracks to %s", len(tracks), filename)
     return len(tracks)
+
+
+async def was_recently_prefetched(track_id: int, hours: int = 24) -> bool:
+    """Check if song was prefetched within the last N hours."""
+    conn = await get_connection()
+    async with conn.execute(
+        """SELECT 1 FROM track_features
+           WHERE track_id=? AND analyzed_at > datetime('now', ?)""",
+        (track_id, f'-{hours} hours')
+    ) as cursor:
+        return await cursor.fetchone() is not None
+
+
+async def get_cache_stats() -> dict:
+    """Get statistics about the cache."""
+    conn = await get_connection()
+
+    stats = {}
+
+    # Total songs
+    async with conn.execute("SELECT COUNT(*) FROM track_features") as cursor:
+        row = await cursor.fetchone()
+        stats["total_songs"] = row[0] if row else 0
+
+    # Songs with audio features
+    async with conn.execute(
+        "SELECT COUNT(*) FROM track_features WHERE audio_features IS NOT NULL"
+    ) as cursor:
+        row = await cursor.fetchone()
+        stats["with_audio"] = row[0] if row else 0
+
+    # Songs with acoustic features
+    async with conn.execute(
+        "SELECT COUNT(*) FROM track_features WHERE acoustic_features IS NOT NULL"
+    ) as cursor:
+        row = await cursor.fetchone()
+        stats["with_acoustic"] = row[0] if row else 0
+
+    # Songs with MusicBrainz ID
+    async with conn.execute(
+        "SELECT COUNT(*) FROM track_features WHERE musicbrainz_id IS NOT NULL"
+    ) as cursor:
+        row = await cursor.fetchone()
+        stats["with_mbid"] = row[0] if row else 0
+
+    # Songs with Last.fm tags
+    async with conn.execute(
+        "SELECT COUNT(*) FROM track_features WHERE lastfm_tags IS NOT NULL AND lastfm_tags != '[]'"
+    ) as cursor:
+        row = await cursor.fetchone()
+        stats["with_tags"] = row[0] if row else 0
+
+    # Recent additions (last 24h)
+    async with conn.execute(
+        "SELECT COUNT(*) FROM track_features WHERE analyzed_at > datetime('now', '-1 day')"
+    ) as cursor:
+        row = await cursor.fetchone()
+        stats["recent_24h"] = row[0] if row else 0
+
+    # Recent additions (last 7 days)
+    async with conn.execute(
+        "SELECT COUNT(*) FROM track_features WHERE analyzed_at > datetime('now', '-7 days')"
+    ) as cursor:
+        row = await cursor.fetchone()
+        stats["recent_7d"] = row[0] if row else 0
+
+    return stats
+
+
+async def cleanup_old_entries(days_old: int = 30) -> int:
+    """Remove cached entries older than N days.
+    Returns number of entries removed.
+    """
+    conn = await get_connection()
+    async with conn.execute(
+        "DELETE FROM track_features WHERE analyzed_at < datetime('now', ?)",
+        (f'-{days_old} days',)
+    ) as cursor:
+        removed = cursor.rowcount
+    await conn.commit()
+    return removed

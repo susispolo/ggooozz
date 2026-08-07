@@ -5,7 +5,6 @@ Uses librosa, MusicBrainz, AcousticBrainz, and Last.fm for intelligent recommend
 """
 
 import asyncio
-import base64
 import html
 import logging
 import os
@@ -25,7 +24,6 @@ from telegram import (
     InputTextMessageContent,
     KeyboardButton,
     ReplyKeyboardMarkup,
-    ReplyKeyboardRemove,
     Update,
 )
 from telegram.constants import ParseMode
@@ -47,32 +45,34 @@ from config import (
 )
 from deezer_helper import DeezerClient, TrackInfo
 from audio_analyzer import analyze_audio, AudioFeatures
-from musicbrainz_client import MusicBrainzClient, AcousticBrainzFeatures
+from musicbrainz_client import MusicBrainzClient
 from lastfm_client import LastfmClient
 from similarity_engine import rank_by_similarity, SimilarityResult
 from feature_cache import init_cache, get_cached_features, cache_features
 from user_prefs import (
     init_db, save_vote, get_user_votes, get_user_rating_stats,
-    get_user_top_artists, save_playlist, get_user_playlists, get_playlist,
+    get_user_top_artists, save_playlist, get_user_playlists,
     update_trivia_score, get_trivia_leaderboard, get_trivia_stats,
     add_to_history, get_user_history, get_top_rated_tracks, get_most_active_users,
     add_to_user_playlist, get_user_playlist, clear_user_playlist,
-    get_user_taste_profile, get_user_playlist_artists, get_random_recommendations,
-    store_suggestions, get_random_suggestions, count_suggestions,
+    get_user_taste_profile, get_user_playlist_artists,
+    store_suggestions, get_random_suggestions,
     set_user_language, get_user_language,
 )
 from language_detect import detect_language, language_label
 from playlist_manager import generate_playlist, format_playlist_text
-from taste_profiler import build_taste_profile, format_taste_profile, get_recommendation_weights
+from taste_profiler import build_taste_profile, format_taste_profile
 from trivia_game import (
     create_trivia_question, start_session, get_session, end_session,
     check_answer, format_question, format_session_stats, TriviaSession,
 )
 from lyrics_client import LyricsClient, format_lyrics
-from card_generator import generate_music_card, generate_comparison_card
+from card_generator import generate_music_card
 from dna_generator import generate_musical_dna
 import i18n as i18n_mod
 from i18n import label, msg, supported_langs, set_lang as i18n_set_lang, get_lang
+from prefetch_popular import run_prefetch, run_cleanup
+from prefetch_artists import run_artist_prefetch, PrefetchProgress
 
 # ═══════════════════════════════════════════════════
 # Config
@@ -3148,6 +3148,132 @@ async def cmd_playliststats(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 # ═══════════════════════════════════════════════════
+# Prefetch Scheduler
+# ═══════════════════════════════════════════════════
+
+# Store owner chat_id for sending reports
+_bot_owner_chat_id: int | None = None
+
+
+def _prefetch_worker():
+    """Background worker for artist-based prefetching."""
+    import time
+    from datetime import datetime
+
+    while True:
+        try:
+            # Run artist prefetch (runs continuously)
+            log.info("[SCHEDULER] Starting artist-based prefetch...")
+            asyncio.run(run_artist_prefetch())
+
+            # Run cleanup once per day (at 3 AM)
+            now = datetime.now()
+            if now.hour == 3 and now.minute < 1:
+                log.info("[SCHEDULER] Running daily cleanup...")
+                asyncio.run(run_cleanup(days_old=30))
+
+        except Exception as e:
+            log.error("[SCHEDULER] Prefetch error: %s", e)
+
+        # Sleep for 1 minute before retrying
+        time.sleep(60)
+
+
+def _start_prefetch_scheduler():
+    """Start the prefetch scheduler in a background thread."""
+    import threading
+
+    # Check if prefetch is enabled (can be disabled via env var)
+    enable_prefetch = os.getenv("ENABLE_PREFETCH", "true").lower() == "true"
+    prefetch_mode = os.getenv("PREFETCH_MODE", "artist")  # "popular" or "artist"
+
+    if enable_prefetch:
+        if prefetch_mode == "artist":
+            thread = threading.Thread(target=_prefetch_worker, daemon=True)
+            thread.start()
+            log.info("[SCHEDULER] Artist-based prefetch scheduler started")
+            log.info("[SCHEDULER] Will fetch: 200 pop, 100 rap, 100 persian, 100 rock artists")
+        else:
+            # Fallback to simple popular songs prefetch
+            def _simple_prefetch_worker():
+                import time as time_module
+                while True:
+                    try:
+                        asyncio.run(run_prefetch(target_songs=15))
+                    except Exception as e:
+                        log.error("[SCHEDULER] Prefetch error: %s", e)
+                    time_module.sleep(60)
+
+            thread = threading.Thread(target=_simple_prefetch_worker, daemon=True)
+            thread.start()
+            log.info("[SCHEDULER] Simple prefetch scheduler started (every 60 seconds)")
+    else:
+        log.info("[SCHEDULER] Prefetch scheduler disabled (ENABLE_PREFETCH=false)")
+
+
+async def send_prefetch_report(message: str):
+    """Send prefetch report to bot owner."""
+    global _bot_owner_chat_id
+
+    if _bot_owner_chat_id and TELEGRAM_BOT_TOKEN:
+        try:
+            import aiohttp
+            async with aiohttp.ClientSession() as session:
+                url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
+                await session.post(url, json={
+                    "chat_id": _bot_owner_chat_id,
+                    "text": message,
+                    "parse_mode": "HTML"
+                })
+        except Exception as e:
+            log.error("[REPORT] Failed to send report: %s", e)
+
+
+async def cmd_prefetch_status(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Show prefetch system status (admin only)."""
+    global _bot_owner_chat_id
+
+    user_id = update.effective_user.id
+
+    # Set this user as the bot owner (for receiving reports)
+    _bot_owner_chat_id = user_id
+
+    await _ensure_lang(user_id)
+    lang = get_lang(user_id)
+
+    try:
+        from feature_cache import get_cache_stats
+        stats = await get_cache_stats()
+
+        msg_text = f"""
+📊 <b>Prefetch System Status</b>
+
+💾 <b>Cache Statistics:</b>
+• Total songs: {stats.get('total_songs', 0):,}
+• With audio features: {stats.get('with_audio', 0):,}
+• With acoustic features: {stats.get('with_acoustic', 0):,}
+• With MusicBrainz ID: {stats.get('with_mbid', 0):,}
+• With Last.fm tags: {stats.get('with_tags', 0):,}
+
+📈 <b>Recent Activity:</b>
+• Last 24h: {stats.get('recent_24h', 0):,} songs
+• Last 7 days: {stats.get('recent_7d', 0):,} songs
+
+🎯 <b>Prefetch Targets:</b>
+• Pop: 200 artists
+• Rap: 100 artists
+• Persian: 100 artists
+• Rock: 100 artists
+
+💡 <b>You will receive hourly reports</b> with progress updates.
+"""
+        await update.message.reply_text(msg_text, parse_mode=PM)
+
+    except Exception as e:
+        await update.message.reply_text(f"❌ Error getting prefetch status: {e}")
+
+
+# ═══════════════════════════════════════════════════
 # Main
 # ═══════════════════════════════════════════════════
 
@@ -3163,10 +3289,14 @@ async def post_init(application: Application):
             ("myplaylist", "Your playlist"),
             ("lyrics", "Get song lyrics"),
             ("language", "Change language / زبان"),
+            ("prefetch", "Show prefetch status (admin)"),
         ])
     except Exception as e:
         log.warning("set_my_commands failed: %s", e)
     log.info("Bot initialized: Last.fm=%s", "OK" if LASTFM_API_KEY else "off")
+
+    # Start prefetch scheduler in background
+    _start_prefetch_scheduler()
 
 
 async def post_shutdown(application: Application):
@@ -3174,6 +3304,10 @@ async def post_shutdown(application: Application):
     await mb.close()
     if lfm:
         await lfm.close()
+    from user_prefs import close_pool as close_prefs_pool
+    from feature_cache import close_pool as close_cache_pool
+    await close_prefs_pool()
+    await close_cache_pool()
 
 
 def build_app() -> Application:
@@ -3227,6 +3361,9 @@ def build_app() -> Application:
     app.add_handler(CommandHandler("clearplaylist", cmd_clearplaylist))
     app.add_handler(CommandHandler("meforyou", cmd_meforyou))
     app.add_handler(CommandHandler("playliststats", cmd_playliststats))
+
+    # Admin commands
+    app.add_handler(CommandHandler("prefetch", cmd_prefetch_status))
 
     # Message handlers
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_text))

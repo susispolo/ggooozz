@@ -188,6 +188,32 @@ class DeezerClient:
         log.info("[DEEZER] get_artist_top id=%s -> %d results", artist_id, len(results))
         return results
 
+    async def get_chart(self, chart_id: int = 0, limit: int = 20) -> list[TrackInfo]:
+        """Fetch top tracks from Deezer charts.
+
+        chart_id: 0=global, 1=most streamed this week, etc.
+        limit: Number of tracks to fetch (max 50)
+        """
+        log.info("[DEEZER] get_chart chart_id=%s limit=%s", chart_id, limit)
+        data = await self._request_with_retry(
+            f"{self.BASE}/chart/{chart_id}/tracks",
+            params={"limit": min(limit, 50)}
+        )
+        results = [self._parse_track(t) for t in data.get("data", [])] if data else []
+        log.info("[DEEZER] get_chart chart_id=%s -> %d tracks", chart_id, len(results))
+        return results
+
+    async def get_genre_charts(self, genre_id: int, limit: int = 20) -> list[TrackInfo]:
+        """Fetch top tracks for a specific genre."""
+        log.info("[DEEZER] get_genre_charts genre_id=%s limit=%s", genre_id, limit)
+        data = await self._request_with_retry(
+            f"{self.BASE}/genre/{genre_id}/charts",
+            params={"limit": min(limit, 50)}
+        )
+        results = [self._parse_track(t) for t in data.get("data", [])] if data else []
+        log.info("[DEEZER] get_genre_charts genre_id=%s -> %d tracks", genre_id, len(results))
+        return results
+
     @staticmethod
     def _parse_track(raw: dict) -> TrackInfo:
         album_art = raw.get("album", {}).get("cover_medium") or raw.get("album", {}).get("cover")

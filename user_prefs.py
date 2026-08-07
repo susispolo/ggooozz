@@ -6,15 +6,47 @@ import json
 import logging
 import random
 import aiosqlite
+from contextlib import asynccontextmanager
 
 log = logging.getLogger(__name__)
 
 DB_PATH = "user_prefs.db"
 
+# Connection pool - reuse connections instead of creating new ones each time
+_pool: aiosqlite.Connection | None = None
+
+
+@asynccontextmanager
+async def get_connection():
+    """Get a database connection from the pool, creating one if needed."""
+    global _pool
+    if _pool is None:
+        _pool = await aiosqlite.connect(DB_PATH)
+        _pool.row_factory = aiosqlite.Row
+    try:
+        yield _pool
+    except Exception:
+        # On error, close and reset the pool so next call creates fresh connection
+        if _pool:
+            try:
+                await _pool.close()
+            except Exception:
+                pass
+        _pool = None
+        raise
+
+
+async def close_pool():
+    """Close the connection pool (call on shutdown)."""
+    global _pool
+    if _pool:
+        await _pool.close()
+        _pool = None
+
 
 async def init_db():
     """Initialize all database tables."""
-    async with aiosqlite.connect(DB_PATH) as conn:
+    async with get_connection() as conn:
         # Votes table
         await conn.execute("""
             CREATE TABLE IF NOT EXISTS votes (
@@ -145,7 +177,7 @@ async def _migrate_add_columns(conn, table: str, columns: dict):
 
 async def save_vote(user_id: int, track_id: int, title: str, artist: str, rating: int):
     log.info("[VOTE] save user=%s track=%s (%s - %s) rating=%s", user_id, track_id, title, artist, rating)
-    async with aiosqlite.connect(DB_PATH) as conn:
+    async with get_connection() as conn:
         await conn.execute(
             "INSERT INTO votes (user_id, track_id, track_title, track_artist, rating) VALUES (?, ?, ?, ?, ?)",
             (user_id, track_id, title, artist, rating),
@@ -155,14 +187,14 @@ async def save_vote(user_id: int, track_id: int, title: str, artist: str, rating
 
 
 async def get_track_avg_rating(track_id: int) -> float:
-    async with aiosqlite.connect(DB_PATH) as conn:
+    async with get_connection() as conn:
         async with conn.execute("SELECT AVG(rating) FROM votes WHERE track_id=?", (track_id,)) as cursor:
             row = await cursor.fetchone()
             return row[0] if row and row[0] else 0.0
 
 
 async def get_user_votes(user_id: int, limit: int = 20) -> list:
-    async with aiosqlite.connect(DB_PATH) as conn:
+    async with get_connection() as conn:
         async with conn.execute(
             "SELECT track_title, track_artist, rating FROM votes WHERE user_id=? ORDER BY created_at DESC LIMIT ?",
             (user_id, limit),
@@ -174,7 +206,7 @@ async def get_user_votes(user_id: int, limit: int = 20) -> list:
 
 async def get_user_rating_stats(user_id: int) -> dict:
     """Get user's rating statistics."""
-    async with aiosqlite.connect(DB_PATH) as conn:
+    async with get_connection() as conn:
         async with conn.execute(
             "SELECT AVG(rating), COUNT(*), MIN(rating), MAX(rating) FROM votes WHERE user_id=?",
             (user_id,)
@@ -192,7 +224,7 @@ async def get_user_rating_stats(user_id: int) -> dict:
 
 async def get_user_top_artists(user_id: int, limit: int = 5) -> list:
     """Get user's most rated artists."""
-    async with aiosqlite.connect(DB_PATH) as conn:
+    async with get_connection() as conn:
         async with conn.execute(
             """SELECT track_artist, COUNT(*) as count, AVG(rating) as avg_rating
                FROM votes WHERE user_id=?
@@ -213,7 +245,7 @@ async def get_user_top_artists(user_id: int, limit: int = 5) -> list:
 async def save_playlist(user_id: int, name: str, track_ids: list[int]) -> int:
     """Save a playlist and return its ID."""
     log.info("[PLAYLIST] save_playlist user=%s name=%r tracks=%d", user_id, name, len(track_ids))
-    async with aiosqlite.connect(DB_PATH) as conn:
+    async with get_connection() as conn:
         cursor = await conn.execute(
             "INSERT INTO playlists (user_id, name, track_ids) VALUES (?, ?, ?)",
             (user_id, name, json.dumps(track_ids))
@@ -225,7 +257,7 @@ async def save_playlist(user_id: int, name: str, track_ids: list[int]) -> int:
 
 async def get_user_playlists(user_id: int) -> list:
     """Get all playlists for a user."""
-    async with aiosqlite.connect(DB_PATH) as conn:
+    async with get_connection() as conn:
         async with conn.execute(
             "SELECT id, name, track_ids, created_at FROM playlists WHERE user_id=? ORDER BY created_at DESC",
             (user_id,)
@@ -238,7 +270,7 @@ async def get_user_playlists(user_id: int) -> list:
 
 async def get_playlist(playlist_id: int) -> dict:
     """Get a playlist by ID."""
-    async with aiosqlite.connect(DB_PATH) as conn:
+    async with get_connection() as conn:
         async with conn.execute(
             "SELECT id, user_id, name, track_ids, created_at FROM playlists WHERE id=?",
             (playlist_id,)
@@ -256,7 +288,7 @@ async def get_playlist(playlist_id: int) -> dict:
 async def update_trivia_score(user_id: int, username: str, points: int, won: bool):
     """Update trivia score for a user."""
     log.info("[TRIVIA_DB] update user=%s name=%s points=%s won=%s", user_id, username, points, won)
-    async with aiosqlite.connect(DB_PATH) as conn:
+    async with get_connection() as conn:
         # Check if user exists
         async with conn.execute("SELECT score, games_played, streak, best_streak FROM trivia_scores WHERE user_id=?", (user_id,)) as cursor:
             row = await cursor.fetchone()
@@ -280,7 +312,7 @@ async def update_trivia_score(user_id: int, username: str, points: int, won: boo
 
 async def get_trivia_leaderboard(limit: int = 10) -> list:
     """Get top trivia players."""
-    async with aiosqlite.connect(DB_PATH) as conn:
+    async with get_connection() as conn:
         async with conn.execute(
             "SELECT username, score, games_played, best_streak FROM trivia_scores ORDER BY score DESC LIMIT ?",
             (limit,)
@@ -290,7 +322,7 @@ async def get_trivia_leaderboard(limit: int = 10) -> list:
 
 async def get_trivia_stats(user_id: int) -> dict:
     """Get trivia stats for a user."""
-    async with aiosqlite.connect(DB_PATH) as conn:
+    async with get_connection() as conn:
         async with conn.execute(
             "SELECT score, games_played, streak, best_streak FROM trivia_scores WHERE user_id=?",
             (user_id,)
@@ -308,7 +340,7 @@ async def get_trivia_stats(user_id: int) -> dict:
 async def add_to_history(user_id: int, track_id: int, title: str, artist: str, action: str = "search"):
     """Add a track to user's listening history."""
     log.info("[HIST] add_to_history user=%s track=%s (%s - %s) action=%s", user_id, track_id, title, artist, action)
-    async with aiosqlite.connect(DB_PATH) as conn:
+    async with get_connection() as conn:
         await conn.execute(
             "INSERT INTO listening_history (user_id, track_id, track_title, track_artist, action) VALUES (?, ?, ?, ?, ?)",
             (user_id, track_id, title, artist, action)
@@ -319,7 +351,7 @@ async def add_to_history(user_id: int, track_id: int, title: str, artist: str, a
 
 async def get_user_history(user_id: int, limit: int = 20) -> list:
     """Get user's listening history."""
-    async with aiosqlite.connect(DB_PATH) as conn:
+    async with get_connection() as conn:
         async with conn.execute(
             "SELECT track_title, track_artist, action, created_at FROM listening_history WHERE user_id=? ORDER BY created_at DESC LIMIT ?",
             (user_id, limit)
@@ -335,7 +367,7 @@ async def get_user_history(user_id: int, limit: int = 20) -> list:
 
 async def get_top_rated_tracks(limit: int = 10) -> list:
     """Get globally top rated tracks."""
-    async with aiosqlite.connect(DB_PATH) as conn:
+    async with get_connection() as conn:
         async with conn.execute(
             """SELECT track_title, track_artist, AVG(rating) as avg_rating, COUNT(*) as vote_count
                FROM votes
@@ -350,7 +382,7 @@ async def get_top_rated_tracks(limit: int = 10) -> list:
 
 async def get_most_active_users(limit: int = 10) -> list:
     """Get most active users by vote count."""
-    async with aiosqlite.connect(DB_PATH) as conn:
+    async with get_connection() as conn:
         async with conn.execute(
             """SELECT user_id, COUNT(*) as vote_count, AVG(rating) as avg_rating
                FROM votes
@@ -380,7 +412,7 @@ async def add_to_user_playlist(user_id: int, track_id: int, title: str, artist: 
     if is_persian and (not language or language == 'en'):
         language = 'fa'
 
-    async with aiosqlite.connect(DB_PATH) as conn:
+    async with get_connection() as conn:
         # Dedup check: same user + same track_id (for recognized), or
         # same user + same title (for unrecognized, track_id=0).
         if track_id and track_id > 0:
@@ -416,7 +448,7 @@ async def add_to_user_playlist(user_id: int, track_id: int, title: str, artist: 
 
 async def get_user_playlist(user_id: int) -> list:
     """Get all tracks in user's playlist."""
-    async with aiosqlite.connect(DB_PATH) as conn:
+    async with get_connection() as conn:
         async with conn.execute(
             """SELECT id, original_text, track_id, title, artist, bpm, energy, valence, genre, is_persian, similar_tracks, language, recognized, release_year, added_at
                FROM user_playlist
@@ -431,7 +463,7 @@ async def get_user_playlist(user_id: int) -> list:
 
 async def clear_user_playlist(user_id: int):
     """Clear all tracks from user's playlist."""
-    async with aiosqlite.connect(DB_PATH) as conn:
+    async with get_connection() as conn:
         await conn.execute("DELETE FROM user_playlist WHERE user_id=?", (user_id,))
         await conn.execute("DELETE FROM user_suggestions WHERE user_id=?", (user_id,))
         await conn.commit()
@@ -444,7 +476,7 @@ async def get_user_taste_profile(user_id: int) -> dict:
     analysis. Unrecognized songs count toward total but not the taste data.
     """
     log.info("[PLAYLIST_DB] get_user_taste_profile user=%s", user_id)
-    async with aiosqlite.connect(DB_PATH) as conn:
+    async with get_connection() as conn:
         # Overall total (all songs incl. unrecognized)
         async with conn.execute(
             "SELECT COUNT(*) FROM user_playlist WHERE user_id=?", (user_id,)
@@ -530,7 +562,7 @@ async def get_user_taste_profile(user_id: int) -> dict:
 
 async def get_user_playlist_artists(user_id: int, limit: int = 5) -> list:
     """Get top artists in user's playlist."""
-    async with aiosqlite.connect(DB_PATH) as conn:
+    async with get_connection() as conn:
         async with conn.execute(
             """SELECT artist, COUNT(*) as count
                FROM user_playlist
@@ -545,7 +577,7 @@ async def get_user_playlist_artists(user_id: int, limit: int = 5) -> list:
 
 async def get_all_similar_tracks(user_id: int) -> list:
     """Get all similar tracks from user's playlist for recommendations."""
-    async with aiosqlite.connect(DB_PATH) as conn:
+    async with get_connection() as conn:
         async with conn.execute(
             """SELECT similar_tracks FROM user_playlist
                WHERE user_id=? AND similar_tracks != '[]'""",
@@ -599,7 +631,7 @@ async def store_suggestions(user_id: int, source_song_id: int, track_ids: list) 
         return 0
 
     added = 0
-    async with aiosqlite.connect(DB_PATH) as conn:
+    async with get_connection() as conn:
         for tid in valid:
             cur = await conn.execute(
                 "INSERT OR IGNORE INTO user_suggestions (user_id, track_id, source_song_id) VALUES (?, ?, ?)",
@@ -618,7 +650,7 @@ async def get_random_suggestions(user_id: int, count: int = 5) -> list:
     One indexed ORDER BY RANDOM() query — O(1) per user regardless of pool
     size, no JSON parsing. Returns list of (track_id, source_song_id).
     """
-    async with aiosqlite.connect(DB_PATH) as conn:
+    async with get_connection() as conn:
         async with conn.execute(
             "SELECT track_id, source_song_id FROM user_suggestions WHERE user_id=? ORDER BY RANDOM() LIMIT ?",
             (user_id, count),
@@ -630,7 +662,7 @@ async def get_random_suggestions(user_id: int, count: int = 5) -> list:
 
 async def count_suggestions(user_id: int) -> int:
     """Count of suggestions in the user's pool."""
-    async with aiosqlite.connect(DB_PATH) as conn:
+    async with get_connection() as conn:
         async with conn.execute(
             "SELECT COUNT(*) FROM user_suggestions WHERE user_id=?", (user_id,)
         ) as cursor:
@@ -642,7 +674,7 @@ async def count_suggestions(user_id: int) -> int:
 
 async def set_user_language(user_id: int, lang: str):
     """Persist a user's language preference."""
-    async with aiosqlite.connect(DB_PATH) as conn:
+    async with get_connection() as conn:
         await conn.execute(
             """INSERT INTO user_language (user_id, lang) VALUES (?, ?)
                ON CONFLICT(user_id) DO UPDATE SET lang=excluded.lang, updated_at=CURRENT_TIMESTAMP""",
@@ -658,7 +690,7 @@ async def get_user_language(user_id: int) -> str:
     Returns '' if the user has never chosen a language (first-time) so the
     bot can ask once; otherwise their chosen 'en'/'fa'.
     """
-    async with aiosqlite.connect(DB_PATH) as conn:
+    async with get_connection() as conn:
         async with conn.execute(
             "SELECT lang FROM user_language WHERE user_id=?", (user_id,)
         ) as cursor:
@@ -668,7 +700,7 @@ async def get_user_language(user_id: int) -> str:
 
 async def search_tracks_by_features(bpm: float, energy: float, valence: float, limit: int = 10) -> list:
     """Search cached tracks by similar features."""
-    async with aiosqlite.connect(DB_PATH) as conn:
+    async with get_connection() as conn:
         # This is a simplified search - in production you'd use cosine similarity
         async with conn.execute(
             """SELECT track_id, title, artist, bpm, energy, valence
